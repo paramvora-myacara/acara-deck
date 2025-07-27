@@ -1,103 +1,94 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import Link from "next/link";
+import { 
+  AlertTriangle, 
+  Lightbulb, 
+  LineChart, 
+  Users,
+  Expand
+} from "lucide-react";
+
+export default function HomePage() {
+  const investmentCards = [
+    {
+      id: "problem",
+      title: "Problem",
+      icon: <AlertTriangle className="w-10 h-10" />,
+      summary: "Finding each other is hard. Creating deal docs takes forever.",
+      gradient: "from-red-50 to-orange-100 dark:from-red-900/20 dark:to-orange-900/20",
+      textColor: "text-red-900 dark:text-red-300",
+      accentColor: "text-red-700 dark:text-red-400"
+    },
+    {
+      id: "solution", 
+      title: "Solution",
+      icon: <Lightbulb className="w-10 h-10" />,
+      summary: "Smart matching. 30-second deal docs. One platform for everything.",
+      gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
+      textColor: "text-indigo-900 dark:text-indigo-300",
+      accentColor: "text-indigo-700 dark:text-indigo-400"
+    },
+    {
+      id: "market",
+      title: "Market", 
+      icon: <LineChart className="w-10 h-10" />,
+      summary: "$4.8 trillion market. Multiple revenue streams. We're different.",
+      gradient: "from-purple-50 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20", 
+      textColor: "text-purple-900 dark:text-purple-300",
+      accentColor: "text-purple-700 dark:text-purple-400"
+    },
+    {
+      id: "team",
+      title: "Team",
+      icon: <Users className="w-10 h-10" />,
+      summary: "20+ years experience. Proven track records. Ready to scale.",
+      gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
+      textColor: "text-emerald-900 dark:text-emerald-300",
+      accentColor: "text-emerald-700 dark:text-emerald-400"
+    }
+  ];
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-white dark:bg-black">
+      <main className="flex flex-col items-center justify-center min-h-screen p-4 md:p-8">
+        <div className="text-center w-full max-w-7xl mx-auto" style={{ flex: '0 2 auto' }}>
+          <h1 className="text-5xl md:text-7xl font-bold text-black dark:text-white tracking-tight">
+            ACARA CAP
+          </h1>
+          <p className="mt-4 text-lg md:text-xl text-black/70 dark:text-white/70 font-light">
+            AI-Powered Commercial Real Estate Capital Markets
+          </p>
+        </div>
+        
+        <div id="investment-cards" className="w-full max-w-7xl mx-auto mt-12" style={{ flex: '0 8 auto' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            {investmentCards.map((card, idx) => (
+              <Link
+                key={idx}
+                href={`/${card.id}`}
+                className={`glass-card rounded-3xl p-8 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 hover:shadow-lg dark:hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 animate-fadeIn group relative overflow-hidden`}
+                style={{ animationDelay: `${idx * 150}ms` }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/20 dark:from-white/[0.04] dark:to-white/[0.02] pointer-events-none" />
+                <div className="relative flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-4">
+                    <div className={`${card.textColor}`}>{card.icon}</div>
+                    <h3 className={`text-2xl font-semibold ${card.textColor}`}>
+                      {card.title}
+                    </h3>
+                  </div>
+                  <Expand className={`w-6 h-6 ${card.textColor} opacity-60 group-hover:opacity-100 transition-opacity`} />
+                </div>
+                
+                <p className={`text-lg leading-relaxed font-light ${card.accentColor}`}>
+                  {card.summary}
+                </p>
+              </Link>
+            ))}
+          </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
-}
+} 
