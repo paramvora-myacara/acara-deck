@@ -53,8 +53,8 @@ export default function ProblemPage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-black">
-      <main className="flex flex-col items-center justify-center min-h-screen p-4 md:p-8">
-        <header className="w-full max-w-7xl mx-auto mb-12 text-center">
+      <main className="flex flex-col items-center min-h-screen p-4 md:p-8">
+        <header className="w-full max-w-7xl mx-auto pt-16 md:pt-24 text-center">
             <h1 className="text-5xl md:text-7xl font-bold text-black dark:text-white tracking-tight">
                 The Problem
             </h1>
@@ -63,19 +63,18 @@ export default function ProblemPage() {
             </Link>
         </header>
 
-        <div className="w-full max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <div className="w-full max-w-7xl mx-auto flex-grow my-12 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {problemCards.map((card, idx) => (
               <div
                 key={idx}
-                className={`glass-card rounded-3xl p-8 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 animate-fadeIn`}
+                className={`glass-card rounded-3xl p-8 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 animate-fadeIn flex flex-col justify-center`}
                 style={{ animationDelay: `${idx * 150}ms` }}
               >
                 <div className="relative">
                   <h3 className={`text-2xl font-semibold ${card.textColor} mb-4`}>
                     {card.title}
                   </h3>
-                  <ul className="space-y-2">
+                  <ul className="list-disc list-inside space-y-2">
                     {card.content.map((item, itemIdx) => (
                       <li key={itemIdx} className={`text-lg font-light ${card.accentColor}`}>
                         {item}
@@ -85,7 +84,6 @@ export default function ProblemPage() {
                 </div>
               </div>
             ))}
-          </div>
         </div>
       </main>
     </div>

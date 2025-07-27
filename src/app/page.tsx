@@ -51,8 +51,8 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-black">
-      <main className="flex flex-col items-center justify-center min-h-screen p-4 md:p-8">
-        <div className="text-center w-full max-w-7xl mx-auto" style={{ flex: '0 2 auto' }}>
+      <main className="flex flex-col items-center min-h-screen p-4 md:p-8">
+        <div className="text-center w-full max-w-7xl mx-auto pt-16 md:pt-24">
           <h1 className="text-5xl md:text-7xl font-bold text-black dark:text-white tracking-tight">
             ACARA CAP
           </h1>
@@ -61,13 +61,12 @@ export default function HomePage() {
           </p>
         </div>
         
-        <div id="investment-cards" className="w-full max-w-7xl mx-auto mt-12" style={{ flex: '0 8 auto' }}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {investmentCards.map((card, idx) => (
+        <div id="investment-cards" className="w-full max-w-7xl mx-auto mt-12 flex-grow grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {investmentCards.map((card, idx) => (
               <Link
                 key={idx}
                 href={`/${card.id}`}
-                className={`glass-card rounded-3xl p-8 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 hover:shadow-lg dark:hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 animate-fadeIn group relative overflow-hidden`}
+                className={`glass-card rounded-3xl p-8 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 hover:shadow-lg dark:hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 animate-fadeIn group relative overflow-hidden flex flex-col justify-center`}
                 style={{ animationDelay: `${idx * 150}ms` }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/20 dark:from-white/[0.04] dark:to-white/[0.02] pointer-events-none" />
@@ -86,7 +85,6 @@ export default function HomePage() {
                 </p>
               </Link>
             ))}
-          </div>
         </div>
       </main>
     </div>
