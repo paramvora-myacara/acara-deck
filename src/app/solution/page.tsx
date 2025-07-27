@@ -6,10 +6,21 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Expand } from "lucide-react";
 
+type SolutionCard = {
+  title: string;
+  content: string[];
+  gradient: string;
+  textColor: string;
+  accentColor: string;
+  videoUrl?: string;
+  imageUrl?: string;
+  imageAlt?: string;
+};
+
 export default function SolutionPage() {
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
 
-  const solutionCards = [
+  const solutionCards: SolutionCard[] = [
     {
       title: "Smart Matching",
       content: [
@@ -30,8 +41,7 @@ export default function SolutionPage() {
         "Always up-to-date",
         "Ask questions, get answers",
       ],
-      imageUrl: "/solution-platform-workflow.png",
-      imageAlt: "ACARA CAP platform workflow",
+      videoUrl: "/OMDemoAcaraDeck720p.mp4",
       gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
       textColor: "text-indigo-900 dark:text-indigo-300",
       accentColor: "text-indigo-700 dark:text-indigo-400"
@@ -156,49 +166,35 @@ export default function SolutionPage() {
                           {mainCard.title}
                         </h3>
                         
-                        {mainCard.title === "30-Second Deal Docs" ? (
-                          <>
-                            <ul className="list-disc list-inside space-y-2 mb-4">
-                              {mainCard.content.map((item, itemIdx) => (
-                                  <li key={itemIdx} className={`text-lg font-light ${mainCard.accentColor}`}>
-                                  {item}
-                                  </li>
-                              ))}
-                            </ul>
-                            {mainCard.imageUrl && (
-                              <div className="mt-4">
-                                <Image 
-                                  src={mainCard.imageUrl} 
-                                  alt={mainCard.imageAlt || 'Solution image'}
-                                  width={500} 
-                                  height={300}
-                                  className="rounded-lg object-cover" 
-                                />
-                              </div>
-                            )}
-                          </>
-                        ) : (
-                          <>
-                            <ul className="list-disc list-inside space-y-2">
-                              {mainCard.content.map((item, itemIdx) => (
-                                  <li key={itemIdx} className={`text-lg font-light ${mainCard.accentColor}`}>
-                                  {item}
-                                  </li>
-                              ))}
-                            </ul>
-                            {mainCard.videoUrl && (
-                              <div className="mt-4">
-                                <video
-                                  src={mainCard.videoUrl}
-                                  autoPlay
-                                  loop
-                                  muted
-                                  playsInline
-                                  className="rounded-lg w-full"
-                                />
-                              </div>
-                            )}
-                          </>
+                        <ul className="list-disc list-inside space-y-2 mb-4">
+                          {mainCard.content.map((item, itemIdx) => (
+                              <li key={itemIdx} className={`text-lg font-light ${mainCard.accentColor}`}>
+                              {item}
+                              </li>
+                          ))}
+                        </ul>
+                        {mainCard.imageUrl && (
+                          <div className="mt-4">
+                            <Image 
+                              src={mainCard.imageUrl} 
+                              alt={mainCard.imageAlt || 'Solution image'}
+                              width={500} 
+                              height={300}
+                              className="rounded-lg object-cover" 
+                            />
+                          </div>
+                        )}
+                        {mainCard.videoUrl && (
+                          <div className="mt-4">
+                            <video
+                              src={mainCard.videoUrl}
+                              autoPlay
+                              loop
+                              muted
+                              playsInline
+                              className="rounded-lg w-full"
+                            />
+                          </div>
                         )}
                       </motion.div>
                     </AnimatePresence>
