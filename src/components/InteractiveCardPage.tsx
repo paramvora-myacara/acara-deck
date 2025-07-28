@@ -8,19 +8,20 @@ import { Expand } from "lucide-react";
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { Modal } from './Modal/Modal';
 
-export type CardData = {
+export interface CardData {
   title: string;
-  slug: string;
   content: string[];
+  imageUrl?: string;
+  imageAlt?: string;
+  videoUrl?: string;
+  slug: string;
   gradient: string;
   textColor: string;
   accentColor: string;
   dotColor: string;
-  videoUrl?: string;
-  imageUrl?: string;
-  imageAlt?: string;
-  role?: string; 
-};
+  customComponent?: React.ReactNode;
+  role?: string;
+}
 
 type InteractiveCardPageProps = {
   pageTitle: string;
@@ -135,6 +136,11 @@ function InteractiveCardPageComponent({ pageTitle, cards: initialCards }: Intera
                               playsInline
                               className="rounded-lg w-full h-full object-contain"
                             />
+                          </div>
+                        )}
+                        {mainCard.customComponent && (
+                          <div className="mt-4">
+                            {mainCard.customComponent}
                           </div>
                         )}
                       </motion.div>
