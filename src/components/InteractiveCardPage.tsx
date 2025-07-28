@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Expand, X } from "lucide-react";
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
@@ -28,7 +28,7 @@ type InteractiveCardPageProps = {
 
 const slugify = (text: string) => text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
 
-export default function InteractiveCardPage({ pageTitle, cards: initialCards }: InteractiveCardPageProps) {
+function InteractiveCardPageComponent({ pageTitle, cards: initialCards }: InteractiveCardPageProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -238,5 +238,13 @@ export default function InteractiveCardPage({ pageTitle, cards: initialCards }: 
         </AnimatePresence>
       </main>
     </div>
+  );
+}
+
+export default function InteractiveCardPage(props: InteractiveCardPageProps) {
+  return (
+    <Suspense>
+      <InteractiveCardPageComponent {...props} />
+    </Suspense>
   );
 } 
