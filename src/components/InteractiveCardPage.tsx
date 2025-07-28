@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect, Suspense } from "react";
+import { Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Expand, X } from "lucide-react";
+import { Expand } from "lucide-react";
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { Modal } from './Modal/Modal';
 
 export type CardData = {
   title: string;
@@ -35,61 +36,19 @@ function InteractiveCardPageComponent({ pageTitle, cards: initialCards }: Intera
 
   const cards = initialCards.map(card => ({...card, slug: slugify(card.title)}));
 
-  const [readCards, setReadCards] = useState<Set<number>>(new Set());
-  const [readOrder, setReadOrder] = useState<number[]>([]);
-
   const cardSlug = searchParams.get('card');
-  const selectedCard = cardSlug ? cards.findIndex(c => c.slug === cardSlug) : null;
+  const selectedCardIndex = cardSlug ? cards.findIndex(c => c.slug === cardSlug) : -1;
 
-  useEffect(() => {
-    if (selectedCard !== null) {
-      if (!readCards.has(selectedCard)) {
-        setReadCards(prev => new Set(prev).add(selectedCard));
-        setReadOrder(prev => [...prev, selectedCard]);
-      }
-    }
-  }, [selectedCard, readCards]);
-
-  const handleSelectCard = (idx: number | null) => {
-    if (idx === null) {
-      // This is handled by `handleClose`, which uses router.back()
-      return;
-    }
-
+  const handleSelectCard = (idx: number) => {
     const newPath = `${pathname}?card=${cards[idx].slug}`;
-    
-    // If a card is already open, we `replace` the URL to avoid adding to browser history.
-    // Otherwise, we `push` to create a new history entry.
-    if (selectedCard !== null) {
-      router.replace(newPath, { scroll: false });
-    } else {
-      router.push(newPath, { scroll: false });
-    }
+    router.push(newPath, { scroll: false });
   };
   
-  const handleClose = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const handleClose = () => {
     router.back();
   };
 
-  const mainCard = selectedCard !== null ? cards[selectedCard] : null;
-
-  const previewCards = cards
-    .map((card, idx) => ({ ...card, originalIndex: idx, animationDelay: Math.random() * 1.5 }))
-    .filter((_, idx) => idx !== selectedCard)
-    .sort((a, b) => {
-      const aIsRead = readCards.has(a.originalIndex);
-      const bIsRead = readCards.has(b.originalIndex);
-
-      if (aIsRead && !bIsRead) return 1;
-      if (!aIsRead && bIsRead) return -1;
-
-      if (aIsRead && bIsRead) {
-        return readOrder.indexOf(a.originalIndex) - readOrder.indexOf(b.originalIndex);
-      }
-      
-      return a.originalIndex - b.originalIndex;
-    });
+  const mainCard = selectedCardIndex !== -1 ? cards[selectedCardIndex] : null;
 
   return (
     <div className="min-h-screen bg-white dark:bg-black">
@@ -103,99 +62,37 @@ function InteractiveCardPageComponent({ pageTitle, cards: initialCards }: Intera
           </Link>
         </header>
 
-        <AnimatePresence>
-          {selectedCard === null ? (
-            <motion.div
-              key="grid"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="w-full max-w-7xl mx-auto"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                {cards.map((card, idx) => (
-                  <motion.div
-                    key={idx}
-                    onClick={() => handleSelectCard(idx)}
-                    className={`cursor-pointer group glass-card rounded-3xl p-8 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 flex items-center justify-center h-48 relative`}
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <Expand className={`w-6 h-6 ${card.textColor} opacity-60 group-hover:opacity-100 transition-opacity absolute top-4 right-4`} />
-                    <h3 className={`text-2xl text-center font-semibold ${card.textColor}`}>
-                      {card.title}
-                    </h3>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          ) : (
-            <motion.div
-              key="expanded"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-6 md:gap-8 flex-1"
-            >
-              {/* Preview Pane */}
+        <motion.div
+          key="grid"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="w-full max-w-7xl mx-auto"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            {cards.map((card, idx) => (
               <motion.div
-                className="w-full md:w-1/3 lg:w-1/4 order-2 md:order-1"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0, transition: { delay: 0.3, duration: 0.5 } }}
+                key={idx}
+                onClick={() => handleSelectCard(idx)}
+                className={`cursor-pointer group glass-card rounded-3xl p-8 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 flex items-center justify-center h-48 relative`}
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
               >
-                <div className="p-2 md:p-4 rounded-2xl border border-gray-200/50 dark:border-white/10 h-full bg-black/5 dark:bg-white/5">
-                  <div className="flex md:flex-col gap-4 h-full justify-start">
-                    {previewCards.map((card) => (
-                      <motion.div
-                        key={card.originalIndex}
-                        onClick={() => handleSelectCard(card.originalIndex)}
-                        className={`relative cursor-pointer glass-card rounded-2xl p-4 flex-1 md:flex-none bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md flex items-center justify-between`}
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      >
-                        <h3 className={`text-sm text-left font-semibold ${card.textColor}`}>
-                          {card.title}
-                        </h3>
-                        {!readCards.has(card.originalIndex) && (
-                          <motion.div 
-                            className={`w-2 h-2 rounded-full flex-shrink-0 ${card.dotColor}`}
-                            animate={{ scale: [1, 1.5, 1] }}
-                            transition={{
-                              duration: 1.5,
-                              repeat: Infinity,
-                              repeatType: "loop",
-                              ease: "easeInOut",
-                              delay: card.animationDelay
-                            }}
-                          />
-                        )}
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
+                <Expand className={`w-6 h-6 ${card.textColor} opacity-60 group-hover:opacity-100 transition-opacity absolute top-4 right-4`} />
+                <h3 className={`text-2xl text-center font-semibold ${card.textColor}`}>
+                  {card.title}
+                </h3>
               </motion.div>
-
-              {/* Main Card */}
-              {mainCard && (
-                <motion.div
-                  className="w-full md:w-2/3 lg:w-3/4 order-1 md:order-2"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1, transition: { duration: 0.5 } }}
-                >
-                  <div
-                    className={`relative glass-card rounded-3xl p-8 bg-gradient-to-br ${mainCard.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 animate-fadeIn h-full`}
-                  >
-                    <button 
-                        onClick={handleClose} 
-                        className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white transition-colors"
-                        aria-label="Close"
-                    >
-                      <X className="w-6 h-6" />
-                    </button>
+            ))}
+          </div>
+        </motion.div>
+        
+        <Modal isOpen={selectedCardIndex !== -1} onClose={handleClose}>
+            {mainCard && (
+                <div className={`relative glass-card rounded-3xl p-8 bg-gradient-to-br ${mainCard.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 animate-fadeIn h-full`}>
                     <AnimatePresence mode="wait">
                       <motion.div
-                        key={selectedCard}
+                        key={selectedCardIndex}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
@@ -219,7 +116,7 @@ function InteractiveCardPageComponent({ pageTitle, cards: initialCards }: Intera
                           </ul>
                         </div>
                         {mainCard.imageUrl && (
-                          <div className="mt-4 flex-grow relative">
+                          <div className="mt-4 flex-grow relative min-h-[300px] md:min-h-[400px]">
                             <Image 
                               src={mainCard.imageUrl} 
                               alt={mainCard.imageAlt || 'Solution image'}
@@ -229,7 +126,7 @@ function InteractiveCardPageComponent({ pageTitle, cards: initialCards }: Intera
                           </div>
                         )}
                         {mainCard.videoUrl && (
-                          <div className="mt-4 flex-grow relative">
+                          <div className="mt-4 flex-grow relative min-h-[300px] md:min-h-[400px]">
                             <video
                               src={mainCard.videoUrl}
                               autoPlay
@@ -242,12 +139,10 @@ function InteractiveCardPageComponent({ pageTitle, cards: initialCards }: Intera
                         )}
                       </motion.div>
                     </AnimatePresence>
-                  </div>
-                </motion.div>
-              )}
-            </motion.div>
-          )}
-        </AnimatePresence>
+                </div>
+            )}
+        </Modal>
+
       </main>
     </div>
   );
