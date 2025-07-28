@@ -51,13 +51,25 @@ function InteractiveCardPageComponent({ pageTitle, cards: initialCards }: Intera
   }, [selectedCard, readCards]);
 
   const handleSelectCard = (idx: number | null) => {
-    const newPath = idx === null ? pathname : `${pathname}?card=${cards[idx].slug}`;
-    router.push(newPath, { scroll: false });
+    if (idx === null) {
+      // This is handled by `handleClose`, which uses router.back()
+      return;
+    }
+
+    const newPath = `${pathname}?card=${cards[idx].slug}`;
+    
+    // If a card is already open, we `replace` the URL to avoid adding to browser history.
+    // Otherwise, we `push` to create a new history entry.
+    if (selectedCard !== null) {
+      router.replace(newPath, { scroll: false });
+    } else {
+      router.push(newPath, { scroll: false });
+    }
   };
   
   const handleClose = (e: React.MouseEvent) => {
     e.stopPropagation();
-    handleSelectCard(null);
+    router.back();
   };
 
   const mainCard = selectedCard !== null ? cards[selectedCard] : null;
