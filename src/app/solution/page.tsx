@@ -37,6 +37,8 @@ const solutionCards: Omit<CardData, 'slug'>[] = [
       "Lenders find deals",
       "Everyone wins",
     ],
+    imageUrl: "/OnePlatformImg.png",
+    imageAlt: "One Platform for Everything",
     gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
     textColor: "text-indigo-900 dark:text-indigo-300",
     accentColor: "text-indigo-700 dark:text-indigo-400",
