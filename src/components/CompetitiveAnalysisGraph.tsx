@@ -12,14 +12,14 @@ const competitors = [
 
   // Manual & Unified (Bottom-Right)
   { name: 'Northmarq', automation: 2.5, integration: 8, logoUrl: '/logos/NorthMarqLogo.png' },
-  { name: 'CBRE', automation: 1.5, integration: 9, logoUrl: '/logos/CBRELogo.png' },
+  { name: 'CBRE', automation: 1, integration: 9, logoUrl: '/logos/CBRELogo.png' },
 
   // Manual & Fragmented (Bottom-Left) - Readjusted for clarity
-  { name: 'VTS', automation: 4.5, integration: 4, logoUrl: '/logos/VTSLogo.png' },
+  { name: 'VTS', automation: 4.5, integration: 3.5, logoUrl: '/logos/VTSLogo.png' },
   { name: 'RCM1', automation: 3, integration: 3.5, logoUrl: '/logos/RCM1Logo.png' },
   { name: 'Buildout', automation: 4, integration: 1, logoUrl: '/logos/BuildoutLogo.png' },
   { name: 'LoopNet', automation: 1.5, integration: 2, logoUrl: '/logos/LoopNetLogo.png' },
-  { name: 'Traditional Brokers', automation: 1, integration: 4, text: true },
+  { name: 'Traditional Brokers', automation: 0.5, integration: 3, text: true },
 ];
 
 const CompetitiveAnalysisGraph = () => {
@@ -29,10 +29,10 @@ const CompetitiveAnalysisGraph = () => {
         {/* Axis Lines & Labels */}
         <div className="absolute top-0 left-1/2 w-0.5 h-full bg-gray-300 dark:bg-gray-600 -translate-x-1/2"></div>
         <div className="absolute top-1/2 left-0 h-0.5 w-full bg-gray-300 dark:bg-gray-600 -translate-y-1/2"></div>
-        <p className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full py-2 text-sm font-semibold text-teal-500">AI-DRIVEN</p>
-        <p className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full py-2 text-sm font-semibold text-red-500">MANUAL</p>
-        <p className="absolute bottom-1/2 left-2 mb-2 text-sm font-semibold text-red-500">FRAGMENTED</p>
-        <p className="absolute bottom-1/2 right-2 mb-2 text-sm font-semibold text-teal-500 text-right">UNIFIED</p>
+        <p className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full py-2 text-xs md:text-sm font-semibold text-teal-500">AI-DRIVEN</p>
+        <p className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full py-2 text-xs md:text-sm font-semibold text-red-500">MANUAL</p>
+        <p className="absolute bottom-1/2 left-2 mb-1 text-xs md:text-sm font-semibold text-red-500">FRAGMENTED</p>
+        <p className="absolute bottom-1/2 right-2 mb-1 text-xs md:text-sm font-semibold text-teal-500 text-right">UNIFIED</p>
         
         {/* Competitor Points */}
         {competitors.map(c => {
@@ -50,18 +50,19 @@ const CompetitiveAnalysisGraph = () => {
                 transform: 'translate(-50%, -50%)',
               }}
             >
-              <div className={`relative ${isAcara ? 'w-24 h-12 md:w-40 md:h-20' : 'w-16 h-8 md:w-24 md:h-12'}`}>
+              <div className={`relative ${isAcara ? 'w-20 h-10 md:w-40 md:h-20' : 'w-14 h-7 md:w-24 md:h-12'}`}>
                 {c.logoUrl ? (
                   <Image
                     src={c.logoUrl}
                     alt={`${c.name} Logo`}
-                    layout="fill"
-                    objectFit="contain"
+                    fill
+                    sizes={isAcara ? "(max-width: 768px) 80px, 160px" : "(max-width: 768px) 56px, 96px"}
+                    style={{ objectFit: 'contain' }}
                     className={isAcara ? 'drop-shadow-lg' : ''}
                   />
                 ) : c.text ? (
                   <div className="flex items-center justify-center h-full">
-                    <p className="text-center text-xs md:text-sm font-semibold text-gray-800 dark:text-gray-100">
+                    <p className="text-center text-[9px] md:text-sm font-semibold text-gray-800 dark:text-gray-100">
                       Traditional Brokers
                     </p>
                   </div>
