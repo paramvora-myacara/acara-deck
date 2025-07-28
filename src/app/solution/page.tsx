@@ -2,27 +2,38 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Expand } from "lucide-react";
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 
 type SolutionCard = {
   title: string;
+  slug: string;
   content: string[];
   gradient: string;
   textColor: string;
   accentColor: string;
+  dotColor: string;
   videoUrl?: string;
   imageUrl?: string;
   imageAlt?: string;
 };
 
+const slugify = (text: string) => text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+
 export default function SolutionPage() {
-  const [selectedCard, setSelectedCard] = useState<number | null>(null);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const [readCards, setReadCards] = useState<Set<number>>(new Set());
+  const [readOrder, setReadOrder] = useState<number[]>([]);
 
   const solutionCards: SolutionCard[] = [
     {
       title: "Smart Matching",
+      slug: slugify("Smart Matching"),
       content: [
         "AI learns what lenders like",
         "Matches developers to right lenders",
@@ -31,10 +42,12 @@ export default function SolutionPage() {
       videoUrl: "/AcaraDemo720p.mp4",
       gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
       textColor: "text-indigo-900 dark:text-indigo-300",
-      accentColor: "text-indigo-700 dark:text-indigo-400"
+      accentColor: "text-indigo-700 dark:text-indigo-400",
+      dotColor: "bg-indigo-700 dark:bg-indigo-400"
     },
     {
       title: "30-Second Deal Docs",
+      slug: slugify("30-Second Deal Docs"),
       content: [
         "Drag and drop any documents",
         "AI builds your OM instantly",
@@ -44,10 +57,12 @@ export default function SolutionPage() {
       videoUrl: "/OMDemoAcaraDeck720p.mp4",
       gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
       textColor: "text-indigo-900 dark:text-indigo-300",
-      accentColor: "text-indigo-700 dark:text-indigo-400"
+      accentColor: "text-indigo-700 dark:text-indigo-400",
+      dotColor: "bg-indigo-700 dark:bg-indigo-400"
     },
     {
       title: "One Platform for Everything",
+      slug: slugify("One Platform for Everything"),
       content: [
         "Developers raise capital",
         "Lenders find deals",
@@ -55,10 +70,12 @@ export default function SolutionPage() {
       ],
       gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
       textColor: "text-indigo-900 dark:text-indigo-300",
-      accentColor: "text-indigo-700 dark:text-indigo-400"
+      accentColor: "text-indigo-700 dark:text-indigo-400",
+      dotColor: "bg-indigo-700 dark:bg-indigo-400"
     },
     {
       title: "Full-Service Support",
+      slug: slugify("Full-Service Support"),
       content: [
         "Expert broker team",
         "Wide lender network",
@@ -66,12 +83,46 @@ export default function SolutionPage() {
       ],
       gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
       textColor: "text-indigo-900 dark:text-indigo-300",
-      accentColor: "text-indigo-700 dark:text-indigo-400"
+      accentColor: "text-indigo-700 dark:text-indigo-400",
+      dotColor: "bg-indigo-700 dark:bg-indigo-400"
     },
   ];
 
+  const cardSlug = searchParams.get('card');
+  const selectedCard = cardSlug ? solutionCards.findIndex(c => c.slug === cardSlug) : null;
+
+  useEffect(() => {
+    if (selectedCard !== null) {
+      if (!readCards.has(selectedCard)) {
+        setReadCards(prev => new Set(prev).add(selectedCard));
+        setReadOrder(prev => [...prev, selectedCard]);
+      }
+    }
+  }, [selectedCard, readCards]);
+
+  const handleSelectCard = (idx: number | null) => {
+    const newPath = idx === null ? pathname : `${pathname}?card=${solutionCards[idx].slug}`;
+    router.push(newPath, { scroll: false });
+  };
+
   const mainCard = selectedCard !== null ? solutionCards[selectedCard] : null;
-  const previewCards = solutionCards.map((card, idx) => ({ ...card, originalIndex: idx })).filter((_, idx) => idx !== selectedCard);
+
+  const previewCards = solutionCards
+    .map((card, idx) => ({ ...card, originalIndex: idx, animationDelay: Math.random() * 1.5 }))
+    .filter((_, idx) => idx !== selectedCard)
+    .sort((a, b) => {
+      const aIsRead = readCards.has(a.originalIndex);
+      const bIsRead = readCards.has(b.originalIndex);
+
+      if (aIsRead && !bIsRead) return 1;
+      if (!aIsRead && bIsRead) return -1;
+
+      if (aIsRead && bIsRead) {
+        return readOrder.indexOf(a.originalIndex) - readOrder.indexOf(b.originalIndex);
+      }
+      
+      return a.originalIndex - b.originalIndex;
+    });
 
 
   return (
@@ -100,7 +151,7 @@ export default function SolutionPage() {
                 {solutionCards.map((card, idx) => (
                   <motion.div
                     key={idx}
-                    onClick={() => setSelectedCard(idx)}
+                    onClick={() => handleSelectCard(idx)}
                     className={`cursor-pointer glass-card rounded-3xl p-8 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 flex items-center justify-center h-48 relative`}
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 300 }}
@@ -123,31 +174,46 @@ export default function SolutionPage() {
             >
               {/* Preview Pane */}
               <motion.div
-                className="w-full md:w-1/4 lg:w-1/5 order-2 md:order-1"
+                className="w-full md:w-1/3 lg:w-1/4 order-2 md:order-1"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0, transition: { delay: 0.3, duration: 0.5 } }}
               >
-                <div className="flex md:flex-col gap-4">
-                  {previewCards.map((card) => (
-                    <motion.div
-                      key={card.originalIndex}
-                      onClick={() => setSelectedCard(card.originalIndex)}
-                      className={`cursor-pointer glass-card rounded-2xl p-4 flex-1 md:flex-none bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md flex items-center justify-center`}
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <h3 className={`text-sm text-center font-semibold ${card.textColor}`}>
-                        {card.title}
-                      </h3>
-                    </motion.div>
-                  ))}
+                <div className="p-2 md:p-4 rounded-2xl border border-gray-200/50 dark:border-white/10 h-full bg-black/5 dark:bg-white/5">
+                  <div className="flex md:flex-col gap-4 h-full justify-start">
+                    {previewCards.map((card) => (
+                      <motion.div
+                        key={card.originalIndex}
+                        onClick={() => handleSelectCard(card.originalIndex)}
+                        className={`relative cursor-pointer glass-card rounded-2xl p-4 flex-1 md:flex-none bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md flex items-center justify-between`}
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <h3 className={`text-sm text-left font-semibold ${card.textColor}`}>
+                          {card.title}
+                        </h3>
+                        {!readCards.has(card.originalIndex) && (
+                          <motion.div 
+                            className={`w-2 h-2 rounded-full flex-shrink-0 ${card.dotColor}`}
+                            animate={{ scale: [1, 1.5, 1] }}
+                            transition={{
+                              duration: 1.5,
+                              repeat: Infinity,
+                              repeatType: "loop",
+                              ease: "easeInOut",
+                              delay: card.animationDelay
+                            }}
+                          />
+                        )}
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
 
               {/* Main Card */}
               {mainCard && (
                 <motion.div
-                  className="w-full md:w-3/4 lg:w-4/5 order-1 md:order-2"
+                  className="w-full md:w-2/3 lg:w-3/4 order-1 md:order-2"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1, transition: { duration: 0.5 } }}
                 >
