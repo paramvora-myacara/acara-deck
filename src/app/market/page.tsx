@@ -1,6 +1,7 @@
 'use client';
 
 import InteractiveCardPage, { CardData } from "@/components/InteractiveCardPage";
+import CompetitiveAnalysisGraph from "@/components/CompetitiveAnalysisGraph";
 
 const marketCards: Omit<CardData, 'slug'>[] = [
     {
@@ -8,7 +9,7 @@ const marketCards: Omit<CardData, 'slug'>[] = [
       content: [
         "$4.8 trillion in CRE debt",
         "$957 billion needs refinancing in 2025",
-        "We target $10 billion (1% fee = $100M revenue)",
+        "We estimate $10 billion with a 1% fee",
       ],
       gradient: "from-purple-50 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20",
       textColor: "text-purple-900 dark:text-purple-300",
@@ -49,8 +50,7 @@ const marketCards: Omit<CardData, 'slug'>[] = [
         "Cherre, Bryckel: Smart data (narrow focus)",
         "ACARA CAP sits alone in the top-right:",
       ],
-      imageUrl: "/competitive_positioning_chart.png",
-      imageAlt: "A chart showing Acara's competitive positioning.",
+      customComponent: <CompetitiveAnalysisGraph />,
       gradient: "from-purple-50 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20",
       textColor: "text-purple-900 dark:text-purple-300",
       accentColor: "text-purple-700 dark:text-purple-400",
