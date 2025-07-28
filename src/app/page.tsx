@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link";
+import Image from "next/image";
 import { 
   AlertTriangle, 
   Lightbulb, 
@@ -53,12 +54,21 @@ export default function HomePage() {
     <div className="min-h-screen bg-white dark:bg-black">
       <main className="flex flex-col items-center min-h-screen p-4 md:p-8">
         <div className="text-center w-full max-w-7xl mx-auto pt-16 md:pt-24">
-          <h1 className="text-5xl md:text-7xl font-bold text-black dark:text-white tracking-tight">
-            ACARA CAP
-          </h1>
-          <p className="mt-4 text-lg md:text-xl text-black/70 dark:text-white/70 font-light">
-            AI-Powered Commercial Real Estate Capital Markets
+          <div className="flex justify-center">
+            <Image 
+              src="/ACARALogo.png" 
+              alt="Acara Capital Logo"
+              width={500}
+              height={150}
+              priority
+            />
+          </div>
+          <p className="mt-4 text-lg md:text-xl text-black/70 dark:text-white/70 font-light whitespace-pre-line">
+            {'AI-Powered. Borrower-Controlled.\nCommercial Lending,\nSimplified.'}
           </p>
+          <a href="https://acara-cap-frontend.onrender.com/" target="_blank" rel="noopener noreferrer" className="mt-2 text-sm text-blue-600 dark:text-blue-400 hover:underline">
+            @https://acara-cap-frontend.onrender.com/
+          </a>
         </div>
         
         <div id="investment-cards" className="w-full max-w-7xl mx-auto mt-12 flex-grow grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
