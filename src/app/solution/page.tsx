@@ -4,12 +4,12 @@ import InteractiveCardPage, { CardData } from "@/components/InteractiveCardPage"
 
 const solutionCards: Omit<CardData, 'slug'>[] = [
   {
-    title: "Smart Matching",
+    title: "Deal Flow",
+    role: "Access nationwide deal flow from established leaders, dealer networks, and state-of-the-art outbound marketing.",
     content: [
-      "AI learns what lenders like",
-      "Matches developers to right lenders",
-      "Gets smarter over time",
-      "Our proprietary LenderLine™ algorithm combines a classical Gale-Shapley model with a reinforcement-learning layer that re-weights preferences in real-time based on user feedback.",
+      "Borrowers: Present deals to the largest lender network, regardless of your broker connections.",
+      "Lenders: Receive high-quality, third-party vetted deals tailored to your preferences.",
+      "Advisors: Activate 120K brokers to place debt deals with centralized leads and deal flow.",
     ],
     videoUrl: "/AcaraDemo720p.mp4",
     gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
@@ -18,12 +18,12 @@ const solutionCards: Omit<CardData, 'slug'>[] = [
     dotColor: "bg-indigo-700 dark:bg-indigo-400"
   },
   {
-    title: "30-Second Deal Docs",
+    title: "ACARA-CAP Platform",
+    role: "One centralized platform for the entire journey from idea to wire transfer.",
     content: [
-      "Drag and drop any documents",
-      "AI builds your OM instantly",
-      "Always up-to-date",
-      "Ask questions, get answers",
+      "Borrowers: Manage multiple projects efficiently, eliminate redundant data entry, and enjoy a streamlined, win-win funding process.",
+      "Lenders: Access diversified deal flow in a standardized format for quick evaluation. Interact with borrowers and advisors on the same platform, with integrated third-party verification.",
+      "Advisors: Benefit from a single source for data and conversations, simplifying management of multiple borrowers and lenders with one unified process for all deals.",
     ],
     videoUrl: "/OMDemoAcaraDeck720p.mp4",
     gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
@@ -32,11 +32,12 @@ const solutionCards: Omit<CardData, 'slug'>[] = [
     dotColor: "bg-indigo-700 dark:bg-indigo-400"
   },
   {
-    title: "One Platform for Everything",
+    title: "AI-Powered Deal Documentation",
+    role: "Generate OMs and Due Diligence vaults in 30 seconds, with live updates and version control.",
     content: [
-      "Developers raise capital",
-      "Lenders find deals",
-      "Everyone wins",
+      "Borrowers: Drag and drop information for Borrower and Project Resumes just once, with live updates for changing variables and a dynamic OM on your dashboard (no static PDFs).",
+      "Lenders: Always access the latest information, compare deals side-by-side, and get live AI insights directly from the OM.",
+      "Advisors: Use a single repository for all communication and documentation, with a consistent workflow that converts deals in days, not months.",
     ],
     imageUrl: "/OnePlatformImg.png",
     imageAlt: "One Platform for Everything",
@@ -46,11 +47,12 @@ const solutionCards: Omit<CardData, 'slug'>[] = [
     dotColor: "bg-indigo-700 dark:bg-indigo-400"
   },
   {
-    title: "Full-Service Support",
+    title: "Matchmaking",
+    role: "Leverage AI for precise, curated matchmaking between lenders and borrowers.",
     content: [
-      "Expert broker team",
-      "Wide lender network",
-      "White-glove service",
+      "Borrowers: Get enhanced resume curation, visibility into available lenders, and higher success rates in securing loans.",
+      "Lenders: Discover only relevant matches through our subscription white-glove service, enabling faster capital deployment.",
+      "Advisors: Match with superior deals for higher conversions and better commission cuts from lenders.",
     ],
     gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
     textColor: "text-indigo-900 dark:text-indigo-300",
