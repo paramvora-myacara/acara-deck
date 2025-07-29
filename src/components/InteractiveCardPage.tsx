@@ -80,9 +80,7 @@ function InteractiveCardPageComponent({ pageTitle, cards: initialCards }: Intera
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <Expand className={`w-6 h-6 ${card.textColor} opacity-60 group-hover:opacity-100 transition-opacity absolute top-4 right-4`} />
-                <h3 className={`text-2xl text-center font-semibold ${card.textColor}`}>
-                  {card.title}
-                </h3>
+                <h3 className={`text-2xl text-center font-semibold ${card.textColor}`} dangerouslySetInnerHTML={{ __html: card.title }} />
               </motion.div>
             ))}
           </div>
@@ -101,14 +99,12 @@ function InteractiveCardPageComponent({ pageTitle, cards: initialCards }: Intera
                         className="flex flex-col h-full"
                       >
                         <div>
-                          <h3 className={`text-2xl font-semibold ${mainCard.textColor} mb-2`}>
-                            {mainCard.title}
-                          </h3>
+                          <h3 className={`text-2xl font-semibold ${mainCard.textColor} mb-2`} dangerouslySetInnerHTML={{ __html: mainCard.title }} />
                           {mainCard.role && (
                             <p className={`text-lg font-medium ${mainCard.accentColor} mb-4`}>{mainCard.role}</p>
                           )}
                           
-                          <ul className="list-disc list-inside space-y-2 mb-4">
+                          <ul className="list-disc list-inside space-y-6 mb-4">
                             {mainCard.content.map((item, itemIdx) => (
                                 <li key={itemIdx} className={`text-lg font-light ${mainCard.accentColor}`}>
                                 {item}

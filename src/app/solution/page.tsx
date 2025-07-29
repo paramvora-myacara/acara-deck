@@ -9,6 +9,7 @@ const solutionCards: Omit<CardData, 'slug'>[] = [
       "AI learns what lenders like",
       "Matches developers to right lenders",
       "Gets smarter over time",
+      "Our proprietary LenderLine™ algorithm combines a classical Gale-Shapley model with a reinforcement-learning layer that re-weights preferences in real-time based on user feedback.",
     ],
     videoUrl: "/AcaraDemo720p.mp4",
     gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
