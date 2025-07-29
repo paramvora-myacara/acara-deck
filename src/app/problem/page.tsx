@@ -57,6 +57,7 @@ export default function ProblemPage() {
   return (
     <InteractiveCardPage
       pageTitle="The Problem"
+      byline={`"CRE is not an industry - it's just a bunch of marquees on top of independent contractors".`}
       cards={problemCards.map(card => ({...card, slug: ''}))}
     />
   );

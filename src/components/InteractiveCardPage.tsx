@@ -25,12 +25,13 @@ export interface CardData {
 
 type InteractiveCardPageProps = {
   pageTitle: string;
+  byline?: string;
   cards: CardData[];
 };
 
 const slugify = (text: string) => text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
 
-function InteractiveCardPageComponent({ pageTitle, cards: initialCards }: InteractiveCardPageProps) {
+function InteractiveCardPageComponent({ pageTitle, byline, cards: initialCards }: InteractiveCardPageProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -58,6 +59,11 @@ function InteractiveCardPageComponent({ pageTitle, cards: initialCards }: Intera
           <h1 className="text-5xl md:text-7xl font-bold text-black dark:text-white tracking-tight">
             {pageTitle}
           </h1>
+          {byline && (
+            <p className="mt-4 text-lg md:text-xl text-black/70 dark:text-white/70 font-light italic">
+              {byline}
+            </p>
+          )}
           <Link href="/" className="mt-4 inline-block text-lg text-blue-500 hover:underline">
             &larr; Back to Home
           </Link>

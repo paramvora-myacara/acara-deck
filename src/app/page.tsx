@@ -64,7 +64,7 @@ export default function HomePage() {
             />
           </div>
           <p className="mt-4 text-lg md:text-xl text-black/70 dark:text-white/70 font-light whitespace-pre-line">
-            {'AI-Powered. Borrower-Controlled.\nCommercial Lending,\nSimplified.'}
+            {'AI-Powered. Borrower-Controlled. Commercial Lending, Simplified.'}
           </p>
           <a href="https://acara-cap-frontend.onrender.com/" target="_blank" rel="noopener noreferrer" className="mt-2 text-sm text-blue-600 dark:text-blue-400 hover:underline">
             @https://acara-cap-frontend.onrender.com/
