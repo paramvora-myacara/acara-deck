@@ -105,9 +105,9 @@ function InteractiveCardPageComponent({ pageTitle, byline, cards: initialCards }
                         className="flex flex-col h-full"
                       >
                         <div>
-                          <h3 className={`text-2xl font-semibold ${mainCard.textColor} mb-2`} dangerouslySetInnerHTML={{ __html: mainCard.title }} />
+                          <h3 className={`text-2xl font-semibold ${mainCard.textColor} mb-6`} dangerouslySetInnerHTML={{ __html: mainCard.title }} />
                           {mainCard.role && (
-                            <p className={`text-lg font-medium ${mainCard.accentColor} mb-4`}>{mainCard.role}</p>
+                            <p className={`text-lg font-medium ${mainCard.accentColor} mb-6`}>{mainCard.role}</p>
                           )}
                           
                           <ul className="list-disc list-inside space-y-6 mb-4">

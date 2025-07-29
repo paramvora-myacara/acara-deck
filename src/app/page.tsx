@@ -15,38 +15,38 @@ export default function HomePage() {
     {
       id: "problem",
       title: "Problem",
-      icon: <AlertTriangle className="w-10 h-10" />,
+      icon: <AlertTriangle className="w-16 h-16" />,
       summary: "Finding each other is hard. Creating deal docs takes forever.",
       gradient: "from-red-50 to-orange-100 dark:from-red-900/20 dark:to-orange-900/20",
-      textColor: "text-red-900 dark:text-red-300",
-      accentColor: "text-red-700 dark:text-red-400"
+      textColor: "text-red-800 dark:text-red-200",
+      accentColor: "text-red-600 dark:text-red-300"
     },
     {
       id: "solution", 
       title: "Solution",
-      icon: <Lightbulb className="w-10 h-10" />,
+      icon: <Lightbulb className="w-16 h-16" />,
       summary: "Smart matching. 30-second deal docs. One platform for everything.",
       gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
-      textColor: "text-indigo-900 dark:text-indigo-300",
-      accentColor: "text-indigo-700 dark:text-indigo-400"
+      textColor: "text-indigo-800 dark:text-indigo-200",
+      accentColor: "text-indigo-600 dark:text-indigo-300"
     },
     {
       id: "market",
       title: "Market", 
-      icon: <LineChart className="w-10 h-10" />,
+      icon: <LineChart className="w-16 h-16" />,
       summary: "$4.8 trillion market. Multiple revenue streams. We're different.",
       gradient: "from-purple-50 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20", 
-      textColor: "text-purple-900 dark:text-purple-300",
-      accentColor: "text-purple-700 dark:text-purple-400"
+      textColor: "text-purple-800 dark:text-purple-200",
+      accentColor: "text-purple-600 dark:text-purple-300"
     },
     {
       id: "team",
       title: "Team",
-      icon: <Users className="w-10 h-10" />,
+      icon: <Users className="w-16 h-16" />,
       summary: "20+ years experience. Proven track records. Ready to scale.",
       gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
-      textColor: "text-emerald-900 dark:text-emerald-300",
-      accentColor: "text-emerald-700 dark:text-emerald-400"
+      textColor: "text-emerald-800 dark:text-emerald-200",
+      accentColor: "text-emerald-600 dark:text-emerald-300"
     }
   ];
 
@@ -79,18 +79,18 @@ export default function HomePage() {
                 className={`glass-card rounded-3xl p-8 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 hover:shadow-lg dark:hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 animate-fadeIn group relative overflow-hidden flex flex-col justify-center`}
                 style={{ animationDelay: `${idx * 150}ms` }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/20 dark:from-white/[0.04] dark:to-white/[0.02] pointer-events-none" />
-                <div className="relative flex items-center justify-between mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 dark:from-white/[0.02] dark:to-white/[0.01] pointer-events-none" />
+                <Expand className={`absolute top-4 right-4 w-6 h-6 ${card.textColor} opacity-60 group-hover:opacity-100 transition-opacity z-10`} />
+                <div className="flex flex-col items-center justify-center mb-6">
                   <div className="flex items-center gap-4">
                     <div className={`${card.textColor}`}>{card.icon}</div>
-                    <h3 className={`text-2xl font-semibold ${card.textColor}`}>
+                    <h3 className={`text-4xl font-semibold ${card.textColor}`}>
                       {card.title}
                     </h3>
                   </div>
-                  <Expand className={`w-6 h-6 ${card.textColor} opacity-60 group-hover:opacity-100 transition-opacity`} />
                 </div>
                 
-                <p className={`text-lg leading-relaxed font-light ${card.accentColor}`}>
+                <p className={`text-lg leading-relaxed font-light ${card.accentColor} text-center`}>
                   {card.summary}
                 </p>
               </Link>
