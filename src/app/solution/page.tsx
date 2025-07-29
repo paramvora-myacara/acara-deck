@@ -25,7 +25,8 @@ const solutionCards: Omit<CardData, 'slug'>[] = [
       "Lenders: Access diversified deal flow in a standardized format for quick evaluation. Interact with borrowers and advisors on the same platform, with integrated third-party verification.",
       "Advisors: Benefit from a single source for data and conversations, simplifying management of multiple borrowers and lenders with one unified process for all deals.",
     ],
-    videoUrl: "/OMDemoAcaraDeck720p.mp4",
+    imageUrl: "/OnePlatformImg.png",
+    imageAlt: "One Platform for Everything",
     gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
     textColor: "text-indigo-900 dark:text-indigo-300",
     accentColor: "text-indigo-700 dark:text-indigo-400",
@@ -39,8 +40,7 @@ const solutionCards: Omit<CardData, 'slug'>[] = [
       "Lenders: Always access the latest information, compare deals side-by-side, and get live AI insights directly from the OM.",
       "Advisors: Use a single repository for all communication and documentation, with a consistent workflow that converts deals in days, not months.",
     ],
-    imageUrl: "/OnePlatformImg.png",
-    imageAlt: "One Platform for Everything",
+    videoUrl: "/OMDemoAcaraDeck720p.mp4",
     gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
     textColor: "text-indigo-900 dark:text-indigo-300",
     accentColor: "text-indigo-700 dark:text-indigo-400",
@@ -54,6 +54,7 @@ const solutionCards: Omit<CardData, 'slug'>[] = [
       "Lenders: Discover only relevant matches through our subscription white-glove service, enabling faster capital deployment.",
       "Advisors: Match with superior deals for higher conversions and better commission cuts from lenders.",
     ],
+    videoUrl: "/AcaraDemo720p.mp4",
     gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
     textColor: "text-indigo-900 dark:text-indigo-300",
     accentColor: "text-indigo-700 dark:text-indigo-400",
@@ -65,6 +66,7 @@ export default function SolutionPage() {
   return (
     <InteractiveCardPage
       pageTitle="Our Solution"
+      byline={`"We're basically 'Uber'-izing Commercial Real Estate"`}
       cards={solutionCards.map(card => ({...card, slug: ''}))}
     />
   );
