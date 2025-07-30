@@ -44,7 +44,7 @@ export default function HomePage() {
       id: "team",
       title: "Team",
       icon: <Users className="w-16 h-16" />,
-      summary: "\"20+ years experience. Proven track records. Ready to scale.\"",
+      summary: "\"$6B+ in combined transaction experience and 20+ years of expertise in real estate, lending, and technology.\"",
       gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
       textColor: "text-emerald-800 dark:text-emerald-200",
       accentColor: "text-emerald-600 dark:text-emerald-300"
@@ -104,7 +104,7 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 dark:from-white/[0.02] dark:to-white/[0.01] pointer-events-none" />
             
             <p className="text-lg leading-relaxed font-light italic text-amber-600 dark:text-amber-300 text-center mb-6">
-              We're raising 2.5 million as a pre seed round to revolutionize how the CRE markets work
+              We're raising 2 million as a pre seed round to revolutionize how the CRE markets work
             </p>
 
             <div className="flex justify-center">

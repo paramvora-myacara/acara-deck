@@ -27,11 +27,12 @@ type InteractiveCardPageProps = {
   pageTitle: string;
   byline?: string;
   cards: CardData[];
+  showRoleAsByline?: boolean;
 };
 
 const slugify = (text: string) => text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
 
-function InteractiveCardPageComponent({ pageTitle, byline, cards: initialCards }: InteractiveCardPageProps) {
+function InteractiveCardPageComponent({ pageTitle, byline, cards: initialCards, showRoleAsByline = false }: InteractiveCardPageProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -81,12 +82,15 @@ function InteractiveCardPageComponent({ pageTitle, byline, cards: initialCards }
               <motion.div
                 key={idx}
                 onClick={() => handleSelectCard(idx)}
-                className={`cursor-pointer group glass-card rounded-3xl p-8 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 flex items-center justify-center h-48 relative`}
+                className={`cursor-pointer group glass-card rounded-3xl p-8 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 flex flex-col items-center justify-center h-48 relative`}
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <Expand className={`w-6 h-6 ${card.textColor} opacity-60 group-hover:opacity-100 transition-opacity absolute top-4 right-4`} />
-                <h3 className={`text-2xl text-center font-semibold ${card.textColor}`} dangerouslySetInnerHTML={{ __html: card.title }} />
+                <h3 className={`text-2xl text-center font-semibold ${card.textColor} mb-2`} dangerouslySetInnerHTML={{ __html: card.title }} />
+                {showRoleAsByline && card.role && (
+                  <p className={`text-lg text-center font-medium ${card.accentColor} opacity-80`}>{card.role}</p>
+                )}
               </motion.div>
             ))}
           </div>
