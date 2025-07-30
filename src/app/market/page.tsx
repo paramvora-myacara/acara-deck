@@ -45,13 +45,7 @@ const marketCards: Omit<CardData, 'slug'>[] = [
     },
     {
       title: "We Own the Best Spot",
-      content: [
-        "Most competitors do one thing:",
-        "LoopNet, RCM1: Old marketplaces (manual work)",
-        "VTS, Buildout: Single tools (no AI)",
-        "Cherre, Bryckel: Smart data (narrow focus)",
-        "ACARA CAP sits alone in the top-right:",
-      ],
+      content: [],
       customComponent: <CompetitiveAnalysisGraph />,
       gradient: "from-purple-50 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20",
       textColor: "text-purple-900 dark:text-purple-300",

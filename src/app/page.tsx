@@ -16,7 +16,7 @@ export default function HomePage() {
       id: "problem",
       title: "Problem",
       icon: <AlertTriangle className="w-16 h-16" />,
-      summary: "Finding each other is hard. Creating deal docs takes forever.",
+      summary: "\"CRE is not an industry - it's just a bunch of marquees on top of independent contractors.\"",
       gradient: "from-red-50 to-orange-100 dark:from-red-900/20 dark:to-orange-900/20",
       textColor: "text-red-800 dark:text-red-200",
       accentColor: "text-red-600 dark:text-red-300"
@@ -25,7 +25,7 @@ export default function HomePage() {
       id: "solution", 
       title: "Solution",
       icon: <Lightbulb className="w-16 h-16" />,
-      summary: "Smart matching. 30-second deal docs. One platform for everything.",
+      summary: "\"We're basically 'Uber'-izing Commercial Real Estate\"",
       gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
       textColor: "text-indigo-800 dark:text-indigo-200",
       accentColor: "text-indigo-600 dark:text-indigo-300"
@@ -90,7 +90,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 
-                <p className={`text-lg leading-relaxed font-light ${card.accentColor} text-center`}>
+                <p className={`text-lg leading-relaxed font-light italic ${card.accentColor} text-center`}>
                   {card.summary}
                 </p>
               </Link>
