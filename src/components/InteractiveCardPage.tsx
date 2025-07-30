@@ -114,7 +114,7 @@ function InteractiveCardPageComponent({ pageTitle, byline, cards: initialCards, 
                             <p className={`text-lg font-medium ${mainCard.accentColor} mb-6`}>{mainCard.role}</p>
                           )}
                           
-                          <ul className="list-disc list-inside space-y-6 mb-4">
+                          <ul className="list-disc list-outside space-y-6 mb-4 pl-6">
                             {mainCard.content.map((item, itemIdx) => (
                                 <li key={itemIdx} className={`text-lg font-light ${mainCard.accentColor}`}>
                                 {item}
