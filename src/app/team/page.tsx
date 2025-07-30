@@ -5,7 +5,7 @@ import InteractiveCardPage, { CardData } from "@/components/InteractiveCardPage"
 const teamMembers: Omit<CardData, 'slug'>[] = [
   {
     title: "Todd Vitzthum",
-    role: "President & CRE Expert",
+    role: "Cofounder and Executive Chairman",
     content: [
       "20+ years CRE experience",
       "CBRE, Cushman & Wakefield veteran",
@@ -18,7 +18,7 @@ const teamMembers: Omit<CardData, 'slug'>[] = [
   },
   {
     title: "Dr. Jeff Richmond",
-    role: "Co-Founder & Strategy Leader",
+    role: "Co-Founder & CEO",
     content: [
       "Growth strategy leader",
       "Capital markets expert",
@@ -31,9 +31,9 @@ const teamMembers: Omit<CardData, 'slug'>[] = [
   },
   {
     title: "Michael Krueger",
-    role: "Legal Counsel",
+    role: "Chief Legal Officer",
     content: [
-      "Corporate attorney",
+      "Securities attorney, Partner at Lucosky Brookman LLP",
       "Real estate law specialist",
       "Legal strategy advisor",
     ],
