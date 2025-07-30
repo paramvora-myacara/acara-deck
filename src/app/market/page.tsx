@@ -20,9 +20,9 @@ const marketCards: Omit<CardData, 'slug'>[] = [
       title: "Multiple Revenue Streams",
       content: [
         "Lender subscriptions",
-        "Deal closing fees",
+        "Debt Placement fees",
         "Data and insights",
-        "White-label partnerships",
+        
       ],
       gradient: "from-purple-50 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20",
       textColor: "text-purple-900 dark:text-purple-300",
@@ -32,9 +32,11 @@ const marketCards: Omit<CardData, 'slug'>[] = [
     {
       title: "How We'll Use Funding",
       content: [
-        "Product development: 40%",
-        "Team growth: 35%",
-        "Marketing: 25%",
+        "Finalize platform MVP and advisor onboarding",
+        "Expand capital network coverage and data feeds",
+        "Launch revenue-generating beta with curated deal flow",
+        "Secure regulatory, compliance, and underwriting infrastructure",
+        "This funding will activate the next phase of platform development, advisor onboarding, and monetization.",
       ],
       gradient: "from-purple-50 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20",
       textColor: "text-purple-900 dark:text-purple-300",
