@@ -35,7 +35,7 @@ export default function HomePage() {
       id: "market",
       title: "Market", 
       icon: <LineChart className="w-16 h-16" />,
-      summary: "Disrupt CRE Debt: $10B Goldmine Awaits!",
+      summary: "\"Disrupt CRE Debt: $10B Goldmine Awaits!\"",
       gradient: "from-purple-50 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20", 
       textColor: "text-purple-800 dark:text-purple-200",
       accentColor: "text-purple-600 dark:text-purple-300"
@@ -44,7 +44,7 @@ export default function HomePage() {
       id: "team",
       title: "Team",
       icon: <Users className="w-16 h-16" />,
-      summary: "20+ years experience. Proven track records. Ready to scale.",
+      summary: "\"20+ years experience. Proven track records. Ready to scale.\"",
       gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
       textColor: "text-emerald-800 dark:text-emerald-200",
       accentColor: "text-emerald-600 dark:text-emerald-300"
@@ -102,16 +102,6 @@ export default function HomePage() {
         <div className="w-full max-w-7xl mx-auto mt-8">
           <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 hover:shadow-lg dark:hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 animate-fadeIn group relative overflow-hidden flex flex-col justify-center">
             <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 dark:from-white/[0.02] dark:to-white/[0.01] pointer-events-none" />
-            <div className="flex flex-col items-center justify-center mb-6">
-              <div className="flex items-center gap-4">
-                <div className="text-amber-800 dark:text-amber-200">
-                  <MessageCircle className="w-16 h-16" />
-                </div>
-                <h3 className="text-4xl font-semibold text-amber-800 dark:text-amber-200">
-                  Ask
-                </h3>
-              </div>
-            </div>
             
             <p className="text-lg leading-relaxed font-light italic text-amber-600 dark:text-amber-300 text-center mb-6">
               We're raising 2.5 million as a pre seed round to revolutionize how the CRE markets work
