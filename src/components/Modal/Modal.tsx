@@ -43,10 +43,10 @@ export function Modal({ isOpen, onClose, children }: ModalProps) {
           >
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white transition-colors z-10"
+              className="absolute -top-3 -right-3 w-8 h-8 bg-white dark:bg-black border border-gray-200 dark:border-white/20 rounded-full flex items-center justify-center text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white transition-colors z-20 shadow-lg"
               aria-label="Close"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5" />
             </button>
             <div className="p-6 h-full max-h-[80vh] overflow-y-auto">
               {children}
