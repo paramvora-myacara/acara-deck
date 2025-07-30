@@ -44,7 +44,7 @@ export default function HomePage() {
       id: "team",
       title: "Team",
       icon: <Users className="w-16 h-16" />,
-      summary: "\"$6B+ in combined transaction experience and 20+ years of expertise in real estate, lending, and technology.\"",
+      summary: "\"$6B+ in combined transaction volume and 20+ years of expertise in real estate, lending, and technology.\"",
       gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
       textColor: "text-emerald-800 dark:text-emerald-200",
       accentColor: "text-emerald-600 dark:text-emerald-300"
