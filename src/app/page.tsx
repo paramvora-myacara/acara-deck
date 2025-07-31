@@ -72,7 +72,7 @@ export default function HomePage() {
             {'AI-Powered. Borrower-Controlled. Commercial Lending, Simplified.'}
           </p>
           <a href="https://acara-cap-frontend.vercel.app/" target="_blank" rel="noopener noreferrer" className="mt-2 text-sm text-blue-600 dark:text-blue-400 hover:underline">
-            View live demo <span className="underline">here</span>
+            View Site and Live Demo
           </a>
         </div>
         
