@@ -71,8 +71,8 @@ export default function HomePage() {
           <p className="mt-4 text-lg md:text-xl text-black/70 dark:text-white/70 font-light whitespace-pre-line">
             {'AI-Powered. Borrower-Controlled. Commercial Lending, Simplified.'}
           </p>
-          <a href="https://acara-cap-frontend.onrender.com/" target="_blank" rel="noopener noreferrer" className="mt-2 text-sm text-blue-600 dark:text-blue-400 hover:underline">
-            @https://acara-cap-frontend.onrender.com/
+          <a href="https://acara-cap-frontend.vercel.app/" target="_blank" rel="noopener noreferrer" className="mt-2 text-sm text-blue-600 dark:text-blue-400 hover:underline">
+            View live demo <span className="underline">here</span>
           </a>
         </div>
         
