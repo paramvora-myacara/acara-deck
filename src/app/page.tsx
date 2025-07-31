@@ -10,8 +10,12 @@ import {
   Expand,
   MessageCircle
 } from "lucide-react";
+import { useState } from "react";
+import ContactUsModal from "@/components/ContactUsModal";
 
 export default function HomePage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const investmentCards = [
     {
       id: "problem",
@@ -108,13 +112,17 @@ export default function HomePage() {
             </p>
 
             <div className="flex justify-center">
-              <button className="px-8 py-3 bg-amber-600 hover:bg-amber-700 dark:bg-amber-500 dark:hover:bg-amber-600 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="px-8 py-3 bg-amber-600 hover:bg-amber-700 dark:bg-amber-500 dark:hover:bg-amber-600 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              >
                 Contact Us
               </button>
             </div>
           </div>
         </div>
       </main>
+      <ContactUsModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 } 
