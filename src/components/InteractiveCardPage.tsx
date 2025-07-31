@@ -28,11 +28,12 @@ type InteractiveCardPageProps = {
   byline?: string;
   cards: CardData[];
   showRoleAsByline?: boolean;
+  smallerText?: boolean;
 };
 
 const slugify = (text: string) => text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
 
-function InteractiveCardPageComponent({ pageTitle, byline, cards: initialCards, showRoleAsByline = false }: InteractiveCardPageProps) {
+function InteractiveCardPageComponent({ pageTitle, byline, cards: initialCards, showRoleAsByline = false, smallerText = false }: InteractiveCardPageProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -87,9 +88,9 @@ function InteractiveCardPageComponent({ pageTitle, byline, cards: initialCards, 
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <Expand className={`w-6 h-6 ${card.textColor} opacity-60 group-hover:opacity-100 transition-opacity absolute top-4 right-4`} />
-                <h3 className={`text-2xl text-center font-semibold ${card.textColor} mb-2`} dangerouslySetInnerHTML={{ __html: card.title }} />
+                <h3 className={`${smallerText ? 'text-3xl' : 'text-4xl'} text-center font-semibold ${card.textColor} mb-2`} dangerouslySetInnerHTML={{ __html: card.title }} />
                 {showRoleAsByline && card.role && (
-                  <p className={`text-lg text-center font-medium ${card.accentColor} opacity-80`}>{card.role}</p>
+                  <p className={`${smallerText ? 'text-lg' : 'text-xl'} text-center font-medium ${card.accentColor} opacity-80`}>{card.role}</p>
                 )}
               </motion.div>
             ))}
@@ -109,14 +110,14 @@ function InteractiveCardPageComponent({ pageTitle, byline, cards: initialCards, 
                         className="flex flex-col h-full"
                       >
                         <div>
-                          <h3 className={`text-2xl font-semibold ${mainCard.textColor} mb-6`} dangerouslySetInnerHTML={{ __html: mainCard.title }} />
+                          <h3 className={`${smallerText ? 'text-3xl' : 'text-4xl'} font-semibold ${mainCard.textColor} mb-6`} dangerouslySetInnerHTML={{ __html: mainCard.title }} />
                           {mainCard.role && (
-                            <p className={`text-lg font-medium ${mainCard.accentColor} mb-6`}>{mainCard.role}</p>
+                            <p className={`${smallerText ? 'text-lg' : 'text-xl'} font-medium ${mainCard.accentColor} mb-6`}>{mainCard.role}</p>
                           )}
                           
                           <ul className="list-disc list-outside space-y-6 mb-4 pl-6">
                             {mainCard.content.map((item, itemIdx) => (
-                                <li key={itemIdx} className={`text-lg font-light ${mainCard.accentColor}`}>
+                                <li key={itemIdx} className={`${smallerText ? 'text-lg' : 'text-xl'} font-light ${mainCard.accentColor}`}>
                                 {item}
                                 </li>
                             ))}

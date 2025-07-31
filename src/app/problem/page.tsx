@@ -59,6 +59,7 @@ export default function ProblemPage() {
       pageTitle="The Problem"
       byline={`"CRE is not an industry - it's just a bunch of marquees on top of independent contractors".`}
       cards={problemCards.map(card => ({...card, slug: ''}))}
+      smallerText={true}
     />
   );
 }
