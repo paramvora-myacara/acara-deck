@@ -1,21 +1,27 @@
-import './globals.css'
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
 
-export const metadata = {
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
   title: 'Acara Cap',
   description: 'Acara Cap - Real estate lending platform and investment opportunities',
   icons: {
     icon: '/ACARAfavicon.jpg',
   },
-}
+};
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode
-}) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={inter.className}>
+        {children}
+      </body>
     </html>
-  )
+  );
 }

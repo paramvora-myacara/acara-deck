@@ -10,8 +10,12 @@ import {
   Expand,
   MessageCircle
 } from "lucide-react";
+import { useState } from "react";
+import ContactUsModal from "@/components/ContactUsModal";
 
 export default function HomePage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const investmentCards = [
     {
       id: "problem",
@@ -44,7 +48,7 @@ export default function HomePage() {
       id: "team",
       title: "Team",
       icon: <Users className="w-16 h-16" />,
-      summary: "\"$6B+ in combined transaction experience and 20+ years of expertise in real estate, lending, and technology.\"",
+      summary: "\"$6B+ in combined transaction volume and 20+ years of expertise in real estate, lending, and technology.\"",
       gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
       textColor: "text-emerald-800 dark:text-emerald-200",
       accentColor: "text-emerald-600 dark:text-emerald-300"
@@ -108,13 +112,17 @@ export default function HomePage() {
             </p>
 
             <div className="flex justify-center">
-              <button className="px-8 py-3 bg-amber-600 hover:bg-amber-700 dark:bg-amber-500 dark:hover:bg-amber-600 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="px-8 py-3 bg-amber-600 hover:bg-amber-700 dark:bg-amber-500 dark:hover:bg-amber-600 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              >
                 Contact Us
               </button>
             </div>
           </div>
         </div>
       </main>
+      <ContactUsModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 } 

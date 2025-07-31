@@ -1,15 +1,16 @@
 'use client';
 
 import InteractiveCardPage, { CardData } from "@/components/InteractiveCardPage";
+import Link from "next/link";
 
 const teamMembers: Omit<CardData, 'slug'>[] = [
   {
-    title: "Jeff Richmond, PhD",
+    title: "Dr. Jeff Richmond",
     role: "Co-Founder & CEO",
     content: [
-      "Dr. Jeff Richmond scaled real estate operations at eXp Realty from 2016, co-founding \"The Community\" to train over 10,000 brokers globally.",
-      "He built a high-performing team generating $1M+ in GCI, selling 162 homes in his third year.",
-      "As co-founder of OZlistings, he drives innovation in Opportunity Zone marketplaces alongside Todd Vitzthum"
+      "Drove $2B+ in annual transaction volume through strategic business development and growth leadership at eXp Realty.",
+      "Co-founder of ACARA Cap and OZ Listings, delivering AI-powered capital markets solutions for multifamily and Opportunity Zone investments.",
+      "Chief Operating Partner at ACARA Management, a private equity firm focused on OZ development and capital structuring."
     ],
     gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
     textColor: "text-emerald-900 dark:text-emerald-300",
@@ -18,11 +19,11 @@ const teamMembers: Omit<CardData, 'slug'>[] = [
   },
   {
     title: "Todd Vitzthum",
-    role: "Co-Founder & Executive",
+    role: "Co-Founder & Executive Chairman",
     content: [
-      "Todd executed $3B+ in commercial real estate transactions over 20+ years as Executive Vice President at Greystone, Executive Managing Director at Cushman & Wakefield, and Senior Vice President at CBRE.",
-      "As President of ACARA, he leads multifamily investments and Opportunity Zone strategies.",
-      "As co-founder of OZlistings with Jeff Richmond, he innovates national platforms for real estate marketplaces."
+      "Executed over $3B in commercial real estate transactions across a 20+ year career, with senior leadership roles at Greystone, Cushman & Wakefield, and CBRE.",
+      "As Managing Partner at ACARA Management, he leads multifamily investment strategy and oversees Opportunity Zone deployment across the firm's portfolio.",
+      "Co-founder of ACARA Cap and OZ Listings, he drives the creation of tech-enabled capital platforms and national real estate marketplaces."
     ],
     gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
     textColor: "text-emerald-900 dark:text-emerald-300",
@@ -33,9 +34,9 @@ const teamMembers: Omit<CardData, 'slug'>[] = [
     title: "Michael Krueger",
     role: "Chief Legal Officer",
     content: [
-      "Michael specializes in securities law and real estate finance as Partner at Lucosky Brookman LLP, advising on SEC compliance and capital raising.",
-      "He structured deals from $2.5M to $9M and handled 100+ bankruptcy filings.",
-      "Formerly at Newmeyer Dillion, his in-house counsel experience ensures regulatory precision in lending."
+      "Corporate & Securities Partner at Lucosky Brookman LLP, advising family offices, private equity funds, and high-net-worth clients on real estate, finance, and corporate structuring.",
+      "Nationally recognized OZ expert and \"California Trailblazer,\" with deep experience in QOF/QOZB formation, SEC compliance, and complex capital stack negotiations.",
+      "As Chief Legal Officer at ACARA Management, he leads legal strategy for fund deployment, regulatory alignment, and Opportunity Zone execution."
     ],
     gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
     textColor: "text-emerald-900 dark:text-emerald-300",
@@ -46,9 +47,9 @@ const teamMembers: Omit<CardData, 'slug'>[] = [
     title: "Param Vora",
     role: "Chief Technology Officer",
     content: [
-      "Param led Solarcheckr as CTO to acquisition, speeding up financing approvals for residential solar and battery installations by 650%",
-      "As Director of AI at The Cool Down - the fastest growing media company in the US, he built out State of the Art AI pipelines and copilots from scratch.",
-      "With 7+ years in machine learning and AI, he has a masters degree in Machine Learning and AI."
+      "Former CTO of Solarcheckr, where he drove a 650% increase in financing approvals and led the company through a successful acquisition.",
+      "Built advanced AI copilots and automation pipelines as Director of AI at The Cool Down, which grew to over 60 million monthly visits and became the fastest-growing U.S. media brand in early 2025.",
+      "With 7+ years in machine learning and a master's in AI, he leads ACARA Cap's technology vision across underwriting, automation, and investor intelligence."
     ],
     gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
     textColor: "text-emerald-900 dark:text-emerald-300",
@@ -59,11 +60,59 @@ const teamMembers: Omit<CardData, 'slug'>[] = [
 
 export default function TeamPage() {
   return (
-    <InteractiveCardPage
-      pageTitle="Leadership Team"
-      byline="$6B+ in combined transaction experience and 20+ years of expertise in real estate, lending, and technology."
-      cards={teamMembers.map(card => ({...card, slug: ''}))}
-      showRoleAsByline={true}
-    />
+    <div className="min-h-screen bg-white dark:bg-black">
+      <main className="flex flex-col items-center min-h-screen p-4 md:p-8">
+        <div className="text-center w-full max-w-7xl mx-auto pt-4 md:pt-6">
+          <h1 className="text-5xl md:text-7xl font-bold text-black dark:text-white tracking-tight">
+            Leadership Team
+          </h1>
+          <p className="mt-4 text-lg md:text-xl text-black/70 dark:text-white/70 font-light whitespace-pre-line">
+            $6B+ in combined transaction volume and 20+ years of expertise in real estate, lending, and technology.
+          </p>
+          <Link href="/" className="mt-2 text-sm text-blue-600 dark:text-blue-400 hover:underline">
+            &larr; Back to Home
+          </Link>
+        </div>
+        
+        <div className="w-full max-w-7xl mx-auto mt-12 flex-grow grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {teamMembers.map((card, idx) => (
+            <div
+              key={idx}
+              className={`cursor-pointer group glass-card rounded-3xl p-8 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 hover:shadow-lg dark:hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 animate-fadeIn relative overflow-hidden flex flex-col justify-center`}
+              style={{ animationDelay: `${idx * 150}ms` }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 dark:from-white/[0.02] dark:to-white/[0.01] pointer-events-none" />
+              <div className="flex flex-col items-center justify-center mb-6">
+                <h3 className={`text-4xl font-semibold ${card.textColor} mb-2`}>
+                  {card.title}
+                </h3>
+                {card.role && (
+                  <p className={`text-lg font-medium ${card.accentColor} opacity-80`}>
+                    {card.role}
+                  </p>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Team Size Card */}
+        <div className="w-full max-w-7xl mx-auto mt-8">
+          <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 hover:shadow-lg dark:hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 animate-fadeIn group relative overflow-hidden flex flex-col justify-center">
+            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 dark:from-white/[0.02] dark:to-white/[0.01] pointer-events-none" />
+            
+            <p className="text-lg leading-relaxed font-light italic text-emerald-600 dark:text-emerald-300 text-center mb-6">
+              Current Team size:  10
+            </p>
+
+            <div className="flex justify-center">
+              <p className="text-lg leading-relaxed font-light text-emerald-700 dark:text-emerald-400 text-center">
+                Roles filled: Chief Market Advisor, Head of Growth, Head of Communications, VP Communications, VP Engineering, Head of Investor Relations
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
   );
 } 
