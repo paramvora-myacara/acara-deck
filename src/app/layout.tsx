@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Acara Cap',
-  description: 'Acara Cap - Real estate lending platform and investment opportunities',
+  title: 'ACARA Cap',
+  description: 'ACARA Cap - Real estate lending platform and investment opportunities',
   icons: {
     icon: '/ACARAfavicon.jpg',
   },
