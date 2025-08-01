@@ -59,60 +59,34 @@ const teamMembers: Omit<CardData, 'slug'>[] = [
 ];
 
 export default function TeamPage() {
-  return (
-    <div className="min-h-screen bg-white dark:bg-black">
-      <main className="flex flex-col items-center min-h-screen p-4 md:p-8">
-        <div className="text-center w-full max-w-7xl mx-auto pt-4 md:pt-6">
-          <h1 className="text-5xl md:text-7xl font-bold text-black dark:text-white tracking-tight">
-            Leadership Team
-          </h1>
-          <p className="mt-4 text-lg md:text-xl text-black/70 dark:text-white/70 font-light whitespace-pre-line">
-            $6B+ in combined transaction volume and 20+ years of expertise in real estate, lending, and technology.
-          </p>
-          <Link href="/" className="mt-2 text-sm text-blue-600 dark:text-blue-400 hover:underline">
-            &larr; Back to Home
-          </Link>
-        </div>
+  const teamInfoComponent = (
+    <div className="w-full max-w-7xl mx-auto mt-8">
+      <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 hover:shadow-lg dark:hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 animate-fadeIn group relative overflow-hidden flex flex-col justify-center">
+        <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 dark:from-white/[0.02] dark:to-white/[0.01] pointer-events-none" />
         
-        <div className="w-full max-w-7xl mx-auto mt-12 flex-grow grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          {teamMembers.map((card, idx) => (
-            <div
-              key={idx}
-              className={`cursor-pointer group glass-card rounded-3xl p-8 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 hover:shadow-lg dark:hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 animate-fadeIn relative overflow-hidden flex flex-col justify-center`}
-              style={{ animationDelay: `${idx * 150}ms` }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 dark:from-white/[0.02] dark:to-white/[0.01] pointer-events-none" />
-              <div className="flex flex-col items-center justify-center mb-6">
-                <h3 className={`text-4xl font-semibold ${card.textColor} mb-2`}>
-                  {card.title}
-                </h3>
-                {card.role && (
-                  <p className={`text-lg font-medium ${card.accentColor} opacity-80`}>
-                    {card.role}
-                  </p>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
+        <p className="text-lg leading-relaxed font-light italic text-emerald-600 dark:text-emerald-300 text-center mb-6">
+          Current Team size:  10
+        </p>
 
-        {/* Team Size Card */}
-        <div className="w-full max-w-7xl mx-auto mt-8">
-          <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 hover:shadow-lg dark:hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 animate-fadeIn group relative overflow-hidden flex flex-col justify-center">
-            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 dark:from-white/[0.02] dark:to-white/[0.01] pointer-events-none" />
-            
-            <p className="text-lg leading-relaxed font-light italic text-emerald-600 dark:text-emerald-300 text-center mb-6">
-              Current Team size:  10
-            </p>
-
-            <div className="flex justify-center">
-              <p className="text-lg leading-relaxed font-light text-emerald-700 dark:text-emerald-400 text-center">
-                Roles filled: Chief Market Advisor, Head of Growth, Head of Communications, VP Communications, VP Engineering, Head of Investor Relations
-              </p>
-            </div>
-          </div>
+        <div className="flex justify-center">
+          <p className="text-lg leading-relaxed font-light text-emerald-700 dark:text-emerald-400 text-center">
+            Roles filled: Chief Market Advisor, Head of Growth, Head of Communications, VP Communications, VP Engineering, Head of Investor Relations
+          </p>
         </div>
-      </main>
+      </div>
     </div>
+  );
+
+  const cards = teamMembers.map(member => ({ ...member, slug: member.title.toLowerCase().replace(/\s+/g, '-') }));
+
+  return (
+    <InteractiveCardPage
+      pageTitle="Leadership Team"
+      byline="$6B+ in combined transaction volume and 20+ years of expertise in real estate, lending, and technology."
+      cards={cards}
+      showRoleAsByline={true}
+    >
+      {teamInfoComponent}
+    </InteractiveCardPage>
   );
 } 
