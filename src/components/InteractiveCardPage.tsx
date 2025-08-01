@@ -33,7 +33,7 @@ type InteractiveCardPageProps = {
 
 const slugify = (text: string) => text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
 
-function InteractiveCardPageComponent({ pageTitle, byline, cards: initialCards, showRoleAsByline = false, smallerText = false }: InteractiveCardPageProps) {
+function InteractiveCardPageComponent({ pageTitle, byline, cards: initialCards, showRoleAsByline = false, smallerText = false, children }: InteractiveCardPageProps & { children?: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -56,7 +56,7 @@ function InteractiveCardPageComponent({ pageTitle, byline, cards: initialCards, 
 
   return (
     <div className="min-h-screen bg-white dark:bg-black">
-      <main className="flex flex-col items-center justify-center min-h-screen p-4 md:p-8">
+      <main className="flex flex-col items-center min-h-screen p-4 md:p-8">
         <header className="w-full max-w-7xl mx-auto mb-12 text-center">
           <h1 className="text-5xl md:text-7xl font-bold text-black dark:text-white tracking-tight">
             {pageTitle}
@@ -97,6 +97,8 @@ function InteractiveCardPageComponent({ pageTitle, byline, cards: initialCards, 
           </div>
         </motion.div>
         
+        {children}
+
         <Modal isOpen={selectedCardIndex !== -1} onClose={handleClose}>
             {mainCard && (
                 <div className={`relative glass-card rounded-3xl p-8 bg-gradient-to-br ${mainCard.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 animate-fadeIn h-full`}>
@@ -161,7 +163,7 @@ function InteractiveCardPageComponent({ pageTitle, byline, cards: initialCards, 
   );
 }
 
-export default function InteractiveCardPage(props: InteractiveCardPageProps) {
+export default function InteractiveCardPage(props: InteractiveCardPageProps & { children?: React.ReactNode }) {
   return (
     <Suspense>
       <InteractiveCardPageComponent {...props} />
