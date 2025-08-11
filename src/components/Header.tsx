@@ -11,9 +11,9 @@ export default function Header() {
           <Image
             src="/CapMatchLogo.png"
             alt="CapMatch Logo"
-            width={120}
-            height={40}
-            className="h-20 w-auto"
+            width={180}
+            height={60}
+            className="h-28 w-auto"
             priority
           />
         </Link>
