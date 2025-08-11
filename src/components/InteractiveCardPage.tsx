@@ -56,8 +56,8 @@ function InteractiveCardPageComponent({ pageTitle, byline, cards: initialCards, 
 
   return (
     <div className="min-h-screen bg-white dark:bg-black">
-      <main className="flex flex-col items-center min-h-screen p-4 md:p-8">
-        <header className="w-full max-w-7xl mx-auto mb-12 text-center">
+      <main className="flex flex-col items-center min-h-screen p-4 md:p-8 pt-16">
+        <header className="w-full max-w-7xl mx-auto mb-12 text-center pt-8">
           <h1 className="text-5xl md:text-7xl font-bold text-black dark:text-white tracking-tight">
             {pageTitle}
           </h1>

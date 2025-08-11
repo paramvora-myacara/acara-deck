@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'ACARA Cap Pitch Deck',
-  description: 'ACARA Cap - Real estate lending platform and investment opportunities',
-  icons: {
-    icon: '/ACARAfavicon.jpg',
-  },
+  title: 'CapMatch Pitch Deck',
+  description: 'CapMatch - Real estate lending platform and investment opportunities',
+  icons: [
+    { rel: 'icon', url: '/CapMatchLogo.png' },
+    { rel: 'apple-touch-icon', url: '/CapMatchLogo.png' },
+  ],
 };
 
 export default function RootLayout({
@@ -20,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Header />
         {children}
       </body>
     </html>

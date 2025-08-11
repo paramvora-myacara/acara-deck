@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Main initialization function
 function initializeApp() {
-    console.log('Initializing ACARA CAP application...');
+    console.log('Initializing CapMatch application...');
     
     // Initialize navigation
     setupMainCardNavigation();
@@ -191,7 +191,7 @@ function createContactModal() {
         <div class="modal-backdrop"></div>
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Contact ACARA CAP</h3>
+                <h3>Contact CapMatch</h3>
                 <button class="modal-close" type="button" aria-label="Close modal">&times;</button>
             </div>
             <div class="modal-body">

@@ -4,21 +4,21 @@ import InteractiveCardPage, { CardData } from "@/components/InteractiveCardPage"
 
 const solutionCards: Omit<CardData, 'slug'>[] = [
   {
-    title: "Deal Flow",
+    title: "We bring the Deal Flow",
     role: "Access nationwide deal flow from established leaders, dealer networks, and state-of-the-art outbound marketing.",
     content: [
       "Borrowers: Present deals to the largest lender network, regardless of your broker connections.",
       "Lenders: Receive high-quality, third-party vetted deals tailored to your preferences.",
       "Advisors: Activate 120K brokers to place debt deals with centralized leads and deal flow.",
     ],
-    videoUrl: "/AcaraDemo720p.mp4",
+    videoUrl: "/CapMatchDemo720p.mp4",
     gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
     textColor: "text-indigo-900 dark:text-indigo-300",
     accentColor: "text-indigo-700 dark:text-indigo-400",
     dotColor: "bg-indigo-700 dark:bg-indigo-400"
   },
   {
-    title: "ACARA-CAP Platform",
+    title: "CapMatch Platform",
     role: "One centralized platform for the entire journey from idea to wire transfer.",
     content: [
       "Borrowers: Manage multiple projects efficiently, eliminate redundant data entry, and enjoy a streamlined, win-win funding process.",
@@ -54,7 +54,7 @@ const solutionCards: Omit<CardData, 'slug'>[] = [
       "Lenders: Discover only relevant matches through our subscription white-glove service, enabling faster capital deployment.",
       "Advisors: Match with superior deals for higher conversions and better commission cuts from lenders.",
     ],
-    videoUrl: "/AcaraDemo720p.mp4",
+    videoUrl: "/CapMatchDemo720p.mp4",
     gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
     textColor: "text-indigo-900 dark:text-indigo-300",
     accentColor: "text-indigo-700 dark:text-indigo-400",
