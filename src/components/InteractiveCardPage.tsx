@@ -132,6 +132,7 @@ function InteractiveCardPageComponent({ pageTitle, byline, cards: initialCards, 
                               alt={mainCard.imageAlt || 'Solution image'}
                               fill
                               className="rounded-lg object-contain" 
+                              unoptimized
                             />
                           </div>
                         )}

@@ -59,6 +59,7 @@ const CompetitiveAnalysisGraph = () => {
                     sizes={isCapMatch ? "(max-width: 768px) 240px, 480px" : "(max-width: 768px) 56px, 96px"}
                     style={{ objectFit: 'contain' }}
                     className={isCapMatch ? 'drop-shadow-lg' : ''}
+                    unoptimized
                   />
                 ) : c.text ? (
                   <div className="flex items-center justify-center h-full">
