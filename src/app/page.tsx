@@ -57,16 +57,12 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-black">
-      <main className="flex flex-col items-center min-h-screen p-4 md:p-8">
+      <main className="flex flex-col items-center min-h-screen p-4 md:p-8 pt-16">
         <div className="text-center w-full max-w-7xl mx-auto pt-4 md:pt-6">
-          <div className="flex justify-center">
-            <Image 
-              src="/ACARALogo.png" 
-              alt="Acara Capital Logo"
-              width={500}
-              height={150}
-              priority
-            />
+          <div className="flex justify-center items-center">
+            <h1 className="text-5xl md:text-7xl font-bold text-black dark:text-white tracking-tight">
+              CapMatch
+            </h1>
           </div>
           <p className="mt-4 text-lg md:text-xl text-black/70 dark:text-white/70 font-light whitespace-pre-line">
             {'AI-Powered. Borrower-Controlled. Commercial Lending, Simplified.'}

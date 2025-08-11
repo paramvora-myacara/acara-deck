@@ -4,7 +4,7 @@ import InteractiveCardPage, { CardData } from "@/components/InteractiveCardPage"
 
 const solutionCards: Omit<CardData, 'slug'>[] = [
   {
-    title: "Deal Flow",
+    title: "We bring the Deal Flow",
     role: "Access nationwide deal flow from established leaders, dealer networks, and state-of-the-art outbound marketing.",
     content: [
       "Borrowers: Present deals to the largest lender network, regardless of your broker connections.",
@@ -18,7 +18,7 @@ const solutionCards: Omit<CardData, 'slug'>[] = [
     dotColor: "bg-indigo-700 dark:bg-indigo-400"
   },
   {
-    title: "ACARA-CAP Platform",
+    title: "CapMatch Platform",
     role: "One centralized platform for the entire journey from idea to wire transfer.",
     content: [
       "Borrowers: Manage multiple projects efficiently, eliminate redundant data entry, and enjoy a streamlined, win-win funding process.",

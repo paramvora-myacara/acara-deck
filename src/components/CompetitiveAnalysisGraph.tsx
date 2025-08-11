@@ -2,8 +2,8 @@
 import Image from "next/image";
 
 const competitors = [
-  // Acara (Top-Right) - Centered and enlarged
-  { name: 'Acara', automation: 8, integration: 8, logoUrl: '/ACARALogo.png' },
+  // CapMatch (Top-Right) - Centered and enlarged
+  { name: 'CapMatch', automation: 8, integration: 8, logoUrl: '/CapMatchLogo.png' },
 
   // AI-Driven & Fragmented (Top-Left)
   { name: 'Henry AI', automation: 8.5, integration: 4, logoUrl: '/logos/HenryAILogo.png' },
@@ -38,7 +38,7 @@ const CompetitiveAnalysisGraph = () => {
         {competitors.map(c => {
           const yPos = (c.automation - 5) / 5;
           const xPos = (c.integration - 5) / 5;
-          const isAcara = c.name === 'Acara';
+          const isCapMatch = c.name === 'CapMatch';
 
           return (
             <div
@@ -50,15 +50,15 @@ const CompetitiveAnalysisGraph = () => {
                 transform: 'translate(-50%, -50%)',
               }}
             >
-              <div className={`relative ${isAcara ? 'w-20 h-10 md:w-40 md:h-20' : 'w-14 h-7 md:w-24 md:h-12'}`}>
+              <div className={`relative ${isCapMatch ? 'w-60 h-30 md:w-120 md:h-60' : 'w-14 h-7 md:w-24 md:h-12'}`}>
                 {c.logoUrl ? (
                   <Image
                     src={c.logoUrl}
                     alt={`${c.name} Logo`}
                     fill
-                    sizes={isAcara ? "(max-width: 768px) 80px, 160px" : "(max-width: 768px) 56px, 96px"}
+                    sizes={isCapMatch ? "(max-width: 768px) 240px, 480px" : "(max-width: 768px) 56px, 96px"}
                     style={{ objectFit: 'contain' }}
-                    className={isAcara ? 'drop-shadow-lg' : ''}
+                    className={isCapMatch ? 'drop-shadow-lg' : ''}
                   />
                 ) : c.text ? (
                   <div className="flex items-center justify-center h-full">
