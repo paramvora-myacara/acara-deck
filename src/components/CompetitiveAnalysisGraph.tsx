@@ -50,13 +50,13 @@ const CompetitiveAnalysisGraph = () => {
                 transform: 'translate(-50%, -50%)',
               }}
             >
-              <div className={`relative ${isCapMatch ? 'w-60 h-30 md:w-120 md:h-60' : 'w-14 h-7 md:w-24 md:h-12'}`}>
+              <div className={`relative ${isCapMatch ? 'w-32 h-16 md:w-48 md:h-24' : 'w-14 h-7 md:w-24 md:h-12'}`}>
                 {c.logoUrl ? (
                   <Image
                     src={c.logoUrl}
                     alt={`${c.name} Logo`}
                     fill
-                    sizes={isCapMatch ? "(max-width: 768px) 240px, 480px" : "(max-width: 768px) 56px, 96px"}
+                    sizes={isCapMatch ? "(max-width: 768px) 128px, 192px" : "(max-width: 768px) 56px, 96px"}
                     style={{ objectFit: 'contain' }}
                     className={isCapMatch ? 'drop-shadow-lg' : ''}
                     unoptimized
