@@ -60,14 +60,25 @@ export default function HomePage() {
       <main className="flex flex-col items-center min-h-screen p-4 md:p-8 pt-16">
         <div className="text-center w-full max-w-7xl mx-auto pt-4 md:pt-6">
           <div className="flex justify-center items-center">
-            <h1 className="text-5xl md:text-7xl font-bold text-black dark:text-white tracking-tight">
-              CapMatch
-            </h1>
+            <div className="flex items-center gap-4">
+              <Image
+                src="/CapMatchLogo.png"
+                alt="CapMatch Logo"
+                width={100}
+                height={100}
+                className="h-16 w-20 md:h-20 md:w-24"
+                priority
+                unoptimized
+              />
+              <h1 className="text-5xl md:text-7xl font-bold text-black dark:text-white tracking-tight">
+                CapMatch
+              </h1>
+            </div>
           </div>
           <p className="mt-4 text-lg md:text-xl text-black/70 dark:text-white/70 font-light whitespace-pre-line">
             {'AI-Powered. Borrower-Controlled. Commercial Lending, Simplified.'}
           </p>
-          <a href="https://acara-cap-frontend.vercel.app/" target="_blank" rel="noopener noreferrer" className="mt-2 text-sm text-blue-600 dark:text-blue-400 hover:underline">
+          <a href="https://capmatch.vercel.app/" target="_blank" rel="noopener noreferrer" className="mt-2 text-sm text-blue-600 dark:text-blue-400 hover:underline">
             View Site and Live Demo
           </a>
         </div>
