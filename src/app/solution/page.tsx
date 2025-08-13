@@ -40,7 +40,7 @@ const solutionCards: Omit<CardData, 'slug'>[] = [
       "Lenders: Always access the latest information, compare deals side-by-side, and get live AI insights directly from the OM.",
       "Advisors: Use a single repository for all communication and documentation, with a consistent workflow that converts deals in days, not months.",
     ],
-    videoUrl: "/OMDemoAcaraDeck720p.mp4",
+    videoUrl: "https://drive.google.com/file/d/1Q9tFheLjW5pcQPmDKmM9X3cYY52pdiV2/preview",
     gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
     textColor: "text-indigo-900 dark:text-indigo-300",
     accentColor: "text-indigo-700 dark:text-indigo-400",

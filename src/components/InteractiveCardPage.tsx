@@ -138,14 +138,25 @@ function InteractiveCardPageComponent({ pageTitle, byline, cards: initialCards, 
                         )}
                         {mainCard.videoUrl && (
                           <div className="mt-4 flex-grow relative min-h-[300px] md:min-h-[400px]">
-                            <video
-                              src={mainCard.videoUrl}
-                              autoPlay
-                              loop
-                              muted
-                              playsInline
-                              className="rounded-lg w-full h-full object-contain"
-                            />
+                            {mainCard.videoUrl.includes('drive.google.com') ? (
+                              <div className="w-full h-full flex items-center justify-center">
+                                <iframe
+                                  src={mainCard.videoUrl}
+                                  className="rounded-lg w-full max-w-4xl h-80 md:h-96 border-0"
+                                  allowFullScreen
+                                  title="Video content"
+                                />
+                              </div>
+                            ) : (
+                              <video
+                                src={mainCard.videoUrl}
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                className="rounded-lg w-full h-full object-contain"
+                              />
+                            )}
                           </div>
                         )}
                         {mainCard.customComponent && (
