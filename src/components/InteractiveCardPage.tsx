@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Expand } from "lucide-react";
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
@@ -32,6 +32,34 @@ type InteractiveCardPageProps = {
 };
 
 const slugify = (text: string) => text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+
+function DriveVideo({ previewUrl }: { previewUrl: string }) {
+  const [useIframe, setUseIframe] = useState(false);
+  const idMatch = previewUrl.match(/\/d\/([^/]+)/);
+  const directUrl = idMatch ? `https://drive.google.com/uc?export=download&id=${idMatch[1]}` : null;
+
+  if (useIframe || !directUrl) {
+    return (
+      <iframe
+        src={previewUrl}
+        className="rounded-lg w-full max-w-4xl h-80 md:h-96 border-0"
+        allow="autoplay; fullscreen"
+        allowFullScreen
+        title="Video content"
+      />
+    );
+  }
+
+  return (
+    <video
+      src={directUrl}
+      controls
+      playsInline
+      className="rounded-lg w-full h-full object-contain"
+      onError={() => setUseIframe(true)}
+    />
+  );
+}
 
 function InteractiveCardPageComponent({ pageTitle, byline, cards: initialCards, showRoleAsByline = false, smallerText = false, children }: InteractiveCardPageProps & { children?: React.ReactNode }) {
   const router = useRouter();
@@ -140,12 +168,7 @@ function InteractiveCardPageComponent({ pageTitle, byline, cards: initialCards, 
                           <div className="mt-4 flex-grow relative min-h-[300px] md:min-h-[400px]">
                             {mainCard.videoUrl.includes('drive.google.com') ? (
                               <div className="w-full h-full flex items-center justify-center">
-                                <iframe
-                                  src={mainCard.videoUrl}
-                                  className="rounded-lg w-full max-w-4xl h-80 md:h-96 border-0"
-                                  allowFullScreen
-                                  title="Video content"
-                                />
+                                <DriveVideo previewUrl={mainCard.videoUrl} />
                               </div>
                             ) : (
                               <video
