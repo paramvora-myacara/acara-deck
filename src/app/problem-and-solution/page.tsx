@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import FunnelBackground from "@/components/FunnelBackground";
 import { Modal } from "@/components/Modal/Modal";
+import { Expand } from "lucide-react";
 
 // Problem cards data from the problem page - using the same structure as InteractiveCardPage
 interface ProblemCard {
@@ -127,7 +128,7 @@ const solutionCards: SolutionCard[] = [
     dotColor: "bg-emerald-600 dark:bg-emerald-400"
   },
   {
-    title: "<br/>MATCHMAKING<br/> <br/>",
+    title: "<br/>Matchmaking<br/> <br/>",
     role: "Leverage AI for precise, curated matchmaking between lenders and borrowers.",
     content: [
       "<b>Borrowers:</b> Get enhanced resume curation, visibility into available lenders, and higher success rates in securing loans.",
@@ -236,7 +237,7 @@ export default function ProblemAndSolutionPage() {
         </header>
 
                  {/* Funnel Layout */}
-         <div className="w-full max-w-7xl mx-auto relative -mt-8 md:-mt-12" data-funnel-container>
+         <div className="w-full max-w-7xl mx-auto relative mt-6 md:mt-8" data-funnel-container>
            {/* Funnel Background - Desktop Only */}
            <div className="hidden md:block">
              <FunnelBackground />
@@ -256,7 +257,7 @@ export default function ProblemAndSolutionPage() {
                    key={idx}
                    data-problem-card
                    onClick={() => handleCardClick('problem', idx)}
-                   className={`glass-card rounded-xl p-5 lg:p-6 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-[130px] lg:h-[150px] flex items-center justify-center cursor-pointer hover:scale-105 transition-transform`}
+                   className={`relative glass-card rounded-xl p-5 lg:p-6 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-[130px] lg:h-[150px] flex items-center justify-center cursor-pointer hover:scale-105 transition-transform`}
                     style={{
                       marginLeft: `${100 - cardWidth}%`,
                       width: `${cardWidth}%`,
@@ -265,6 +266,7 @@ export default function ProblemAndSolutionPage() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: idx * 0.2 }}
                   >
+                    <Expand className="absolute top-2 right-2 h-5 w-5 opacity-70 text-gray-400" aria-hidden />
                      <h3 
                        className={`text-xl lg:text-2xl xl:text-3xl font-semibold ${card.textColor} text-center leading-tight`}
                        dangerouslySetInnerHTML={{ __html: card.title }}
@@ -286,7 +288,7 @@ export default function ProblemAndSolutionPage() {
                    key={idx}
                    data-solution-card
                    onClick={() => handleCardClick('solution', idx)}
-                   className={`glass-card rounded-xl p-5 lg:p-6 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-[130px] lg:h-[150px] flex items-center justify-center cursor-pointer hover:scale-105 transition-transform`}
+                   className={`relative glass-card rounded-xl p-5 lg:p-6 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-[130px] lg:h-[150px] flex items-center justify-center cursor-pointer hover:scale-105 transition-transform`}
                     style={{
                       marginRight: `${100 - cardWidth}%`,
                       width: `${cardWidth}%`,
@@ -295,6 +297,7 @@ export default function ProblemAndSolutionPage() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: idx * 0.2 }}
                   >
+                    <Expand className="absolute top-2 right-2 h-5 w-5 opacity-70 text-gray-400" aria-hidden />
                                          <h3 
                       className={`text-xl lg:text-2xl xl:text-3xl font-semibold ${card.textColor} text-center leading-tight`}
                       dangerouslySetInnerHTML={{ __html: card.title }}
@@ -320,11 +323,12 @@ export default function ProblemAndSolutionPage() {
                    <motion.div
                      key={idx}
                      onClick={() => handleCardClick('problem', idx)}
-                     className={`glass-card rounded-xl p-8 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-[120px] flex items-center justify-center cursor-pointer hover:scale-105 transition-transform`}
+                     className={`relative glass-card rounded-xl p-8 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-[120px] flex items-center justify-center cursor-pointer hover:scale-105 transition-transform`}
                      initial={{ opacity: 0, y: 20 }}
                      animate={{ opacity: 1, y: 0 }}
                      transition={{ delay: idx * 0.1 }}
                    >
+                     <Expand className="absolute top-2 right-2 h-5 w-5 opacity-70 text-gray-400" aria-hidden />
                      <h3 
                        className={`text-2xl font-semibold ${card.textColor} text-center leading-tight`}
                        dangerouslySetInnerHTML={{ __html: card.title }}
@@ -347,11 +351,12 @@ export default function ProblemAndSolutionPage() {
                    <motion.div
                      key={idx}
                      onClick={() => handleCardClick('solution', idx)}
-                     className={`glass-card rounded-xl p-8 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-[120px] flex items-center justify-center cursor-pointer hover:scale-105 transition-transform`}
+                     className={`relative glass-card rounded-xl p-8 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-[120px] flex items-center justify-center cursor-pointer hover:scale-105 transition-transform`}
                      initial={{ opacity: 0, y: 20 }}
                      animate={{ opacity: 1, y: 0 }}
                      transition={{ delay: (problemCards.length * 0.1) + (idx * 0.1) }}
                    >
+                     <Expand className="absolute top-2 right-2 h-5 w-5 opacity-70 text-gray-400" aria-hidden />
                      <h3 
                        className={`text-2xl font-semibold ${card.textColor} text-center leading-tight`}
                        dangerouslySetInnerHTML={{ __html: card.title }}
