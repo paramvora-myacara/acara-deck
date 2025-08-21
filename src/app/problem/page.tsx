@@ -42,7 +42,7 @@ const problemCards: Omit<CardData, 'slug'>[] = [
   {
     title: "Advisors operate <i>ALONE</i> & Industry is <i>FRAGMENTED</i>",
     content: [
-      "Advisors build deal flow from scratch amid no centralized leads generation — with ~120,000 U.S. brokers unable to place debt efficiently, underscoring this core inefficiency.",
+      "Advisors build deal flow from scratch amid no centralized lead generation — with ~120,000 U.S. brokers unable to place debt efficiently, underscoring this core inefficiency.",
       "No shared platform or standards means silos and reinvented workflows for every client.",
       "One-on-one relationships demand high commission splits (often 60%+), creating an unscalable model."
     ],
