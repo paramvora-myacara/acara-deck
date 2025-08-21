@@ -22,7 +22,7 @@ export default function HomePage() {
       title: "Problem",
       icon: <AlertTriangle className="w-16 h-16" />,
       summary: "\"CRE is not an industry - it's just a bunch of marquees on top of independent contractors.\"",
-      gradient: "from-red-50 to-orange-100 dark:from-red-900/20 dark:to-orange-900/20",
+      gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
       textColor: "text-red-800 dark:text-red-200",
       accentColor: "text-red-600 dark:text-red-300"
     },
@@ -31,9 +31,9 @@ export default function HomePage() {
       title: "Solution",
       icon: <Lightbulb className="w-16 h-16" />,
       summary: "\"We're basically 'Uber'-izing Commercial Real Estate\"",
-      gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
-      textColor: "text-indigo-800 dark:text-indigo-200",
-      accentColor: "text-indigo-600 dark:text-indigo-300"
+      gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
+      textColor: "text-emerald-800 dark:text-emerald-200",
+      accentColor: "text-emerald-600 dark:text-emerald-300"
     },
     {
       id: "market",
@@ -49,9 +49,9 @@ export default function HomePage() {
       title: "Team",
       icon: <Users className="w-16 h-16" />,
       summary: "\"$6B+ in combined transaction volume and 20+ years of expertise in real estate, lending, and technology.\"",
-      gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
-      textColor: "text-emerald-800 dark:text-emerald-200",
-      accentColor: "text-emerald-600 dark:text-emerald-300"
+      gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
+      textColor: "text-indigo-800 dark:text-indigo-200",
+      accentColor: "text-indigo-600 dark:text-indigo-300"
     }
   ];
 

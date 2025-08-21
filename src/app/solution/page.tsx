@@ -12,10 +12,10 @@ const solutionCards: Omit<CardData, 'slug'>[] = [
       "<b>Advisors:</b> Activate 120K brokers to place debt deals with centralized leads and deal flow.",
     ],
     videoUrl: "/CapMatchDemo720p.mp4",
-    gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
-    textColor: "text-indigo-900 dark:text-indigo-300",
-    accentColor: "text-indigo-700 dark:text-indigo-400",
-    dotColor: "bg-indigo-700 dark:bg-indigo-400"
+    gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
+    textColor: "text-emerald-900 dark:text-emerald-300",
+    accentColor: "text-emerald-700 dark:text-emerald-400",
+    dotColor: "bg-emerald-700 dark:bg-emerald-400"
   },
   {
     title: "CapMatch Platform",
@@ -27,10 +27,10 @@ const solutionCards: Omit<CardData, 'slug'>[] = [
     ],
     imageUrl: "/OnePlatformImg.png",
     imageAlt: "One Platform for Everything",
-    gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
-    textColor: "text-indigo-900 dark:text-indigo-300",
-    accentColor: "text-indigo-700 dark:text-indigo-400",
-    dotColor: "bg-indigo-700 dark:bg-indigo-400"
+    gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
+    textColor: "text-emerald-900 dark:text-emerald-300",
+    accentColor: "text-emerald-700 dark:text-emerald-400",
+    dotColor: "bg-emerald-700 dark:bg-emerald-400"
   },
   {
     title: "AI-Powered Deal Documentation",
@@ -41,10 +41,10 @@ const solutionCards: Omit<CardData, 'slug'>[] = [
       "<b>Advisors:</b> Use a single repository for all communication and documentation, with a consistent workflow that converts deals in days, not months.",
     ],
     videoUrl: "https://drive.google.com/file/d/1Q9tFheLjW5pcQPmDKmM9X3cYY52pdiV2/preview",
-    gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
-    textColor: "text-indigo-900 dark:text-indigo-300",
-    accentColor: "text-indigo-700 dark:text-indigo-400",
-    dotColor: "bg-indigo-700 dark:bg-indigo-400"
+    gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
+    textColor: "text-emerald-900 dark:text-emerald-300",
+    accentColor: "text-emerald-700 dark:text-emerald-400",
+    dotColor: "bg-emerald-700 dark:bg-emerald-400"
   },
   {
     title: "Matchmaking",
@@ -55,10 +55,10 @@ const solutionCards: Omit<CardData, 'slug'>[] = [
       "<b>Advisors:</b> Match with superior deals for higher conversions and better commission cuts from lenders.",
     ],
     videoUrl: "/CapMatchDemo720p.mp4",
-    gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
-    textColor: "text-indigo-900 dark:text-indigo-300",
-    accentColor: "text-indigo-700 dark:text-indigo-400",
-    dotColor: "bg-indigo-700 dark:bg-indigo-400"
+    gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
+    textColor: "text-emerald-900 dark:text-emerald-300",
+    accentColor: "text-emerald-700 dark:text-emerald-400",
+    dotColor: "bg-emerald-700 dark:bg-emerald-400"
   },
 ];
 
