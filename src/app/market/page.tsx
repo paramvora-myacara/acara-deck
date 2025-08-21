@@ -21,7 +21,7 @@ const marketCards: Omit<CardData, 'slug'>[] = [
       content: [
         "<b>Debt Placement Fees:</b> Earn a straightforward 1% fee on the total debt placed through the platform.",
         "<b>Lender Subscriptions:</b> Charge premium service fees for white-glove, personally curated deal flow access, delivering tailored opportunities to lenders and fostering long-term, recurring income.",
-        "<b>Data and Insights:</b> Monetize proprietary industry data while training an AI Markets Advisor to evolve into the state-of-the-art platform expert, unlocking advanced analytics and advisory services for sustained growth.",
+        "<b>Data and Insights:</b> Monetize proprietary industry data while training an <b>AI Markets Advisor</b> to evolve into the state-of-the-art platform expert, unlocking advanced analytics and advisory services for sustained growth.",
       ],
       gradient: "from-purple-50 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20",
       textColor: "text-purple-900 dark:text-purple-300",
