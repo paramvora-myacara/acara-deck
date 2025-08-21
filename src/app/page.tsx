@@ -18,24 +18,6 @@ export default function HomePage() {
 
   const investmentCards = [
     {
-      id: "problem",
-      title: "Problem",
-      icon: <AlertTriangle className="w-16 h-16" />,
-      summary: "\"CRE is not an industry - it's just a bunch of marquees on top of independent contractors.\"",
-      gradient: "from-red-50 to-orange-100 dark:from-red-900/20 dark:to-orange-900/20",
-      textColor: "text-red-800 dark:text-red-200",
-      accentColor: "text-red-600 dark:text-red-300"
-    },
-    {
-      id: "solution", 
-      title: "Solution",
-      icon: <Lightbulb className="w-16 h-16" />,
-      summary: "\"We're basically 'Uber'-izing Commercial Real Estate\"",
-      gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
-      textColor: "text-indigo-800 dark:text-indigo-200",
-      accentColor: "text-indigo-600 dark:text-indigo-300"
-    },
-    {
       id: "market",
       title: "Market", 
       icon: <LineChart className="w-16 h-16" />,
@@ -49,9 +31,9 @@ export default function HomePage() {
       title: "Team",
       icon: <Users className="w-16 h-16" />,
       summary: "\"$6B+ in combined transaction volume and 20+ years of expertise in real estate, lending, and technology.\"",
-      gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
-      textColor: "text-emerald-800 dark:text-emerald-200",
-      accentColor: "text-emerald-600 dark:text-emerald-300"
+      gradient: "from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20",
+      textColor: "text-indigo-800 dark:text-indigo-200",
+      accentColor: "text-indigo-600 dark:text-indigo-300"
     }
   ];
 
@@ -83,7 +65,80 @@ export default function HomePage() {
           </a>
         </div>
         
-        <div id="investment-cards" className="w-full max-w-7xl mx-auto mt-12 flex-grow grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        {/* Combined Problem & Solution Card */}
+        <div className="w-full max-w-7xl mx-auto mt-12">
+          <Link 
+            href="/problem-and-solution"
+            className="glass-card rounded-3xl p-8 bg-gradient-to-r from-red-50 via-white to-emerald-50 dark:from-red-900/20 dark:via-gray-900/10 dark:to-emerald-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 hover:shadow-lg dark:hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 animate-fadeIn group relative overflow-hidden flex flex-col justify-center block"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 dark:from-white/[0.02] dark:to-white/[0.01] pointer-events-none" />
+            <Expand className="absolute top-4 right-4 w-6 h-6 text-gray-600 dark:text-gray-400 opacity-60 group-hover:opacity-100 transition-opacity z-10" />
+            
+            {/* Desktop layout - side by side */}
+            <div className="hidden md:grid md:grid-cols-2 gap-8">
+              {/* Problem Section */}
+              <div className="flex flex-col items-center justify-center">
+                <div className="flex flex-col items-center justify-center mb-6">
+                  <div className="flex items-center gap-4">
+                    <AlertTriangle className="w-16 h-16 text-red-600 dark:text-red-400" />
+                    <h3 className="text-4xl font-semibold text-red-600 dark:text-red-400">
+                      Problem
+                    </h3>
+                  </div>
+                </div>
+                <p className="text-lg leading-relaxed font-light italic text-red-600 dark:text-red-400 text-center">
+                  "CRE is not an industry - it's just a bunch of marquees on top of independent contractors."
+                </p>
+              </div>
+
+              {/* Solution Section */}
+              <div className="flex flex-col items-center justify-center">
+                <div className="flex flex-col items-center justify-center mb-6">
+                  <div className="flex items-center gap-4">
+                    <Lightbulb className="w-16 h-16 text-emerald-600 dark:text-emerald-400" />
+                    <h3 className="text-4xl font-semibold text-emerald-600 dark:text-emerald-400">
+                      Solution
+                    </h3>
+                  </div>
+                </div>
+                <p className="text-lg leading-relaxed font-light italic text-emerald-600 dark:text-emerald-400 text-center">
+                  "We're basically 'Uber'-izing Commercial Real Estate"
+                </p>
+              </div>
+            </div>
+
+            {/* Mobile layout - stacked */}
+            <div className="md:hidden space-y-8">
+              {/* Problem Section */}
+              <div className="flex flex-col items-center justify-center">
+                <div className="flex items-center gap-4 mb-6">
+                  <AlertTriangle className="w-16 h-16 text-red-600 dark:text-red-400" />
+                  <h3 className="text-4xl font-semibold text-red-600 dark:text-red-400">
+                    Problem
+                  </h3>
+                </div>
+                <p className="text-lg leading-relaxed font-light italic text-red-600 dark:text-red-400 text-center">
+                  "CRE is not an industry - it's just a bunch of marquees on top of independent contractors."
+                </p>
+              </div>
+
+              {/* Solution Section */}
+              <div className="flex flex-col items-center justify-center">
+                <div className="flex items-center gap-4 mb-6">
+                  <Lightbulb className="w-16 h-16 text-emerald-600 dark:text-emerald-400" />
+                  <h3 className="text-4xl font-semibold text-emerald-600 dark:text-emerald-400">
+                    Solution
+                  </h3>
+                </div>
+                <p className="text-lg leading-relaxed font-light italic text-emerald-600 dark:text-emerald-400 text-center">
+                  "We're basically 'Uber'-izing Commercial Real Estate"
+                </p>
+              </div>
+            </div>
+          </Link>
+        </div>
+
+        <div id="investment-cards" className="w-full max-w-7xl mx-auto mt-8 flex-grow grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {investmentCards.map((card, idx) => (
               <Link
                 key={idx}

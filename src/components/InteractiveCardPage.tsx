@@ -147,9 +147,7 @@ function InteractiveCardPageComponent({ pageTitle, byline, cards: initialCards, 
                           
                           <ul className="list-disc list-outside space-y-6 mb-4 pl-6">
                             {mainCard.content.map((item, itemIdx) => (
-                                <li key={itemIdx} className={`${smallerText ? 'text-lg' : 'text-xl'} font-light ${mainCard.accentColor}`}>
-                                {item}
-                                </li>
+                                <li key={itemIdx} className={`${smallerText ? 'text-lg' : 'text-xl'} font-light ${mainCard.accentColor}`} dangerouslySetInnerHTML={{ __html: item }} />
                             ))}
                           </ul>
                         </div>
