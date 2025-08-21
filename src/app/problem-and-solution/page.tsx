@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import FunnelBackground from "@/components/FunnelBackground";
 
 // Problem cards data from the problem page
 const problemCards = [
@@ -98,28 +99,34 @@ export default function ProblemAndSolutionPage() {
         </header>
 
                  {/* Funnel Layout */}
-         <div className="w-full max-w-7xl mx-auto relative -mt-8 md:-mt-12">
+         <div className="w-full max-w-7xl mx-auto relative -mt-8 md:-mt-12" data-funnel-container>
+           {/* Funnel Background - Desktop Only */}
+           <div className="hidden md:block">
+             <FunnelBackground />
+           </div>
+           
            {/* Desktop Funnel Layout */}
-           <div className="relative hidden md:block">
-             {/* Problem Cards (Left Side) */}
-             <div className="absolute left-[5%] top-0 w-[40%] space-y-4 lg:space-y-6">
-               {problemCards.map((card, idx) => {
-                 // Calculate widths to ensure symmetrical sizing across rows
-                 const cardWidths = [85, 75, 65, 55]; // Decreasing widths for funnel effect
-                 const cardWidth = cardWidths[idx] || 55;
+           <div className="relative hidden md:block z-10">
+                         {/* Problem Cards (Left Side) - PERFECTLY CENTERED in funnel */}
+            <div className="absolute left-[16%] top-[3%] w-[32%] space-y-4 lg:space-y-5">
+              {problemCards.map((card, idx) => {
+                // Calculate widths to fit within centered funnel - decreasing sizes
+                const cardWidths = [90, 80, 70, 60]; // Decreasing widths for funnel effect
+                const cardWidth = cardWidths[idx] || 60;
                  
                  return (
-                   <motion.div
-                     key={idx}
-                     className={`glass-card rounded-2xl p-6 lg:p-8 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-[150px] lg:h-[180px] flex items-center justify-center`}
-                     style={{
-                       marginLeft: `${100 - cardWidth}%`,
-                       width: `${cardWidth}%`,
-                     }}
-                     initial={{ opacity: 0, x: -50 }}
-                     animate={{ opacity: 1, x: 0 }}
-                     transition={{ delay: idx * 0.2 }}
-                   >
+                                                                          <motion.div
+                   key={idx}
+                   data-problem-card
+                   className={`glass-card rounded-xl p-5 lg:p-6 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-[130px] lg:h-[150px] flex items-center justify-center`}
+                    style={{
+                      marginLeft: `${100 - cardWidth}%`,
+                      width: `${cardWidth}%`,
+                    }}
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.2 }}
+                  >
                      <h3 
                        className={`text-xl lg:text-2xl xl:text-3xl font-semibold ${card.textColor} text-center leading-tight`}
                        dangerouslySetInnerHTML={{ __html: card.title }}
@@ -129,42 +136,43 @@ export default function ProblemAndSolutionPage() {
                })}
              </div>
 
-             {/* Solution Cards (Right Side) */}
-             <div className="absolute right-[5%] top-0 w-[40%] space-y-4 lg:space-y-6">
-               {solutionCards.map((card, idx) => {
-                 // Use same widths as problem cards for symmetry
-                 const cardWidths = [85, 75, 65, 55]; // Decreasing widths for funnel effect
-                 const cardWidth = cardWidths[idx] || 55;
+                         {/* Solution Cards (Right Side) - PERFECTLY CENTERED in funnel */}
+            <div className="absolute right-[16%] top-[3%] w-[32%] space-y-4 lg:space-y-5">
+              {solutionCards.map((card, idx) => {
+                // Use same widths as problem cards for symmetry - decreasing sizes
+                const cardWidths = [90, 80, 70, 60]; // Decreasing widths for funnel effect
+                const cardWidth = cardWidths[idx] || 60;
                  
                  return (
-                   <motion.div
-                     key={idx}
-                     className={`glass-card rounded-2xl p-6 lg:p-8 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-[150px] lg:h-[180px] flex items-center justify-center`}
-                     style={{
-                       marginRight: `${100 - cardWidth}%`,
-                       width: `${cardWidth}%`,
-                     }}
-                     initial={{ opacity: 0, x: 50 }}
-                     animate={{ opacity: 1, x: 0 }}
-                     transition={{ delay: idx * 0.2 }}
-                   >
-                     <h3 
-                       className={`text-xl lg:text-2xl xl:text-3xl font-semibold ${card.textColor} text-center leading-tight`}
-                       dangerouslySetInnerHTML={{ __html: card.title }}
-                     />
+                                                                          <motion.div
+                   key={idx}
+                   data-solution-card
+                   className={`glass-card rounded-xl p-5 lg:p-6 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-[130px] lg:h-[150px] flex items-center justify-center`}
+                    style={{
+                      marginRight: `${100 - cardWidth}%`,
+                      width: `${cardWidth}%`,
+                    }}
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.2 }}
+                  >
+                                         <h3 
+                      className={`text-xl lg:text-2xl xl:text-3xl font-semibold ${card.textColor} text-center leading-tight`}
+                      dangerouslySetInnerHTML={{ __html: card.title }}
+                    />
                    </motion.div>
                  );
                })}
              </div>
 
-             {/* Spacer to maintain layout height */}
-             <div className="h-[500px] lg:h-[600px] xl:h-[700px]" />
+                         {/* Spacer to maintain layout height - scaled up for bigger funnel */}
+            <div className="h-[480px] lg:h-[560px] xl:h-[640px]" />
            </div>
 
 
 
-           {/* Mobile Layout - Stacked Vertically */}
-           <div className="block md:hidden space-y-6">
+                     {/* Mobile Layout - Stacked Vertically */}
+          <div className="block md:hidden space-y-6 relative z-10">
              {/* Problems Section */}
              <div>
                <h2 className="text-2xl font-bold text-red-600 dark:text-red-400 text-center mb-4">Problems</h2>
