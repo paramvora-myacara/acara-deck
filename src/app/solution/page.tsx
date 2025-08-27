@@ -40,8 +40,8 @@ const solutionCards: Omit<CardData, 'slug'>[] = [
       "<b>Lenders:</b> Always access the latest information, compare deals side-by-side, and get live AI insights directly from the OM.",
       "<b>Advisors:</b> Use a single repository for all communication and documentation, with a consistent workflow that converts deals in days, not months.",
     ],
-    videoUrl: "https://drive.google.com/file/d/1Q9tFheLjW5pcQPmDKmM9X3cYY52pdiV2/preview",
-    gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
+    videoUrl: "https://drive.google.com/file/d/1iS4vGiqMrPHtEb1y7MiJmP04ixaAHCZq/view?usp=400",
+    gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-400",
     textColor: "text-emerald-900 dark:text-emerald-300",
     accentColor: "text-emerald-700 dark:text-emerald-400",
     dotColor: "bg-emerald-700 dark:bg-emerald-400"
