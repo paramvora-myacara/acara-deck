@@ -530,13 +530,7 @@ export default function HomePage() {
                       </p>
                     </div>
                     
-                    {/* Active indicator */}
-                    {selectedTeamMember === idx && (
-                      <motion.div
-                        className="absolute -right-1 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-indigo-500 dark:bg-indigo-400 rounded-full"
-                        layoutId="activeIndicator"
-                      />
-                    )}
+                    
                   </motion.button>
                 ))}
               </div>
@@ -580,7 +574,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 max-w-2xl mx-auto">
+          <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 w-full max-w-7xl mx-auto">
             <p className="text-lg text-indigo-700 dark:text-indigo-400 mb-4">
               <span className="font-semibold">Current Team Size:</span> 10
             </p>
