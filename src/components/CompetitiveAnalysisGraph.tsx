@@ -29,10 +29,10 @@ const CompetitiveAnalysisGraph = () => {
         {/* Axis Lines & Labels */}
         <div className="absolute top-0 left-1/2 w-0.5 h-full bg-gray-300 dark:bg-gray-600 -translate-x-1/2"></div>
         <div className="absolute top-1/2 left-0 h-0.5 w-full bg-gray-300 dark:bg-gray-600 -translate-y-1/2"></div>
-        <p className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full py-2 text-xs md:text-sm font-semibold text-teal-500">AI-DRIVEN</p>
-        <p className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full py-2 text-xs md:text-sm font-semibold text-red-500">MANUAL</p>
-        <p className="absolute bottom-1/2 left-2 mb-1 text-xs md:text-sm font-semibold text-red-500">FRAGMENTED</p>
-        <p className="absolute bottom-1/2 right-2 mb-1 text-xs md:text-sm font-semibold text-teal-500 text-right">UNIFIED</p>
+        <p className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full py-2 text-sm md:text-base lg:text-lg font-semibold text-teal-500">AI-DRIVEN</p>
+        <p className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full py-2 text-sm md:text-base lg:text-lg font-semibold text-red-500">MANUAL</p>
+        <p className="absolute bottom-1/2 left-2 mb-1 text-sm md:text-base lg:text-lg font-semibold text-red-500">FRAGMENTED</p>
+        <p className="absolute bottom-1/2 right-2 mb-1 text-sm md:text-base lg:text-lg font-semibold text-teal-500 text-right">UNIFIED</p>
         
         {/* Competitor Points */}
         {competitors.map(c => {

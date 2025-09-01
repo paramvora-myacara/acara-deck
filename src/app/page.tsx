@@ -258,7 +258,7 @@ export default function HomePage() {
             </div>
           </div>
           <p className="mt-4 text-lg md:text-xl text-black/70 dark:text-white/70 font-light whitespace-pre-line mb-8">
-            {'AI-Powered. Borrower-Controlled. Commercial Lending, Simplified.'}
+            {'Uber for Commercial Real Estate Lending'}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             {/* Button moved below animation */}
