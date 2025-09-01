@@ -37,7 +37,7 @@ const problemCards: ProblemCard[] = [
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
     textColor: "text-red-600 dark:text-red-400",
-    accentColor: "text-red-600 dark:text-red-400",
+    accentColor: "text-black dark:text-white",
     dotColor: "bg-red-600 dark:bg-red-400"
   },
   {
@@ -49,7 +49,7 @@ const problemCards: ProblemCard[] = [
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
     textColor: "text-red-600 dark:text-red-400",
-    accentColor: "text-red-600 dark:text-red-400",
+    accentColor: "text-black dark:text-white",
     dotColor: "bg-red-600 dark:bg-red-400"
   },
   {
@@ -61,7 +61,7 @@ const problemCards: ProblemCard[] = [
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
     textColor: "text-red-600 dark:text-red-400",
-    accentColor: "text-red-600 dark:text-red-400",
+    accentColor: "text-black dark:text-white",
     dotColor: "bg-red-600 dark:bg-red-400"
   },
   {
@@ -73,7 +73,7 @@ const problemCards: ProblemCard[] = [
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
     textColor: "text-red-600 dark:text-red-400",
-    accentColor: "text-red-600 dark:text-red-400",
+    accentColor: "text-black dark:text-white",
     dotColor: "bg-red-600 dark:bg-red-400"
   },
 ];
@@ -91,7 +91,7 @@ const solutionCards: SolutionCard[] = [
     videoUrl: "/CapMatchDemo720p.mp4",
     gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
     textColor: "text-emerald-600 dark:text-emerald-400",
-    accentColor: "text-emerald-600 dark:text-emerald-400",
+    accentColor: "text-black dark:text-white",
     dotColor: "bg-emerald-600 dark:bg-emerald-400"
   },
   {
@@ -105,7 +105,7 @@ const solutionCards: SolutionCard[] = [
     videoUrl: "https://drive.google.com/file/d/1_Y5xZF_ZG9hDC4-G6PHrfXOOGatv2sR4/preview",
     gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
     textColor: "text-emerald-600 dark:text-emerald-400",
-    accentColor: "text-emerald-600 dark:text-emerald-400",
+    accentColor: "text-black dark:text-white",
     dotColor: "bg-emerald-600 dark:bg-emerald-400"
   },
   {
@@ -119,7 +119,7 @@ const solutionCards: SolutionCard[] = [
     videoUrl: "https://drive.google.com/file/d/1iS4vGiqMrPHtEb1y7MiJmP04ixaAHCZq/preview",
     gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
     textColor: "text-emerald-600 dark:text-emerald-400",
-    accentColor: "text-emerald-600 dark:text-emerald-400",
+    accentColor: "text-black dark:text-white",
     dotColor: "bg-emerald-600 dark:bg-emerald-400"
   },
   {
@@ -133,7 +133,7 @@ const solutionCards: SolutionCard[] = [
     videoUrl: "/CapMatchDemo720p.mp4",
     gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
     textColor: "text-emerald-600 dark:text-emerald-400",
-    accentColor: "text-emerald-600 dark:text-emerald-400",
+    accentColor: "text-black dark:text-white",
     dotColor: "bg-emerald-600 dark:bg-emerald-400"
   },
 ];

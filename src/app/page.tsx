@@ -50,7 +50,7 @@ const problemCardsForProblemsSection = [
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
     textColor: "text-red-600 dark:text-red-400",
-    accentColor: "text-red-600 dark:text-red-400"
+    accentColor: "text-black dark:text-white"
   },
   {
     id: 1,
@@ -62,7 +62,7 @@ const problemCardsForProblemsSection = [
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
     textColor: "text-red-600 dark:text-red-400",
-    accentColor: "text-red-600 dark:text-red-400"
+    accentColor: "text-black dark:text-white"
   },
   {
     id: 2,
@@ -74,7 +74,7 @@ const problemCardsForProblemsSection = [
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
     textColor: "text-red-600 dark:text-red-400",
-    accentColor: "text-red-600 dark:text-red-400"
+    accentColor: "text-black dark:text-white"
   },
   {
     id: 3,
@@ -86,8 +86,8 @@ const problemCardsForProblemsSection = [
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
     textColor: "text-red-600 dark:text-red-400",
-    accentColor: "text-red-600 dark:text-red-400"
-  }
+    accentColor: "text-black dark:text-white"
+  },
 ];
 
 // Market cards data
@@ -419,12 +419,12 @@ export default function HomePage() {
                 transition={{ delay: idx * 0.2 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-3xl font-semibold text-purple-900 dark:text-purple-300 mb-8">
+                <h3 className="text-3xl font-semibold text-black dark:text-white mb-8">
                   {card.title}
                 </h3>
                 <ul className="list-disc list-outside space-y-5 pl-8 text-left">
                   {card.content.map((item, itemIdx) => (
-                    <li key={itemIdx} className="text-xl text-purple-700 dark:text-purple-400 leading-relaxed" 
+                    <li key={itemIdx} className="text-xl text-black dark:text-white leading-relaxed" 
                         dangerouslySetInnerHTML={{ __html: item }} />
                   ))}
                 </ul>
@@ -439,7 +439,7 @@ export default function HomePage() {
               transition={{ delay: 0.6 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-3xl font-semibold text-purple-900 dark:text-purple-300 mb-8">
+              <h3 className="text-3xl font-semibold text-black dark:text-white mb-8">
                 We Own the Best Spot
               </h3>
               <CompetitiveAnalysisGraph />
