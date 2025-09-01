@@ -549,13 +549,13 @@ export default function HomePage() {
             {/* Spotlight Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 mb-12">
               {/* Navigation Tabs - 40% width */}
-              <FadeIn className="lg:col-span-2 flex lg:flex-col justify-center items-center">
-                <div className="flex lg:flex-col gap-4 w-full justify-center">
+              <FadeIn className="lg:col-span-2 flex lg:flex-col justify-center items-center order-2 lg:order-1">
+                <div className="flex flex-col gap-4 w-full justify-center">
                   {teamMembers.map((member, idx) => (
                     <motion.button
                       key={idx}
                       onClick={() => handleTeamMemberSelect(idx)}
-                      className={`relative group p-4 md:p-6 rounded-2xl transition-all duration-300 border-2 w-full max-w-xs lg:max-w-none ${
+                      className={`relative group p-4 md:p-6 rounded-2xl transition-all duration-300 border-2 w-full ${
                         selectedTeamMember === idx
                           ? 'bg-gradient-to-r from-indigo-100 to-blue-100 dark:from-indigo-900/40 dark:to-blue-900/40 border-indigo-300 dark:border-indigo-500 shadow-lg transform scale-105'
                           : 'bg-white/50 dark:bg-gray-800/30 border-gray-200 dark:border-gray-600 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-blue-50 dark:hover:from-indigo-900/20 dark:hover:to-blue-900/20 hover:border-indigo-200 dark:hover:border-indigo-600 hover:scale-102'
@@ -589,7 +589,7 @@ export default function HomePage() {
               </FadeIn>
 
               {/* Central Spotlight Card - 60% width */}
-              <div className="lg:col-span-3">
+              <div className="lg:col-span-3 order-1 lg:order-2">
                 <motion.div
                   key={selectedTeamMember}
                   className="glass-card rounded-3xl p-8 md:p-12 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 border border-gray-200 dark:border-white/20 shadow-lg dark:shadow-2xl shadow-gray-200/50 dark:shadow-white/10 min-h-[500px] md:min-h-[600px] flex flex-col justify-center"
