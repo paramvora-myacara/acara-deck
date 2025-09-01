@@ -160,10 +160,44 @@ const teamMembers = [
   }
 ];
 
+// Helper to bold notable figures and notable company names in bios
+function emphasizeNotables(text: string): string {
+  const companies = [
+    'eXp Realty',
+    'CapMatch',
+    'OZ Listings',
+    'ACARA Management',
+    'Greystone',
+    'Cushman & Wakefield',
+    'CBRE',
+    'Lucosky Brookman LLP',
+    'SEC',
+    'Solarcheckr',
+    'The Cool Down'
+  ];
+
+  // Bold currency amounts, large numbers with B/M/K, and percentages
+  let result = text
+    .replace(/\$\s?\d{1,3}(?:[,\d]{0,3})*(?:\.\d+)?\s?(?:B|M|K|\+)?/g, match => `<b>${match}</b>`)
+    .replace(/\b\d+(?:\.\d+)?\s?(?:B|M|K)\b/g, match => `<b>${match}</b>`)
+    .replace(/\b\d{1,3}(?:,\d{3})+\b/g, match => `<b>${match}</b>`)
+    .replace(/\b\d+%\b/g, match => `<b>${match}</b>`)
+    .replace(/\b\d{1,2}\+\s?years?\b/gi, match => `<b>${match}</b>`);
+
+  // Bold notable company/organization names
+  for (const name of companies) {
+    const pattern = new RegExp(`(\\b${name.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b)`, 'g');
+    result = result.replace(pattern, '<b>$1</b>');
+  }
+
+  return result;
+}
+
 export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProblem, setSelectedProblem] = useState(0);
   const [selectedCard, setSelectedCard] = useState<{ type: 'problem' | 'solution', index: number }>({ type: 'solution', index: 0 });
+  const [selectedTeamMember, setSelectedTeamMember] = useState(0);
 
   const handleProblemSelect = (index: number) => {
     setSelectedProblem(index);
@@ -171,6 +205,10 @@ export default function HomePage() {
 
   const handleCardSelect = (type: 'problem' | 'solution', index: number) => {
     setSelectedCard({ type, index });
+  };
+
+  const handleTeamMemberSelect = (index: number) => {
+    setSelectedTeamMember(index);
   };
 
   return (
@@ -458,29 +496,88 @@ export default function HomePage() {
             $6B+ in combined transaction volume and 20+ years of expertise in real estate, lending, and technology.
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {teamMembers.map((member, idx) => (
+          {/* Spotlight Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 mb-12">
+            {/* Navigation Tabs - 40% width */}
+            <div className="lg:col-span-2 flex lg:flex-col justify-center items-center">
+              <div className="flex lg:flex-col gap-4 w-full justify-center">
+                {teamMembers.map((member, idx) => (
+                  <motion.button
+                    key={idx}
+                    onClick={() => handleTeamMemberSelect(idx)}
+                    className={`relative group p-4 md:p-6 rounded-2xl transition-all duration-300 border-2 w-full max-w-xs lg:max-w-none ${
+                      selectedTeamMember === idx
+                        ? 'bg-gradient-to-r from-indigo-100 to-blue-100 dark:from-indigo-900/40 dark:to-blue-900/40 border-indigo-300 dark:border-indigo-500 shadow-lg transform scale-105'
+                        : 'bg-white/50 dark:bg-gray-800/30 border-gray-200 dark:border-gray-600 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-blue-50 dark:hover:from-indigo-900/20 dark:hover:to-blue-900/20 hover:border-indigo-200 dark:hover:border-indigo-600 hover:scale-102'
+                    }`}
+                    whileHover={{ scale: selectedTeamMember === idx ? 1.05 : 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <div className="text-left">
+                      <h4 className={`text-lg md:text-xl font-bold mb-1 ${
+                        selectedTeamMember === idx 
+                          ? 'text-indigo-900 dark:text-indigo-200' 
+                          : 'text-gray-800 dark:text-gray-200'
+                      }`}>
+                        {member.name}
+                      </h4>
+                      <p className={`text-sm md:text-base font-medium ${
+                        selectedTeamMember === idx 
+                          ? 'text-indigo-700 dark:text-indigo-300' 
+                          : 'text-gray-600 dark:text-gray-400'
+                      }`}>
+                        {member.role}
+                      </p>
+                    </div>
+                    
+                    {/* Active indicator */}
+                    {selectedTeamMember === idx && (
+                      <motion.div
+                        className="absolute -right-1 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-indigo-500 dark:bg-indigo-400 rounded-full"
+                        layoutId="activeIndicator"
+                      />
+                    )}
+                  </motion.button>
+                ))}
+              </div>
+            </div>
+
+            {/* Central Spotlight Card - 60% width */}
+            <div className="lg:col-span-3">
               <motion.div
-                key={idx}
-                className="glass-card rounded-3xl p-6 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.1 }}
-                viewport={{ once: true }}
+                key={selectedTeamMember}
+                className="glass-card rounded-3xl p-8 md:p-12 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 border border-gray-200 dark:border-white/20 shadow-lg dark:shadow-2xl shadow-gray-200/50 dark:shadow-white/10 min-h-[500px] md:min-h-[600px] flex flex-col justify-center"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
               >
-                <h3 className="text-xl font-semibold text-indigo-900 dark:text-indigo-300 mb-2">
-                  {member.name}
-                </h3>
-                <p className="text-indigo-700 dark:text-indigo-400 mb-4 font-medium">
-                  {member.role}
-                </p>
-                <ul className="list-disc list-outside space-y-2 pl-6 text-sm text-indigo-700 dark:text-indigo-400">
-                  {member.content.map((item, itemIdx) => (
-                    <li key={itemIdx}>{item}</li>
-                  ))}
-                </ul>
+                <div className="text-center mb-8">
+                  <h3 className="text-3xl md:text-4xl font-bold text-indigo-900 dark:text-indigo-200 mb-3">
+                    {teamMembers[selectedTeamMember].name}
+                  </h3>
+                  <p className="text-xl md:text-2xl text-indigo-700 dark:text-indigo-300 font-semibold">
+                    {teamMembers[selectedTeamMember].role}
+                  </p>
+                </div>
+                
+                <div className="text-left max-w-4xl mx-auto">
+                  <ul className="space-y-6">
+                    {teamMembers[selectedTeamMember].content.map((item, itemIdx) => (
+                      <motion.li 
+                        key={itemIdx} 
+                        className="text-lg md:text-xl text-black dark:text-white leading-relaxed font-light flex items-start"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: itemIdx * 0.1 + 0.2 }}
+                      >
+                        <span className="w-2 h-2 bg-indigo-500 dark:bg-indigo-400 rounded-full mt-3 mr-4 flex-shrink-0"></span>
+                        <span dangerouslySetInnerHTML={{ __html: emphasizeNotables(item) }} />
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
               </motion.div>
-            ))}
+            </div>
           </div>
 
           <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 max-w-2xl mx-auto">
