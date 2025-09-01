@@ -223,6 +223,9 @@ export default function HomePage() {
   const [selectedProblem, setSelectedProblem] = useState(0);
   const [selectedCard, setSelectedCard] = useState<{ type: 'problem' | 'solution', index: number }>({ type: 'solution', index: 0 });
   const [selectedTeamMember, setSelectedTeamMember] = useState(0);
+  const [expandedMarketCards, setExpandedMarketCards] = useState<Record<string, boolean>>({
+    "Multiple Revenue Streams": true
+  });
 
   const handleProblemSelect = (index: number) => {
     setSelectedProblem(index);
@@ -234,6 +237,10 @@ export default function HomePage() {
 
   const handleTeamMemberSelect = (index: number) => {
     setSelectedTeamMember(index);
+  };
+
+  const toggleMarketCard = (title: string) => {
+    setExpandedMarketCards(prev => ({ ...prev, [title]: !prev[title] }));
   };
 
   return (
@@ -492,26 +499,51 @@ export default function HomePage() {
             </h2>
             <div className="space-y-8">
               {/* First 3 cards stacked vertically */}
-              {marketCards.slice(0, 3).map((card, idx) => (
-                <motion.div
-                  key={idx}
-                  className="glass-card rounded-3xl p-10 bg-gradient-to-br from-purple-50 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 max-w-6xl mx-auto"
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.2 }}
-                  viewport={{ once: true }}
-                >
-                  <h3 className="text-3xl font-semibold text-black dark:text-white mb-8">
-                    {card.title}
-                  </h3>
-                  <ul className="list-disc list-outside space-y-5 pl-8 text-left">
-                    {card.content.map((item, itemIdx) => (
-                      <li key={itemIdx} className="text-xl text-black dark:text-white leading-relaxed" 
-                          dangerouslySetInnerHTML={{ __html: item }} />
-                    ))}
-                  </ul>
-                </motion.div>
-              ))}
+              {marketCards.slice(0, 3).map((card, idx) => {
+                const isExpandable = card.title === "Massive Market" || card.title === "How We'll Use Funding" || card.title === "Multiple Revenue Streams";
+                const isExpanded = !!expandedMarketCards[card.title];
+                return (
+                  <motion.div
+                    key={idx}
+                    className="glass-card rounded-3xl p-0 bg-gradient-to-br from-purple-50 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 max-w-6xl mx-auto overflow-hidden"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.2 }}
+                    viewport={{ once: true }}
+                  >
+                    <button
+                      type="button"
+                      className={`w-full flex items-center justify-between text-left px-10 py-8 ${isExpandable ? 'cursor-pointer' : 'cursor-default'}`}
+                      onClick={() => isExpandable && toggleMarketCard(card.title)}
+                      aria-expanded={isExpanded}
+                      aria-controls={`market-card-content-${idx}`}
+                    >
+                      <h3 className="text-3xl font-semibold text-black dark:text-white">
+                        {card.title}
+                      </h3>
+                      {isExpandable && (
+                        <ChevronDown
+                          className={`w-6 h-6 text-gray-600 dark:text-gray-300 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
+                        />
+                      )}
+                    </button>
+
+                    {/* Content */}
+                    {(!isExpandable || isExpanded) && (
+                      <div id={`market-card-content-${idx}`} className="px-10 pb-10">
+                        <div className="glass-card rounded-2xl p-6 bg-white/70 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 shadow-sm">
+                          <ul className="list-disc list-outside space-y-5 pl-8 text-left">
+                            {card.content.map((item, itemIdx) => (
+                              <li key={itemIdx} className="text-xl text-black dark:text-white leading-relaxed" 
+                                  dangerouslySetInnerHTML={{ __html: item }} />
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    )}
+                  </motion.div>
+                );
+              })}
 
               {/* 4th card with competitive analysis graph */}
               <motion.div
