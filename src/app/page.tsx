@@ -365,60 +365,82 @@ export default function HomePage() {
 
       {/* Problems Section */}
       <section className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
-        <div className="w-full max-w-7xl mx-auto">
+        <div className="w-full max-w-6xl mx-auto">
           <SectionCard>
             <FadeIn>
               <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white text-center mb-12">
                 Why CRE Lending is Broken
               </h2>
             </FadeIn>
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-              {/* Left 40% - Problem Funnel */}
-              <div className="lg:col-span-2 space-y-4">
-                {problemCardsForProblemsSection.map((card, idx) => {
-                  const cardWidths = [90, 80, 70, 60];
-                  const cardWidth = cardWidths[idx] || 60;
-
-                  return (
-                    <motion.div
-                      key={idx}
-                      onClick={() => handleProblemSelect(idx)}
-                      className={`relative glass-card rounded-xl p-5 lg:p-6 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-[130px] lg:h-[150px] flex items-center justify-center cursor-pointer hover:scale-105 transition-transform ${
-                        selectedProblem === idx ? 'ring-4 ring-red-400 dark:ring-red-500' : ''
-                      }`}
-                      style={{
-                        marginLeft: `${100 - cardWidth}%`,
-                        width: `${cardWidth}%`,
-                      }}
-                      initial={{ opacity: 0, y: 24 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.2 }}
-                      transition={{ delay: idx * 0.2 }}
+            
+            {/* Mobile-Friendly Expandable Cards */}
+            <div className="space-y-4 md:space-y-6">
+              {problemCardsForProblemsSection.map((card, idx) => {
+                const isExpanded = selectedProblem === idx;
+                
+                return (
+                  <motion.div
+                    key={idx}
+                    className="glass-card rounded-3xl overflow-hidden bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5"
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ delay: idx * 0.1 }}
+                  >
+                    {/* Header - Always Visible */}
+                    <button
+                      onClick={() => handleProblemSelect(isExpanded ? -1 : idx)}
+                      className="w-full p-6 md:p-8 text-left hover:bg-red-100/50 dark:hover:bg-red-900/10 transition-colors duration-200 flex items-center justify-between"
                     >
-                      <h3 className={`text-xl lg:text-2xl xl:text-3xl font-semibold ${card.textColor} text-center leading-tight`}>
+                      <h3 className={`text-2xl md:text-3xl font-semibold ${card.textColor} leading-tight`}>
                         {card.title}
                       </h3>
-                    </motion.div>
-                  );
-                })}
-              </div>
+                      <ChevronDown 
+                        className={`w-6 h-6 md:w-7 md:h-7 ${card.textColor} transition-transform duration-200 flex-shrink-0 ml-4 ${
+                          isExpanded ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
 
-              {/* Right 40% - Content Display */}
-              <FadeIn className="lg:col-span-3">
-                <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full">
-                  <h3 className={`text-3xl font-semibold ${problemCardsForProblemsSection[selectedProblem].textColor} mb-6 text-center`}>
-                    {problemCardsForProblemsSection[selectedProblem].title}
-                  </h3>
-                  <ul className="list-disc list-outside space-y-4 pl-6">
-                    {problemCardsForProblemsSection[selectedProblem].content.map((item, itemIdx) => (
-                      <li key={itemIdx} className={`text-lg font-light ${problemCardsForProblemsSection[selectedProblem].accentColor}`}>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </FadeIn>
+                    {/* Expandable Content */}
+                    <motion.div
+                      initial={false}
+                      animate={{ 
+                        height: isExpanded ? 'auto' : 0,
+                        opacity: isExpanded ? 1 : 0 
+                      }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 md:px-8 pb-6 md:pb-8 border-t border-red-200 dark:border-red-800/30">
+                        <ul className="list-disc list-outside space-y-3 md:space-y-4 pl-6 pt-6">
+                          {card.content.map((item, itemIdx) => (
+                            <motion.li 
+                              key={itemIdx} 
+                              className={`text-base md:text-lg font-light ${card.accentColor} leading-relaxed`}
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: isExpanded ? 1 : 0, x: isExpanded ? 0 : -10 }}
+                              transition={{ delay: itemIdx * 0.1 + 0.1 }}
+                            >
+                              {item}
+                            </motion.li>
+                          ))}
+                        </ul>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                );
+              })}
             </div>
+
+            {/* Call to Action */}
+            <FadeIn delay={0.4}>
+              <div className="mt-12 text-center">
+                <p className="text-xl md:text-2xl text-black/70 dark:text-white/70 font-light">
+                  These problems cost the industry <span className="font-bold text-red-600 dark:text-red-400">billions</span> annually
+                </p>
+              </div>
+            </FadeIn>
           </SectionCard>
         </div>
       </section>
