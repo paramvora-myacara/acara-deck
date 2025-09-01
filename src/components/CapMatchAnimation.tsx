@@ -56,7 +56,21 @@ interface AnimationState {
   phase: 'idle' | 'moving-to-center' | 'moving-horizontal' | 'connecting' | 'connected' | 'resetting';
 }
 
-export default function CapMatchAnimation() {
+export default function CapMatchAnimation({
+  height,
+  heightRatio = 0.5,
+  maxHeight = 520,
+  iconScale = 1,
+  className = '',
+  lineThickness = 4,
+}: {
+  height?: number;
+  heightRatio?: number;
+  maxHeight?: number;
+  iconScale?: number;
+  className?: string;
+  lineThickness?: number;
+} = {}) {
   // Add layout ready state
   const [layoutReady, setLayoutReady] = useState(false);
   const [animationVisible, setAnimationVisible] = useState(false);
@@ -86,8 +100,10 @@ export default function CapMatchAnimation() {
         const rect = containerRef.current.getBoundingClientRect();
         // Use a fixed, reasonable height instead of dynamic viewport calculation
         // This prevents layout shifts when the component loads
-        const fixedHeight = Math.max(280, Math.min(400, window.innerHeight * 0.4));
-        const newDimensions = { width: rect.width, height: fixedHeight };
+        const computedFixed = typeof height === 'number'
+          ? height
+          : Math.max(280, Math.min(maxHeight, window.innerHeight * heightRatio));
+        const newDimensions = { width: rect.width, height: computedFixed };
         setContainerDimensions(newDimensions);
         
         // Mark layout as ready when we have valid dimensions
@@ -104,7 +120,7 @@ export default function CapMatchAnimation() {
     updateDimensions();
     window.addEventListener('resize', updateDimensions);
     return () => window.removeEventListener('resize', updateDimensions);
-  }, [layoutReady]);
+  }, [layoutReady, height, heightRatio, maxHeight]);
 
   useEffect(() => {
     // Don't start animation until layout is ready and visible
@@ -219,9 +235,9 @@ export default function CapMatchAnimation() {
   const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 
   // Responsive sizing – boundary smaller ratio for mobile and prevents oversized boxes
-  const iconBoundarySize = clamp(containerDimensions.height / 7, 40, 96);
+  const iconBoundarySize = clamp(containerDimensions.height / 7, 40, 96) * iconScale;
   const iconSize       = clamp(iconBoundarySize * 0.6, 18, iconBoundarySize - 16);
-  const staticIconSize = clamp(iconBoundarySize * 0.45, 18, 42);
+  const staticIconSize = clamp(iconBoundarySize * 0.45, 18, 42 * iconScale);
 
   // Pixel positions for icons based on percentage coordinates and container size
   const leftIconPixelPos = {
@@ -251,15 +267,18 @@ export default function CapMatchAnimation() {
       y: centerToCenter.y / distance
     };
     
+    // Slight inset to ensure the line visually meets the icon bounds
+    const inset = Math.max(1, Math.min(3, iconBoundarySize * 0.05));
+    
     // Calculate connection points at boundary edges
     const startPoint = {
-      x: leftIconPixelPos.x + direction.x * (iconBoundarySize / 2),
-      y: leftIconPixelPos.y + direction.y * (iconBoundarySize / 2)
+      x: leftIconPixelPos.x + direction.x * (iconBoundarySize / 2 - inset),
+      y: leftIconPixelPos.y + direction.y * (iconBoundarySize / 2 - inset)
     };
     
     const endPoint = {
-      x: rightIconPixelPos.x - direction.x * (iconBoundarySize / 2),
-      y: rightIconPixelPos.y - direction.y * (iconBoundarySize / 2)
+      x: rightIconPixelPos.x - direction.x * (iconBoundarySize / 2 - inset),
+      y: rightIconPixelPos.y - direction.y * (iconBoundarySize / 2 - inset)
     };
     
     return { start: startPoint, end: endPoint };
@@ -278,7 +297,7 @@ export default function CapMatchAnimation() {
       ref={containerRef}
       className={`w-full mt-8 relative overflow-hidden transition-opacity duration-500 ${
         animationVisible ? 'opacity-100' : 'opacity-0'
-      }`}
+      } ${className}`}
       style={{ 
         height: containerDimensions.height > 0 
           ? `${containerDimensions.height}px` 
@@ -381,7 +400,8 @@ export default function CapMatchAnimation() {
                 x2={connectionPoints.end.x}
                 y2={connectionPoints.end.y}
                 stroke={animationState.connectionComplete ? '#10b981' : '#3b82f6'}
-                strokeWidth="3"
+                strokeWidth={lineThickness}
+                strokeLinecap="round"
                 className="transition-colors duration-500"
                 style={{
                   strokeDasharray: lineLength > 0 ? `${lineLength}` : '1000',

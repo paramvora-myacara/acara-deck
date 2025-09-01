@@ -261,21 +261,25 @@ export default function HomePage() {
             {'AI-Powered. Borrower-Controlled. Commercial Lending, Simplified.'}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a 
-              href="https://capmatch.vercel.app/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2"
-            >
-              <Play className="w-5 h-5" />
-              View Live Demo
-            </a>
+            {/* Button moved below animation */}
           </div>
-
-          {/* Animation below buttons */}
-          <div className="mt-6">
-            <CapMatchAnimation />
-          </div>
+        </div>
+        
+        {/* Animation */}
+        <div className="mt-7 w-full max-w-4xl mx-auto">
+          <CapMatchAnimation heightRatio={0.48} maxHeight={520} iconScale={1.1} lineThickness={3} />
+        </div>
+        {/* View Live Demo Button now below animation */}
+        <div className="mt-6 flex justify-center">
+          <a 
+            href="https://capmatch.vercel.app/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2"
+          >
+            <Play className="w-5 h-5" />
+            View Live Demo
+          </a>
         </div>
         
         <motion.div 
