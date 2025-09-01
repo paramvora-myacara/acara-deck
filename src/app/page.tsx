@@ -8,6 +8,31 @@ import { ChevronDown, Play, ExternalLink, MessageCircle } from "lucide-react";
 import ContactUsModal from "@/components/ContactUsModal";
 import ProblemsAndSolutionsFunnel, { problemCards, solutionCards, type ProblemCard, type SolutionCard } from "@/components/ProblemsAndSolutionsFunnel";
 import CompetitiveAnalysisGraph from "@/components/CompetitiveAnalysisGraph";
+import CapMatchAnimation from "@/components/CapMatchAnimation";
+import SectionCard from "@/components/SectionCard";
+
+// Helper: reusable fade-in on scroll wrapper
+const FadeIn = ({
+  children,
+  delay = 0,
+  y = 24,
+  className = ""
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  y?: number;
+  className?: string;
+}) => (
+  <motion.div
+    className={className}
+    initial={{ opacity: 0, y }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, ease: "easeOut", delay }}
+    viewport={{ once: true, amount: 0.2 }}
+  >
+    {children}
+  </motion.div>
+);
 
 // Helper function for video component to handle Google Drive URLs
 function DriveVideo({ previewUrl }: { previewUrl: string }) {
@@ -212,7 +237,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black">
+    <div className="min-h-screen">
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8 pt-16 relative">
         <div className="text-center w-full max-w-7xl mx-auto">
@@ -245,15 +270,11 @@ export default function HomePage() {
               <Play className="w-5 h-5" />
               View Live Demo
             </a>
-            <a 
-              href="https://capmatch.vercel.app/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="px-8 py-3 border border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 font-semibold rounded-full transition-all duration-300 hover:scale-105 flex items-center gap-2"
-            >
-              <ExternalLink className="w-5 h-5" />
-              Visit Site
-            </a>
+          </div>
+
+          {/* Animation below buttons */}
+          <div className="mt-6">
+            <CapMatchAnimation />
           </div>
         </div>
         
@@ -269,344 +290,380 @@ export default function HomePage() {
       {/* CRE Education Section */}
       <section className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
         <div className="w-full max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-8">
-            Understanding the CRE Market
-          </h2>
-          <p className="text-xl md:text-2xl text-black/70 dark:text-white/70 mb-12 max-w-4xl mx-auto">
-            In Commercial Real Estate, there are 3 key players: <span className="font-semibold">Borrowers</span> who need capital, <span className="font-semibold">Lenders</span> who have capital, and <span className="font-semibold">Advisors</span> who connect them.
-          </p>
-          
-          {/* Horizontal Timeline */}
-          <div className="grid grid-cols-4 gap-4 md:gap-8 mb-12">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">1</span>
-              </div>
-              <h3 className="font-semibold text-lg">Borrower Needs Capital</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">For property acquisition, refinancing, or development</p>
+          <SectionCard>
+            <FadeIn>
+              <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-8">
+                Understanding the CRE Market
+              </h2>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <p className="text-xl md:text-2xl text-black/70 dark:text-white/70 mb-12 max-w-4xl mx-auto">
+                In Commercial Real Estate, there are 3 key players: <span className="font-semibold">Borrowers</span> who need capital, <span className="font-semibold">Lenders</span> who have capital, and <span className="font-semibold">Advisors</span> who connect them.
+              </p>
+            </FadeIn>
+            {/* Horizontal Timeline */}
+            <div className="grid grid-cols-4 gap-4 md:gap-8 mb-12">
+              <FadeIn>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">1</span>
+                  </div>
+                  <h3 className="font-semibold text-lg">Borrower Needs Capital</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">For property acquisition, refinancing, or development</p>
+                </div>
+              </FadeIn>
+              <FadeIn delay={0.1}>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">2</span>
+                  </div>
+                  <h3 className="font-semibold text-lg">Advisor Searches</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Scours personal network for potential lenders</p>
+                </div>
+              </FadeIn>
+              <FadeIn delay={0.2}>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">3</span>
+                  </div>
+                  <h3 className="font-semibold text-lg">Lender Evaluates</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Reviews deal based on limited information</p>
+                </div>
+              </FadeIn>
+              <FadeIn delay={0.3}>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">4</span>
+                  </div>
+                  <h3 className="font-semibold text-lg">Deal Closes</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Or doesn't - 50% fail due to poor matching</p>
+                </div>
+              </FadeIn>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">2</span>
-              </div>
-              <h3 className="font-semibold text-lg">Advisor Searches</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Scours personal network for potential lenders</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">3</span>
-              </div>
-              <h3 className="font-semibold text-lg">Lender Evaluates</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Reviews deal based on limited information</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">4</span>
-              </div>
-              <h3 className="font-semibold text-lg">Deal Closes</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Or doesn't - 50% fail due to poor matching</p>
-            </div>
-          </div>
 
-          <div className="bg-gray-50 dark:bg-gray-900/50 rounded-2xl p-8 max-w-4xl mx-auto">
-            <p className="text-lg text-gray-700 dark:text-gray-300">
-              <span className="font-semibold">Current Reality:</span> This process takes 2-4 weeks, relies on personal networks, and fails half the time. In a $4.8 trillion market, this inefficiency represents billions in lost opportunities.
-            </p>
-          </div>
+            <FadeIn>
+              <div className="bg-gray-50 dark:bg-gray-900/50 rounded-2xl p-8 max-w-4xl mx-auto">
+                <p className="text-lg text-gray-700 dark:text-gray-300">
+                  <span className="font-semibold">Current Reality:</span> This process takes 2-4 weeks, relies on personal networks, and fails half the time. In a $4.8 trillion market, this inefficiency represents billions in lost opportunities.
+                </p>
+              </div>
+            </FadeIn>
+          </SectionCard>
         </div>
       </section>
 
       {/* Problems Section */}
       <section className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
         <div className="w-full max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white text-center mb-12">
-            Why CRE Lending is Broken
-          </h2>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-            {/* Left 40% - Problem Funnel */}
-            <div className="lg:col-span-2 space-y-4">
-              {problemCardsForProblemsSection.map((card, idx) => {
-                const cardWidths = [90, 80, 70, 60];
-                const cardWidth = cardWidths[idx] || 60;
-                
-                return (
-                  <motion.div
-                    key={idx}
-                    onClick={() => handleProblemSelect(idx)}
-                    className={`relative glass-card rounded-xl p-5 lg:p-6 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-[130px] lg:h-[150px] flex items-center justify-center cursor-pointer hover:scale-105 transition-transform ${
-                      selectedProblem === idx ? 'ring-4 ring-red-400 dark:ring-red-500' : ''
-                    }`}
-                    style={{
-                      marginLeft: `${100 - cardWidth}%`,
-                      width: `${cardWidth}%`,
-                    }}
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: idx * 0.2 }}
-                  >
-                    <h3 className={`text-xl lg:text-2xl xl:text-3xl font-semibold ${card.textColor} text-center leading-tight`}>
-                      {card.title}
-                    </h3>
-                  </motion.div>
-                );
-              })}
-            </div>
+          <SectionCard>
+            <FadeIn>
+              <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white text-center mb-12">
+                Why CRE Lending is Broken
+              </h2>
+            </FadeIn>
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+              {/* Left 40% - Problem Funnel */}
+              <div className="lg:col-span-2 space-y-4">
+                {problemCardsForProblemsSection.map((card, idx) => {
+                  const cardWidths = [90, 80, 70, 60];
+                  const cardWidth = cardWidths[idx] || 60;
 
-            {/* Right 40% - Content Display */}
-            <div className="lg:col-span-3">
-              <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full">
-                <h3 className={`text-3xl font-semibold ${problemCardsForProblemsSection[selectedProblem].textColor} mb-6 text-center`}>
-                  {problemCardsForProblemsSection[selectedProblem].title}
-                </h3>
-                <ul className="list-disc list-outside space-y-4 pl-6">
-                  {problemCardsForProblemsSection[selectedProblem].content.map((item, itemIdx) => (
-                    <li key={itemIdx} className={`text-lg font-light ${problemCardsForProblemsSection[selectedProblem].accentColor}`}>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                  return (
+                    <motion.div
+                      key={idx}
+                      onClick={() => handleProblemSelect(idx)}
+                      className={`relative glass-card rounded-xl p-5 lg:p-6 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-[130px] lg:h-[150px] flex items-center justify-center cursor-pointer hover:scale-105 transition-transform ${
+                        selectedProblem === idx ? 'ring-4 ring-red-400 dark:ring-red-500' : ''
+                      }`}
+                      style={{
+                        marginLeft: `${100 - cardWidth}%`,
+                        width: `${cardWidth}%`,
+                      }}
+                      initial={{ opacity: 0, y: 24 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ delay: idx * 0.2 }}
+                    >
+                      <h3 className={`text-xl lg:text-2xl xl:text-3xl font-semibold ${card.textColor} text-center leading-tight`}>
+                        {card.title}
+                      </h3>
+                    </motion.div>
+                  );
+                })}
               </div>
+
+              {/* Right 40% - Content Display */}
+              <FadeIn className="lg:col-span-3">
+                <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full">
+                  <h3 className={`text-3xl font-semibold ${problemCardsForProblemsSection[selectedProblem].textColor} mb-6 text-center`}>
+                    {problemCardsForProblemsSection[selectedProblem].title}
+                  </h3>
+                  <ul className="list-disc list-outside space-y-4 pl-6">
+                    {problemCardsForProblemsSection[selectedProblem].content.map((item, itemIdx) => (
+                      <li key={itemIdx} className={`text-lg font-light ${problemCardsForProblemsSection[selectedProblem].accentColor}`}>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </FadeIn>
             </div>
-          </div>
+          </SectionCard>
         </div>
       </section>
 
       {/* Solutions Section */}
       <section className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
         <div className="w-full max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white text-center mb-8 md:mb-12">
-            How CapMatch Fixes Everything
-          </h2>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 md:gap-8">
-            {/* Left 40% - Complete Funnel using the component */}
-            <div className="lg:col-span-2 h-[calc(100vh-8rem)] md:h-[calc(100vh-10rem)] lg:h-[calc(100vh-12rem)]">
-              <div className="glass-card rounded-3xl p-6 md:p-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900/20 dark:to-gray-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full">
-                <ProblemsAndSolutionsFunnel 
-                  onCardSelect={handleCardSelect}
-                  selectedCard={selectedCard}
-                />
-              </div>
-            </div>
+          <SectionCard>
+            <FadeIn>
+              <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white text-center mb-8 md:mb-12">
+                How CapMatch Fixes Everything
+              </h2>
+            </FadeIn>
 
-            {/* Right 40% - Content Display */}
-            <div className="lg:col-span-3 h-[calc(100vh-8rem)] md:h-[calc(100vh-10rem)] lg:h-[calc(100vh-12rem)]">
-              <div className={`glass-card rounded-3xl p-6 md:p-8 bg-gradient-to-br ${
-                selectedCard.type === 'problem' 
-                  ? 'from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20' 
-                  : 'from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20'
-              } border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full`}>
-                {selectedCard.type === 'problem' ? (
-                  <>
-                    <h3 className={`text-2xl md:text-3xl font-semibold ${problemCards[selectedCard.index].textColor} mb-4 md:mb-6 text-center`}>
-                      {problemCards[selectedCard.index].title}
-                    </h3>
-                    <ul className="list-disc list-outside space-y-3 md:space-y-4 pl-6">
-                      {problemCards[selectedCard.index].content.map((item, itemIdx) => (
-                        <li key={itemIdx} className={`text-base md:text-lg font-light ${problemCards[selectedCard.index].accentColor}`}>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                ) : (
-                  <>
-                    <h3 className={`text-2xl md:text-3xl font-semibold ${solutionCards[selectedCard.index].textColor} mb-4 md:mb-6 text-center`}>
-                      {solutionCards[selectedCard.index].title}
-                    </h3>
-                    {solutionCards[selectedCard.index].role && (
-                      <p className={`text-lg md:text-xl font-medium ${solutionCards[selectedCard.index].accentColor} mb-4 md:mb-6 text-center`}>
-                        {solutionCards[selectedCard.index].role}
-                      </p>
-                    )}
-                    <ul className="list-disc list-outside space-y-3 md:space-y-4 pl-6 mb-4 md:mb-6">
-                      {solutionCards[selectedCard.index].content.map((item, itemIdx) => (
-                        <li key={itemIdx} className={`text-base md:text-lg font-light ${solutionCards[selectedCard.index].accentColor}`} 
-                            dangerouslySetInnerHTML={{ __html: item }} />
-                      ))}
-                    </ul>
-                    {solutionCards[selectedCard.index].videoUrl && (
-                      <div className="mt-4 md:mt-6">
-                        <DriveVideo previewUrl={solutionCards[selectedCard.index].videoUrl!} />
-                      </div>
-                    )}
-                  </>
-                )}
-              </div>
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 md:gap-8">
+              {/* Left 40% - Complete Funnel using the component */}
+              <FadeIn className="lg:col-span-2 h-[calc(100vh-8rem)] md:h-[calc(100vh-10rem)] lg:h-[calc(100vh-12rem)]">
+                <div className="glass-card rounded-3xl p-6 md:p-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900/20 dark:to-gray-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full">
+                  <ProblemsAndSolutionsFunnel 
+                    onCardSelect={handleCardSelect}
+                    selectedCard={selectedCard}
+                  />
+                </div>
+              </FadeIn>
+
+              {/* Right 40% - Content Display */}
+              <FadeIn className="lg:col-span-3 h-[calc(100vh-8rem)] md:h-[calc(100vh-10rem)] lg:h-[calc(100vh-12rem)]">
+                <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900/20 dark:to-gray-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full">
+                  {selectedCard.type === 'problem' ? (
+                    <>
+                      <h3 className={`text-2xl md:text-3xl font-semibold ${problemCards[selectedCard.index].textColor} mb-4 md:mb-6 text-center`}>
+                        {problemCards[selectedCard.index].title}
+                      </h3>
+                      <ul className="list-disc list-outside space-y-3 md:space-y-4 pl-6">
+                        {problemCards[selectedCard.index].content.map((item, itemIdx) => (
+                          <li key={itemIdx} className={`text-base md:text-lg font-light ${problemCards[selectedCard.index].accentColor}`}>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  ) : (
+                    <>
+                      <h3 className={`text-2xl md:text-3xl font-semibold ${solutionCards[selectedCard.index].textColor} mb-4 md:mb-6 text-center`}>
+                        {solutionCards[selectedCard.index].title}
+                      </h3>
+                      {solutionCards[selectedCard.index].role && (
+                        <p className={`text-lg md:text-xl font-medium ${solutionCards[selectedCard.index].accentColor} mb-4 md:mb-6 text-center`}>
+                          {solutionCards[selectedCard.index].role}
+                        </p>
+                      )}
+                      <ul className="list-disc list-outside space-y-3 md:space-y-4 pl-6 mb-4 md:mb-6">
+                        {solutionCards[selectedCard.index].content.map((item, itemIdx) => (
+                          <li key={itemIdx} className={`text-base md:text-lg font-light ${solutionCards[selectedCard.index].accentColor}`} 
+                              dangerouslySetInnerHTML={{ __html: item }} />
+                        ))}
+                      </ul>
+                      {solutionCards[selectedCard.index].videoUrl && (
+                        <div className="mt-4 md:mt-6">
+                          <DriveVideo previewUrl={solutionCards[selectedCard.index].videoUrl!} />
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+              </FadeIn>
             </div>
-          </div>
+          </SectionCard>
         </div>
       </section>
 
       {/* Market Section */}
       <section className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
         <div className="w-full max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-8">
-            The $10B Market Opportunity
-          </h2>
-          
-          <div className="space-y-8">
-            {/* First 3 cards stacked vertically */}
-            {marketCards.slice(0, 3).map((card, idx) => (
+          <SectionCard>
+            <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-8">
+              The $10B Market Opportunity
+            </h2>
+            <div className="space-y-8">
+              {/* First 3 cards stacked vertically */}
+              {marketCards.slice(0, 3).map((card, idx) => (
+                <motion.div
+                  key={idx}
+                  className="glass-card rounded-3xl p-10 bg-gradient-to-br from-purple-50 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 max-w-6xl mx-auto"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <h3 className="text-3xl font-semibold text-black dark:text-white mb-8">
+                    {card.title}
+                  </h3>
+                  <ul className="list-disc list-outside space-y-5 pl-8 text-left">
+                    {card.content.map((item, itemIdx) => (
+                      <li key={itemIdx} className="text-xl text-black dark:text-white leading-relaxed" 
+                          dangerouslySetInnerHTML={{ __html: item }} />
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+
+              {/* 4th card with competitive analysis graph */}
               <motion.div
-                key={idx}
                 className="glass-card rounded-3xl p-10 bg-gradient-to-br from-purple-50 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 max-w-6xl mx-auto"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.2 }}
+                transition={{ delay: 0.6 }}
                 viewport={{ once: true }}
               >
                 <h3 className="text-3xl font-semibold text-black dark:text-white mb-8">
-                  {card.title}
+                  We Own the Best Spot
                 </h3>
-                <ul className="list-disc list-outside space-y-5 pl-8 text-left">
-                  {card.content.map((item, itemIdx) => (
-                    <li key={itemIdx} className="text-xl text-black dark:text-white leading-relaxed" 
-                        dangerouslySetInnerHTML={{ __html: item }} />
-                  ))}
-                </ul>
+                <CompetitiveAnalysisGraph />
               </motion.div>
-            ))}
-            
-            {/* 4th card with competitive analysis graph */}
-            <motion.div
-              className="glass-card rounded-3xl p-10 bg-gradient-to-br from-purple-50 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 max-w-6xl mx-auto"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-3xl font-semibold text-black dark:text-white mb-8">
-                We Own the Best Spot
-              </h3>
-              <CompetitiveAnalysisGraph />
-            </motion.div>
-          </div>
+            </div>
+          </SectionCard>
         </div>
       </section>
 
       {/* Team Section */}
       <section className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
         <div className="w-full max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-8">
-            The Team to Execute
-          </h2>
-          <p className="text-xl text-black/70 dark:text-white/70 mb-12 max-w-4xl mx-auto">
-            $6B+ in combined transaction volume and 20+ years of expertise in real estate, lending, and technology.
-          </p>
-          
-          {/* Spotlight Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 mb-12">
-            {/* Navigation Tabs - 40% width */}
-            <div className="lg:col-span-2 flex lg:flex-col justify-center items-center">
-              <div className="flex lg:flex-col gap-4 w-full justify-center">
-                {teamMembers.map((member, idx) => (
-                  <motion.button
-                    key={idx}
-                    onClick={() => handleTeamMemberSelect(idx)}
-                    className={`relative group p-4 md:p-6 rounded-2xl transition-all duration-300 border-2 w-full max-w-xs lg:max-w-none ${
-                      selectedTeamMember === idx
-                        ? 'bg-gradient-to-r from-indigo-100 to-blue-100 dark:from-indigo-900/40 dark:to-blue-900/40 border-indigo-300 dark:border-indigo-500 shadow-lg transform scale-105'
-                        : 'bg-white/50 dark:bg-gray-800/30 border-gray-200 dark:border-gray-600 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-blue-50 dark:hover:from-indigo-900/20 dark:hover:to-blue-900/20 hover:border-indigo-200 dark:hover:border-indigo-600 hover:scale-102'
-                    }`}
-                    whileHover={{ scale: selectedTeamMember === idx ? 1.05 : 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <div className="text-left">
-                      <h4 className={`text-lg md:text-xl font-bold mb-1 ${
-                        selectedTeamMember === idx 
-                          ? 'text-indigo-900 dark:text-indigo-200' 
-                          : 'text-gray-800 dark:text-gray-200'
-                      }`}>
-                        {member.name}
-                      </h4>
-                      <p className={`text-sm md:text-base font-medium ${
-                        selectedTeamMember === idx 
-                          ? 'text-indigo-700 dark:text-indigo-300' 
-                          : 'text-gray-600 dark:text-gray-400'
-                      }`}>
-                        {member.role}
-                      </p>
-                    </div>
-                    
-                    
-                  </motion.button>
-                ))}
+          <SectionCard>
+            <FadeIn>
+              <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-8">
+                The Team to Execute
+              </h2>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <p className="text-xl text-black/70 dark:text-white/70 mb-12 max-w-4xl mx-auto">
+                $6B+ in combined transaction volume and 20+ years of expertise in real estate, lending, and technology.
+              </p>
+            </FadeIn>
+
+            {/* Spotlight Layout */}
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 mb-12">
+              {/* Navigation Tabs - 40% width */}
+              <FadeIn className="lg:col-span-2 flex lg:flex-col justify-center items-center">
+                <div className="flex lg:flex-col gap-4 w-full justify-center">
+                  {teamMembers.map((member, idx) => (
+                    <motion.button
+                      key={idx}
+                      onClick={() => handleTeamMemberSelect(idx)}
+                      className={`relative group p-4 md:p-6 rounded-2xl transition-all duration-300 border-2 w-full max-w-xs lg:max-w-none ${
+                        selectedTeamMember === idx
+                          ? 'bg-gradient-to-r from-indigo-100 to-blue-100 dark:from-indigo-900/40 dark:to-blue-900/40 border-indigo-300 dark:border-indigo-500 shadow-lg transform scale-105'
+                          : 'bg-white/50 dark:bg-gray-800/30 border-gray-200 dark:border-gray-600 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-blue-50 dark:hover:from-indigo-900/20 dark:hover:to-blue-900/20 hover:border-indigo-200 dark:hover:border-indigo-600 hover:scale-102'
+                      }`}
+                      whileHover={{ scale: selectedTeamMember === idx ? 1.05 : 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      initial={{ opacity: 0, y: 16 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ delay: idx * 0.1 }}
+                    >
+                      <div className="text-left">
+                        <h4 className={`text-lg md:text-xl font-bold mb-1 ${
+                          selectedTeamMember === idx 
+                            ? 'text-indigo-900 dark:text-indigo-200' 
+                            : 'text-gray-800 dark:text-gray-200'
+                        }`}>
+                          {member.name}
+                        </h4>
+                        <p className={`text-sm md:text-base font-medium ${
+                          selectedTeamMember === idx 
+                            ? 'text-indigo-700 dark:text-indigo-300' 
+                            : 'text-gray-600 dark:text-gray-400'
+                        }`}>
+                          {member.role}
+                        </p>
+                      </div>
+                    </motion.button>
+                  ))}
+                </div>
+              </FadeIn>
+
+              {/* Central Spotlight Card - 60% width */}
+              <div className="lg:col-span-3">
+                <motion.div
+                  key={selectedTeamMember}
+                  className="glass-card rounded-3xl p-8 md:p-12 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 border border-gray-200 dark:border-white/20 shadow-lg dark:shadow-2xl shadow-gray-200/50 dark:shadow-white/10 min-h-[500px] md:min-h-[600px] flex flex-col justify-center"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                >
+                  <div className="text-center mb-8">
+                    <h3 className="text-3xl md:text-4xl font-bold text-indigo-900 dark:text-indigo-200 mb-3">
+                      {teamMembers[selectedTeamMember].name}
+                    </h3>
+                    <p className="text-xl md:text-2xl text-indigo-700 dark:text-indigo-300 font-semibold">
+                      {teamMembers[selectedTeamMember].role}
+                    </p>
+                  </div>
+                  <div className="text-left max-w-4xl mx-auto">
+                    <ul className="space-y-6">
+                      {teamMembers[selectedTeamMember].content.map((item, itemIdx) => (
+                        <motion.li 
+                          key={itemIdx} 
+                          className="text-lg md:text-xl text-black dark:text-white leading-relaxed font-light flex items-start"
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: itemIdx * 0.1 + 0.2 }}
+                        >
+                          <span className="w-2 h-2 bg-indigo-500 dark:bg-indigo-400 rounded-full mt-3 mr-4 flex-shrink-0"></span>
+                          <span dangerouslySetInnerHTML={{ __html: emphasizeNotables(item) }} />
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </div>
+                </motion.div>
               </div>
             </div>
 
-            {/* Central Spotlight Card - 60% width */}
-            <div className="lg:col-span-3">
-              <motion.div
-                key={selectedTeamMember}
-                className="glass-card rounded-3xl p-8 md:p-12 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 border border-gray-200 dark:border-white/20 shadow-lg dark:shadow-2xl shadow-gray-200/50 dark:shadow-white/10 min-h-[500px] md:min-h-[600px] flex flex-col justify-center"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-              >
-                <div className="text-center mb-8">
-                  <h3 className="text-3xl md:text-4xl font-bold text-indigo-900 dark:text-indigo-200 mb-3">
-                    {teamMembers[selectedTeamMember].name}
-                  </h3>
-                  <p className="text-xl md:text-2xl text-indigo-700 dark:text-indigo-300 font-semibold">
-                    {teamMembers[selectedTeamMember].role}
-                  </p>
-                </div>
-                
-                <div className="text-left max-w-4xl mx-auto">
-                  <ul className="space-y-6">
-                    {teamMembers[selectedTeamMember].content.map((item, itemIdx) => (
-                      <motion.li 
-                        key={itemIdx} 
-                        className="text-lg md:text-xl text-black dark:text-white leading-relaxed font-light flex items-start"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: itemIdx * 0.1 + 0.2 }}
-                      >
-                        <span className="w-2 h-2 bg-indigo-500 dark:bg-indigo-400 rounded-full mt-3 mr-4 flex-shrink-0"></span>
-                        <span dangerouslySetInnerHTML={{ __html: emphasizeNotables(item) }} />
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-
-          <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 w-full max-w-7xl mx-auto">
-            <p className="text-lg text-indigo-700 dark:text-indigo-400 mb-4">
-              <span className="font-semibold">Current Team Size:</span> 10
-            </p>
-            <p className="text-lg text-indigo-700 dark:text-indigo-400">
-              <span className="font-semibold">Roles Filled:</span> Chief Market Advisor, Head of Growth, Head of Communications, VP Communications, VP Engineering, Head of Investor Relations
-            </p>
-          </div>
+            <FadeIn>
+              <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 w-full max-w-7xl mx-auto">
+                <p className="text-lg text-indigo-700 dark:text-indigo-400 mb-4">
+                  <span className="font-semibold">Current Team Size:</span> 10
+                </p>
+                <p className="text-lg text-indigo-700 dark:text-indigo-400">
+                  <span className="font-semibold">Roles Filled:</span> Chief Market Advisor, Head of Growth, Head of Communications, VP Communications, VP Engineering, Head of Investor Relations
+                </p>
+              </div>
+            </FadeIn>
+          </SectionCard>
         </div>
       </section>
 
       {/* Investment Ask Section */}
       <section className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
         <div className="w-full max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-8">
-            Join Our Mission
-          </h2>
-          <p className="text-xl text-black/70 dark:text-white/70 mb-12 max-w-4xl mx-auto">
-            We're raising $2 million as a pre-seed round to revolutionize how the CRE markets work.
-          </p>
-          
-          <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 max-w-2xl mx-auto">
-            <p className="text-lg text-amber-600 dark:text-amber-300 mb-6">
-              This funding will activate the next phase of platform development, advisor onboarding, and monetization.
-            </p>
-            <button 
-              onClick={() => setIsModalOpen(true)}
-              className="px-8 py-3 bg-amber-600 hover:bg-amber-700 dark:bg-amber-500 dark:hover:bg-amber-600 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 mx-auto"
-            >
-              <MessageCircle className="w-5 h-5" />
-              Contact Us
-            </button>
-          </div>
+          <SectionCard>
+            <FadeIn>
+              <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-8">
+                Join Our Mission
+              </h2>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <p className="text-xl text-black/70 dark:text-white/70 mb-12 max-w-4xl mx-auto">
+                We're raising $2 million as a pre-seed round to revolutionize how the CRE markets work.
+              </p>
+            </FadeIn>
+            <FadeIn>
+              <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 max-w-2xl mx-auto">
+                <p className="text-lg text-amber-600 dark:text-amber-300 mb-6">
+                  This funding will activate the next phase of platform development, advisor onboarding, and monetization.
+                </p>
+                <button 
+                  onClick={() => setIsModalOpen(true)}
+                  className="px-8 py-3 bg-amber-600 hover:bg-amber-700 dark:bg-amber-500 dark:hover:bg-amber-600 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 mx-auto"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  Contact Us
+                </button>
+              </div>
+            </FadeIn>
+          </SectionCard>
         </div>
       </section>
 
