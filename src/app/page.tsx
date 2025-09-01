@@ -650,7 +650,7 @@ export default function HomePage() {
             </FadeIn>
             <FadeIn delay={0.1}>
               <p className="text-xl text-black/70 dark:text-white/70 mb-12 max-w-4xl mx-auto">
-                We're raising $2 million as a pre-seed round to revolutionize how the CRE markets work.
+                We're raising <span className="font-bold">$3.5 million</span> as a pre-seed round to revolutionize how the CRE markets work.
               </p>
             </FadeIn>
             <FadeIn>
