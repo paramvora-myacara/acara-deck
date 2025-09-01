@@ -154,7 +154,7 @@ export default function ProblemsAndSolutionsFunnel({ onCardSelect, selectedCard 
       {/* Funnel Layout */}
       <div className="relative z-10 h-full">
         {/* Problem Cards (Left Side) */}
-        <div className="absolute left-[2%] top-[8%] w-[42%] space-y-4 md:space-y-5 lg:space-y-6">
+        <div className="absolute left-[2%] top-[15%] w-[42%] space-y-4 md:space-y-5 lg:space-y-6">
           {problemCards.map((card, idx) => {
             const cardWidths = [98, 92, 86, 80];
             const cardWidth = cardWidths[idx] || 80;
@@ -183,7 +183,7 @@ export default function ProblemsAndSolutionsFunnel({ onCardSelect, selectedCard 
         </div>
 
         {/* Solution Cards (Right Side) */}
-        <div className="absolute right-[2%] top-[8%] w-[42%] space-y-4 md:space-y-5 lg:space-y-6">
+        <div className="absolute right-[2%] top-[15%] w-[42%] space-y-4 md:space-y-5 lg:space-y-6">
           {solutionCards.map((card, idx) => {
             const cardWidths = [98, 92, 86, 80];
             const cardWidth = cardWidths[idx] || 80;
@@ -217,4 +217,4 @@ export default function ProblemsAndSolutionsFunnel({ onCardSelect, selectedCard 
 
 // Export the card data for use in the parent component
 export { problemCards, solutionCards };
-export type { ProblemCard, SolutionCard }; 
+export type { ProblemCard, SolutionCard };

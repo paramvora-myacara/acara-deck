@@ -405,7 +405,7 @@ export default function HomePage() {
       <section className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
         <div className="w-full max-w-7xl mx-auto text-center">
           <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-8">
-            The $10B Opportunity
+            The $10B Market Opportunity
           </h2>
           
           <div className="space-y-8">
