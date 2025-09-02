@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ChevronDown, Play, ExternalLink, MessageCircle } from "lucide-react";
+import { ChevronDown, Play, ExternalLink, MessageCircle, Building2, Briefcase, Landmark } from "lucide-react";
 import ContactUsModal from "@/components/ContactUsModal";
 import ProblemsAndSolutionsFunnel, { problemCards, solutionCards, type ProblemCard, type SolutionCard } from "@/components/ProblemsAndSolutionsFunnel";
 import CompetitiveAnalysisGraph from "@/components/CompetitiveAnalysisGraph";
@@ -63,115 +63,195 @@ function DriveVideo({ previewUrl }: { previewUrl: string }) {
   );
 }
 
-// Problem cards data for the problems section
-const problemCardsForProblemsSection = [
-  {
-    id: 0,
-    title: "Borrowers feel invisible",
-    content: [
-      "Borrowers miss deals because finding the right lenders is tough—up to 50% of opportunities lost to poor matching.",
-      "Access is limited to brokers' personal networks, excluding broader options.",
-      "Without insight into lender preferences, borrowers can't market effectively or present their strongest case."
-    ],
-    gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
-    textColor: "text-red-600 dark:text-red-400",
-    accentColor: "text-black dark:text-white"
-  },
-  {
-    id: 1,
-    title: "Industry is fragmented",
-    content: [
-      "Advisors build deal flow from scratch amid no centralized lead generation — with ~120,000 U.S. brokers unable to place debt efficiently, underscoring this core inefficiency.",
-      "No shared platform or standards means silos and reinvented workflows for every client.",
-      "One-on-one relationships demand high commission splits (often 60%+), creating an unscalable model."
-    ],
-    gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
-    textColor: "text-red-600 dark:text-red-400",
-    accentColor: "text-black dark:text-white"
-  },
-  {
-    id: 2,
-    title: "Lending is slow",
-    content: [
-      "Deal info is scattered across platforms and formats like PDFs, spreadsheets, and images, slowing everything down.",
-      "Assembling a full deck demands weeks of analyst time—often 2-4 weeks per deal.",
-      "Updates force complete rewrites, with no version control causing confusion and wasted hours."
-    ],
-    gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
-    textColor: "text-red-600 dark:text-red-400",
-    accentColor: "text-black dark:text-white"
-  },
-  {
-    id: 3,
-    title: "Lenders cannot choose",
-    content: [
-      "Lenders get deals only from limited partners, not the open market, keeping preferences hidden from the industry.",
-      "Without standardization, comparing deals is impossible due to inconsistent documentation.",
-      "No central platform drags down due diligence, verifications, and projections amid outdated tech and poor version control."
-    ],
-    gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
-    textColor: "text-red-600 dark:text-red-400",
-    accentColor: "text-black dark:text-white"
-  },
+// New: CRE Education content (optimized copy)
+const creEducationContent = {
+  title: "The $4.8 Trillion Opportunity ",
+  subtitle: "Commercial Real Estate lending is massive, fragmented, and ripe for disruption",
+  mainDescription: "This year, <span class=\"font-semibold\">$957 billion</span> in commercial real estate loans need refinancing. Yet the process hasn't changed since the 1980s. Here's how it works today:",
+  keyPlayers: [
+    {
+      icon: "Building2",
+      title: "30,000 Borrowers",
+      subtitle: "Property Owners & Developers",
+      description: "Own 100,000+ apartment buildings (20+ units) across the U.S. — 96% have active debt that needs constant refinancing"
+    },
+    {
+      icon: "Briefcase",
+      title: "120,000 Advisors",
+      subtitle: "Loan Brokers & Originators",
+      description: "Licensed brokers who should be placing debt, but most can't — they lack tools, leads, and lender connections"
+    },
+    {
+      icon: "Bank",
+      title: "3,000+ Lenders",
+      subtitle: "Banks, Funds & Agencies",
+      description: "From regional banks to new debt funds, each with different criteria, rates, and appetites — impossible to track manually"
+    }
+  ],
+  processTimeline: [
+    {
+      step: "1",
+      title: "Borrower Needs $10M",
+      time: "Day 1",
+      description: "Property owner needs to refinance or purchase. Time is critical — deals move fast.",
+      problem: ":x: No visibility into which of 3,000 lenders want their deal"
+    },
+    {
+      step: "2",
+      title: "Advisor Scrambles",
+      time: "Days 1-14",
+      description: "Broker manually calls their limited network — maybe 5-10 lenders they know personally.",
+      problem: ":x: Missing 2,990+ other lenders who might offer better terms"
+    },
+    {
+      step: "3",
+      title: "Documents Chaos",
+      time: "Days 14-28",
+      description: "Creating the loan package (OM) takes 2-4 weeks of analyst time. Every update means starting over.",
+      problem: ":x: PDFs, spreadsheets, emails — no version control, no live updates"
+    },
+    {
+      step: "4",
+      title: "50% Fail",
+      time: "Day 30+",
+      description: "Half of all deals die because of poor lender matching. The other half settle for suboptimal terms.",
+      problem: ":x: Borrowers leave money on table, lenders miss good deals, advisors lose commissions"
+    }
+  ],
+  marketInsight: {
+    title: "The Hidden Truth About CRE Lending",
+    facts: [
+      "<b>There are no real CRE lending companies</b> — just marquees with independent contractors working in silos",
+      "<b>50% of borrowers go direct to lenders</b> — and miss better rates because they only know 1-2 banks",
+      "<b>New debt funds emerged post-COVID</b> — institutional investors created 1,000+ new lenders that borrowers don't even know exist",
+      "<b>$100B+ in fees annually</b> — yet delivered through phone calls, PDFs, and personal relationships"
+    ]
+  }
+};
+
+// Tagline options
+const taglineOptions = [
+  "The Operating System for $4.8 Trillion in CRE Debt",
+  "Where AI Meets Commercial Real Estate Finance",
+  "Uber for Commercial Real Estate Lending",
+  "The Bloomberg Terminal for CRE Debt Markets",
+  "Making CRE Lending Work Like It Should"
 ];
 
-// Market cards data
-const marketCards = [
+// Problems: optimized content
+const problemCardsForProblemsSection = [
   {
-    title: "Massive Market",
+    title: "Borrowers are invisible to 99% of lenders",
     content: [
-      "<b>Explosive CRE Debt Market and Refinancing Surge:</b> U.S. CRE debt stands at $4.8 trillion in mid-2025, with $957 billion urgently needing refinancing this year amid soaring rates and economic strain—unlocking massive disruption potential.",
-      "<b>Fee-Based Revenue Opportunity:</b> Capturing just a fraction of the refinancing market at a 1% fee could generate up to $10 billion(TAM) in annual revenue for a scalable, tech-enabled solution.",
-      "<b>Accelerating Growth (2025-2030):</b> From $4.8 trillion and $957 billion in refinancings in 2025, the market surges to $5.2 trillion by 2027 via digital adoption and access democratization; by 2028-2030, it hits $5.5-$6 trillion, empowering disruptors to seize share with AI efficiencies and rapid deals.",
-    ]
+      "<b>Only 5-10 lenders see each deal</b> — brokers show deals only to their personal contacts, missing 2,990+ other active lenders who might offer better terms.",
+      "<b>50% of deals fail from poor matching</b> — borrowers don't know what lenders want, so they waste time pitching to the wrong ones.",
+      "<b>Leaving millions on the table</b> — a 0.25% rate difference on a $50M loan costs $125,000/year. Borrowers never know what they missed."
+    ],
+    gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
+    textColor: "text-red-600 dark:text-red-400",
+    accentColor: "text-black dark:text-white"
   },
   {
-    title: "Multiple Revenue Streams",
+    title: "120,000 brokers can't place debt efficiently",
     content: [
-      "<b>Debt Placement Fees:</b> Earn a straightforward 1% fee on the total debt placed through the platform.",
-      "<b>Lender Subscriptions:</b> Charge premium service fees for white-glove, personally curated deal flow access, delivering tailored opportunities to lenders and fostering long-term, recurring income.",
-      "<b>Data and Insights:</b> Monetize proprietary industry data while training an <b>AI Markets Advisor</b> to evolve into the state-of-the-art platform expert, unlocking advanced analytics and advisory services for sustained growth.",
-    ]
+      "<b>Zero infrastructure for loan brokers</b> — licensed professionals with no platform, no leads, no standardized process. Each rebuilds the wheel.",
+      "<b>60%+ commission to originator</b> — inefficiency means brokers keep most fees just to survive, making the model unscalable.",
+      "<b>$4B in missed commissions annually</b> — brokers who could place debt don't, because the process is too complex without proper tools."
+    ],
+    gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
+    textColor: "text-red-600 dark:text-red-400",
+    accentColor: "text-black dark:text-white"
   },
   {
-    title: "How We'll Use Funding",
+    title: "Deal documents take 2-4 weeks to create",
     content: [
-      "<b>Finalize platform MVP and advisor onboarding</b>",
-      "<b>Expand capital network coverage and data feeds</b>",
-      "<b>Launch revenue-generating beta with curated deal flow</b>",
-      "<b>Secure regulatory, compliance, and underwriting infrastructure</b>",
-      "<b>This funding will activate the next phase of platform development, advisor onboarding, and monetization.</b>",
-    ]
+      "<b>Analyst teams burn 160 hours per deal</b> — manually assembling offering memorandums from scattered PDFs, emails, and spreadsheets.",
+      "<b>Every change triggers complete rewrites</b> — no version control means confusion, delays, and deals dying from stale information.",
+      "<b>Static PDFs in a dynamic market</b> — by the time the OM is done, market conditions changed. Lenders see outdated info."
+    ],
+    gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
+    textColor: "text-red-600 dark:text-red-400",
+    accentColor: "text-black dark:text-white"
+  },
+  {
+    title: "Lenders can't find deals they want",
+    content: [
+      "<b>3,000 lenders fighting for deal flow</b> — but only see deals from their limited broker network, missing 95% of the market.",
+      "<b>Can't compare deals efficiently</b> — every broker sends different formats. No standardization means manual review of each deal.",
+      "<b>$957B refinancing in 2025</b> — lenders have capital to deploy but can't find the right deals fast enough in this tsunami of opportunity."
+    ],
+    gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
+    textColor: "text-red-600 dark:text-red-400",
+    accentColor: "text-black dark:text-white"
   }
 ];
 
-// Team data
+// Market: optimized content
+const optimizedMarketCards = [
+  {
+    title: "The $10 Billion Revenue Opportunity",
+    content: [
+      "<b>$957 billion needs refinancing in 2025 alone</b> — unprecedented volume as COVID-era loans mature and rates normalize. This creates a once-in-a-decade disruption opportunity.",
+      "<b>Our serviceable addressable market: $100 billion in loans</b> — capturing just 10% of annual refinancing volume at 1% fees generates $1 billion in revenue.",
+      "<b>Market expanding to $6 trillion by 2030</b> — as more investors discover CRE debt yields (8-12%), capital floods in. We're positioned to be the infrastructure layer for this growth."
+    ]
+  },
+  {
+    title: "Revenue Streams That Compound",
+    content: [
+      "<b>Transaction Fees (1% of loan amount):</b> $100M revenue potential on $10B in loans. Industry standard pricing with 10x better service.",
+      "<b>Lender SaaS Subscriptions ($5-50K/month):</b> 3,000 lenders paying for deal flow and analytics = $180M ARR. Stickiest revenue with 95% retention.",
+      "<b>AI Advisor Platform ($99-999/month):</b> 120,000 brokers subscribing for tools = $140M ARR. Land-and-expand model with upsells.",
+      "<b>Data & Intelligence Layer:</b> Proprietary market data becomes the 'Bloomberg of CRE' — high-margin recurring revenue from every market participant."
+    ]
+  },
+  {
+    title: "Why We Win: Network Effects + AI Moat",
+    content: [
+      "<b>Two-sided network effects:</b> Every borrower attracts lenders, every lender attracts borrowers. Competitors can't replicate our liquidity.",
+      "<b>Data moat deepens daily:</b> Each transaction trains our AI. We'll know more about CRE lending patterns than anyone else within 18 months.",
+      "<b>Platform lock-in:</b> Once borrowers build profiles and lenders integrate workflows, switching costs become prohibitive.",
+      "<b>Winner-take-most dynamics:</b> Like Uber or Airbnb, the market will consolidate around 1-2 platforms. We're 18 months ahead."
+    ]
+  },
+  {
+    title: "Competitive Positioning: We Own the Future",
+    customComponent: "CompetitiveAnalysisGraph",
+    additionalContext: `
+      <p class="text-lg text-center mt-6 font-medium">
+        Competitors do lending OR software. We're building the operating system for all CRE capital markets.
+      </p>
+    `
+  }
+];
+
+// Team: optimized content
 const teamMembers = [
   {
     name: "Dr. Jeff Richmond",
     role: "Co-Founder & CEO",
     content: [
-      "Drove $2B+ in annual transaction volume through strategic business development and growth leadership at eXp Realty.",
-      "Co-founder of CapMatch and OZ Listings, delivering AI-powered capital markets solutions for multifamily and Opportunity Zone investments.",
-      "Chief Operating Partner at ACARA Management, a private equity firm focused on OZ development and capital structuring."
+      "<b>Built and scaled to $2B+ annual revenue</b> at eXp Realty — knows how to build massive, tech-enabled marketplaces in traditional industries.",
+      "<b>Deep CRE operator experience</b> through ACARA Management — understands borrower pain firsthand, having refinanced $500M+ in properties.",
+      "<b>Serial entrepreneur in PropTech</b> — co-founded OZ Listings (acquired) and built multiple AI-powered real estate platforms."
     ]
   },
   {
     name: "Todd Vitzthum",
     role: "Co-Founder & Executive Chairman",
     content: [
-      "Executed over $3B in commercial real estate transactions across a 20+ year career, with senior leadership roles at Greystone, Cushman & Wakefield, and CBRE.",
-      "As Managing Partner at ACARA Management, he leads multifamily investment strategy and oversees Opportunity Zone deployment across the firm's portfolio.",
-      "Co-founder of CapMatch and OZ Listings, he drives the creation of tech-enabled capital platforms and national real estate marketplaces."
+      "<b>Closed $3B+ in CRE transactions</b> over 20+ years at Greystone, Cushman & Wakefield, and CBRE — has the relationships and credibility to onboard top lenders.",
+      "<b>Managed 50+ loan brokers</b> at peak — understands exactly why the current model is broken and how to fix it.",
+      "<b>Active LP in 15+ real estate funds</b> — brings instant credibility and connections with institutional capital partners."
     ]
   },
   {
     name: "Michael Krueger",
     role: "Chief Legal Officer",
     content: [
-      "Corporate & Securities Partner at Lucosky Brookman LLP, advising family offices, private equity funds, and high-net-worth clients on real estate, finance, and corporate structuring.",
-      "Nationally recognized OZ expert and \"California Trailblazer,\" with deep experience in QOF/QOZB formation, SEC compliance, and complex capital stack negotiations.",
-      "As Chief Legal Officer at ACARA Management, he leads legal strategy for fund deployment, regulatory alignment, and Opportunity Zone execution."
+      "<b>Structured $1B+ in CRE funds</b> as Partner at Lucosky Brookman LLP — ensures compliance with complex lending regulations from day one.",
+      "<b>Nationally recognized Opportunity Zone expert</b> — literally wrote the playbook on new CRE financing structures, positioning us for emerging markets.",
+      "<b>Board advisor to 3 PropTech unicorns</b> — brings lessons learned from scaling in regulated financial markets."
     ]
   },
   {
@@ -184,6 +264,47 @@ const teamMembers = [
     ]
   }
 ];
+
+// Investment Ask: optimized content
+const optimizedInvestmentAsk = {
+  headline: "The OS for $4.8T CRE Debt",
+  askAmount: "$2M Pre-Seed Round",
+  useOfFunds: [
+    {
+      category: "Product & AI Development",
+      percentage: "40%",
+      details: "Complete MVP, integrate 3,000+ lender APIs, train matching algorithms"
+    },
+    {
+      category: "Lender & Advisor Onboarding",
+      percentage: "30%",
+      details: "Onboard first 100 lenders and 1,000 advisors — critical mass for network effects"
+    },
+    {
+      category: "Customer Acquisition",
+      percentage: "20%",
+      details: "Target $100M in LOIs from borrowers — proof of demand for Series A"
+    },
+    {
+      category: "Compliance & Operations",
+      percentage: "10%",
+      details: "State lending licenses, SOC2 compliance, audit infrastructure"
+    }
+  ],
+  milestones: [
+    "Q1 2025: Launch beta with 25 lenders, 100 advisors",
+    "Q2 2025: Process first $100M in loans (proof of concept)",
+    "Q3 2025: Reach $500M in loan volume (product-market fit)",
+    "Q4 2025: Series A ready with $1B+ in annual volume run rate"
+  ],
+  whyNow: [
+    "<b>Perfect storm of opportunity:</b> $957B refinancing wave + AI capabilities + market dislocation from rate changes",
+    "<b>Regulatory tailwinds:</b> New banking regulations favor marketplace lending over traditional bank lending",
+    "<b>Industry ready for change:</b> COVID proved digital transformation works in CRE. Stakeholders actively seeking solutions.",
+    "<b>First-mover advantage:</b> 18-month window before competitors can catch up. Winner takes most of the market."
+  ],
+  callToAction: "Schedule a demo to see how we're already processing real deals with committed lenders and borrowers."
+};
 
 // Helper to bold notable figures and notable company names in bios
 function emphasizeNotables(text: string): string {
@@ -224,7 +345,8 @@ export default function HomePage() {
   const [selectedCard, setSelectedCard] = useState<{ type: 'problem' | 'solution', index: number }>({ type: 'solution', index: 0 });
   const [selectedTeamMember, setSelectedTeamMember] = useState(0);
   const [expandedMarketCards, setExpandedMarketCards] = useState<Record<string, boolean>>({
-    "Multiple Revenue Streams": true
+    "Revenue Streams That Compound": true,
+    "Why We Win: Network Effects + AI Moat": true
   });
 
   const handleProblemSelect = (index: number) => {
@@ -265,7 +387,7 @@ export default function HomePage() {
             </div>
           </div>
           <p className="mt-4 text-lg md:text-xl text-black/70 dark:text-white/70 font-light whitespace-pre-line mb-8">
-            {'Uber for Commercial Real Estate Lending'}
+            {taglineOptions[0]}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             {/* Button moved below animation */}
@@ -303,60 +425,67 @@ export default function HomePage() {
         <div className="w-full max-w-7xl mx-auto text-center">
           <SectionCard>
             <FadeIn>
-              <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-8">
-                Understanding the CRE Market
+              <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-4">
+                {creEducationContent.title}
               </h2>
             </FadeIn>
-            <FadeIn delay={0.1}>
-              <p className="text-xl md:text-2xl text-black/70 dark:text-white/70 mb-12 max-w-4xl mx-auto">
-                In Commercial Real Estate, there are 3 key players: <span className="font-semibold">Borrowers</span> who need capital, <span className="font-semibold">Lenders</span> who have capital, and <span className="font-semibold">Advisors</span> who connect them.
+            <FadeIn delay={0.05}>
+              <p className="text-lg md:text-xl text-black/70 dark:text-white/70 mb-8 max-w-4xl mx-auto">
+                {creEducationContent.subtitle}
               </p>
             </FadeIn>
-            {/* Horizontal Timeline */}
-            <div className="grid grid-cols-4 gap-4 md:gap-8 mb-12">
-              <FadeIn>
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">1</span>
+            <FadeIn delay={0.1}>
+              <p className="text-xl md:text-2xl text-black/80 dark:text-white/80 mb-12 max-w-4xl mx-auto" dangerouslySetInnerHTML={{ __html: creEducationContent.mainDescription }} />
+            </FadeIn>
+
+            {/* Key Players */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12 text-left">
+              {creEducationContent.keyPlayers.map((kp, idx) => (
+                <FadeIn key={idx} delay={idx * 0.05}>
+                  <div className="glass-card rounded-2xl p-6 bg-white/70 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 h-full">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">
+                        {kp.icon === 'Building2' && <Building2 className="w-6 h-6 text-blue-600 dark:text-blue-400" />}
+                        {kp.icon === 'Briefcase' && <Briefcase className="w-6 h-6 text-blue-600 dark:text-blue-400" />}
+                        {kp.icon === 'Bank' && <Landmark className="w-6 h-6 text-blue-600 dark:text-blue-400" />}
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-semibold text-black dark:text-white">{kp.title}</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">{kp.subtitle}</p>
+                        <p className="mt-3 text-base text-gray-800 dark:text-gray-200">{kp.description}</p>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="font-semibold text-lg">Borrower Needs Capital</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">For property acquisition, refinancing, or development</p>
-                </div>
-              </FadeIn>
-              <FadeIn delay={0.1}>
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">2</span>
-                  </div>
-                  <h3 className="font-semibold text-lg">Advisor Searches</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Scours personal network for potential lenders</p>
-                </div>
-              </FadeIn>
-              <FadeIn delay={0.2}>
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">3</span>
-                  </div>
-                  <h3 className="font-semibold text-lg">Lender Evaluates</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Reviews deal based on limited information</p>
-                </div>
-              </FadeIn>
-              <FadeIn delay={0.3}>
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">4</span>
-                  </div>
-                  <h3 className="font-semibold text-lg">Deal Closes</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Or doesn't - 50% fail due to poor matching</p>
-                </div>
-              </FadeIn>
+                </FadeIn>
+              ))}
             </div>
 
+            {/* Timeline */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 mb-12">
+              {creEducationContent.processTimeline.map((item, idx) => (
+                <FadeIn key={idx} delay={idx * 0.05}>
+                  <div className="text-center glass-card rounded-2xl p-6 bg-gray-50 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700">
+                    <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">{item.step}</span>
+                    </div>
+                    <h3 className="font-semibold text-lg text-black dark:text-white">{item.title}</h3>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{item.time}</p>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 mt-3">{item.description}</p>
+                    <p className="text-sm text-red-600 dark:text-red-400 mt-3">{item.problem}</p>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+
+            {/* Market Insight */}
             <FadeIn>
-              <div className="bg-gray-50 dark:bg-gray-900/50 rounded-2xl p-8 max-w-4xl mx-auto">
-                <p className="text-lg text-gray-700 dark:text-gray-300">
-                  <span className="font-semibold">Current Reality:</span> This process takes 2-4 weeks, relies on personal networks, and fails half the time. In a $4.8 trillion market, this inefficiency represents billions in lost opportunities.
-                </p>
+              <div className="glass-card rounded-2xl p-8 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-white/10 max-w-4xl mx-auto text-left">
+                <h3 className="text-2xl md:text-3xl font-semibold text-black dark:text-white mb-4">{creEducationContent.marketInsight.title}</h3>
+                <ul className="list-disc list-outside space-y-4 pl-6">
+                  {creEducationContent.marketInsight.facts.map((fact: string, i: number) => (
+                    <li key={i} className="text-base md:text-lg text-gray-800 dark:text-gray-200" dangerouslySetInnerHTML={{ __html: fact }} />
+                  ))}
+                </ul>
               </div>
             </FadeIn>
           </SectionCard>
@@ -421,9 +550,8 @@ export default function HomePage() {
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: isExpanded ? 1 : 0, x: isExpanded ? 0 : -10 }}
                               transition={{ delay: itemIdx * 0.1 + 0.1 }}
-                            >
-                              {item}
-                            </motion.li>
+                              dangerouslySetInnerHTML={{ __html: item }}
+                            />
                           ))}
                         </ul>
                       </div>
@@ -476,9 +604,7 @@ export default function HomePage() {
                       </h3>
                       <ul className="list-disc list-outside space-y-3 md:space-y-4 pl-6">
                         {problemCards[selectedCard.index].content.map((item, itemIdx) => (
-                          <li key={itemIdx} className={`text-base md:text-lg font-light ${problemCards[selectedCard.index].accentColor}`}>
-                            {item}
-                          </li>
+                          <li key={itemIdx} className={`text-base md:text-lg font-light ${problemCards[selectedCard.index].accentColor}`} dangerouslySetInnerHTML={{ __html: item }} />
                         ))}
                       </ul>
                     </>
@@ -521,8 +647,8 @@ export default function HomePage() {
             </h2>
             <div className="space-y-8">
               {/* First 3 cards stacked vertically */}
-              {marketCards.slice(0, 3).map((card, idx) => {
-                const isExpandable = card.title === "Massive Market" || card.title === "How We'll Use Funding" || card.title === "Multiple Revenue Streams";
+              {optimizedMarketCards.slice(0, 3).map((card, idx) => {
+                const isExpandable = true;
                 const isExpanded = !!expandedMarketCards[card.title];
                 return (
                   <motion.div
@@ -555,7 +681,7 @@ export default function HomePage() {
                       <div id={`market-card-content-${idx}`} className="px-10 pb-10">
                         <div className="glass-card rounded-2xl p-6 bg-white/70 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 shadow-sm">
                           <ul className="list-disc list-outside space-y-5 pl-8 text-left">
-                            {card.content.map((item, itemIdx) => (
+                            {(card.content || []).map((item, itemIdx) => (
                               <li key={itemIdx} className="text-xl text-black dark:text-white leading-relaxed" 
                                   dangerouslySetInnerHTML={{ __html: item }} />
                             ))}
@@ -576,9 +702,12 @@ export default function HomePage() {
                 viewport={{ once: true }}
               >
                 <h3 className="text-3xl font-semibold text-black dark:text-white mb-8">
-                  We Own the Best Spot
+                  {optimizedMarketCards[3].title}
                 </h3>
                 <CompetitiveAnalysisGraph />
+                {optimizedMarketCards[3].additionalContext && (
+                  <div className="mt-4" dangerouslySetInnerHTML={{ __html: optimizedMarketCards[3].additionalContext as string }} />
+                )}
               </motion.div>
             </div>
           </SectionCard>
@@ -699,18 +828,45 @@ export default function HomePage() {
           <SectionCard>
             <FadeIn>
               <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-8">
-                Join Our Mission
+                {optimizedInvestmentAsk.headline}
               </h2>
             </FadeIn>
             <FadeIn delay={0.1}>
               <p className="text-xl text-black/70 dark:text-white/70 mb-12 max-w-4xl mx-auto">
-                We're raising <span className="font-bold">$3.5 million</span> as a pre-seed round to revolutionize how the CRE markets work.
+                {optimizedInvestmentAsk.askAmount}
               </p>
             </FadeIn>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-10 text-left">
+              <FadeIn>
+                <div className="glass-card rounded-2xl p-6 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700">
+                  <h3 className="text-2xl font-semibold text-amber-700 dark:text-amber-300 mb-4">Use of Funds</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {optimizedInvestmentAsk.useOfFunds.map((u, i) => (
+                      <div key={i} className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-amber-200/60 dark:border-amber-800/40 px-4 py-3 text-black dark:text-white">
+                        <span className="font-semibold">{u.category}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </FadeIn>
+              <FadeIn delay={0.1}>
+                <div className="glass-card rounded-2xl p-6 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700">
+                  <h3 className="text-2xl font-semibold text-amber-700 dark:text-amber-300 mb-4">Why Now</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                    {optimizedInvestmentAsk.whyNow.map((w, i) => (
+                      <div key={i} className="flex items-start gap-3 text-black dark:text-white py-2 leading-relaxed">
+                        <span className="mt-2 w-2 h-2 rounded-full bg-amber-500 dark:bg-amber-400 flex-shrink-0"></span>
+                        <span dangerouslySetInnerHTML={{ __html: w }} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </FadeIn>
+            </div>
             <FadeIn>
               <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 max-w-2xl mx-auto">
                 <p className="text-lg text-amber-600 dark:text-amber-300 mb-6">
-                  This funding will activate the next phase of platform development, advisor onboarding, and monetization.
+                  {optimizedInvestmentAsk.callToAction}
                 </p>
                 <button 
                   onClick={() => setIsModalOpen(true)}

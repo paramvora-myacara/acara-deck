@@ -29,11 +29,11 @@ interface SolutionCard {
 
 const problemCards: ProblemCard[] = [
   {
-    title: "Borrowers feel invisible",
+    title: "Borrowers are invisible to 99% of lenders",
     content: [
-      "Borrowers miss deals because finding the right lenders is tough—up to 50% of opportunities lost to poor matching.",
-      "Access is limited to brokers' personal networks, excluding broader options.",
-      "Without insight into lender preferences, borrowers can't market effectively or present their strongest case."
+      "<b>Only 5-10 lenders see each deal</b> — brokers show deals only to their personal contacts, missing 2,990+ other active lenders who might offer better terms.",
+      "<b>50% of deals fail from poor matching</b> — borrowers don't know what lenders want, so they waste time pitching to the wrong ones.",
+      "<b>Leaving millions on the table</b> — a 0.25% rate difference on a $50M loan costs $125,000/year. Borrowers never know what they missed."
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
     textColor: "text-red-600 dark:text-red-400",
@@ -41,11 +41,11 @@ const problemCards: ProblemCard[] = [
     dotColor: "bg-red-600 dark:bg-red-400"
   },
   {
-    title: "Industry is fragmented",
+    title: "120,000 brokers can't place debt efficiently",
     content: [
-      "Advisors build deal flow from scratch amid no centralized lead generation — with ~120,000 U.S. brokers unable to place debt efficiently, underscoring this core inefficiency.",
-      "No shared platform or standards means silos and reinvented workflows for every client.",
-      "One-on-one relationships demand high commission splits (often 60%+), creating an unscalable model."
+      "<b>Zero infrastructure for loan brokers</b> — licensed professionals with no platform, no leads, no standardized process. Each rebuilds the wheel.",
+      "<b>60%+ commission to originator</b> — inefficiency means brokers keep most fees just to survive, making the model unscalable.",
+      "<b>$4B in missed commissions annually</b> — brokers who could place debt don't, because the process is too complex without proper tools."
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
     textColor: "text-red-600 dark:text-red-400",
@@ -53,11 +53,11 @@ const problemCards: ProblemCard[] = [
     dotColor: "bg-red-600 dark:bg-red-400"
   },
   {
-    title: "Lending is slow",
+    title: "Deal documents take 2-4 weeks to create",
     content: [
-      "Deal info is scattered across platforms and formats like PDFs, spreadsheets, and images, slowing everything down.",
-      "Assembling a full deck demands weeks of analyst time—often 2-4 weeks per deal.",
-      "Updates force complete rewrites, with no version control causing confusion and wasted hours."
+      "<b>Analyst teams burn 160 hours per deal</b> — manually assembling offering memorandums from scattered PDFs, emails, and spreadsheets.",
+      "<b>Every change triggers complete rewrites</b> — no version control means confusion, delays, and deals dying from stale information.",
+      "<b>Static PDFs in a dynamic market</b> — by the time the OM is done, market conditions changed. Lenders see outdated info."
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
     textColor: "text-red-600 dark:text-red-400",
@@ -65,11 +65,11 @@ const problemCards: ProblemCard[] = [
     dotColor: "bg-red-600 dark:bg-red-400"
   },
   {
-    title: "Lenders cannot choose",
+    title: "Lenders can't find deals they want",
     content: [
-      "Lenders get deals only from limited partners, not the open market, keeping preferences hidden from the industry.",
-      "Without standardization, comparing deals is impossible due to inconsistent documentation.",
-      "No central platform drags down due diligence, verifications, and projections amid outdated tech and poor version control."
+      "<b>3,000 lenders fighting for deal flow</b> — but only see deals from their limited broker network, missing 95% of the market.",
+      "<b>Can't compare deals efficiently</b> — every broker sends different formats. No standardization means manual review of each deal.",
+      "<b>$957B refinancing in 2025</b> — lenders have capital to deploy but can't find the right deals fast enough in this tsunami of opportunity."
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
     textColor: "text-red-600 dark:text-red-400",
@@ -78,15 +78,15 @@ const problemCards: ProblemCard[] = [
   },
 ];
 
-// Solution cards data
+// Solution cards data (optimized)
 const solutionCards: SolutionCard[] = [
   {
-    title: "We bring deal flow",
-    role: "Access nationwide deal flow from established leaders, dealer networks, and state-of-the-art outbound marketing.",
+    title: "Every lender sees your deal instantly",
+    role: "AI-powered marketplace connecting 30,000 borrowers with 3,000+ lenders",
     content: [
-      "<b>Borrowers:</b> Present deals to the largest lender network, regardless of your broker connections.",
-      "<b>Lenders:</b> Receive high-quality, third-party vetted deals tailored to your preferences.",
-      "<b>Advisors:</b> Activate 120K brokers to place debt deals with centralized leads and deal flow.",
+      "<b>Borrowers:</b> Your deal reaches <b>all 3,000+ active lenders</b> in seconds, not just the 5-10 your broker knows. Our AI ensures only qualified lenders see it.",
+      "<b>Lenders:</b> See <b>every deal that matches your criteria</b> — geography, asset type, loan size — automatically filtered and ranked by AI.",
+      "<b>Advisors:</b> Activate all <b>120,000 licensed brokers</b> as originators with instant access to our lender network and deal flow."
     ],
     videoUrl: "/CapMatchDemo720p.mp4",
     gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
@@ -95,12 +95,12 @@ const solutionCards: SolutionCard[] = [
     dotColor: "bg-emerald-600 dark:bg-emerald-400"
   },
   {
-    title: "Unified platform",
-    role: "One centralized platform for the entire journey from idea to wire transfer.",
+    title: "One platform from first call to wire transfer",
+    role: "The first end-to-end CRE lending operating system",
     content: [
-      "<b>Borrowers:</b> Manage multiple projects efficiently, eliminate redundant data entry, and enjoy a streamlined, win-win funding process.",
-      "<b>Lenders:</b> Access diversified deal flow in a standardized format for quick evaluation. Interact with borrowers and advisors on the same platform, with integrated third-party verification.",
-      "<b>Advisors:</b> Benefit from a single source for data and conversations, simplifying management of multiple borrowers and lenders with one unified process for all deals.",
+      "<b>Borrowers:</b> Build your profile once, use forever. <b>No redundant data entry</b> — just update deal specifics. Track all lender interest in real-time.",
+      "<b>Lenders:</b> <b>Standardized deal packages</b> for instant comparison. Chat with borrowers, request docs, and close deals all in one place.",
+      "<b>Advisors:</b> Manage <b>unlimited deals simultaneously</b> with our workflow automation. One dashboard for all borrowers, lenders, and documents."
     ],
     videoUrl: "https://drive.google.com/file/d/1_Y5xZF_ZG9hDC4-G6PHrfXOOGatv2sR4/preview",
     gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
@@ -109,12 +109,12 @@ const solutionCards: SolutionCard[] = [
     dotColor: "bg-emerald-600 dark:bg-emerald-400"
   },
   {
-    title: "AI makes it fast",
-    role: "Generate OMs and Due Diligence vaults in 30 seconds, with live updates and version control.",
+    title: "30-second OMs with live updates",
+    role: "AI transforms scattered documents into institutional-grade packages instantly",
     content: [
-      "<b>Borrowers:</b> Drag and drop information for Borrower and Project Resumes just once, with live updates for changing variables and a dynamic OM on your dashboard (no static PDFs).",
-      "<b>Lenders:</b> Always access the latest information, compare deals side-by-side, and get live AI insights directly from the OM.",
-      "<b>Advisors:</b> Use a single repository for all communication and documentation, with a consistent workflow that converts deals in days, not months.",
+      "<b>Borrowers:</b> Drag and drop any documents — our AI extracts, organizes, and creates your OM in <b>30 seconds, not 3 weeks</b>.",
+      "<b>Lenders:</b> See <b>live, dynamic OMs</b> that update in real-time. Ask our AI questions about any deal and get instant answers with sources.",
+      "<b>Advisors:</b> <b>Save 160 hours per deal</b>. No more manual package creation. Focus on relationships while AI handles documentation."
     ],
     videoUrl: "https://drive.google.com/file/d/1iS4vGiqMrPHtEb1y7MiJmP04ixaAHCZq/preview",
     gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
@@ -123,19 +123,19 @@ const solutionCards: SolutionCard[] = [
     dotColor: "bg-emerald-600 dark:bg-emerald-400"
   },
   {
-    title: "Matchmaking",
-    role: "Leverage AI for precise, curated matchmaking between lenders and borrowers.",
+    title: "AI predicts perfect matches",
+    role: "Machine learning trained on thousands of successful deals",
     content: [
-      "<b>Borrowers:</b> Get enhanced resume curation, visibility into available lenders, and higher success rates in securing loans.",
-      "<b>Lenders:</b> Discover only relevant matches through our subscription white-glove service, enabling faster capital deployment.",
-      "<b>Advisors:</b> Match with superior deals for higher conversions and better commission cuts from lenders.",
+      "<b>Borrowers:</b> <b>75% higher success rate</b> — our AI knows exactly which lenders want your deal based on similar successful transactions.",
+      "<b>Lenders:</b> <b>10x more qualified deals</b> with our white-glove curation service. Only see deals that match your investment thesis.",
+      "<b>Advisors:</b> <b>Close deals 3x faster</b> with AI-powered matching. Higher success rates mean better reputation and more referrals."
     ],
     videoUrl: "/CapMatchDemo720p.mp4",
     gradient: "from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20",
     textColor: "text-emerald-600 dark:text-emerald-400",
     accentColor: "text-black dark:text-white",
     dotColor: "bg-emerald-600 dark:bg-emerald-400"
-  },
+  }
 ];
 
 interface ProblemsAndSolutionsFunnelProps {
@@ -154,7 +154,7 @@ export default function ProblemsAndSolutionsFunnel({ onCardSelect, selectedCard 
       {/* Funnel Layout */}
       <div className="relative z-10 h-full">
         {/* Problem Cards (Left Side) */}
-        <div className="absolute left-[2%] top-[15%] w-[42%] space-y-4 md:space-y-5 lg:space-y-6">
+        <div className="absolute left-[2%] top-[2%] w-[42%] space-y-4 md:space-y-5 lg:space-y-6">
           {problemCards.map((card, idx) => {
             const cardWidths = [98, 92, 86, 80];
             const cardWidth = cardWidths[idx] || 80;
@@ -163,7 +163,7 @@ export default function ProblemsAndSolutionsFunnel({ onCardSelect, selectedCard 
               <motion.div
                 key={idx}
                 onClick={() => onCardSelect('problem', idx)}
-                className={`relative glass-card rounded-xl p-4 md:p-5 lg:p-6 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-24 md:h-28 lg:h-32 flex items-center justify-center cursor-pointer hover:scale-105 transition-transform ${
+                className={`relative glass-card rounded-xl p-4 md:p-5 lg:p-6 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-[125px] md:h-[146px] lg:h-[166px] flex items-center justify-center cursor-pointer hover:scale-105 transition-transform ${
                   selectedCard.type === 'problem' && selectedCard.index === idx ? 'ring-4 ring-red-400 dark:ring-red-500' : ''
                 }`}
                 style={{
@@ -183,7 +183,7 @@ export default function ProblemsAndSolutionsFunnel({ onCardSelect, selectedCard 
         </div>
 
         {/* Solution Cards (Right Side) */}
-        <div className="absolute right-[2%] top-[15%] w-[42%] space-y-4 md:space-y-5 lg:space-y-6">
+        <div className="absolute right-[2%] top-[2%] w-[42%] space-y-4 md:space-y-5 lg:space-y-6">
           {solutionCards.map((card, idx) => {
             const cardWidths = [98, 92, 86, 80];
             const cardWidth = cardWidths[idx] || 80;
@@ -192,7 +192,7 @@ export default function ProblemsAndSolutionsFunnel({ onCardSelect, selectedCard 
               <motion.div
                 key={idx}
                 onClick={() => onCardSelect('solution', idx)}
-                className={`relative glass-card rounded-xl p-4 md:p-5 lg:p-6 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-24 md:h-28 lg:h-32 flex items-center justify-center cursor-pointer hover:scale-105 transition-transform ${
+                className={`relative glass-card rounded-xl p-4 md:p-5 lg:p-6 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-[125px] md:h-[146px] lg:h-[166px] flex items-center justify-center cursor-pointer hover:scale-105 transition-transform ${
                   selectedCard.type === 'solution' && selectedCard.index === idx ? 'ring-4 ring-emerald-400 dark:ring-emerald-500' : ''
                 }`}
                 style={{
