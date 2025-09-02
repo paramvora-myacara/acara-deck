@@ -4,6 +4,40 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import FunnelBackground from "@/components/FunnelBackground";
 
+// Helper to bold key metrics and requested keywords in short strings
+function boldMetrics(text: string): string {
+  let result = text
+    // $ amounts like $50M, $957B, $1,000,000
+    .replace(/\$\s?\d{1,3}(?:[,\d]{0,3})*(?:\.\d+)?\s?(?:B|M|K)?/g, match => `<b>${match}</b>`)
+    // Numbers with B/M/K suffix like 957B, 50M
+    .replace(/\b\d+(?:\.\d+)?\s?(?:B|M|K)\b/g, match => `<b>${match}</b>`)
+    // Percentages like 99%, 60%
+    .replace(/\b\d+(?:\.\d+)?%\b/g, match => `<b>${match}</b>`)
+    // Large comma-separated numbers like 120,000 or 3,000+
+    .replace(/\b\d{1,3}(?:,\d{3})+(?:\+)?\b/g, match => `<b>${match}</b>`)
+    // Simple ranges like 2-4 or 6-8
+    .replace(/\b\d+\s?-\s?\d+\b/g, match => `<b>${match}</b>`);
+
+  const keywords = [
+    // Problem-side emphasis
+    'invisible',
+    "can't place debt", 'cant place debt',
+    'weeks',
+    "can't find deals", 'cant find deals',
+    // Solution-side emphasis
+    'lender', 'sees', 'deal', 'instantly',
+    'platform', 'first call', 'wire transfer',
+    '30-second oms', '30 second oms', 'perfect matches'
+  ];
+
+  for (const raw of keywords) {
+    const pattern = new RegExp(`(\\b${raw.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b)`, 'gi');
+    result = result.replace(pattern, '<b>$1</b>');
+  }
+
+  return result;
+}
+
 // Problem cards data
 interface ProblemCard {
   title: string;
@@ -53,7 +87,7 @@ const problemCards: ProblemCard[] = [
     dotColor: "bg-red-600 dark:bg-red-400"
   },
   {
-    title: "Deal documents take 2-4 weeks to create",
+    title: "Deal documents take 6-8 weeks to create",
     content: [
       "<b>Analyst teams burn 160 hours per deal</b> — manually assembling offering memorandums from scattered PDFs, emails, and spreadsheets.",
       "<b>Every change triggers complete rewrites</b> — no version control means confusion, delays, and deals dying from stale information.",
@@ -174,9 +208,7 @@ export default function ProblemsAndSolutionsFunnel({ onCardSelect, selectedCard 
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: idx * 0.2 }}
               >
-                <h3 className={`text-base md:text-lg lg:text-xl font-semibold ${card.textColor} text-center leading-tight px-2`}>
-                  {card.title}
-                </h3>
+                <h3 className={`text-sm md:text-base lg:text-lg font-semibold ${card.textColor} text-center leading-tight px-2`} dangerouslySetInnerHTML={{ __html: boldMetrics(card.title) }} />
               </motion.div>
             );
           })}
@@ -203,9 +235,7 @@ export default function ProblemsAndSolutionsFunnel({ onCardSelect, selectedCard 
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: idx * 0.2 }}
               >
-                <h3 className={`text-base md:text-lg lg:text-xl font-semibold ${card.textColor} text-center leading-tight px-2`}>
-                  {card.title}
-                </h3>
+                <h3 className={`text-sm md:text-base lg:text-lg font-semibold ${card.textColor} text-center leading-tight px-2`} dangerouslySetInnerHTML={{ __html: boldMetrics(card.title) }} />
               </motion.div>
             );
           })}

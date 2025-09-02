@@ -92,30 +92,30 @@ const creEducationContent = {
     {
       step: "1",
       title: "Borrower Needs $10M",
-      time: "Day 1",
+      time: "Week 1",
       description: "Property owner needs to refinance or purchase. Time is critical — deals move fast.",
-      problem: ":x: No visibility into which of 3,000 lenders want their deal"
+      problem: "No visibility into which of 3,000 lenders want their deal"
     },
     {
       step: "2",
       title: "Advisor Scrambles",
-      time: "Days 1-14",
+      time: "Weeks 1-2",
       description: "Broker manually calls their limited network — maybe 5-10 lenders they know personally.",
-      problem: ":x: Missing 2,990+ other lenders who might offer better terms"
+      problem: "Missing 2,990+ other lenders who might offer better terms"
     },
     {
       step: "3",
       title: "Documents Chaos",
-      time: "Days 14-28",
-      description: "Creating the loan package (OM) takes 2-4 weeks of analyst time. Every update means starting over.",
-      problem: ":x: PDFs, spreadsheets, emails — no version control, no live updates"
+      time: "Weeks 2-8",
+      description: "Creating the loan package (OM) takes 6–8 weeks of analyst time. Every update means starting over.",
+      problem: "PDFs, spreadsheets, emails — no version control, no live updates"
     },
     {
       step: "4",
-      title: "50% Fail",
-      time: "Day 30+",
-      description: "Half of all deals die because of poor lender matching. The other half settle for suboptimal terms.",
-      problem: ":x: Borrowers leave money on table, lenders miss good deals, advisors lose commissions"
+      title: "Deals Drag For Months",
+      time: "Months 3-6",
+      description: "Lender outreach, underwriting, and revisions stretch the process to ~6 months overall.",
+      problem: "Half die due to poor matching; surviving deals often accept worse terms"
     }
   ],
   marketInsight: {
@@ -163,7 +163,7 @@ const problemCardsForProblemsSection = [
     accentColor: "text-black dark:text-white"
   },
   {
-    title: "Deal documents take 2-4 weeks to create",
+    title: "Deal documents take 6-8 weeks to create",
     content: [
       "<b>Analyst teams burn 160 hours per deal</b> — manually assembling offering memorandums from scattered PDFs, emails, and spreadsheets.",
       "<b>Every change triggers complete rewrites</b> — no version control means confusion, delays, and deals dying from stale information.",
@@ -189,7 +189,7 @@ const problemCardsForProblemsSection = [
 // Market: optimized content
 const optimizedMarketCards = [
   {
-    title: "The $10 Billion Revenue Opportunity",
+    title: "Massive TAM, Immediate Revenue",
     content: [
       "<b>$957 billion needs refinancing in 2025 alone</b> — unprecedented volume as COVID-era loans mature and rates normalize. This creates a once-in-a-decade disruption opportunity.",
       "<b>Our serviceable addressable market: $100 billion in loans</b> — capturing just 10% of annual refinancing volume at 1% fees generates $1 billion in revenue.",
@@ -199,9 +199,8 @@ const optimizedMarketCards = [
   {
     title: "Revenue Streams That Compound",
     content: [
-      "<b>Transaction Fees (1% of loan amount):</b> $100M revenue potential on $10B in loans. Industry standard pricing with 10x better service.",
-      "<b>Lender SaaS Subscriptions ($5-50K/month):</b> 3,000 lenders paying for deal flow and analytics = $180M ARR. Stickiest revenue with 95% retention.",
-      "<b>AI Advisor Platform ($99-999/month):</b> 120,000 brokers subscribing for tools = $140M ARR. Land-and-expand model with upsells.",
+      "<b>Transaction Fees (1% of loan amount):</b> $10B revenue potential on $1T in loans. Industry standard pricing with 10x better service.",
+      "<b>AI Advisor Platform:</b> Brokers subscribe for tools. Land-and-expand model with upsells.",
       "<b>Data & Intelligence Layer:</b> Proprietary market data becomes the 'Bloomberg of CRE' — high-margin recurring revenue from every market participant."
     ]
   },
@@ -267,8 +266,8 @@ const teamMembers = [
 
 // Investment Ask: optimized content
 const optimizedInvestmentAsk = {
-  headline: "The OS for $4.8T CRE Debt",
-  askAmount: "$2M Pre-Seed Round",
+  headline: "The Operating System for $4.8T CRE Debt",
+  askAmount: "$3.5M Pre-Seed Round",
   useOfFunds: [
     {
       category: "Product & AI Development",
@@ -339,9 +338,22 @@ function emphasizeNotables(text: string): string {
   return result;
 }
 
+// Helper to bold specific keywords in Problems section titles
+function boldProblemTitle(text: string): string {
+  const keywords = [
+    'invisible', '99%', "can't place debt", 'cant place debt', 'weeks', "can't find deals", 'cant find deals'
+  ];
+  let result = text;
+  for (const raw of keywords) {
+    const pattern = new RegExp(`(\\b${raw.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b)`, 'gi');
+    result = result.replace(pattern, '<b>$1</b>');
+  }
+  return result;
+}
+
 export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedProblem, setSelectedProblem] = useState(0);
+  const [selectedProblem, setSelectedProblem] = useState(-1);
   const [selectedCard, setSelectedCard] = useState<{ type: 'problem' | 'solution', index: number }>({ type: 'solution', index: 0 });
   const [selectedTeamMember, setSelectedTeamMember] = useState(0);
   const [expandedMarketCards, setExpandedMarketCards] = useState<Record<string, boolean>>({
@@ -407,7 +419,7 @@ export default function HomePage() {
             className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2"
           >
             <Play className="w-5 h-5" />
-            View Live Demo
+            View Live Site
           </a>
         </div>
         
@@ -435,52 +447,85 @@ export default function HomePage() {
               </p>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <p className="text-xl md:text-2xl text-black/80 dark:text-white/80 mb-12 max-w-4xl mx-auto" dangerouslySetInnerHTML={{ __html: creEducationContent.mainDescription }} />
+              <p className="text-xl md:text-2xl text-black/80 dark:text-white/80 mb-16 max-w-4xl mx-auto" dangerouslySetInnerHTML={{ __html: creEducationContent.mainDescription }} />
             </FadeIn>
 
-            {/* Key Players */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12 text-left">
-              {creEducationContent.keyPlayers.map((kp, idx) => (
-                <FadeIn key={idx} delay={idx * 0.05}>
-                  <div className="glass-card rounded-2xl p-6 bg-white/70 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 h-full">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">
-                        {kp.icon === 'Building2' && <Building2 className="w-6 h-6 text-blue-600 dark:text-blue-400" />}
-                        {kp.icon === 'Briefcase' && <Briefcase className="w-6 h-6 text-blue-600 dark:text-blue-400" />}
-                        {kp.icon === 'Bank' && <Landmark className="w-6 h-6 text-blue-600 dark:text-blue-400" />}
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-semibold text-black dark:text-white">{kp.title}</h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">{kp.subtitle}</p>
-                        <p className="mt-3 text-base text-gray-800 dark:text-gray-200">{kp.description}</p>
+            {/* Key Players Section */}
+            <div className="mb-20">
+              <FadeIn delay={0.15}>
+                <h3 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-4">
+                  The Key Players
+                </h3>
+                <p className="text-lg md:text-xl text-black/60 dark:text-white/60 mb-12 max-w-3xl mx-auto">
+                  Understanding the massive ecosystem that moves nearly $1 trillion annually
+                </p>
+              </FadeIn>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-left">
+                {creEducationContent.keyPlayers.map((kp, idx) => (
+                  <FadeIn key={idx} delay={0.2 + idx * 0.05}>
+                    <div className="glass-card rounded-2xl p-6 bg-white/70 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 h-full">
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">
+                          {kp.icon === 'Building2' && <Building2 className="w-6 h-6 text-blue-600 dark:text-blue-400" />}
+                          {kp.icon === 'Briefcase' && <Briefcase className="w-6 h-6 text-blue-600 dark:text-blue-400" />}
+                          {kp.icon === 'Bank' && <Landmark className="w-6 h-6 text-blue-600 dark:text-blue-400" />}
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-semibold text-black dark:text-white">{kp.title}</h3>
+                          <p className="text-sm text-gray-600 dark:text-gray-400">{kp.subtitle}</p>
+                          <p className="mt-3 text-base text-gray-800 dark:text-gray-200">{kp.description}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </FadeIn>
-              ))}
+                  </FadeIn>
+                ))}
+              </div>
             </div>
 
-            {/* Timeline */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 mb-12">
-              {creEducationContent.processTimeline.map((item, idx) => (
-                <FadeIn key={idx} delay={idx * 0.05}>
-                  <div className="text-center glass-card rounded-2xl p-6 bg-gray-50 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700">
-                    <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">{item.step}</span>
+            {/* Timeline Section */}
+            <div className="mb-20">
+              <FadeIn delay={0.35}>
+                <h3 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-4">
+                  How Every Deal Dies Today
+                </h3>
+                <p className="text-lg md:text-xl text-black/60 dark:text-white/60 mb-12 max-w-3xl mx-auto">
+                  The broken 6 month journey that costs borrowers millions and kills half of all deals
+                </p>
+              </FadeIn>
+
+                             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
+                 {creEducationContent.processTimeline.map((item, idx) => (
+                   <FadeIn key={idx} delay={0.4 + idx * 0.05}>
+                     <div className="text-center glass-card rounded-2xl p-6 bg-gray-50 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 flex flex-col">
+                                             <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                         <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">{item.step}</span>
+                       </div>
+                       <div className="flex-1 flex flex-col justify-between">
+                         <div className="flex-1 flex flex-col">
+                                                       <h3 className="font-semibold text-xl md:text-2xl text-black dark:text-white text-center min-h-[3.5rem] md:min-h-[4.5rem] flex items-center justify-center">{item.title}</h3>
+                            <p className="text-base md:text-lg text-gray-500 dark:text-gray-400 text-center mt-2 min-h-[1.75rem] md:min-h-[2rem] flex items-center justify-center">{item.time}</p>
+                           <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 mt-4 leading-relaxed text-center flex-1">{item.description}</p>
+                         </div>
+                         <p className="text-base md:text-lg text-red-600 dark:text-red-400 mt-5 font-semibold text-center">{item.problem}</p>
+                       </div>
                     </div>
-                    <h3 className="font-semibold text-lg text-black dark:text-white">{item.title}</h3>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{item.time}</p>
-                    <p className="text-sm text-gray-700 dark:text-gray-300 mt-3">{item.description}</p>
-                    <p className="text-sm text-red-600 dark:text-red-400 mt-3">{item.problem}</p>
-                  </div>
-                </FadeIn>
-              ))}
+                  </FadeIn>
+                ))}
+              </div>
             </div>
 
-            {/* Market Insight */}
-            <FadeIn>
+            {/* Market Insight Section */}
+            <FadeIn delay={0.6}>
+              <div className="mb-8">
+                <h3 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-4">
+                  The Hidden Reality
+                </h3>
+                <p className="text-lg md:text-xl text-black/60 dark:text-white/60 mb-8 max-w-3xl mx-auto">
+                  What industry insiders know but won't admit publicly
+                </p>
+              </div>
               <div className="glass-card rounded-2xl p-8 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-white/10 max-w-4xl mx-auto text-left">
-                <h3 className="text-2xl md:text-3xl font-semibold text-black dark:text-white mb-4">{creEducationContent.marketInsight.title}</h3>
                 <ul className="list-disc list-outside space-y-4 pl-6">
                   {creEducationContent.marketInsight.facts.map((fact: string, i: number) => (
                     <li key={i} className="text-base md:text-lg text-gray-800 dark:text-gray-200" dangerouslySetInnerHTML={{ __html: fact }} />
@@ -521,9 +566,7 @@ export default function HomePage() {
                       onClick={() => handleProblemSelect(isExpanded ? -1 : idx)}
                       className="w-full p-6 md:p-8 text-left hover:bg-red-100/50 dark:hover:bg-red-900/10 transition-colors duration-200 flex items-center justify-between"
                     >
-                      <h3 className={`text-2xl md:text-3xl font-semibold ${card.textColor} leading-tight`}>
-                        {card.title}
-                      </h3>
+                      <h3 className={`text-2xl md:text-3xl font-semibold ${card.textColor} leading-tight`} dangerouslySetInnerHTML={{ __html: boldProblemTitle(card.title) }} />
                       <ChevronDown 
                         className={`w-6 h-6 md:w-7 md:h-7 ${card.textColor} transition-transform duration-200 flex-shrink-0 ml-4 ${
                           isExpanded ? 'rotate-180' : ''
@@ -579,7 +622,7 @@ export default function HomePage() {
           <SectionCard>
             <FadeIn>
               <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white text-center mb-8 md:mb-12">
-                How CapMatch Fixes Everything
+                CapMatch - The Complete Solution
               </h2>
             </FadeIn>
 
@@ -643,7 +686,7 @@ export default function HomePage() {
         <div className="w-full max-w-7xl mx-auto text-center">
           <SectionCard>
             <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-8">
-              The $10B Market Opportunity
+              The $1 Trillion Market Opportunity
             </h2>
             <div className="space-y-8">
               {/* First 3 cards stacked vertically */}
@@ -836,13 +879,13 @@ export default function HomePage() {
                 {optimizedInvestmentAsk.askAmount}
               </p>
             </FadeIn>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-10 text-left">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-10 text-left items-stretch">
               <FadeIn>
-                <div className="glass-card rounded-2xl p-6 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700">
+                <div className="glass-card rounded-2xl p-6 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 h-full">
                   <h3 className="text-2xl font-semibold text-amber-700 dark:text-amber-300 mb-4">Use of Funds</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                     {optimizedInvestmentAsk.useOfFunds.map((u, i) => (
-                      <div key={i} className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-amber-200/60 dark:border-amber-800/40 px-4 py-3 text-black dark:text-white">
+                      <div key={i} className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-amber-200/60 dark:border-amber-800/40 px-5 py-4 md:px-6 md:py-6 min-h-28 md:min-h-32 flex items-center justify-center text-center text-black dark:text-white text-base md:text-lg leading-relaxed">
                         <span className="font-semibold">{u.category}</span>
                       </div>
                     ))}
@@ -850,7 +893,7 @@ export default function HomePage() {
                 </div>
               </FadeIn>
               <FadeIn delay={0.1}>
-                <div className="glass-card rounded-2xl p-6 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700">
+                <div className="glass-card rounded-2xl p-6 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 h-full">
                   <h3 className="text-2xl font-semibold text-amber-700 dark:text-amber-300 mb-4">Why Now</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                     {optimizedInvestmentAsk.whyNow.map((w, i) => (
@@ -864,7 +907,7 @@ export default function HomePage() {
               </FadeIn>
             </div>
             <FadeIn>
-              <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 max-w-2xl mx-auto">
+              <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 w-full">
                 <p className="text-lg text-amber-600 dark:text-amber-300 mb-6">
                   {optimizedInvestmentAsk.callToAction}
                 </p>
