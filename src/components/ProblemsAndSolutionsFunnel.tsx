@@ -214,6 +214,130 @@ export default function ProblemsAndSolutionsFunnel({ onCardSelect, selectedCard 
           })}
         </div>
 
+        {/* Mapping Arrows */}
+        <div className="absolute left-[44%] top-[2%] w-[12%] h-full hidden md:block">
+          {problemCards.map((_, idx) => {
+            return (
+              <motion.div
+                key={idx}
+                className="absolute w-full"
+                style={{
+                  // Responsive positioning using CSS calc for proper vertical centering
+                  top: `calc(${idx} * (125px + 1rem) + 62.5px)`, // Mobile: card height 125px, spacing 1rem
+                }}
+                initial={{ opacity: 0, scaleX: 0 }}
+                animate={{ opacity: 1, scaleX: 1 }}
+                transition={{ delay: idx * 0.2 + 0.4, duration: 0.6 }}
+              >
+                                 {/* Mobile/Base Arrow */}
+                 <div className="md:hidden">
+                   <svg width="100%" height="24" viewBox="0 0 100 24" className="overflow-visible drop-shadow-sm">
+                      <defs>
+                        <marker
+                         id={`arrowhead-base-${idx}`}
+                         markerWidth="12"
+                         markerHeight="10"
+                         refX="10"
+                         refY="5"
+                         orient="auto"
+                       >
+                         <polygon
+                           points="0 0, 12 5, 0 10"
+                           fill="#4B5563"
+                           className="dark:fill-gray-300"
+                         />
+                       </marker>
+                     </defs>
+                     <line
+                       x1="0"
+                       y1="12"
+                       x2="88"
+                       y2="12"
+                       stroke="#4B5563"
+                       strokeWidth="3"
+                       markerEnd={`url(#arrowhead-base-${idx})`}
+                       className="dark:stroke-gray-300"
+                       style={{ filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1))' }}
+                     />
+                   </svg>
+                 </div>
+
+                 {/* Medium Screen Arrow */}
+                 <div className="hidden md:block lg:hidden">
+                   <svg width="100%" height="24" viewBox="0 0 100 24" className="overflow-visible drop-shadow-sm"
+                        style={{
+                          transform: `translateY(${(146 + 20) * idx + 73 - (125 + 16) * idx - 62.5}px)`
+                        }}>
+                     <defs>
+                       <marker
+                         id={`arrowhead-md-${idx}`}
+                         markerWidth="12"
+                         markerHeight="10"
+                         refX="10"
+                         refY="5"
+                         orient="auto"
+                       >
+                         <polygon
+                           points="0 0, 12 5, 0 10"
+                           fill="#4B5563"
+                           className="dark:fill-gray-300"
+                         />
+                       </marker>
+                     </defs>
+                     <line
+                       x1="0"
+                       y1="12"
+                       x2="88"
+                       y2="12"
+                       stroke="#4B5563"
+                       strokeWidth="3"
+                       markerEnd={`url(#arrowhead-md-${idx})`}
+                       className="dark:stroke-gray-300"
+                       style={{ filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1))' }}
+                     />
+                   </svg>
+                 </div>
+
+                 {/* Large Screen Arrow */}
+                 <div className="hidden lg:block">
+                   <svg width="100%" height="24" viewBox="0 0 100 24" className="overflow-visible drop-shadow-sm"
+                        style={{
+                          transform: `translateY(${(166 + 24) * idx + 83 - (125 + 16) * idx - 62.5}px)`
+                        }}>
+                     <defs>
+                       <marker
+                         id={`arrowhead-lg-${idx}`}
+                         markerWidth="12"
+                         markerHeight="10"
+                         refX="10"
+                         refY="5"
+                         orient="auto"
+                       >
+                         <polygon
+                           points="0 0, 12 5, 0 10"
+                           fill="#4B5563"
+                           className="dark:fill-gray-300"
+                         />
+                       </marker>
+                     </defs>
+                     <line
+                       x1="0"
+                       y1="12"
+                       x2="88"
+                       y2="12"
+                       stroke="#4B5563"
+                       strokeWidth="3"
+                       markerEnd={`url(#arrowhead-lg-${idx})`}
+                       className="dark:stroke-gray-300"
+                       style={{ filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1))' }}
+                     />
+                   </svg>
+                 </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
         {/* Solution Cards (Right Side) */}
         <div className="absolute right-[2%] top-[2%] w-[42%] space-y-4 md:space-y-5 lg:space-y-6">
           {solutionCards.map((card, idx) => {
