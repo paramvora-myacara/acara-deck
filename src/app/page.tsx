@@ -73,19 +73,19 @@ const creEducationContent = {
       icon: "Building2",
       title: "30,000 Borrowers",
       subtitle: "Property Owners & Developers",
-      description: "Own 100,000+ apartment buildings (20+ units) across the U.S. — 96% have active debt that needs constant refinancing"
+      description: "Own 100,000+ apartment buildings (20+ units) across the U.S. - 96% have active debt that needs constant refinancing"
     },
     {
       icon: "Briefcase",
       title: "120,000 Advisors",
       subtitle: "Loan Brokers & Originators",
-      description: "Licensed brokers who should be placing debt, but most can't — they lack tools, leads, and lender connections"
+      description: "Licensed brokers who should be placing debt, but most can't - they lack tools, leads, and lender connections"
     },
     {
       icon: "Bank",
       title: "3,000+ Lenders",
       subtitle: "Banks, Funds & Agencies",
-      description: "From regional banks to new debt funds, each with different criteria, rates, and appetites — impossible to track manually"
+      description: "From regional banks to new debt funds, each with different criteria, rates, and appetites - impossible to track manually"
     }
   ],
   processTimeline: [
@@ -93,14 +93,14 @@ const creEducationContent = {
       step: "1",
       title: "Borrower Needs $10M",
       time: "Week 1",
-      description: "Property owner needs to refinance or purchase. Time is critical — deals move fast.",
+      description: "Property owner needs to refinance or purchase. Time is critical - deals move fast.",
       problem: "No visibility into which of 3,000 lenders want their deal"
     },
     {
       step: "2",
       title: "Advisor Scrambles",
       time: "Weeks 1-2",
-      description: "Broker manually calls their limited network — maybe 5-10 lenders they know personally.",
+      description: "Broker manually calls their limited network - maybe 5-10 lenders they know personally.",
       problem: "Missing 2,990+ other lenders who might offer better terms"
     },
     {
@@ -108,7 +108,7 @@ const creEducationContent = {
       title: "Documents Chaos",
       time: "Weeks 2-8",
       description: "Creating the loan package (OM) takes 6–8 weeks of analyst time. Every update means starting over.",
-      problem: "PDFs, spreadsheets, emails — no version control, no live updates"
+      problem: "PDFs, spreadsheets, emails - no version control, no live updates"
     },
     {
       step: "4",
@@ -121,10 +121,10 @@ const creEducationContent = {
   marketInsight: {
     title: "The Hidden Truth About CRE Lending",
     facts: [
-      "<b>There are no real CRE lending companies</b> — just marquees with independent contractors working in silos",
-      "<b>50% of borrowers go direct to lenders</b> — and miss better rates because they only know 1-2 banks",
-      "<b>New debt funds emerged post-COVID</b> — institutional investors created 1,000+ new lenders that borrowers don't even know exist",
-      "<b>$100B+ in fees annually</b> — yet delivered through phone calls, PDFs, and personal relationships"
+      "<b>There are no real CRE lending companies</b> - just marquees with independent contractors working in silos",
+      "<b>50% of borrowers go direct to lenders</b> - and miss better rates because they only know 1-2 banks",
+      "<b>New debt funds emerged post-COVID</b> - institutional investors created 1,000+ new lenders that borrowers don't even know exist",
+      "<b>$100B+ in fees annually</b> - yet delivered through phone calls, PDFs, and personal relationships"
     ]
   }
 };
@@ -143,9 +143,9 @@ const problemCardsForProblemsSection = [
   {
     title: "Borrowers are invisible to 99% of lenders",
     content: [
-      "<b>Only 5-10 lenders see each deal</b> — brokers show deals only to their personal contacts, missing 2,990+ other active lenders who might offer better terms.",
-      "<b>50% of deals fail from poor matching</b> — borrowers don't know what lenders want, so they waste time pitching to the wrong ones.",
-      "<b>Leaving millions on the table</b> — a 0.25% rate difference on a $50M loan costs $125,000/year. Borrowers never know what they missed."
+      "<b>Only 5-10 lenders see each deal</b> - brokers show deals only to their personal contacts, missing 2,990+ other active lenders who might offer better terms.",
+      "<b>50% of deals fail from poor matching</b> - borrowers don't know what lenders want, so they waste time pitching to the wrong ones.",
+      "<b>Leaving millions on the table</b> - a 0.25% rate difference on a $50M loan costs $125,000/year. Borrowers never know what they missed."
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
     textColor: "text-red-600 dark:text-red-400",
@@ -154,9 +154,9 @@ const problemCardsForProblemsSection = [
   {
     title: "120,000 brokers can't place debt efficiently",
     content: [
-      "<b>Zero infrastructure for loan brokers</b> — licensed professionals with no platform, no leads, no standardized process. Each rebuilds the wheel.",
-      "<b>60%+ commission to originator</b> — inefficiency means brokers keep most fees just to survive, making the model unscalable.",
-      "<b>$4B in missed commissions annually</b> — brokers who could place debt don't, because the process is too complex without proper tools."
+      "<b>Zero infrastructure for loan brokers</b> - licensed professionals with no platform, no leads, no standardized process. Each rebuilds the wheel.",
+      "<b>60%+ commission to originator</b> - inefficiency means brokers keep most fees just to survive, making the model unscalable.",
+      "<b>$4B in missed commissions annually</b> - brokers who could place debt don't, because the process is too complex without proper tools."
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
     textColor: "text-red-600 dark:text-red-400",
@@ -165,9 +165,9 @@ const problemCardsForProblemsSection = [
   {
     title: "Deal documents take 6-8 weeks to create",
     content: [
-      "<b>Analyst teams burn 160 hours per deal</b> — manually assembling offering memorandums from scattered PDFs, emails, and spreadsheets.",
-      "<b>Every change triggers complete rewrites</b> — no version control means confusion, delays, and deals dying from stale information.",
-      "<b>Static PDFs in a dynamic market</b> — by the time the OM is done, market conditions changed. Lenders see outdated info."
+      "<b>Analyst teams burn 160 hours per deal</b> - manually assembling offering memorandums from scattered PDFs, emails, and spreadsheets.",
+      "<b>Every change triggers complete rewrites</b> - no version control means confusion, delays, and deals dying from stale information.",
+      "<b>Static PDFs in a dynamic market</b> - by the time the OM is done, market conditions changed. Lenders see outdated info."
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
     textColor: "text-red-600 dark:text-red-400",
@@ -176,9 +176,9 @@ const problemCardsForProblemsSection = [
   {
     title: "Lenders can't find deals they want",
     content: [
-      "<b>3,000 lenders fighting for deal flow</b> — but only see deals from their limited broker network, missing 95% of the market.",
-      "<b>Can't compare deals efficiently</b> — every broker sends different formats. No standardization means manual review of each deal.",
-      "<b>$957B refinancing in 2025</b> — lenders have capital to deploy but can't find the right deals fast enough in this tsunami of opportunity."
+      "<b>3,000 lenders fighting for deal flow</b> - but only see deals from their limited broker network, missing 95% of the market.",
+      "<b>Can't compare deals efficiently</b> - every broker sends different formats. No standardization means manual review of each deal.",
+      "<b>$957B refinancing in 2025</b> - lenders have capital to deploy but can't find the right deals fast enough in this tsunami of opportunity."
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
     textColor: "text-red-600 dark:text-red-400",
@@ -191,9 +191,9 @@ const optimizedMarketCards = [
   {
     title: "Massive TAM, Immediate Revenue",
     content: [
-      "<b>$957 billion needs refinancing in 2025 alone</b> — unprecedented volume as COVID-era loans mature and rates normalize. This creates a once-in-a-decade disruption opportunity.",
-      "<b>Our serviceable addressable market: $100 billion in loans</b> — capturing just 10% of annual refinancing volume at 1% fees generates $1 billion in revenue.",
-      "<b>Market expanding to $6 trillion by 2030</b> — as more investors discover CRE debt yields (8-12%), capital floods in. We're positioned to be the infrastructure layer for this growth."
+      "<b>$957 billion needs refinancing in 2025 alone</b> - unprecedented volume as COVID-era loans mature and rates normalize. This creates a once-in-a-decade disruption opportunity.",
+      "<b>Our serviceable addressable market: $100 billion in loans</b> - capturing just 10% of annual refinancing volume at 1% fees generates $1 billion in revenue.",
+      "<b>Market expanding to $6 trillion by 2030</b> - as more investors discover CRE debt yields (8-12%), capital floods in. We're positioned to be the infrastructure layer for this growth."
     ]
   },
   {
@@ -201,7 +201,7 @@ const optimizedMarketCards = [
     content: [
       "<b>Transaction Fees (1% of loan amount):</b> $10B revenue potential on $1T in loans. Industry standard pricing with 10x better service.",
       "<b>AI Advisor Platform:</b> Brokers subscribe for tools. Land-and-expand model with upsells.",
-      "<b>Data & Intelligence Layer:</b> Proprietary market data becomes the 'Bloomberg of CRE' — high-margin recurring revenue from every market participant."
+      "<b>Data & Intelligence Layer:</b> Proprietary market data becomes the 'Bloomberg of CRE' - high-margin recurring revenue from every market participant."
     ]
   },
   {
@@ -230,27 +230,27 @@ const teamMembers = [
     name: "Dr. Jeff Richmond",
     role: "Co-Founder & CEO",
     content: [
-      "<b>Built and scaled to $2B+ annual revenue</b> at eXp Realty — knows how to build massive, tech-enabled marketplaces in traditional industries.",
-      "<b>Deep CRE operator experience</b> through ACARA Management — understands borrower pain firsthand, having refinanced $500M+ in properties.",
-      "<b>Serial entrepreneur in PropTech</b> — co-founded OZ Listings (acquired) and built multiple AI-powered real estate platforms."
+      "<b>Built and scaled to $2B+ annual revenue</b> at eXp Realty - knows how to build massive, tech-enabled marketplaces in traditional industries.",
+      "<b>Deep CRE operator experience</b> through ACARA Management - understands borrower pain firsthand, having refinanced $500M+ in properties.",
+      "<b>Serial entrepreneur in PropTech</b> - co-founded OZ Listings (acquired) and built multiple AI-powered real estate platforms."
     ]
   },
   {
     name: "Todd Vitzthum",
     role: "Co-Founder & Executive Chairman",
     content: [
-      "<b>Closed $3B+ in CRE transactions</b> over 20+ years at Greystone, Cushman & Wakefield, and CBRE — has the relationships and credibility to onboard top lenders.",
-      "<b>Managed 50+ loan brokers</b> at peak — understands exactly why the current model is broken and how to fix it.",
-      "<b>Active LP in 15+ real estate funds</b> — brings instant credibility and connections with institutional capital partners."
+      "<b>Closed $3B+ in CRE transactions</b> over 20+ years at Greystone, Cushman & Wakefield, and CBRE - has the relationships and credibility to onboard top lenders.",
+      "<b>Managed 50+ loan brokers</b> at peak - understands exactly why the current model is broken and how to fix it.",
+      "<b>Active LP in 15+ real estate funds</b> - brings instant credibility and connections with institutional capital partners."
     ]
   },
   {
     name: "Michael Krueger",
     role: "Chief Legal Officer",
     content: [
-      "<b>Structured $1B+ in CRE funds</b> as Partner at Lucosky Brookman LLP — ensures compliance with complex lending regulations from day one.",
-      "<b>Nationally recognized Opportunity Zone expert</b> — literally wrote the playbook on new CRE financing structures, positioning us for emerging markets.",
-      "<b>Board advisor to 3 PropTech unicorns</b> — brings lessons learned from scaling in regulated financial markets."
+      "<b>Structured $1B+ in CRE funds</b> as Partner at Lucosky Brookman LLP - ensures compliance with complex lending regulations from day one.",
+      "<b>Nationally recognized Opportunity Zone expert</b> - literally wrote the playbook on new CRE financing structures, positioning us for emerging markets.",
+      "<b>Board advisor to 3 PropTech unicorns</b> - brings lessons learned from scaling in regulated financial markets."
     ]
   },
   {
@@ -277,12 +277,12 @@ const optimizedInvestmentAsk = {
     {
       category: "Lender & Advisor Onboarding",
       percentage: "30%",
-      details: "Onboard first 100 lenders and 1,000 advisors — critical mass for network effects"
+      details: "Onboard first 100 lenders and 1,000 advisors - critical mass for network effects"
     },
     {
       category: "Customer Acquisition",
       percentage: "20%",
-      details: "Target $100M in LOIs from borrowers — proof of demand for Series A"
+      details: "Target $100M in LOIs from borrowers - proof of demand for Series A"
     },
     {
       category: "Compliance & Operations",
