@@ -54,29 +54,29 @@ const creEducationContent = {
   keyPlayers: [
     {
       icon: "Building2",
-      title: "30,000 Borrowers",
+      title: "Borrowers",
       subtitle: "Property Owners & Developers",
       descriptions: [
-        "Own <b>100,000+</b> apartment buildings (20+ units) across the U.S.",
+        "Own an estimated <b>5 million+</b> apartment buildings (5+ units) across the U.S.",
         "<b>96%</b> have active debt that needs constant refinancing.",
         "Their <b>biggest challenge</b>: finding the right lender among <b>3,000+</b> options."
       ]
     },
     {
       icon: "Briefcase",
-      title: "120,000 Advisors",
+      title: "Advisors",
       subtitle: "Loan Brokers & Originators",
       descriptions: [
-        "Licensed brokers who should be placing debt but lack the tools and connections.",
+        "<b>120,000</b> licensed brokers who should be placing debt but lack the tools and connections.",
         "The process is so inefficient that originators keep <b>60%+ of commissions</b>, and the industry misses <b>$4B in fees</b> annually."
       ]
     },
     {
       icon: "Bank",
-      title: "3,000+ Lenders",
+      title: "Lenders",
       subtitle: "Banks, Funds & Agencies",
       descriptions: [
-        "Each has different criteria, rates, and appetites—impossible to track manually.",
+        "<b>3,000+</b> lenders, each has different criteria, rates, and appetites—impossible to track manually.",
         "With no standardization, it's <b>impossible to efficiently compare deals</b> from different brokers."
       ]
     }
@@ -192,19 +192,20 @@ const optimizedMarketCards = [
   {
     title: "Revenue Streams That Compound",
     content: [
-      "<b>Transaction Fees (1% of loan amount):</b> $10B revenue potential on $1T in loans. Industry standard pricing with 10x better service.",
-      "<b>AI Advisor Platform:</b> Brokers subscribe for tools. Land-and-expand model with upsells.",
-      "<b>Data & Intelligence Layer:</b> Proprietary market data becomes the 'Bloomberg of CRE' - high-margin recurring revenue from every market participant."
+      "<b>Transaction Fees (1% of loan amount):</b> Our primary revenue stream comes from a 1% fee (industry standard) on the total loan amount.<ul><li class='ml-4'><b>Unit Economics:</b> We project our revenue based on a conservative estimate: <br/>- 20 brokers join our platform. <br/>- Each broker manages a $20M loan book, for a total of $400M in volume. <br/>- A 1% commission on this volume generates $4M in fees. <br/>- We take a 60% share, resulting in <b>$2.4M in annual revenue</b>.</li></ul>",
+      "<b>Platform Subscription Fees:</b> We will offer a suite of subscription-based services, including:<ul><li class='ml-4'><b>AI Markets Advisor:</b> This subscription automates deal coordination, reducing client costs. It also enables us to manage deals internally, allowing us to capture 100% of the transaction fee—a significant increase from the 60% from brokered deals.</li><li class='ml-4'><b>White Glove Service:</b> A premium service for clients who want a hands-on, managed experience.</li><li class='ml-4'><b>Refi Radar & Bloomberg of CRE:</b> A data-driven service for lenders that identifies the optimal time to refinance.</li></ul>",
+      "<b>Direct Arbitrage:</b> By targeting real estate brokers directly, we eliminate referral fees, increasing our margins."
     ]
   },
   {
     title: "Why We Win: Network Effects + AI Moat",
     content: [
-      "<b>Recurring Value:</b> A borrower who works with the platform once will continue working with us for all subsequent deals (refinancing, takeout financing) and future projects.",
-      "<b>Platform lock-in:</b> Once borrowers build profiles and lenders integrate workflows, switching costs become prohibitive.",
-      "<b>Two-sided network effects:</b> Every borrower attracts lenders, every lender attracts borrowers. Competitors can't replicate our liquidity.",
-      "<b>Data moat deepens daily:</b> Each transaction trains our AI. We'll know more about CRE lending patterns than anyone else within 18 months.",
-      "<b>Winner-take-most dynamics:</b> Like Uber or Airbnb, the market will consolidate around 1-2 platforms. We're 18 months ahead."
+      "<b>No Cold Start Problem:</b> The founding team's long-term, established relationships and deep history in recruiting allow us to overcome the cold start problem by onboarding a critical mass of lenders and borrowers from day one, ensuring immediate platform activity.",
+      "<b>Regulatory Risk Assessment:</b> Our top-tier legal team has prepared a robust compliance framework. Key areas of focus include:<ul><li class='ml-4'><b>Lending Licensing:</b> Proactively securing necessary licenses, like the California Financing Law (CFL), for compliant operation in every state.</li><li class='ml-4'><b>Fair Lending Laws (ECOA):</b> Rigorous auditing of our AI matchmaking algorithm to prevent bias and ensure equitable outcomes.</li><li class='ml-4'><b>Bank Secrecy Act (AML/BSA):</b> Implementing institutional-grade KYC and transaction monitoring to protect the platform and its users.</li></ul>",
+      "<b>Recurring Value & High Switching Costs:</b> All communication and data live on our platform. Once a deal is done, the data remains, making it seamless to execute future transactions like takeout financing and refinancing, resulting in low churn.",
+      "<b>Two-Sided Network Effects:</b> By solving the cold start problem, we can quickly generate powerful network effects, where every new borrower adds value for lenders, and every new lender adds value for borrowers.",
+      "<b>Data Moat Deepens Daily:</b> Each transaction trains our AI, creating a powerful data moat that makes our platform smarter and more valuable over time.",
+      "<b>Winner-Take-Most Dynamics:</b> Like Uber or Airbnb, the CRE lending market will consolidate around one or two platforms. Our first-mover advantage and ability to scale quickly position us to become the dominant player, putting us 18 months ahead of any potential competition."
     ]
   },
   {
@@ -265,23 +266,19 @@ const optimizedInvestmentAsk = {
   useOfFunds: [
     {
       category: "Product & AI Development",
-      percentage: "40%",
-      details: "Complete MVP, integrate 3,000+ lender APIs, train matching algorithms"
+      details: "To support the technical team to build out very good existing proof of concept models into production grade products."
     },
     {
-      category: "Lender & Advisor Onboarding",
-      percentage: "30%",
-      details: "Onboard first 100 lenders and 1,000 advisors - critical mass for network effects"
+      category: "Proprietary Data Purchase",
+      details: "For information about every lender in the US, every borrower in the US, and every building in the US. This data will be used to build out our communication and customer targeting mechanisms."
     },
     {
-      category: "Customer Acquisition",
-      percentage: "20%",
-      details: "Target $100M in LOIs from borrowers - proof of demand for Series A"
+      category: "Marketing & Communication",
+      details: "Setting up the marketing and communication infrastructure to onboard most of the goals onto the platform."
     },
     {
       category: "Compliance & Operations",
-      percentage: "10%",
-      details: "State lending licenses, SOC2 compliance, audit infrastructure"
+      details: "Ensuring we operate in a compliance-friendly manner from the very beginning and minimizing OpEx costs for the business."
     }
   ],
   milestones: [
@@ -289,12 +286,6 @@ const optimizedInvestmentAsk = {
     "Q2 2025: Process first $100M in loans (proof of concept)",
     "Q3 2025: Reach $500M in loan volume (product-market fit)",
     "Q4 2025: Series A ready with $1B+ in annual volume run rate"
-  ],
-  whyNow: [
-    "<b>Perfect storm of opportunity:</b> $957B refinancing wave + AI capabilities + market dislocation from rate changes",
-    "<b>Regulatory tailwinds:</b> New banking regulations favor marketplace lending over traditional bank lending",
-    "<b>Industry ready for change:</b> COVID proved digital transformation works in CRE. Stakeholders actively seeking solutions.",
-    "<b>First-mover advantage:</b> 18-month window before competitors can catch up. Winner takes most of the market."
   ],
   callToAction: "Schedule a demo to see how we're already processing real deals with committed lenders and borrowers."
 };
@@ -553,7 +544,7 @@ export default function HomePage() {
             </FadeIn>
 
             {/* Split into two halves horizontally */}
-            <div className="space-y-12">
+            <div className="space-y-6">
               {/* Top Half - Lead Generation */}
               <div className="w-full">
                 <FadeIn delay={0.1}>
@@ -570,7 +561,7 @@ export default function HomePage() {
                         Activate 120k Brokers
                       </h4>
                       <div className="text-left">
-                        <ul className="list-disc list-outside pl-6 grid grid-rows-[1fr_1fr_1fr] gap-3 min-h-[360px]">
+                        <ul className="list-disc list-outside pl-6 space-y-3">
                           <li className="text-base md:text-lg text-black dark:text-white">
                             <b>Instant lender network access</b> - Every licensed broker gets immediate access to our 3,000+ verified lenders
                           </li>
@@ -592,7 +583,7 @@ export default function HomePage() {
                         Direct Borrower Connection
                       </h4>
                       <div className="text-left">
-                        <ul className="list-disc list-outside pl-6 grid grid-rows-[1fr_1fr_1fr] gap-3 min-h-[360px]">
+                        <ul className="list-disc list-outside pl-6 space-y-3">
                           <li className="text-base md:text-lg text-black dark:text-white">
                             <b>Skip the middleman</b> - Property owners connect directly with lenders when they need speed
                           </li>
@@ -979,27 +970,15 @@ export default function HomePage() {
                 {optimizedInvestmentAsk.askAmount}
               </p>
             </FadeIn>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-10 text-left items-stretch">
+            <div className="grid grid-cols-1 gap-6 md:gap-8 mb-10 text-left items-stretch">
               <FadeIn>
                 <div className="glass-card rounded-2xl p-6 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 h-full">
                   <h3 className="text-2xl font-semibold text-amber-700 dark:text-amber-300 mb-4">Use of Funds</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                     {optimizedInvestmentAsk.useOfFunds.map((u, i) => (
-                      <div key={i} className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-amber-200/60 dark:border-amber-800/40 px-5 py-4 md:px-6 md:py-6 min-h-28 md:min-h-32 flex items-center justify-center text-center text-black dark:text-white text-base md:text-lg leading-relaxed">
-                        <span className="font-semibold">{u.category}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </FadeIn>
-              <FadeIn delay={0.1}>
-                <div className="glass-card rounded-2xl p-6 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 h-full">
-                  <h3 className="text-2xl font-semibold text-amber-700 dark:text-amber-300 mb-4">Why Now</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                    {optimizedInvestmentAsk.whyNow.map((w, i) => (
-                      <div key={i} className="flex items-start gap-3 text-black dark:text-white py-2 leading-relaxed">
-                        <span className="mt-2 w-2 h-2 rounded-full bg-amber-500 dark:bg-amber-400 flex-shrink-0"></span>
-                        <span dangerouslySetInnerHTML={{ __html: w }} />
+                      <div key={i} className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-amber-200/60 dark:border-amber-800/40 px-5 py-4 md:px-6 md:py-6 min-h-28 md:min-h-32 flex flex-col items-center justify-center text-center text-black dark:text-white text-base md:text-lg leading-relaxed">
+                        <span className="font-semibold mb-2">{u.category}</span>
+                        <p className="text-sm text-gray-700 dark:text-gray-300">{u.details}</p>
                       </div>
                     ))}
                   </div>
