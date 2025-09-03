@@ -56,19 +56,29 @@ const creEducationContent = {
       icon: "Building2",
       title: "30,000 Borrowers",
       subtitle: "Property Owners & Developers",
-      description: "Own 100,000+ apartment buildings (20+ units) across the U.S. - 96% have active debt that needs constant refinancing"
+      descriptions: [
+        "Own <b>100,000+</b> apartment buildings (20+ units) across the U.S.",
+        "<b>96%</b> have active debt that needs constant refinancing.",
+        "Their <b>biggest challenge</b>: finding the right lender among <b>3,000+</b> options."
+      ]
     },
     {
       icon: "Briefcase",
       title: "120,000 Advisors",
       subtitle: "Loan Brokers & Originators",
-      description: "Licensed brokers who should be placing debt, but most can't - they lack tools, leads, and lender connections"
+      descriptions: [
+        "Licensed brokers who should be placing debt but lack the tools and connections.",
+        "The process is so inefficient that originators keep <b>60%+ of commissions</b>, and the industry misses <b>$4B in fees</b> annually."
+      ]
     },
     {
       icon: "Bank",
       title: "3,000+ Lenders",
       subtitle: "Banks, Funds & Agencies",
-      description: "From regional banks to new debt funds, each with different criteria, rates, and appetites - impossible to track manually"
+      descriptions: [
+        "Each has different criteria, rates, and appetites—impossible to track manually.",
+        "With no standardization, it's <b>impossible to efficiently compare deals</b> from different brokers."
+      ]
     }
   ],
   processTimeline: [
@@ -465,7 +475,11 @@ export default function HomePage() {
                         <div>
                           <h3 className="text-xl font-semibold text-black dark:text-white">{kp.title}</h3>
                           <p className="text-sm text-gray-600 dark:text-gray-400">{kp.subtitle}</p>
-                          <p className="mt-3 text-base text-gray-800 dark:text-gray-200">{kp.description}</p>
+                          <div className="mt-3 space-y-2 text-base text-gray-800 dark:text-gray-200">
+                            {kp.descriptions.map((desc, i) => (
+                              <p key={i} dangerouslySetInnerHTML={{ __html: desc }} />
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>
