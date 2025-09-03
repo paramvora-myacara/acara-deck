@@ -6,7 +6,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronDown, Play, ExternalLink, MessageCircle, Building2, Briefcase, Landmark } from "lucide-react";
 import ContactUsModal from "@/components/ContactUsModal";
-import ProblemsAndSolutionsFunnel, { problemCards, solutionCards, type ProblemCard, type SolutionCard } from "@/components/ProblemsAndSolutionsFunnel";
 import CompetitiveAnalysisGraph from "@/components/CompetitiveAnalysisGraph";
 import CapMatchAnimation from "@/components/CapMatchAnimation";
 import SectionCard from "@/components/SectionCard";
@@ -354,19 +353,15 @@ function boldProblemTitle(text: string): string {
 export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProblem, setSelectedProblem] = useState(-1);
-  const [selectedCard, setSelectedCard] = useState<{ type: 'problem' | 'solution', index: number }>({ type: 'solution', index: 0 });
   const [selectedTeamMember, setSelectedTeamMember] = useState(0);
   const [expandedMarketCards, setExpandedMarketCards] = useState<Record<string, boolean>>({
     "Revenue Streams That Compound": true,
     "Why We Win: Network Effects + AI Moat": true
   });
+  const [expandedSolutions, setExpandedSolutions] = useState<Record<number, boolean>>({});
 
   const handleProblemSelect = (index: number) => {
     setSelectedProblem(index);
-  };
-
-  const handleCardSelect = (type: 'problem' | 'solution', index: number) => {
-    setSelectedCard({ type, index });
   };
 
   const handleTeamMemberSelect = (index: number) => {
@@ -375,6 +370,10 @@ export default function HomePage() {
 
   const toggleMarketCard = (title: string) => {
     setExpandedMarketCards(prev => ({ ...prev, [title]: !prev[title] }));
+  };
+
+  const toggleSolutionCard = (idx: number) => {
+    setExpandedSolutions(prev => ({ ...prev, [idx]: !prev[idx] }));
   };
 
   return (
@@ -547,56 +546,191 @@ export default function HomePage() {
               </h2>
             </FadeIn>
 
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 md:gap-8">
-              {/* Left 40% - Complete Funnel using the component */}
-              <FadeIn className="lg:col-span-2 h-[calc(100vh-8rem)] md:h-[calc(100vh-10rem)] lg:h-[calc(100vh-12rem)]">
-                <div className="glass-card rounded-3xl p-6 md:p-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900/20 dark:to-gray-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full">
-                  <ProblemsAndSolutionsFunnel 
-                    onCardSelect={handleCardSelect}
-                    selectedCard={selectedCard}
-                  />
-                </div>
-              </FadeIn>
+            {/* Split into two halves horizontally */}
+            <div className="space-y-12">
+              {/* Top Half - Lead Generation */}
+              <div className="w-full">
+                <FadeIn delay={0.1}>
+                  <h3 className="text-3xl md:text-4xl font-bold text-black dark:text-white text-center mb-8">
+                    Lead Generation
+                  </h3>
+                </FadeIn>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                  {/* Activate 120k Brokers Card */}
+                  <FadeIn delay={0.15}>
+                    <div className="glass-card rounded-3xl p-6 md:p-8 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full min-h-[300px] flex flex-col justify-center">
+                      <h4 className="text-2xl md:text-3xl font-semibold text-blue-600 dark:text-blue-400 mb-4 text-center">
+                        Activate 120k Brokers
+                      </h4>
+                      <div className="text-left">
+                        <ul className="list-disc list-outside pl-6 grid grid-rows-[1fr_1fr_1fr] gap-3 min-h-[360px]">
+                          <li className="text-base md:text-lg text-black dark:text-white">
+                            <b>Instant lender network access</b> - Every licensed broker gets immediate access to our 3,000+ verified lenders
+                          </li>
+                          <li className="text-base md:text-lg text-black dark:text-white">
+                            <b>AI-powered deal matching</b> - Our platform automatically matches broker deals with the right lenders
+                          </li>
+                          <li className="text-base md:text-lg text-black dark:text-white">
+                            <b>Commission optimization</b> - Streamlined process allows brokers to focus on relationships, not paperwork
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </FadeIn>
 
-              {/* Right 40% - Content Display */}
-              <FadeIn className="lg:col-span-3 h-[calc(100vh-8rem)] md:h-[calc(100vh-10rem)] lg:h-[calc(100vh-12rem)]">
-                <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900/20 dark:to-gray-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full">
-                  {selectedCard.type === 'problem' ? (
-                    <>
-                      <h3 className={`text-2xl md:text-3xl font-semibold ${problemCards[selectedCard.index].textColor} mb-4 md:mb-6 text-center`}>
-                        {problemCards[selectedCard.index].title}
-                      </h3>
-                      <ul className="list-disc list-outside space-y-3 md:space-y-4 pl-6">
-                        {problemCards[selectedCard.index].content.map((item, itemIdx) => (
-                          <li key={itemIdx} className={`text-base md:text-lg font-light ${problemCards[selectedCard.index].accentColor}`} dangerouslySetInnerHTML={{ __html: item }} />
-                        ))}
-                      </ul>
-                    </>
-                  ) : (
-                    <>
-                      <h3 className={`text-2xl md:text-3xl font-semibold ${solutionCards[selectedCard.index].textColor} mb-4 md:mb-6 text-center`}>
-                        {solutionCards[selectedCard.index].title}
-                      </h3>
-                      {solutionCards[selectedCard.index].role && (
-                        <p className={`text-lg md:text-xl font-medium ${solutionCards[selectedCard.index].accentColor} mb-4 md:mb-6 text-center`}>
-                          {solutionCards[selectedCard.index].role}
-                        </p>
-                      )}
-                      <ul className="list-disc list-outside space-y-3 md:space-y-4 pl-6 mb-4 md:mb-6">
-                        {solutionCards[selectedCard.index].content.map((item, itemIdx) => (
-                          <li key={itemIdx} className={`text-base md:text-lg font-light ${solutionCards[selectedCard.index].accentColor}`} 
-                              dangerouslySetInnerHTML={{ __html: item }} />
-                        ))}
-                      </ul>
-                      {solutionCards[selectedCard.index].videoUrl && (
-                        <div className="mt-4 md:mt-6">
-                          <DriveVideo previewUrl={solutionCards[selectedCard.index].videoUrl!} />
+                  {/* Direct Borrower Connection Card */}
+                  <FadeIn delay={0.2}>
+                    <div className="glass-card rounded-3xl p-6 md:p-8 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-green-900/20 dark:to-emerald-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full min-h-[300px] flex flex-col justify-center">
+                      <h4 className="text-2xl md:text-3xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center">
+                        Direct Borrower Connection
+                      </h4>
+                      <div className="text-left">
+                        <ul className="list-disc list-outside pl-6 grid grid-rows-[1fr_1fr_1fr] gap-3 min-h-[360px]">
+                          <li className="text-base md:text-lg text-black dark:text-white">
+                            <b>Skip the middleman</b> - Property owners connect directly with lenders when they need speed
+                          </li>
+                          <li className="text-base md:text-lg text-black dark:text-white">
+                            <b>Real-time rate discovery</b> - See live rates from multiple lenders instantly, not weeks later
+                          </li>
+                          <li className="text-base md:text-lg text-black dark:text-white">
+                            <b>Transparent process</b> - Track application status, requirements, and next steps in real-time
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </FadeIn>
+                </div>
+              </div>
+
+              {/* Bottom Half - 4 Column Solution Cards */}
+              <div className="w-full">
+                <FadeIn delay={0.25}>
+                  <h3 className="text-3xl md:text-4xl font-bold text-black dark:text-white text-center mb-8">
+                    Complete Platform Solutions
+                  </h3>
+                </FadeIn>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                  {/* One platform from first call to wire transfer */}
+                  <FadeIn delay={0.3}>
+                    <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-purple-50 to-violet-100 dark:from-purple-900/20 dark:to-violet-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 self-start ${expandedSolutions[0] ? 'min-h-[420px]' : 'min-h-[140px]'} flex flex-col`}>
+                      <h4 className="text-xl md:text-2xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center min-h-[5.5rem] md:min-h-[5.5rem] flex items-center justify-center">
+                        One platform from first call to wire transfer
+                      </h4>
+                      {expandedSolutions[0] && (
+                        <div className="flex-1 flex flex-col justify-center">
+                          <ul className="list-disc list-outside pl-6 text-black dark:text-white grid grid-rows-[1fr_1fr_1fr] gap-3 h-full">
+                            <li><b>Borrowers:</b> Build your profile once, use forever. <b>No redundant data entry</b> - just update deal specifics. Track all lender interest in real-time.</li>
+                            <li><b>Lenders:</b> <b>Standardized deal packages</b> for instant comparison. Chat with borrowers, request docs, and close deals all in one place.</li>
+                            <li><b>Advisors:</b> Manage <b>unlimited deals simultaneously</b> with our workflow automation. One dashboard for all borrowers, lenders, and documents.</li>
+                          </ul>
                         </div>
                       )}
-                    </>
-                  )}
+                      <div className="mt-6 flex justify-center">
+                        <button
+                          type="button"
+                          onClick={() => toggleSolutionCard(0)}
+                          className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-transform"
+                          aria-expanded={!!expandedSolutions[0]}
+                          aria-label={expandedSolutions[0] ? 'Collapse' : 'Expand'}
+                        >
+                          <ChevronDown className={`w-5 h-5 transition-transform ${expandedSolutions[0] ? 'rotate-180' : ''}`} />
+                        </button>
+                      </div>
+                    </div>
+                  </FadeIn>
+
+                  {/* 30-second OMs with live updates */}
+                  <FadeIn delay={0.35}>
+                    <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-cyan-50 to-blue-100 dark:from-cyan-900/20 dark:to-blue-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 self-start ${expandedSolutions[1] ? 'min-h-[420px]' : 'min-h-[140px]'} flex flex-col`}>
+                      <h4 className="text-xl md:text-2xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center min-h-[5.5rem] md:min-h-[5.5rem] flex items-center justify-center">
+                        30-second OMs with live updates
+                      </h4>
+                      {expandedSolutions[1] && (
+                        <div className="flex-1 flex flex-col justify-center">
+                          <ul className="list-disc list-outside pl-6 text-black dark:text-white grid grid-rows-[1fr_1fr_1fr] gap-3 h-full">
+                            <li><b>Borrowers:</b> Drag and drop any documents - our AI extracts, organizes, and creates your OM in <b>30 seconds, not 3 weeks</b>.</li>
+                            <li><b>Lenders:</b> See <b>live, dynamic OMs</b> that update in real-time. Ask our AI questions about any deal and get instant answers with sources.</li>
+                            <li><b>Advisors:</b> <b>Save 160 hours per deal</b>. No more manual package creation. Focus on relationships while AI handles documentation.</li>
+                          </ul>
+                        </div>
+                      )}
+                      <div className="mt-6 flex justify-center">
+                        <button
+                          type="button"
+                          onClick={() => toggleSolutionCard(1)}
+                          className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-transform"
+                          aria-expanded={!!expandedSolutions[1]}
+                          aria-label={expandedSolutions[1] ? 'Collapse' : 'Expand'}
+                        >
+                          <ChevronDown className={`w-5 h-5 transition-transform ${expandedSolutions[1] ? 'rotate-180' : ''}`} />
+                        </button>
+                      </div>
+                    </div>
+                  </FadeIn>
+
+                  {/* AI predicts perfect matches */}
+                  <FadeIn delay={0.4}>
+                    <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-orange-50 to-amber-100 dark:from-orange-900/20 dark:to-amber-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 self-start ${expandedSolutions[2] ? 'min-h-[420px]' : 'min-h-[140px]'} flex flex-col`}>
+                      <h4 className="text-xl md:text-2xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center min-h-[5.5rem] md:min-h-[5.5rem] flex items-center justify-center">
+                        AI predicts perfect matches
+                      </h4>
+                      {expandedSolutions[2] && (
+                        <div className="flex-1 flex flex-col justify-center">
+                          <ul className="list-disc list-outside pl-6 text-black dark:text-white grid grid-rows-[1fr_1fr_1fr] gap-3 h-full">
+                            <li><b>Borrowers:</b> <b>75% higher success rate</b> - our AI knows exactly which lenders want your deal based on similar successful transactions.</li>
+                            <li><b>Lenders:</b> <b>10x more qualified deals</b> with our white-glove curation service. Only see deals that match your investment thesis.</li>
+                            <li><b>Advisors:</b> <b>Close deals 3x faster</b> with AI-powered matching. Higher success rates mean better reputation and more referrals.</li>
+                          </ul>
+                        </div>
+                      )}
+                      <div className="mt-6 flex justify-center">
+                        <button
+                          type="button"
+                          onClick={() => toggleSolutionCard(2)}
+                          className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-transform"
+                          aria-expanded={!!expandedSolutions[2]}
+                          aria-label={expandedSolutions[2] ? 'Collapse' : 'Expand'}
+                        >
+                          <ChevronDown className={`w-5 h-5 transition-transform ${expandedSolutions[2] ? 'rotate-180' : ''}`} />
+                        </button>
+                      </div>
+                    </div>
+                  </FadeIn>
+
+                  {/* Customer Lifetime Value */}
+                  <FadeIn delay={0.45}>
+                    <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-rose-50 to-pink-100 dark:from-rose-900/20 dark:to-pink-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 self-start ${expandedSolutions[3] ? 'min-h-[420px]' : 'min-h-[140px]'} flex flex-col`}>
+                      <h4 className="text-xl md:text-2xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center min-h-[5.5rem] md:min-h-[5.5rem] flex items-center justify-center">
+                        Customer Life Time Value
+                      </h4>
+                      {expandedSolutions[3] && (
+                        <div className="flex-1 flex flex-col justify-center">
+                          <ul className="list-disc list-outside pl-6 text-black dark:text-white grid grid-rows-[1fr_1fr_1fr] gap-3 h-full">
+                            <li><b>Customer lock-in:</b> Profiles, docs, and lender threads stay on-platform, compounding value over time.</li>
+                            <li><b>Takeout financing:</b> One-click move from bridge/construction to perm with reusable data and auto-packages.</li>
+                            <li><b>Refinancing - RefiRadar:</b> Always-on monitoring triggers the best refi moment and starts the workflow.</li>
+                            </ul>
+                          </div>
+                        )}
+                        <div className="mt-6 flex justify-center">
+                          <button
+                            type="button"
+                            onClick={() => toggleSolutionCard(3)}
+                            className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-transform"
+                            aria-expanded={!!expandedSolutions[3]}
+                            aria-label={expandedSolutions[3] ? 'Collapse' : 'Expand'}
+                          >
+                            <ChevronDown className={`w-5 h-5 transition-transform ${expandedSolutions[3] ? 'rotate-180' : ''}`} />
+                          </button>
+                        </div>
+                    </div>
+                  </FadeIn>
                 </div>
-              </FadeIn>
+
+
+              </div>
             </div>
           </SectionCard>
         </div>
@@ -828,7 +962,7 @@ export default function HomePage() {
               </FadeIn>
             </div>
             <FadeIn>
-              <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 w-full">
+              <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 w-full max-w-7xl mx-auto">
                 <p className="text-lg text-amber-600 dark:text-amber-300 mb-6">
                   {optimizedInvestmentAsk.callToAction}
                 </p>
