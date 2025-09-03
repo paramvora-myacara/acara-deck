@@ -358,6 +358,7 @@ export default function HomePage() {
     "Revenue Streams That Compound": true,
     "Why We Win: Network Effects + AI Moat": true
   });
+  const [solutionsExpanded, setSolutionsExpanded] = useState(false);
 
   const handleProblemSelect = (index: number) => {
     setSelectedProblem(index);
@@ -577,7 +578,7 @@ export default function HomePage() {
                   {/* Direct Borrower Connection Card */}
                   <FadeIn delay={0.2}>
                     <div className="glass-card rounded-3xl p-6 md:p-8 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-green-900/20 dark:to-emerald-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full min-h-[300px] flex flex-col justify-center">
-                      <h4 className="text-2xl md:text-3xl font-semibold text-blue-600 dark:text-blue-400 mb-4 text-center">
+                      <h4 className="text-2xl md:text-3xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center">
                         Direct Borrower Connection
                       </h4>
                       <div className="text-left">
@@ -609,67 +610,87 @@ export default function HomePage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
                   {/* One platform from first call to wire transfer */}
                   <FadeIn delay={0.3}>
-                    <div className="glass-card rounded-2xl p-6 bg-gradient-to-br from-purple-50 to-violet-100 dark:from-purple-900/20 dark:to-violet-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full min-h-[280px] flex flex-col">
+                    <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-purple-50 to-violet-100 dark:from-purple-900/20 dark:to-violet-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full ${solutionsExpanded ? 'min-h-[280px]' : 'min-h-[140px]'} flex flex-col`}>
                       <h4 className="text-xl md:text-2xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center">
                         One platform from first call to wire transfer
                       </h4>
-                      <div className="flex-1 flex flex-col justify-center">
-                        <ul className="list-disc list-outside space-y-3 pl-6 text-black dark:text-white">
-                          <li><b>Borrowers:</b> Build your profile once, use forever. <b>No redundant data entry</b> — just update deal specifics. Track all lender interest in real-time.</li>
-                          <li><b>Lenders:</b> <b>Standardized deal packages</b> for instant comparison. Chat with borrowers, request docs, and close deals all in one place.</li>
-                          <li><b>Advisors:</b> Manage <b>unlimited deals simultaneously</b> with our workflow automation. One dashboard for all borrowers, lenders, and documents.</li>
-                        </ul>
-                      </div>
+                      {solutionsExpanded && (
+                        <div className="flex-1 flex flex-col justify-center">
+                          <ul className="list-disc list-outside space-y-3 pl-6 text-black dark:text-white">
+                            <li><b>Borrowers:</b> Build your profile once, use forever. <b>No redundant data entry</b> — just update deal specifics. Track all lender interest in real-time.</li>
+                            <li><b>Lenders:</b> <b>Standardized deal packages</b> for instant comparison. Chat with borrowers, request docs, and close deals all in one place.</li>
+                            <li><b>Advisors:</b> Manage <b>unlimited deals simultaneously</b> with our workflow automation. One dashboard for all borrowers, lenders, and documents.</li>
+                          </ul>
+                        </div>
+                      )}
                     </div>
                   </FadeIn>
 
                   {/* 30-second OMs with live updates */}
                   <FadeIn delay={0.35}>
-                    <div className="glass-card rounded-2xl p-6 bg-gradient-to-br from-cyan-50 to-blue-100 dark:from-cyan-900/20 dark:to-blue-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full min-h-[280px] flex flex-col">
+                    <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-cyan-50 to-blue-100 dark:from-cyan-900/20 dark:to-blue-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full ${solutionsExpanded ? 'min-h-[280px]' : 'min-h-[140px]'} flex flex-col`}>
                       <h4 className="text-xl md:text-2xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center">
                         30-second OMs with live updates
                       </h4>
-                      <div className="flex-1 flex flex-col justify-center">
-                        <ul className="list-disc list-outside space-y-3 pl-6 text-black dark:text-white">
-                          <li><b>Borrowers:</b> Drag and drop any documents — our AI extracts, organizes, and creates your OM in <b>30 seconds, not 3 weeks</b>.</li>
-                          <li><b>Lenders:</b> See <b>live, dynamic OMs</b> that update in real-time. Ask our AI questions about any deal and get instant answers with sources.</li>
-                          <li><b>Advisors:</b> <b>Save 160 hours per deal</b>. No more manual package creation. Focus on relationships while AI handles documentation.</li>
-                        </ul>
-                      </div>
+                      {solutionsExpanded && (
+                        <div className="flex-1 flex flex-col justify-center">
+                          <ul className="list-disc list-outside space-y-3 pl-6 text-black dark:text-white">
+                            <li><b>Borrowers:</b> Drag and drop any documents — our AI extracts, organizes, and creates your OM in <b>30 seconds, not 3 weeks</b>.</li>
+                            <li><b>Lenders:</b> See <b>live, dynamic OMs</b> that update in real-time. Ask our AI questions about any deal and get instant answers with sources.</li>
+                            <li><b>Advisors:</b> <b>Save 160 hours per deal</b>. No more manual package creation. Focus on relationships while AI handles documentation.</li>
+                          </ul>
+                        </div>
+                      )}
                     </div>
                   </FadeIn>
 
                   {/* AI predicts perfect matches */}
                   <FadeIn delay={0.4}>
-                    <div className="glass-card rounded-2xl p-6 bg-gradient-to-br from-orange-50 to-amber-100 dark:from-orange-900/20 dark:to-amber-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full min-h-[280px] flex flex-col">
+                    <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-orange-50 to-amber-100 dark:from-orange-900/20 dark:to-amber-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full ${solutionsExpanded ? 'min-h-[280px]' : 'min-h-[140px]'} flex flex-col`}>
                       <h4 className="text-xl md:text-2xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center">
                         AI predicts perfect matches
                       </h4>
-                      <div className="flex-1 flex flex-col justify-center">
-                        <ul className="list-disc list-outside space-y-3 pl-6 text-black dark:text-white">
-                          <li><b>Borrowers:</b> <b>75% higher success rate</b> — our AI knows exactly which lenders want your deal based on similar successful transactions.</li>
-                          <li><b>Lenders:</b> <b>10x more qualified deals</b> with our white-glove curation service. Only see deals that match your investment thesis.</li>
-                          <li><b>Advisors:</b> <b>Close deals 3x faster</b> with AI-powered matching. Higher success rates mean better reputation and more referrals.</li>
-                        </ul>
-                      </div>
+                      {solutionsExpanded && (
+                        <div className="flex-1 flex flex-col justify-center">
+                          <ul className="list-disc list-outside space-y-3 pl-6 text-black dark:text-white">
+                            <li><b>Borrowers:</b> <b>75% higher success rate</b> — our AI knows exactly which lenders want your deal based on similar successful transactions.</li>
+                            <li><b>Lenders:</b> <b>10x more qualified deals</b> with our white-glove curation service. Only see deals that match your investment thesis.</li>
+                            <li><b>Advisors:</b> <b>Close deals 3x faster</b> with AI-powered matching. Higher success rates mean better reputation and more referrals.</li>
+                          </ul>
+                        </div>
+                      )}
                     </div>
                   </FadeIn>
 
                   {/* Customer Lifetime Value */}
                   <FadeIn delay={0.45}>
-                    <div className="glass-card rounded-2xl p-6 bg-gradient-to-br from-rose-50 to-pink-100 dark:from-rose-900/20 dark:to-pink-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full min-h-[280px] flex flex-col">
+                    <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-rose-50 to-pink-100 dark:from-rose-900/20 dark:to-pink-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full ${solutionsExpanded ? 'min-h-[280px]' : 'min-h-[140px]'} flex flex-col`}>
                       <h4 className="text-xl md:text-2xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center">
                         Customer Life Time Value
                       </h4>
-                      <div className="flex-1 flex flex-col justify-center">
-                        <ul className="list-disc list-outside space-y-3 pl-6 text-black dark:text-white">
-                          <li><b>Customer lock-in:</b> Borrower profiles, documents, and lender relationships live on-platform. Integrated workflows and historical data create high switching costs and increasing value over time.</li>
-                          <li><b>Takeout financing:</b> Seamlessly transition from bridge/construction to permanent loans. Reuse data and documents, auto-generate packages, and leverage our lender network for the next phase.</li>
-                          <li><b>Refinancing — RefiRadar:</b> Always-on, AI-powered monitoring that tracks rates, maturities, covenants, and market signals. Alerts borrowers at the perfect time to refinance for the best available terms, then launches the process in one click.</li>
-                        </ul>
-                      </div>
+                      {solutionsExpanded && (
+                        <div className="flex-1 flex flex-col justify-center">
+                          <ul className="list-disc list-outside space-y-3 pl-6 text-black dark:text-white">
+                            <li><b>Customer lock-in:</b> Borrower profiles, documents, and lender relationships live on-platform. Integrated workflows and historical data create high switching costs and increasing value over time.</li>
+                            <li><b>Takeout financing:</b> Seamlessly transition from bridge/construction to permanent loans. Reuse data and documents, auto-generate packages, and leverage our lender network for the next phase.</li>
+                            <li><b>Refinancing — RefiRadar:</b> Always-on, AI-powered monitoring that tracks rates, maturities, covenants, and market signals. Alerts borrowers at the perfect time to refinance for the best available terms, then launches the process in one click.</li>
+                          </ul>
+                        </div>
+                      )}
                     </div>
                   </FadeIn>
+                </div>
+
+                {/* Consolidated expand/collapse button */}
+                <div className="mt-6 flex justify-center">
+                  <button
+                    type="button"
+                    onClick={() => setSolutionsExpanded(prev => !prev)}
+                    className="px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-md"
+                    aria-expanded={solutionsExpanded}
+                  >
+                    {solutionsExpanded ? 'Hide details' : 'Show details'}
+                  </button>
                 </div>
               </div>
             </div>
@@ -903,7 +924,7 @@ export default function HomePage() {
               </FadeIn>
             </div>
             <FadeIn>
-              <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 w-full">
+              <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 w-full max-w-7xl mx-auto">
                 <p className="text-lg text-amber-600 dark:text-amber-300 mb-6">
                   {optimizedInvestmentAsk.callToAction}
                 </p>
