@@ -35,29 +35,13 @@ const FadeIn = ({
 
 // Helper function for video component to handle Google Drive URLs
 function DriveVideo({ previewUrl }: { previewUrl: string }) {
-  const [useIframe, setUseIframe] = useState(false);
-  const idMatch = previewUrl.match(/\/d\/([^/]+)/);
-  const directUrl = idMatch ? `https://drive.google.com/uc?export=download&id=${idMatch[1]}` : null;
-
-  if (useIframe || !directUrl) {
-    return (
-      <iframe
-        src={previewUrl}
-        className="rounded-lg w-full h-48 md:h-64 lg:h-80 border-0"
-        allow="autoplay; fullscreen"
-        allowFullScreen
-        title="Video content"
-      />
-    );
-  }
-
   return (
-    <video
-      src={directUrl}
-      controls
-      playsInline
-      className="rounded-lg w-full h-48 md:h-64 lg:h-80 object-contain"
-      onError={() => setUseIframe(true)}
+    <iframe
+      src={previewUrl}
+      className="rounded-lg w-full h-full border-0"
+      allow="autoplay; fullscreen"
+      allowFullScreen
+      title="Video content"
     />
   );
 }
@@ -206,9 +190,10 @@ const optimizedMarketCards = [
   {
     title: "Why We Win: Network Effects + AI Moat",
     content: [
+      "<b>Recurring Value:</b> A borrower who works with the platform once will continue working with us for all subsequent deals (refinancing, takeout financing) and future projects.",
+      "<b>Platform lock-in:</b> Once borrowers build profiles and lenders integrate workflows, switching costs become prohibitive.",
       "<b>Two-sided network effects:</b> Every borrower attracts lenders, every lender attracts borrowers. Competitors can't replicate our liquidity.",
       "<b>Data moat deepens daily:</b> Each transaction trains our AI. We'll know more about CRE lending patterns than anyone else within 18 months.",
-      "<b>Platform lock-in:</b> Once borrowers build profiles and lenders integrate workflows, switching costs become prohibitive.",
       "<b>Winner-take-most dynamics:</b> Like Uber or Airbnb, the market will consolidate around 1-2 platforms. We're 18 months ahead."
     ]
   },
@@ -302,6 +287,13 @@ const optimizedInvestmentAsk = {
     "<b>First-mover advantage:</b> 18-month window before competitors can catch up. Winner takes most of the market."
   ],
   callToAction: "Schedule a demo to see how we're already processing real deals with committed lenders and borrowers."
+};
+
+// Add these video URLs to your solutions cards
+const solutionVideos = {
+  unifiedPlatform: "https://drive.google.com/file/d/1_Y5xZF_ZG9hDC4-G6PHrfXOOGatv2sR4/preview", // One platform video (CapMatch project demo)
+  thirtySecondOMs: "https://drive.google.com/file/d/1iS4vGiqMrPHtEb1y7MiJmP04ixaAHCZq/preview", // 30 second OMs video (matches "AI-Powered Deal Documentation" card)
+  aiMatchmaking: "/CapMatchDemo720p.mp4" // AI matchmaking video (matches "Matchmaking" card)
 };
 
 // Helper to bold notable figures and notable company names in bios
@@ -616,17 +608,23 @@ export default function HomePage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
                     {/* One platform from first call to wire transfer */}
                     <FadeIn delay={0.3}>
-                      <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-purple-50 to-violet-100 dark:from-purple-900/20 dark:to-violet-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 self-start ${expandedSolutions[0] ? 'min-h-[420px]' : 'min-h-[140px]'} flex flex-col`}>
+                      <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-purple-50 to-violet-100 dark:from-purple-900/20 dark:to-violet-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 self-start ${expandedSolutions[0] ? '' : 'min-h-[140px]'} flex flex-col`}>
                         <h4 className="text-xl md:text-2xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center min-h-[5.5rem] md:min-h-[5.5rem] flex items-center justify-center">
                           One platform from first call to wire transfer
                         </h4>
                         {expandedSolutions[0] && (
                           <div className="flex-1 flex flex-col justify-center">
-                            <ul className="list-disc list-outside pl-6 text-black dark:text-white grid grid-rows-[1fr_1fr_1fr] gap-3 h-full">
+                            <ul className="list-disc list-outside pl-6 text-black dark:text-white space-y-3">
                               <li><b>Borrowers:</b> Build your profile once, use forever. <b>No redundant data entry</b> - just update deal specifics. Track all lender interest in real-time.</li>
                               <li><b>Lenders:</b> <b>Standardized deal packages</b> for instant comparison. Chat with borrowers, request docs, and close deals all in one place.</li>
                               <li><b>Advisors:</b> Manage <b>unlimited deals simultaneously</b> with our workflow automation. One dashboard for all borrowers, lenders, and documents.</li>
                             </ul>
+                            {/* Video Section */}
+                            <div className="mt-6 flex-grow relative">
+                              <div className="w-full h-full flex items-center justify-center">
+                                <DriveVideo previewUrl={solutionVideos.unifiedPlatform} />
+                              </div>
+                            </div>
                           </div>
                         )}
                         <div className="mt-6 flex justify-center">
@@ -645,17 +643,23 @@ export default function HomePage() {
 
                     {/* 30-second OMs with live updates */}
                     <FadeIn delay={0.35}>
-                      <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-cyan-50 to-blue-100 dark:from-cyan-900/20 dark:to-blue-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 self-start ${expandedSolutions[1] ? 'min-h-[420px]' : 'min-h-[140px]'} flex flex-col`}>
+                      <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-cyan-50 to-blue-100 dark:from-cyan-900/20 dark:to-blue-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 self-start ${expandedSolutions[1] ? '' : 'min-h-[140px]'} flex flex-col`}>
                         <h4 className="text-xl md:text-2xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center min-h-[5.5rem] md:min-h-[5.5rem] flex items-center justify-center">
                           30-second OMs with live updates
                         </h4>
                         {expandedSolutions[1] && (
                           <div className="flex-1 flex flex-col justify-center">
-                            <ul className="list-disc list-outside pl-6 text-black dark:text-white grid grid-rows-[1fr_1fr_1fr] gap-3 h-full">
+                            <ul className="list-disc list-outside pl-6 text-black dark:text-white space-y-3">
                               <li><b>Borrowers:</b> Drag and drop any documents - our AI extracts, organizes, and creates your OM in <b>30 seconds, not 3 weeks</b>.</li>
                               <li><b>Lenders:</b> See <b>live, dynamic OMs</b> that update in real-time. Ask our AI questions about any deal and get instant answers with sources.</li>
                               <li><b>Advisors:</b> <b>Save 160 hours per deal</b>. No more manual package creation. Focus on relationships while AI handles documentation.</li>
                             </ul>
+                            {/* Video Section */}
+                            <div className="mt-6 flex-grow relative">
+                              <div className="w-full h-full flex items-center justify-center">
+                                <DriveVideo previewUrl={solutionVideos.thirtySecondOMs} />
+                              </div>
+                            </div>
                           </div>
                         )}
                         <div className="mt-6 flex justify-center">
@@ -674,17 +678,23 @@ export default function HomePage() {
 
                     {/* AI predicts perfect matches */}
                     <FadeIn delay={0.4}>
-                      <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-orange-50 to-amber-100 dark:from-orange-900/20 dark:to-amber-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 self-start ${expandedSolutions[2] ? 'min-h-[420px]' : 'min-h-[140px]'} flex flex-col`}>
+                      <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-orange-50 to-amber-100 dark:from-orange-900/20 dark:to-amber-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 self-start ${expandedSolutions[2] ? '' : 'min-h-[140px]'} flex flex-col`}>
                         <h4 className="text-xl md:text-2xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center min-h-[5.5rem] md:min-h-[5.5rem] flex items-center justify-center">
                           AI predicts perfect matches
                         </h4>
                         {expandedSolutions[2] && (
                           <div className="flex-1 flex flex-col justify-center">
-                            <ul className="list-disc list-outside pl-6 text-black dark:text-white grid grid-rows-[1fr_1fr_1fr] gap-3 h-full">
+                            <ul className="list-disc list-outside pl-6 text-black dark:text-white space-y-3">
                               <li><b>Borrowers:</b> <b>75% higher success rate</b> - our AI knows exactly which lenders want your deal based on similar successful transactions.</li>
                               <li><b>Lenders:</b> <b>10x more qualified deals</b> with our white-glove curation service. Only see deals that match your investment thesis.</li>
                               <li><b>Advisors:</b> <b>Close deals 3x faster</b> with AI-powered matching. Higher success rates mean better reputation and more referrals.</li>
                             </ul>
+                            {/* Video Section */}
+                            <div className="mt-6 flex-grow relative">
+                              <div className="w-full h-full flex items-center justify-center">
+                                <DriveVideo previewUrl={solutionVideos.aiMatchmaking} />
+                              </div>
+                            </div>
                           </div>
                         )}
                         <div className="mt-6 flex justify-center">
@@ -703,16 +713,16 @@ export default function HomePage() {
 
                     {/* Customer Lifetime Value */}
                     <FadeIn delay={0.45}>
-                      <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-rose-50 to-pink-100 dark:from-rose-900/20 dark:to-pink-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 self-start ${expandedSolutions[3] ? 'min-h-[420px]' : 'min-h-[140px]'} flex flex-col`}>
+                      <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-rose-50 to-pink-100 dark:from-rose-900/20 dark:to-pink-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 self-start ${expandedSolutions[3] ? '' : 'min-h-[140px]'} flex flex-col`}>
                         <h4 className="text-xl md:text-2xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center min-h-[5.5rem] md:min-h-[5.5rem] flex items-center justify-center">
                           Customer Life Time Value
                         </h4>
                         {expandedSolutions[3] && (
                           <div className="flex-1 flex flex-col justify-center">
-                            <ul className="list-disc list-outside pl-6 text-black dark:text-white grid grid-rows-[1fr_1fr_1fr] gap-3 h-full">
+                            <ul className="list-disc list-outside pl-6 text-black dark:text-white space-y-3">
                               <li><b>Customer lock-in:</b> Profiles, docs, and lender threads stay on-platform, compounding value over time.</li>
                               <li><b>Takeout financing:</b> One-click move from bridge/construction to perm with reusable data and auto-packages.</li>
-                              <li><b>Refinancing - RefiRadar:</b> Always-on monitoring triggers the best refi moment and starts the workflow.</li>
+                              <li><b>Refinancing - RefiRadar:</b> <b>Watches market conditions 24/7</b> to tell you the best time to refinance your loan for best terms - <b>perfect loan, at the perfect time, with the perfect lender</b>.</li>
                               </ul>
                             </div>
                           )}
