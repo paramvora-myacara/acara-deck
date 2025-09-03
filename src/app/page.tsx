@@ -265,23 +265,19 @@ const optimizedInvestmentAsk = {
   useOfFunds: [
     {
       category: "Product & AI Development",
-      percentage: "40%",
-      details: "Complete MVP, integrate 3,000+ lender APIs, train matching algorithms"
+      details: "To support the technical team to build out very good existing proof of concept models into production grade products."
     },
     {
-      category: "Lender & Advisor Onboarding",
-      percentage: "30%",
-      details: "Onboard first 100 lenders and 1,000 advisors - critical mass for network effects"
+      category: "Proprietary Data Purchase",
+      details: "For information about every lender in the US, every borrower in the US, and every building in the US. This data will be used to build out our communication and customer targeting mechanisms."
     },
     {
-      category: "Customer Acquisition",
-      percentage: "20%",
-      details: "Target $100M in LOIs from borrowers - proof of demand for Series A"
+      category: "Marketing & Communication",
+      details: "Setting up the marketing and communication infrastructure to onboard most of the goals onto the platform."
     },
     {
       category: "Compliance & Operations",
-      percentage: "10%",
-      details: "State lending licenses, SOC2 compliance, audit infrastructure"
+      details: "Ensuring we operate in a compliance-friendly manner from the very beginning and minimizing OpEx costs for the business."
     }
   ],
   milestones: [
@@ -289,12 +285,6 @@ const optimizedInvestmentAsk = {
     "Q2 2025: Process first $100M in loans (proof of concept)",
     "Q3 2025: Reach $500M in loan volume (product-market fit)",
     "Q4 2025: Series A ready with $1B+ in annual volume run rate"
-  ],
-  whyNow: [
-    "<b>Perfect storm of opportunity:</b> $957B refinancing wave + AI capabilities + market dislocation from rate changes",
-    "<b>Regulatory tailwinds:</b> New banking regulations favor marketplace lending over traditional bank lending",
-    "<b>Industry ready for change:</b> COVID proved digital transformation works in CRE. Stakeholders actively seeking solutions.",
-    "<b>First-mover advantage:</b> 18-month window before competitors can catch up. Winner takes most of the market."
   ],
   callToAction: "Schedule a demo to see how we're already processing real deals with committed lenders and borrowers."
 };
@@ -979,27 +969,15 @@ export default function HomePage() {
                 {optimizedInvestmentAsk.askAmount}
               </p>
             </FadeIn>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-10 text-left items-stretch">
+            <div className="grid grid-cols-1 gap-6 md:gap-8 mb-10 text-left items-stretch">
               <FadeIn>
                 <div className="glass-card rounded-2xl p-6 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 h-full">
                   <h3 className="text-2xl font-semibold text-amber-700 dark:text-amber-300 mb-4">Use of Funds</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                     {optimizedInvestmentAsk.useOfFunds.map((u, i) => (
-                      <div key={i} className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-amber-200/60 dark:border-amber-800/40 px-5 py-4 md:px-6 md:py-6 min-h-28 md:min-h-32 flex items-center justify-center text-center text-black dark:text-white text-base md:text-lg leading-relaxed">
-                        <span className="font-semibold">{u.category}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </FadeIn>
-              <FadeIn delay={0.1}>
-                <div className="glass-card rounded-2xl p-6 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 h-full">
-                  <h3 className="text-2xl font-semibold text-amber-700 dark:text-amber-300 mb-4">Why Now</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                    {optimizedInvestmentAsk.whyNow.map((w, i) => (
-                      <div key={i} className="flex items-start gap-3 text-black dark:text-white py-2 leading-relaxed">
-                        <span className="mt-2 w-2 h-2 rounded-full bg-amber-500 dark:bg-amber-400 flex-shrink-0"></span>
-                        <span dangerouslySetInnerHTML={{ __html: w }} />
+                      <div key={i} className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-amber-200/60 dark:border-amber-800/40 px-5 py-4 md:px-6 md:py-6 min-h-28 md:min-h-32 flex flex-col items-center justify-center text-center text-black dark:text-white text-base md:text-lg leading-relaxed">
+                        <span className="font-semibold mb-2">{u.category}</span>
+                        <p className="text-sm text-gray-700 dark:text-gray-300">{u.details}</p>
                       </div>
                     ))}
                   </div>
