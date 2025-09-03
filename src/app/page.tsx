@@ -54,29 +54,29 @@ const creEducationContent = {
   keyPlayers: [
     {
       icon: "Building2",
-      title: "30,000 Borrowers",
+      title: "Borrowers",
       subtitle: "Property Owners & Developers",
       descriptions: [
-        "Own <b>100,000+</b> apartment buildings (20+ units) across the U.S.",
+        "Own an estimated <b>5 million+</b> apartment buildings (5+ units) across the U.S.",
         "<b>96%</b> have active debt that needs constant refinancing.",
         "Their <b>biggest challenge</b>: finding the right lender among <b>3,000+</b> options."
       ]
     },
     {
       icon: "Briefcase",
-      title: "120,000 Advisors",
+      title: "Advisors",
       subtitle: "Loan Brokers & Originators",
       descriptions: [
-        "Licensed brokers who should be placing debt but lack the tools and connections.",
+        "<b>120,000</b> licensed brokers who should be placing debt but lack the tools and connections.",
         "The process is so inefficient that originators keep <b>60%+ of commissions</b>, and the industry misses <b>$4B in fees</b> annually."
       ]
     },
     {
       icon: "Bank",
-      title: "3,000+ Lenders",
+      title: "Lenders",
       subtitle: "Banks, Funds & Agencies",
       descriptions: [
-        "Each has different criteria, rates, and appetites—impossible to track manually.",
+        "<b>3,000+</b> lenders, each has different criteria, rates, and appetites—impossible to track manually.",
         "With no standardization, it's <b>impossible to efficiently compare deals</b> from different brokers."
       ]
     }
@@ -192,19 +192,20 @@ const optimizedMarketCards = [
   {
     title: "Revenue Streams That Compound",
     content: [
-      "<b>Transaction Fees (1% of loan amount):</b> $10B revenue potential on $1T in loans. Industry standard pricing with 10x better service.",
-      "<b>AI Advisor Platform:</b> Brokers subscribe for tools. Land-and-expand model with upsells.",
-      "<b>Data & Intelligence Layer:</b> Proprietary market data becomes the 'Bloomberg of CRE' - high-margin recurring revenue from every market participant."
+      "<b>Transaction Fees (1% of loan amount):</b> Our primary revenue stream comes from a 1% fee (industry standard) on the total loan amount.<ul><li class='ml-4'><b>Unit Economics:</b> We project our revenue based on a conservative estimate: <br/>- 20 brokers join our platform. <br/>- Each broker manages a $20M loan book, for a total of $400M in volume. <br/>- A 1% commission on this volume generates $4M in fees. <br/>- We take a 60% share, resulting in <b>$2.4M in annual revenue</b>.</li></ul>",
+      "<b>Platform Subscription Fees:</b> We will offer a suite of subscription-based services, including:<ul><li class='ml-4'><b>AI Markets Advisor:</b> This subscription automates deal coordination, reducing client costs. It also enables us to manage deals internally, allowing us to capture 100% of the transaction fee—a significant increase from the 60% from brokered deals.</li><li class='ml-4'><b>White Glove Service:</b> A premium service for clients who want a hands-on, managed experience.</li><li class='ml-4'><b>Refi Radar & Bloomberg of CRE:</b> A data-driven service for lenders that identifies the optimal time to refinance.</li></ul>",
+      "<b>Direct Arbitrage:</b> By targeting real estate brokers directly, we eliminate referral fees, increasing our margins."
     ]
   },
   {
     title: "Why We Win: Network Effects + AI Moat",
     content: [
-      "<b>Recurring Value:</b> A borrower who works with the platform once will continue working with us for all subsequent deals (refinancing, takeout financing) and future projects.",
-      "<b>Platform lock-in:</b> Once borrowers build profiles and lenders integrate workflows, switching costs become prohibitive.",
-      "<b>Two-sided network effects:</b> Every borrower attracts lenders, every lender attracts borrowers. Competitors can't replicate our liquidity.",
-      "<b>Data moat deepens daily:</b> Each transaction trains our AI. We'll know more about CRE lending patterns than anyone else within 18 months.",
-      "<b>Winner-take-most dynamics:</b> Like Uber or Airbnb, the market will consolidate around 1-2 platforms. We're 18 months ahead."
+      "<b>No Cold Start Problem:</b> The founding team's long-term, established relationships and deep history in recruiting allow us to overcome the cold start problem by onboarding a critical mass of lenders and borrowers from day one, ensuring immediate platform activity.",
+      "<b>Regulatory Risk Assessment:</b> We have a top-tier legal team and have conducted a thorough compliance review, mitigating regulatory risks from the outset.",
+      "<b>Recurring Value & High Switching Costs:</b> All communication and data live on our platform. Once a deal is done, the data remains, making it seamless to execute future transactions like takeout financing and refinancing, resulting in low churn.",
+      "<b>Two-Sided Network Effects:</b> By solving the cold start problem, we can quickly generate powerful network effects, where every new borrower adds value for lenders, and every new lender adds value for borrowers.",
+      "<b>Data Moat Deepens Daily:</b> Each transaction trains our AI, creating a powerful data moat that makes our platform smarter and more valuable over time.",
+      "<b>Winner-Take-Most Dynamics:</b> Like Uber or Airbnb, the CRE lending market will consolidate around one or two platforms. Our first-mover advantage and ability to scale quickly position us to become the dominant player, putting us 18 months ahead of any potential competition."
     ]
   },
   {
@@ -543,7 +544,7 @@ export default function HomePage() {
             </FadeIn>
 
             {/* Split into two halves horizontally */}
-            <div className="space-y-12">
+            <div className="space-y-6">
               {/* Top Half - Lead Generation */}
               <div className="w-full">
                 <FadeIn delay={0.1}>
@@ -560,7 +561,7 @@ export default function HomePage() {
                         Activate 120k Brokers
                       </h4>
                       <div className="text-left">
-                        <ul className="list-disc list-outside pl-6 grid grid-rows-[1fr_1fr_1fr] gap-3 min-h-[360px]">
+                        <ul className="list-disc list-outside pl-6 space-y-3">
                           <li className="text-base md:text-lg text-black dark:text-white">
                             <b>Instant lender network access</b> - Every licensed broker gets immediate access to our 3,000+ verified lenders
                           </li>
@@ -582,7 +583,7 @@ export default function HomePage() {
                         Direct Borrower Connection
                       </h4>
                       <div className="text-left">
-                        <ul className="list-disc list-outside pl-6 grid grid-rows-[1fr_1fr_1fr] gap-3 min-h-[360px]">
+                        <ul className="list-disc list-outside pl-6 space-y-3">
                           <li className="text-base md:text-lg text-black dark:text-white">
                             <b>Skip the middleman</b> - Property owners connect directly with lenders when they need speed
                           </li>
