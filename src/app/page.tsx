@@ -960,51 +960,308 @@ export default function HomePage() {
                 </p>
               </div>
             </FadeIn>
-          </SectionCard>
-        </div>
-      </section>
 
-      {/* Investment Ask Section */}
-      <section className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
-        <div className="w-full max-w-7xl mx-auto text-center">
-          <SectionCard>
-            <FadeIn>
-              <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-8">
-                {optimizedInvestmentAsk.headline}
-              </h2>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <p className="text-xl text-black/70 dark:text-white/70 mb-12 max-w-4xl mx-auto">
-                {optimizedInvestmentAsk.askAmount}
-              </p>
-            </FadeIn>
-            <div className="grid grid-cols-1 gap-6 md:gap-8 mb-10 text-left items-stretch">
-              <FadeIn>
-                <div className="glass-card rounded-2xl p-6 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 h-full">
-                  <h3 className="text-2xl font-semibold text-amber-700 dark:text-amber-300 mb-4">Use of Funds</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                    {optimizedInvestmentAsk.useOfFunds.map((u, i) => (
-                      <div key={i} className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-amber-200/60 dark:border-amber-800/40 px-5 py-4 md:px-6 md:py-6 min-h-28 md:min-h-32 flex flex-col items-center justify-center text-center text-black dark:text-white text-base md:text-lg leading-relaxed">
-                        <span className="font-semibold mb-2">{u.category}</span>
-                        <p className="text-sm text-gray-700 dark:text-gray-300">{u.details}</p>
+            {/* Investment Ask Section */}
+            <section className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
+              <div className="w-full max-w-7xl mx-auto text-center">
+                <SectionCard>
+                  <FadeIn>
+                    <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-8">
+                      {optimizedInvestmentAsk.headline}
+                    </h2>
+                  </FadeIn>
+                  <FadeIn delay={0.1}>
+                    <p className="text-xl text-black/70 dark:text-white/70 mb-12 max-w-4xl mx-auto">
+                      {optimizedInvestmentAsk.askAmount}
+                    </p>
+                  </FadeIn>
+                  <div className="grid grid-cols-1 gap-6 md:gap-8 mb-10 text-left items-stretch">
+                    <FadeIn>
+                      <div className="glass-card rounded-2xl p-6 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 h-full">
+                        <h3 className="text-2xl font-semibold text-amber-700 dark:text-amber-300 mb-4">Use of Funds</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                          {optimizedInvestmentAsk.useOfFunds.map((u, i) => (
+                            <div key={i} className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-amber-200/60 dark:border-amber-800/40 px-5 py-4 md:px-6 md:py-6 min-h-28 md:min-h-32 flex flex-col items-center justify-center text-center text-black dark:text-white text-base md:text-lg leading-relaxed">
+                              <span className="font-semibold mb-2">{u.category}</span>
+                              <p className="text-sm text-gray-700 dark:text-gray-300">{u.details}</p>
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                    ))}
+                    </FadeIn>
+                    {/* 18-Month Timeline Card */}
+                    <FadeIn>
+                      <div className="glass-card rounded-2xl p-6 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5">
+                        <h3 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-6 text-center">
+                          18-Month Timeline <span className="text-lg font-medium">(Accelerated for Ready Customers)</span>
+                        </h3>
+                        {/* Timeline Phases with aligned sections */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-12">
+                          {[
+                            {
+                              number: '1',
+                              title: 'Platform Rush',
+                              months: 'Months 1-3',
+                              content: [
+                                { type: 'bullets', value: ['Platform MVP, first deals, refine from real data'] },
+                                { type: 'success', value: '3 customers, $25M+ volume' }
+                              ]
+                            },
+                            {
+                              number: '2',
+                              title: 'Expansion',
+                              months: 'Months 4-6',
+                              content: [
+                                { type: 'bullets', value: ['Marketing ramp-up, customer acquisition'] },
+                                { type: 'success', value: '15 customers, $150M+ volume' }
+                              ]
+                            },
+                            {
+                              number: '3',
+                              title: 'Data Integration',
+                              months: 'Months 7-12',
+                              content: [
+                                { type: 'bullets', value: ['Scale to 30+ customers, integrate proprietary data'] },
+                                { type: 'success', value: '30+ customers, $500M+ volume' }
+                              ]
+                            },
+                            {
+                              number: '4',
+                              title: 'Scaling',
+                              months: 'Months 13-18',
+                              content: [
+                                { type: 'bullets', value: ['50+ customers, market leadership, fundraising'] },
+                                { type: 'success', value: '50+ customers, $1B+ volume' }
+                              ]
+                            }
+                          ].map((phase, idx) => (
+                            <div
+                              key={phase.number}
+                              className="glass-card rounded-2xl p-6 bg-gray-50 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 flex flex-col h-full text-center"
+                            >
+                              <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">{phase.number}</span>
+                              </div>
+                              <h4 className="text-xl font-semibold text-blue-700 dark:text-blue-300 min-h-[2.5rem] flex items-center justify-center mb-0">{phase.title}</h4>
+                              <p className="text-sm text-gray-700 dark:text-gray-300 min-h-[1.5rem] flex items-center justify-center mb-0">{phase.months}</p>
+                              {/* Spacer for alignment */}
+                              <div className="min-h-[2.5rem] flex items-end justify-center mb-0">
+                                <span className="invisible">spacer</span>
+                              </div>
+                              {/* Content: focus bullet and success */}
+                              <div className="flex-1 flex flex-col justify-start">
+                                {/* Focus bullet */}
+                                <div className="flex flex-col items-center justify-center min-h-[4.75rem]">
+                                  {Array.isArray(phase.content[0].value) && (
+                                    <ul className="list-disc pl-5 mb-2 text-black dark:text-white text-sm space-y-1 w-full text-left">
+                                      <li className="min-h-[2.5rem] flex items-center">{phase.content[0].value[0]}</li>
+                                    </ul>
+                                  )}
+                                </div>
+                                {/* Success */}
+                                <div className="flex flex-col items-center justify-center min-h-[2.5rem] mt-auto">
+                                  <span className="text-emerald-700 dark:text-emerald-400 font-semibold text-center w-full">{phase.content[1].value.split(', ')[0]}</span>
+                                  <span className="text-emerald-700 dark:text-emerald-400 font-semibold text-center w-full">{phase.content[1].value.split(', ')[1]}</span>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                        {/* Key Success Milestones Table */}
+                        <div className="overflow-x-auto mb-10">
+                          <table className="min-w-full text-sm md:text-base text-left border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+                            <thead className="bg-gray-100 dark:bg-gray-800">
+                              <tr>
+                                <th className="px-4 py-2 font-semibold">Timeline</th>
+                                <th className="px-4 py-2 font-semibold">Customer Goal</th>
+                                <th className="px-4 py-2 font-semibold">Deal Volume Goal</th>
+                                <th className="px-4 py-2 font-semibold">Key Milestone</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr className="border-t border-gray-200 dark:border-gray-700">
+                                <td className="px-4 py-2">Month 3</td>
+                                <td className="px-4 py-2">3 customers processing</td>
+                                <td className="px-4 py-2">$25M+ volume</td>
+                                <td className="px-4 py-2">Platform validation</td>
+                              </tr>
+                              <tr className="border-t border-gray-200 dark:border-gray-700">
+                                <td className="px-4 py-2">Month 6</td>
+                                <td className="px-4 py-2">15 active customers</td>
+                                <td className="px-4 py-2">$150M+ volume</td>
+                                <td className="px-4 py-2">Product-market fit</td>
+                              </tr>
+                              <tr className="border-t border-gray-200 dark:border-gray-700">
+                                <td className="px-4 py-2">Month 12</td>
+                                <td className="px-4 py-2">30+ active customers</td>
+                                <td className="px-4 py-2">$500M+ volume</td>
+                                <td className="px-4 py-2">Scalable business</td>
+                              </tr>
+                              <tr className="border-t border-gray-200 dark:border-gray-700">
+                                <td className="px-4 py-2">Month 18</td>
+                                <td className="px-4 py-2">50+ customers</td>
+                                <td className="px-4 py-2">$1B+ volume</td>
+                                <td className="px-4 py-2">Series A ready</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        {/* Risks & Mitigation */}
+                        <div className="glass-card rounded-2xl p-6 bg-gradient-to-br from-red-50 to-yellow-50 dark:from-red-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 max-w-4xl mx-auto">
+                          <h4 className="text-xl font-semibold text-red-700 dark:text-red-300 mb-4">Critical Timeline Risks & Mitigation</h4>
+                          <ul className="list-disc pl-6 space-y-3 text-black dark:text-white">
+                            <li><b>High Risk: Platform development delays</b><br/>Mitigation: Hire experienced CRE fintech developers immediately<br/><span className="text-sm text-gray-700 dark:text-gray-300">Timeline Impact: Add 20% buffer to development milestones</span></li>
+                            <li><b>Medium Risk: Customer onboarding complexity</b><br/>Mitigation: Dedicated customer success team, start with simplest deals<br/><span className="text-sm text-gray-700 dark:text-gray-300">Timeline Impact: May slow customer expansion by 4-6 weeks</span></li>
+                            <li><b>Medium Risk: Regulatory compliance issues</b><br/>Mitigation: Legal counsel from day 1, early compliance investment<br/><span className="text-sm text-gray-700 dark:text-gray-300">Timeline Impact: Potential 2-3 month delays if not addressed early</span></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </FadeIn>
                   </div>
-                </div>
-              </FadeIn>
-            </div>
+                  <FadeIn>
+                    <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 w-full max-w-7xl mx-auto">
+                      <p className="text-lg text-amber-600 dark:text-amber-300 mb-6">
+                        {optimizedInvestmentAsk.callToAction}
+                      </p>
+                      <button 
+                        onClick={() => setIsModalOpen(true)}
+                        className="px-8 py-3 bg-amber-600 hover:bg-amber-700 dark:bg-amber-500 dark:hover:bg-amber-600 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 mx-auto"
+                      >
+                        <MessageCircle className="w-5 h-5" />
+                        Contact Us
+                      </button>
+                    </div>
+                  </FadeIn>
+                </SectionCard>
+              </div>
+            </section>
+
+            {/* 18-Month Timeline Section (moved up) */}
             <FadeIn>
-              <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 w-full max-w-7xl mx-auto">
-                <p className="text-lg text-amber-600 dark:text-amber-300 mb-6">
-                  {optimizedInvestmentAsk.callToAction}
-                </p>
-                <button 
-                  onClick={() => setIsModalOpen(true)}
-                  className="px-8 py-3 bg-amber-600 hover:bg-amber-700 dark:bg-amber-500 dark:hover:bg-amber-600 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 mx-auto"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  Contact Us
-                </button>
+              <div className="mt-8 mb-12">
+                <h3 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-6 text-center">
+                  18-Month Timeline <span className="text-lg font-medium">(Accelerated for Ready Customers)</span>
+                </h3>
+                {/* Timeline Phases with aligned sections */}
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-12">
+                  {[
+                    {
+                      number: '1',
+                      title: 'Platform Rush',
+                      months: 'Months 1-3',
+                      content: [
+                        { type: 'bullets', value: ['Platform MVP, first deals, refine from real data'] },
+                        { type: 'success', value: '3 customers, $25M+ volume' }
+                      ]
+                    },
+                    {
+                      number: '2',
+                      title: 'Expansion',
+                      months: 'Months 4-6',
+                      content: [
+                        { type: 'bullets', value: ['Marketing ramp-up, customer acquisition infrastructure'] },
+                        { type: 'success', value: '15 customers, $150M+ volume' }
+                      ]
+                    },
+                    {
+                      number: '3',
+                      title: 'Data Integration',
+                      months: 'Months 7-12',
+                      content: [
+                        { type: 'bullets', value: ['Scale to 30+ customers, integrate proprietary data'] },
+                        { type: 'success', value: '30+ customers, $500M+ volume' }
+                      ]
+                    },
+                    {
+                      number: '4',
+                      title: 'Scaling',
+                      months: 'Months 13-18',
+                      content: [
+                        { type: 'bullets', value: ['50+ customers, market leadership, fundraising'] },
+                        { type: 'success', value: '50+ customers, $1B+ volume' }
+                      ]
+                    }
+                  ].map((phase, idx) => (
+                    <div
+                      key={phase.number}
+                      className="glass-card rounded-2xl p-6 bg-gray-50 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 flex flex-col h-full text-center"
+                    >
+                      <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">{phase.number}</span>
+                      </div>
+                      <h4 className="text-xl font-semibold text-blue-700 dark:text-blue-300 min-h-[2.5rem] flex items-center justify-center mb-0">{phase.title}</h4>
+                      <p className="text-sm text-gray-700 dark:text-gray-300 min-h-[1.5rem] flex items-center justify-center mb-0">{phase.months}</p>
+                      {/* Spacer for alignment */}
+                      <div className="min-h-[2.5rem] flex items-end justify-center mb-0">
+                        <span className="invisible">spacer</span>
+                      </div>
+                      {/* Content: focus bullet and success */}
+                      <div className="flex-1 flex flex-col justify-start">
+                        {/* Focus bullet */}
+                        <div className="flex flex-col items-center justify-center min-h-[4.75rem]">
+                          {Array.isArray(phase.content[0].value) && (
+                            <ul className="list-disc pl-5 mb-2 text-black dark:text-white text-sm space-y-1 w-full text-left">
+                              <li className="min-h-[2.5rem] flex items-center">{phase.content[0].value[0]}</li>
+                            </ul>
+                          )}
+                        </div>
+                        {/* Success */}
+                        <div className="flex flex-col items-center justify-center min-h-[2.5rem] mt-auto">
+                          <span className="text-emerald-700 dark:text-emerald-400 font-semibold text-center w-full">{phase.content[1].value.split(', ')[0]}</span>
+                          <span className="text-emerald-700 dark:text-emerald-400 font-semibold text-center w-full">{phase.content[1].value.split(', ')[1]}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                {/* Key Success Milestones Table */}
+                <div className="overflow-x-auto mb-10">
+                  <table className="min-w-full text-sm md:text-base text-left border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+                    <thead className="bg-gray-100 dark:bg-gray-800">
+                      <tr>
+                        <th className="px-4 py-2 font-semibold">Timeline</th>
+                        <th className="px-4 py-2 font-semibold">Customer Goal</th>
+                        <th className="px-4 py-2 font-semibold">Deal Volume Goal</th>
+                        <th className="px-4 py-2 font-semibold">Key Milestone</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-t border-gray-200 dark:border-gray-700">
+                        <td className="px-4 py-2">Month 3</td>
+                        <td className="px-4 py-2">3 customers processing</td>
+                        <td className="px-4 py-2">$25M+ volume</td>
+                        <td className="px-4 py-2">Platform validation</td>
+                      </tr>
+                      <tr className="border-t border-gray-200 dark:border-gray-700">
+                        <td className="px-4 py-2">Month 6</td>
+                        <td className="px-4 py-2">15 active customers</td>
+                        <td className="px-4 py-2">$150M+ volume</td>
+                        <td className="px-4 py-2">Product-market fit</td>
+                      </tr>
+                      <tr className="border-t border-gray-200 dark:border-gray-700">
+                        <td className="px-4 py-2">Month 12</td>
+                        <td className="px-4 py-2">30+ active customers</td>
+                        <td className="px-4 py-2">$500M+ volume</td>
+                        <td className="px-4 py-2">Scalable business</td>
+                      </tr>
+                      <tr className="border-t border-gray-200 dark:border-gray-700">
+                        <td className="px-4 py-2">Month 18</td>
+                        <td className="px-4 py-2">50+ customers</td>
+                        <td className="px-4 py-2">$1B+ volume</td>
+                        <td className="px-4 py-2">Series A ready</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                {/* Risks & Mitigation */}
+                <div className="glass-card rounded-2xl p-6 bg-gradient-to-br from-red-50 to-yellow-50 dark:from-red-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 max-w-4xl mx-auto">
+                  <h4 className="text-xl font-semibold text-red-700 dark:text-red-300 mb-4">Critical Timeline Risks & Mitigation</h4>
+                  <ul className="list-disc pl-6 space-y-3 text-black dark:text-white">
+                    <li><b>High Risk: Platform development delays</b><br/>Mitigation: Hire experienced CRE fintech developers immediately<br/><span className="text-sm text-gray-700 dark:text-gray-300">Timeline Impact: Add 20% buffer to development milestones</span></li>
+                    <li><b>Medium Risk: Customer onboarding complexity</b><br/>Mitigation: Dedicated customer success team, start with simplest deals<br/><span className="text-sm text-gray-700 dark:text-gray-300">Timeline Impact: May slow customer expansion by 4-6 weeks</span></li>
+                    <li><b>Medium Risk: Regulatory compliance issues</b><br/>Mitigation: Legal counsel from day 1, early compliance investment<br/><span className="text-sm text-gray-700 dark:text-gray-300">Timeline Impact: Potential 2-3 month delays if not addressed early</span></li>
+                  </ul>
+                </div>
               </div>
             </FadeIn>
           </SectionCard>
