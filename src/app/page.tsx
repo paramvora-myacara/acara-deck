@@ -265,20 +265,28 @@ const optimizedInvestmentAsk = {
   askAmount: "$3.5M Pre-Seed Round",
   useOfFunds: [
     {
-      category: "Product & AI Development",
+      category: "Product & AI Development - 40% ($1.40M)",
       details: "To support the technical team to build out very good existing proof of concept models into production grade products."
     },
     {
-      category: "Proprietary Data Purchase",
+      category: "Marketing & Communication - 20% ($0.70M)",
+      details: "Setting up the marketing and communication infrastructure to onboard most of the customers onto the platform."
+    },
+    {
+      category: "Proprietary Data Purchase - 15% ($0.525M)",
       details: "For information about every lender in the US, every borrower in the US, and every building in the US. This data will be used to build out our communication and customer targeting mechanisms."
     },
     {
-      category: "Marketing & Communication",
-      details: "Setting up the marketing and communication infrastructure to onboard most of the goals onto the platform."
+      category: "Sales & Customer Success - 10% ($0.35M)",
+      details: "Funds allocated to building a dedicated sales team and customer success function to ensure the success and expansion of initial customers. This investment enables scalable customer acquisition and retention."
     },
     {
-      category: "Compliance & Operations",
+      category: "Compliance & Operations - 10% ($0.35M)",
       details: "Ensuring we operate in a compliance-friendly manner from the very beginning and minimizing OpEx costs for the business."
+    },
+    {
+      category: "Working Capital/Contingency - 5% ($0.175M)",
+      details: "Reserved for unexpected needs, market opportunities, and to provide flexibility for rapid market changes."
     }
   ],
   milestones: [
