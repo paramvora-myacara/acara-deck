@@ -65,9 +65,9 @@ const problemCards: ProblemCard[] = [
   {
     title: "Borrowers are invisible to 99% of lenders",
     content: [
-      "<b>Only 5-10 lenders see each deal</b> — brokers show deals only to their personal contacts, missing 2,990+ other active lenders who might offer better terms.",
-      "<b>50% of deals fail from poor matching</b> — borrowers don't know what lenders want, so they waste time pitching to the wrong ones.",
-      "<b>Leaving millions on the table</b> — a 0.25% rate difference on a $50M loan costs $125,000/year. Borrowers never know what they missed."
+      "<b>Only 5-10 lenders see each deal</b> - brokers show deals only to their personal contacts, missing 2,990+ other active lenders who might offer better terms.",
+      "<b>50% of deals fail from poor matching</b> - borrowers don't know what lenders want, so they waste time pitching to the wrong ones.",
+      "<b>Leaving millions on the table</b> - a 0.25% rate difference on a $50M loan costs $125,000/year. Borrowers never know what they missed."
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
     textColor: "text-red-600 dark:text-red-400",
@@ -77,9 +77,9 @@ const problemCards: ProblemCard[] = [
   {
     title: "120,000 brokers can't place debt efficiently",
     content: [
-      "<b>Zero infrastructure for loan brokers</b> — licensed professionals with no platform, no leads, no standardized process. Each rebuilds the wheel.",
-      "<b>60%+ commission to originator</b> — inefficiency means brokers keep most fees just to survive, making the model unscalable.",
-      "<b>$4B in missed commissions annually</b> — brokers who could place debt don't, because the process is too complex without proper tools."
+      "<b>Zero infrastructure for loan brokers</b> - licensed professionals with no platform, no leads, no standardized process. Each rebuilds the wheel.",
+      "<b>60%+ commission to originator</b> - inefficiency means brokers keep most fees just to survive, making the model unscalable.",
+      "<b>$4B in missed commissions annually</b> - brokers who could place debt don't, because the process is too complex without proper tools."
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
     textColor: "text-red-600 dark:text-red-400",
@@ -89,9 +89,9 @@ const problemCards: ProblemCard[] = [
   {
     title: "Deal documents take 6-8 weeks to create",
     content: [
-      "<b>Analyst teams burn 160 hours per deal</b> — manually assembling offering memorandums from scattered PDFs, emails, and spreadsheets.",
-      "<b>Every change triggers complete rewrites</b> — no version control means confusion, delays, and deals dying from stale information.",
-      "<b>Static PDFs in a dynamic market</b> — by the time the OM is done, market conditions changed. Lenders see outdated info."
+      "<b>Analyst teams burn 160 hours per deal</b> - manually assembling offering memorandums from scattered PDFs, emails, and spreadsheets.",
+      "<b>Every change triggers complete rewrites</b> - no version control means confusion, delays, and deals dying from stale information.",
+      "<b>Static PDFs in a dynamic market</b> - by the time the OM is done, market conditions changed. Lenders see outdated info."
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
     textColor: "text-red-600 dark:text-red-400",
@@ -101,9 +101,9 @@ const problemCards: ProblemCard[] = [
   {
     title: "Lenders can't find deals they want",
     content: [
-      "<b>3,000 lenders fighting for deal flow</b> — but only see deals from their limited broker network, missing 95% of the market.",
-      "<b>Can't compare deals efficiently</b> — every broker sends different formats. No standardization means manual review of each deal.",
-      "<b>$957B refinancing in 2025</b> — lenders have capital to deploy but can't find the right deals fast enough in this tsunami of opportunity."
+      "<b>3,000 lenders fighting for deal flow</b> - but only see deals from their limited broker network, missing 95% of the market.",
+      "<b>Can't compare deals efficiently</b> - every broker sends different formats. No standardization means manual review of each deal.",
+      "<b>$957B refinancing in 2025</b> - lenders have capital to deploy but can't find the right deals fast enough in this tsunami of opportunity."
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
     textColor: "text-red-600 dark:text-red-400",
@@ -119,7 +119,7 @@ const solutionCards: SolutionCard[] = [
     role: "AI-powered marketplace connecting 30,000 borrowers with 3,000+ lenders",
     content: [
       "<b>Borrowers:</b> Your deal reaches <b>all 3,000+ active lenders</b> in seconds, not just the 5-10 your broker knows. Our AI ensures only qualified lenders see it.",
-      "<b>Lenders:</b> See <b>every deal that matches your criteria</b> — geography, asset type, loan size — automatically filtered and ranked by AI.",
+      "<b>Lenders:</b> See <b>every deal that matches your criteria</b> - geography, asset type, loan size - automatically filtered and ranked by AI.",
       "<b>Advisors:</b> Activate all <b>120,000 licensed brokers</b> as originators with instant access to our lender network and deal flow."
     ],
     videoUrl: "/CapMatchDemo720p.mp4",
@@ -132,7 +132,7 @@ const solutionCards: SolutionCard[] = [
     title: "One platform from first call to wire transfer",
     role: "The first end-to-end CRE lending operating system",
     content: [
-      "<b>Borrowers:</b> Build your profile once, use forever. <b>No redundant data entry</b> — just update deal specifics. Track all lender interest in real-time.",
+      "<b>Borrowers:</b> Build your profile once, use forever. <b>No redundant data entry</b> - just update deal specifics. Track all lender interest in real-time.",
       "<b>Lenders:</b> <b>Standardized deal packages</b> for instant comparison. Chat with borrowers, request docs, and close deals all in one place.",
       "<b>Advisors:</b> Manage <b>unlimited deals simultaneously</b> with our workflow automation. One dashboard for all borrowers, lenders, and documents."
     ],
@@ -146,7 +146,7 @@ const solutionCards: SolutionCard[] = [
     title: "30-second OMs with live updates",
     role: "AI transforms scattered documents into institutional-grade packages instantly",
     content: [
-      "<b>Borrowers:</b> Drag and drop any documents — our AI extracts, organizes, and creates your OM in <b>30 seconds, not 3 weeks</b>.",
+      "<b>Borrowers:</b> Drag and drop any documents - our AI extracts, organizes, and creates your OM in <b>30 seconds, not 3 weeks</b>.",
       "<b>Lenders:</b> See <b>live, dynamic OMs</b> that update in real-time. Ask our AI questions about any deal and get instant answers with sources.",
       "<b>Advisors:</b> <b>Save 160 hours per deal</b>. No more manual package creation. Focus on relationships while AI handles documentation."
     ],
@@ -160,7 +160,7 @@ const solutionCards: SolutionCard[] = [
     title: "AI predicts perfect matches",
     role: "Machine learning trained on thousands of successful deals",
     content: [
-      "<b>Borrowers:</b> <b>75% higher success rate</b> — our AI knows exactly which lenders want your deal based on similar successful transactions.",
+      "<b>Borrowers:</b> <b>75% higher success rate</b> - our AI knows exactly which lenders want your deal based on similar successful transactions.",
       "<b>Lenders:</b> <b>10x more qualified deals</b> with our white-glove curation service. Only see deals that match your investment thesis.",
       "<b>Advisors:</b> <b>Close deals 3x faster</b> with AI-powered matching. Higher success rates mean better reputation and more referrals."
     ],

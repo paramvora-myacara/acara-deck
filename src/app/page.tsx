@@ -76,7 +76,7 @@ const creEducationContent = {
       title: "Lenders",
       subtitle: "Banks, Funds & Agencies",
       descriptions: [
-        "<b>3,000+</b> lenders, each has different criteria, rates, and appetites—impossible to track manually.",
+        "<b>3,000+</b> lenders, each has different criteria, rates, and appetites-impossible to track manually.",
         "With no standardization, it's <b>impossible to efficiently compare deals</b> from different brokers."
       ]
     }
@@ -193,7 +193,7 @@ const optimizedMarketCards = [
     title: "Revenue Streams That Compound",
     content: [
       "<b>Transaction Fees (1% of loan amount):</b> Primary revenue stream across construction, bridge, perm and refi cycles. See <b>Financial Metrics</b> below for unit economics and payback.",
-      "<b>Platform Subscription Fees:</b> We will offer a suite of subscription-based services, including:<ul><li class='ml-4'><b>AI Markets Advisor:</b> This subscription automates deal coordination, reducing client costs. It also enables us to manage deals internally, allowing us to capture 100% of the transaction fee—a significant increase from the 60% from brokered deals.</li><li class='ml-4'><b>White Glove Service:</b> A premium service for clients who want a hands-on, managed experience.</li><li class='ml-4'><b>Refi Radar & Bloomberg of CRE:</b> A data-driven service for lenders that identifies the optimal time to refinance.</li></ul>",
+      "<b>Platform Subscription Fees:</b> We will offer a suite of subscription-based services, including:<ul><li class='ml-4'><b>AI Markets Advisor:</b> This subscription automates deal coordination, reducing client costs. It also enables us to manage deals internally, allowing us to capture 100% of the transaction fee-a significant increase from the 60% from brokered deals.</li><li class='ml-4'><b>White Glove Service:</b> A premium service for clients who want a hands-on, managed experience.</li><li class='ml-4'><b>Refi Radar & Bloomberg of CRE:</b> A data-driven service for lenders that identifies the optimal time to refinance.</li></ul>",
       "<b>Direct Arbitrage:</b> By targeting real estate brokers directly, we eliminate referral fees, increasing our margins."
     ]
   },
@@ -250,9 +250,9 @@ const financialMetrics = {
     note: "These are illustrative; actual cadence depends on ramp time to first close."
   },
   ltv: {
-    title: "Lifetime Value (10-year horizon)",
+    title: "Lifetime Value of a single deal (10-year horizon)",
     bullets: [
-      "<b>Per borrower relationship:</b> Expected financing touchpoints: Construction → Perm (Year ~1–2) → Refi at Year ~6–8. That is <b>~2–3 fee events</b> in 10 years.",
+      "<b>Per deal relationship:</b> Expected financing touchpoints: Construction → Perm (Year ~1–2) → Refi at Year ~6–8. That is <b>~2–3 fee events</b> in 10 years.",
       "<b>Deal size dynamics:</b> Assume initial $50M; refi at 1.05× = <b>$52.5M</b> (midpoint of 1.0×–1.1×).",
       "<b>Fee capture:</b> 1% per event. Blend share 80% (midpoint of 60% broker and 100% managed).",
       "<b>Gross margin:</b> 70%."
@@ -408,6 +408,13 @@ export default function HomePage() {
     "Why We Win: Network Effects + AI Moat": true
   });
   const [expandedSolutions, setExpandedSolutions] = useState<Record<number, boolean>>({});
+  const [expandedFinancial, setExpandedFinancial] = useState<Record<string, boolean>>({
+    Assumptions: false,
+    CAC: false,
+    Payback: false,
+    LTV: false,
+    CACToLTV: false,
+  });
 
   const handleProblemSelect = (index: number) => {
     setSelectedProblem(index);
@@ -423,6 +430,10 @@ export default function HomePage() {
 
   const toggleSolutionCard = (idx: number) => {
     setExpandedSolutions(prev => ({ ...prev, [idx]: !prev[idx] }));
+  };
+
+  const toggleFinancialCard = (key: string) => {
+    setExpandedFinancial(prev => ({ ...prev, [key]: !prev[key] }));
   };
 
   return (
@@ -828,85 +839,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Financial Metrics Section (new) */}
-      <section className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
-        <div className="w-full max-w-7xl mx-auto">
-          <SectionCard>
-            <FadeIn>
-              <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white text-center mb-8 md:mb-12">
-                {financialMetrics.title}
-              </h2>
-            </FadeIn>
-            <FadeIn delay={0.05}>
-              <p className="text-lg md:text-xl text-black/70 dark:text-white/70 text-center mb-10">
-                {financialMetrics.subtitle}
-              </p>
-            </FadeIn>
-
-            {/* Assumptions */}
-            <FadeIn delay={0.1}>
-              <div className="glass-card rounded-2xl p-6 bg-white/70 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 mb-8">
-                <h3 className="text-2xl font-semibold text-black dark:text-white mb-4">Key Assumptions</h3>
-                <ul className="list-disc list-outside pl-6 space-y-2 text-black dark:text-white">
-                  {financialMetrics.assumptions.map((a, i) => (
-                    <li key={i} dangerouslySetInnerHTML={{ __html: a }} />
-                  ))}
-                </ul>
-              </div>
-            </FadeIn>
-
-            {/* CAC & Payback */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8">
-              <FadeIn delay={0.15}>
-                <div className="glass-card rounded-2xl p-6 bg-gradient-to-br from-emerald-50 to-teal-100 dark:from-emerald-900/20 dark:to-teal-900/20 border border-gray-200 dark:border-white/20 h-full">
-                  <h3 className="text-2xl font-semibold text-black dark:text-white mb-4">{financialMetrics.cac.title}</h3>
-                  <ul className="list-disc list-outside pl-6 space-y-2 text-black dark:text-white">
-                    {financialMetrics.cac.bullets.map((b, i) => (
-                      <li key={i} dangerouslySetInnerHTML={{ __html: b }} />
-                    ))}
-                  </ul>
-                </div>
-              </FadeIn>
-              <FadeIn delay={0.2}>
-                <div className="glass-card rounded-2xl p-6 bg-gradient-to-br from-indigo-50 to-blue-100 dark:from-indigo-900/20 dark:to-blue-900/20 border border-gray-200 dark:border-white/20 h-full">
-                  <h3 className="text-2xl font-semibold text-black dark:text-white mb-2">{financialMetrics.payback.title}</h3>
-                  <p className="text-black/80 dark:text-white/80 mb-3"><b>Formula: </b>{financialMetrics.payback.formula}</p>
-                  <ul className="list-disc list-outside pl-6 space-y-2 text-black dark:text-white">
-                    {financialMetrics.payback.examples.map((e, i) => (
-                      <li key={i} dangerouslySetInnerHTML={{ __html: e }} />
-                    ))}
-                  </ul>
-                  <p className="text-sm text-gray-700 dark:text-gray-300 mt-3">{financialMetrics.payback.note}</p>
-                </div>
-              </FadeIn>
-            </div>
-
-            {/* LTV */}
-            <FadeIn delay={0.25}>
-              <div className="glass-card rounded-2xl p-6 bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20">
-                <h3 className="text-2xl font-semibold text-black dark:text-white mb-4">{financialMetrics.ltv.title}</h3>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  <div>
-                    <ul className="list-disc list-outside pl-6 space-y-2 text-black dark:text-white">
-                      {financialMetrics.ltv.bullets.map((b, i) => (
-                        <li key={i} dangerouslySetInnerHTML={{ __html: b }} />
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <ul className="list-disc list-outside pl-6 space-y-2 text-black dark:text-white">
-                      {financialMetrics.ltv.calc.map((c, i) => (
-                        <li key={i} dangerouslySetInnerHTML={{ __html: c }} />
-                      ))}
-                    </ul>
-                    <p className="text-black/80 dark:text-white/80 mt-3" dangerouslySetInnerHTML={{ __html: financialMetrics.ltv.rationale }} />
-                  </div>
-                </div>
-              </div>
-            </FadeIn>
-          </SectionCard>
-        </div>
-      </section>
 
       {/* Market Section */}
       <section className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
@@ -962,6 +894,189 @@ export default function HomePage() {
                   </motion.div>
                 );
               })}
+
+              {/* Financial Metrics & Unit Economics nested in Market */}
+              <motion.div
+                className="glass-card rounded-3xl p-10 bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 max-w-6xl mx-auto"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                viewport={{ once: true }}
+              >
+                <FadeIn>
+                  <h3 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-8 text-center">
+                    {financialMetrics.title}
+                  </h3>
+                </FadeIn>
+                <FadeIn delay={0.05}>
+                  <p className="text-lg md:text-xl text-black/70 dark:text-white/70 text-center mb-8">
+                    {financialMetrics.subtitle}
+                  </p>
+                </FadeIn>
+
+                {/* Assumptions - Collapsible */}
+                <FadeIn delay={0.1}>
+                  <div className="glass-card rounded-2xl bg-white/70 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 mb-6 overflow-hidden text-left">
+                    <button
+                      type="button"
+                      onClick={() => toggleFinancialCard('Assumptions')}
+                      className="w-full flex items-center justify-between text-left px-6 py-5"
+                      aria-expanded={!!expandedFinancial.Assumptions}
+                    >
+                      <h4 className="text-xl md:text-2xl font-semibold text-black dark:text-white">Key Assumptions</h4>
+                      <ChevronDown className={`w-6 h-6 text-gray-600 dark:text-gray-300 transition-transform ${expandedFinancial.Assumptions ? 'rotate-180' : ''}`} />
+                    </button>
+                    {expandedFinancial.Assumptions && (
+                      <div className="px-6 pb-6">
+                        <ul className="list-disc list-outside pl-6 space-y-2 text-black dark:text-white">
+                          {financialMetrics.assumptions.map((a, i) => (
+                            <li key={i} dangerouslySetInnerHTML={{ __html: a }} />
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </FadeIn>
+
+                {/* CAC - Collapsible */}
+                <FadeIn delay={0.15}>
+                  <div className="glass-card rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-100 dark:from-emerald-900/20 dark:to-teal-900/20 border border-gray-200 dark:border-white/20 mb-6 overflow-hidden text-left">
+                    <button
+                      type="button"
+                      onClick={() => toggleFinancialCard('CAC')}
+                      className="w-full flex items-center justify-between text-left px-6 py-5"
+                      aria-expanded={!!expandedFinancial.CAC}
+                    >
+                      <h4 className="text-xl md:text-2xl font-semibold text-black dark:text-white">{financialMetrics.cac.title}</h4>
+                      <ChevronDown className={`w-6 h-6 text-gray-600 dark:text-gray-300 transition-transform ${expandedFinancial.CAC ? 'rotate-180' : ''}`} />
+                    </button>
+                    {expandedFinancial.CAC && (
+                      <div className="px-6 pb-6">
+                        <ul className="list-disc list-outside pl-6 space-y-2 text-black dark:text-white">
+                          {financialMetrics.cac.bullets.map((b, i) => (
+                            <li key={i} dangerouslySetInnerHTML={{ __html: b }} />
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </FadeIn>
+
+                {/* Payback - Collapsible */}
+                <FadeIn delay={0.2}>
+                  <div className="glass-card rounded-2xl bg-gradient-to-br from-indigo-50 to-blue-100 dark:from-indigo-900/20 dark:to-blue-900/20 border border-gray-200 dark:border-white/20 mb-6 overflow-hidden text-left">
+                    <button
+                      type="button"
+                      onClick={() => toggleFinancialCard('Payback')}
+                      className="w-full flex items-center justify-between text-left px-6 py-5"
+                      aria-expanded={!!expandedFinancial.Payback}
+                    >
+                      <h4 className="text-xl md:text-2xl font-semibold text-black dark:text-white">{financialMetrics.payback.title}</h4>
+                      <ChevronDown className={`w-6 h-6 text-gray-600 dark:text-gray-300 transition-transform ${expandedFinancial.Payback ? 'rotate-180' : ''}`} />
+                    </button>
+                    {expandedFinancial.Payback && (
+                      <div className="px-6 pb-6">
+                        <p className="text-black/80 dark:text-white/80 mb-3"><b>Formula: </b>{financialMetrics.payback.formula}</p>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                          <div className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 p-4">
+                            <p className="font-semibold mb-2" dangerouslySetInnerHTML={{ __html: financialMetrics.payback.examples[0].split(':')[0] + ':' }} />
+                            <ul className="list-decimal list-outside pl-6 space-y-1 text-black dark:text-white">
+                              <li>Annual volume ≈ $300M; 1% fee × 60% share → $1.8M/yr</li>
+                              <li>Monthly ARPU ≈ $150k; 70% GM → $105k GM/month</li>
+                              <li>CAC $5k ⇒ Payback ≈ 0.05 months (~1–2 days)</li>
+                            </ul>
+                          </div>
+                          <div className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 p-4">
+                            <p className="font-semibold mb-2" dangerouslySetInnerHTML={{ __html: financialMetrics.payback.examples[1].split(':')[0] + ':' }} />
+                            <ul className="list-decimal list-outside pl-6 space-y-1 text-black dark:text-white">
+                              <li>Annual volume ≈ $50M; 1% fee × 100% share → $500k/yr</li>
+                              <li>Monthly ARPU ≈ $41.7k; 70% GM → $29.2k GM/month</li>
+                              <li>CAC $2k ⇒ Payback ≈ 0.07 months</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <p className="text-sm text-gray-700 dark:text-gray-300 mt-3">{financialMetrics.payback.note}</p>
+                      </div>
+                    )}
+                  </div>
+                </FadeIn>
+
+                {/* LTV - Collapsible */}
+                <FadeIn delay={0.25}>
+                  <div className="glass-card rounded-2xl bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 overflow-hidden text-left">
+                    <button
+                      type="button"
+                      onClick={() => toggleFinancialCard('LTV')}
+                      className="w-full flex items-center justify-between text-left px-6 py-5"
+                      aria-expanded={!!expandedFinancial.LTV}
+                    >
+                      <h4 className="text-xl md:text-2xl font-semibold text-black dark:text-white">{financialMetrics.ltv.title}</h4>
+                      <ChevronDown className={`w-6 h-6 text-gray-600 dark:text-gray-300 transition-transform ${expandedFinancial.LTV ? 'rotate-180' : ''}`} />
+                    </button>
+                    {expandedFinancial.LTV && (
+                      <div className="px-6 pb-6">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                          <div>
+                            <ul className="list-disc list-outside pl-6 space-y-2 text-black dark:text-white">
+                              {financialMetrics.ltv.bullets.map((b, i) => (
+                                <li key={i} dangerouslySetInnerHTML={{ __html: b }} />
+                              ))}
+                            </ul>
+                          </div>
+                          <div>
+                            <ul className="list-decimal list-outside pl-6 space-y-2 text-black dark:text-white">
+                              <li>Event 1: $50M × 1% × 80% × 70% = <b>$280k GM</b></li>
+                              <li>Event 2: $52.5M × 1% × 80% × 70% = <b>$294k GM</b></li>
+                              <li>Optional Event 3: $52.5M baseline → <b>$294k GM</b></li>
+                              <li><b>LTV (2 events):</b> ≈ <b>$574k GM</b>; <b>LTV (3 events):</b> ≈ <b>$868k GM</b></li>
+                            </ul>
+                            <p className="text-black/80 dark:text-white/80 mt-3" dangerouslySetInnerHTML={{ __html: financialMetrics.ltv.rationale }} />
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </FadeIn>
+
+                {/* CAC to LTV Ratio - Collapsible */}
+                <FadeIn delay={0.3}>
+                  <div className="glass-card rounded-2xl bg-gradient-to-br from-fuchsia-50 to-purple-100 dark:from-fuchsia-900/20 dark:to-purple-900/20 border border-gray-200 dark:border-white/20 overflow-hidden mt-6 text-left">
+                    <button
+                      type="button"
+                      onClick={() => toggleFinancialCard('CACToLTV')}
+                      className="w-full flex items-center justify-between text-left px-6 py-5"
+                      aria-expanded={!!expandedFinancial.CACToLTV}
+                    >
+                      <h4 className="text-xl md:text-2xl font-semibold text-black dark:text-white">CAC to LTV Ratio</h4>
+                      <ChevronDown className={`w-6 h-6 text-gray-600 dark:text-gray-300 transition-transform ${expandedFinancial.CACToLTV ? 'rotate-180' : ''}`} />
+                    </button>
+                    {expandedFinancial.CACToLTV && (
+                      <div className="px-6 pb-6">
+                        <p className="text-black/80 dark:text-white/80 mb-3"><b>Formula:</b> CAC to LTV Ratio = LTV / CAC</p>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                          <div className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 p-4">
+                            <p className="font-semibold mb-2">Broker-led example</p>
+                            <ul className="list-decimal list-outside pl-6 space-y-1 text-black dark:text-white">
+                              <li>Assume CAC = $5k (blended)</li>
+                              <li>Use LTV (2 events) GM ≈ $574k</li>
+                              <li>Ratio = $574k / $5k ≈ <b>115:1</b></li>
+                            </ul>
+                          </div>
+                          <div className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 p-4">
+                            <p className="font-semibold mb-2">Direct borrower example</p>
+                            <ul className="list-decimal list-outside pl-6 space-y-1 text-black dark:text-white">
+                              <li>Assume CAC = $2k</li>
+                              <li>Use LTV (2 events) GM ≈ $574k</li>
+                              <li>Ratio = $574k / $2k ≈ <b>287:1</b></li>
+                            </ul>
+                          </div>
+                        </div>
+                        <p className="text-sm text-gray-700 dark:text-gray-300 mt-3">Illustrative; depends on actual close cadence and mix of broker vs managed deals.</p>
+                      </div>
+                    )}
+                  </div>
+                </FadeIn>
+              </motion.div>
 
               {/* 4th card with competitive analysis graph */}
               <motion.div
