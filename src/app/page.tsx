@@ -265,27 +265,27 @@ const optimizedInvestmentAsk = {
   askAmount: "$3.5M Pre-Seed Round",
   useOfFunds: [
     {
-      category: "Product & AI Development - 40% ($1.40M)",
+      category: "Product & AI Development - 40%",
       details: "To support the technical team to build out very good existing proof of concept models into production grade products."
     },
     {
-      category: "Marketing & Communication - 20% ($0.70M)",
+      category: "Marketing & Communication - 20%",
       details: "Setting up the marketing and communication infrastructure to onboard most of the customers onto the platform."
     },
     {
-      category: "Proprietary Data Purchase - 15% ($0.525M)",
+      category: "Proprietary Data Purchase - 15%",
       details: "For information about every lender in the US, every borrower in the US, and every building in the US. This data will be used to build out our communication and customer targeting mechanisms."
     },
     {
-      category: "Sales & Customer Success - 10% ($0.35M)",
+      category: "Sales & Customer Success - 10%",
       details: "Funds allocated to building a dedicated sales team and customer success function to ensure the success and expansion of initial customers. This investment enables scalable customer acquisition and retention."
     },
     {
-      category: "Compliance & Operations - 10% ($0.35M)",
+      category: "Compliance & Operations - 10%",
       details: "Ensuring we operate in a compliance-friendly manner from the very beginning and minimizing OpEx costs for the business."
     },
     {
-      category: "Working Capital/Contingency - 5% ($0.175M)",
+      category: "Working Capital/Contingency - 5%",
       details: "Reserved for unexpected needs, market opportunities, and to provide flexibility for rapid market changes."
     }
   ],
@@ -295,7 +295,7 @@ const optimizedInvestmentAsk = {
     "Q3 2025: Reach $500M in loan volume (product-market fit)",
     "Q4 2025: Series A ready with $1B+ in annual volume run rate"
   ],
-  callToAction: "Schedule a demo to see how we're already processing real deals with committed lenders and borrowers."
+  callToAction: "Schedule a call to see how we're already processing real deals with committed lenders and borrowers."
 };
 
 // Add these video URLs to your solutions cards
@@ -1001,28 +1001,28 @@ export default function HomePage() {
                             {
                               number: '1',
                               title: 'Platform Rush',
-                              months: 'Months 1-3',
+                              months: 'Month 1',
                               content: [
                                 { type: 'bullets', value: ['Platform MVP, first deals, refine from real data'] },
-                                { type: 'success', value: '3 customers, $25M+ volume' }
+                                { type: 'success', value: '3 customers, $150M+ volume' }
                               ]
                             },
                             {
                               number: '2',
-                              title: 'Expansion',
-                              months: 'Months 4-6',
+                              title: 'Data Integration', // swapped title
+                              months: 'Months 2-6',
                               content: [
-                                { type: 'bullets', value: ['Marketing ramp-up, customer acquisition'] },
-                                { type: 'success', value: '15 customers, $150M+ volume' }
+                                { type: 'bullets', value: ['Integrate proprietary data and customer acquisition'] },
+                                { type: 'success', value: '15 customers, $750M+ volume' }
                               ]
                             },
                             {
                               number: '3',
-                              title: 'Data Integration',
+                              title: 'Expansion', // swapped title
                               months: 'Months 7-12',
                               content: [
-                                { type: 'bullets', value: ['Scale to 30+ customers, integrate proprietary data'] },
-                                { type: 'success', value: '30+ customers, $500M+ volume' }
+                                { type: 'bullets', value: ['Scale to 30+ customers with marketing ramp-up '] },
+                                { type: 'success', value: '30+ customers, $1.5B+ volume' }
                               ]
                             },
                             {
@@ -1030,8 +1030,8 @@ export default function HomePage() {
                               title: 'Scaling',
                               months: 'Months 13-18',
                               content: [
-                                { type: 'bullets', value: ['50+ customers, market leadership, fundraising'] },
-                                { type: 'success', value: '50+ customers, $1B+ volume' }
+                                { type: 'bullets', value: ['50+ customers, market leadership'] },
+                                { type: 'success', value: '50+ customers, $2.5B+ volume' }
                               ]
                             }
                           ].map((phase, idx) => (
@@ -1060,8 +1060,14 @@ export default function HomePage() {
                                 </div>
                                 {/* Success */}
                                 <div className="flex flex-col items-center justify-center min-h-[2.5rem] mt-auto">
-                                  <span className="text-emerald-700 dark:text-emerald-400 font-semibold text-center w-full">{phase.content[1].value.split(', ')[0]}</span>
-                                  <span className="text-emerald-700 dark:text-emerald-400 font-semibold text-center w-full">{phase.content[1].value.split(', ')[1]}</span>
+                                  {(() => {
+                                    const val = Array.isArray(phase.content[1].value) ? phase.content[1].value.join(', ') : phase.content[1].value;
+                                    const [customer, volume] = val.split(', ');
+                                    return (<>
+                                      <span className="text-emerald-700 dark:text-emerald-400 font-semibold text-center w-full">{customer}</span>
+                                      <span className="text-emerald-700 dark:text-emerald-400 font-semibold text-center w-full">{volume}</span>
+                                    </>);
+                                  })()}
                                 </div>
                               </div>
                             </div>
@@ -1075,45 +1081,58 @@ export default function HomePage() {
                                 <th className="px-4 py-2 font-semibold">Timeline</th>
                                 <th className="px-4 py-2 font-semibold">Customer Goal</th>
                                 <th className="px-4 py-2 font-semibold">Deal Volume Goal</th>
-                                <th className="px-4 py-2 font-semibold">Key Milestone</th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr className="border-t border-gray-200 dark:border-gray-700">
-                                <td className="px-4 py-2">Month 3</td>
+                                <td className="px-4 py-2">Month 1</td>
                                 <td className="px-4 py-2">3 customers processing</td>
-                                <td className="px-4 py-2">$25M+ volume</td>
-                                <td className="px-4 py-2">Platform validation</td>
+                                <td className="px-4 py-2">$150M+ volume</td>
                               </tr>
                               <tr className="border-t border-gray-200 dark:border-gray-700">
                                 <td className="px-4 py-2">Month 6</td>
                                 <td className="px-4 py-2">15 active customers</td>
-                                <td className="px-4 py-2">$150M+ volume</td>
-                                <td className="px-4 py-2">Product-market fit</td>
+                                <td className="px-4 py-2">$750M+ volume</td>
                               </tr>
                               <tr className="border-t border-gray-200 dark:border-gray-700">
                                 <td className="px-4 py-2">Month 12</td>
                                 <td className="px-4 py-2">30+ active customers</td>
-                                <td className="px-4 py-2">$500M+ volume</td>
-                                <td className="px-4 py-2">Scalable business</td>
+                                <td className="px-4 py-2">$1.5B+ volume</td>
                               </tr>
                               <tr className="border-t border-gray-200 dark:border-gray-700">
                                 <td className="px-4 py-2">Month 18</td>
                                 <td className="px-4 py-2">50+ customers</td>
-                                <td className="px-4 py-2">$1B+ volume</td>
-                                <td className="px-4 py-2">Series A ready</td>
+                                <td className="px-4 py-2">$2.5B+ volume</td>
                               </tr>
                             </tbody>
                           </table>
                         </div>
                         {/* Risks & Mitigation */}
-                        <div className="glass-card rounded-2xl p-6 bg-gradient-to-br from-red-50 to-yellow-50 dark:from-red-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 max-w-4xl mx-auto">
-                          <h4 className="text-xl font-semibold text-red-700 dark:text-red-300 mb-4">Critical Timeline Risks & Mitigation</h4>
-                          <ul className="list-disc pl-6 space-y-3 text-black dark:text-white">
-                            <li><b>High Risk: Platform development delays</b><br/>Mitigation: Hire experienced CRE fintech developers immediately<br/><span className="text-sm text-gray-700 dark:text-gray-300">Timeline Impact: Add 20% buffer to development milestones</span></li>
-                            <li><b>Medium Risk: Customer onboarding complexity</b><br/>Mitigation: Dedicated customer success team, start with simplest deals<br/><span className="text-sm text-gray-700 dark:text-gray-300">Timeline Impact: May slow customer expansion by 4-6 weeks</span></li>
-                            <li><b>Medium Risk: Regulatory compliance issues</b><br/>Mitigation: Legal counsel from day 1, early compliance investment<br/><span className="text-sm text-gray-700 dark:text-gray-300">Timeline Impact: Potential 2-3 month delays if not addressed early</span></li>
-                          </ul>
+                        <div className="glass-card rounded-2xl p-6 bg-gradient-to-br from-red-50 to-yellow-50 dark:from-red-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 max-w-4xl mx-auto text-center">
+                          <h4 className="text-xl font-semibold text-red-700 dark:text-red-300 mb-4 text-center">Primary Funding Needs</h4>
+                          <div className="flex flex-col gap-6">
+                            {/* Platform Development Resources */}
+                            <div className="rounded-xl bg-white/80 dark:bg-gray-900/40 border border-red-200 dark:border-red-700 p-5 shadow-sm">
+                              <div className="text-lg font-bold text-red-700 dark:text-red-300 mb-1">Platform development resources</div>
+                              <div className="text-base text-black dark:text-white mb-1">
+                                Hire experienced CRE fintech developers immediately
+                              </div>
+                            </div>
+                            {/* Customer Onboarding Support */}
+                            <div className="rounded-xl bg-white/80 dark:bg-gray-900/40 border border-yellow-200 dark:border-yellow-700 p-5 shadow-sm">
+                              <div className="text-lg font-bold text-yellow-700 dark:text-yellow-300 mb-1">Customer onboarding support</div>
+                              <div className="text-base text-black dark:text-white mb-1">
+                                Dedicated customer success team, start with simplest deals
+                              </div>
+                            </div>
+                            {/* Regulatory & Compliance Investment */}
+                            <div className="rounded-xl bg-white/80 dark:bg-gray-900/40 border border-yellow-200 dark:border-yellow-700 p-5 shadow-sm">
+                              <div className="text-lg font-bold text-yellow-700 dark:text-yellow-300 mb-1">Regulatory & compliance investment</div>
+                              <div className="text-base text-black dark:text-white mb-1">
+                                Legal counsel from day 1, early compliance investment
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </FadeIn>
@@ -1135,135 +1154,6 @@ export default function HomePage() {
                 </SectionCard>
               </div>
             </section>
-
-            {/* 18-Month Timeline Section (moved up) */}
-            <FadeIn>
-              <div className="mt-8 mb-12">
-                <h3 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-6 text-center">
-                  18-Month Timeline <span className="text-lg font-medium">(Accelerated for Ready Customers)</span>
-                </h3>
-                {/* Timeline Phases with aligned sections */}
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-12">
-                  {[
-                    {
-                      number: '1',
-                      title: 'Platform Rush',
-                      months: 'Months 1-3',
-                      content: [
-                        { type: 'bullets', value: ['Platform MVP, first deals, refine from real data'] },
-                        { type: 'success', value: '3 customers, $25M+ volume' }
-                      ]
-                    },
-                    {
-                      number: '2',
-                      title: 'Expansion',
-                      months: 'Months 4-6',
-                      content: [
-                        { type: 'bullets', value: ['Marketing ramp-up, customer acquisition infrastructure'] },
-                        { type: 'success', value: '15 customers, $150M+ volume' }
-                      ]
-                    },
-                    {
-                      number: '3',
-                      title: 'Data Integration',
-                      months: 'Months 7-12',
-                      content: [
-                        { type: 'bullets', value: ['Scale to 30+ customers, integrate proprietary data'] },
-                        { type: 'success', value: '30+ customers, $500M+ volume' }
-                      ]
-                    },
-                    {
-                      number: '4',
-                      title: 'Scaling',
-                      months: 'Months 13-18',
-                      content: [
-                        { type: 'bullets', value: ['50+ customers, market leadership, fundraising'] },
-                        { type: 'success', value: '50+ customers, $1B+ volume' }
-                      ]
-                    }
-                  ].map((phase, idx) => (
-                    <div
-                      key={phase.number}
-                      className="glass-card rounded-2xl p-6 bg-gray-50 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 flex flex-col h-full text-center"
-                    >
-                      <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">{phase.number}</span>
-                      </div>
-                      <h4 className="text-xl font-semibold text-blue-700 dark:text-blue-300 min-h-[2.5rem] flex items-center justify-center mb-0">{phase.title}</h4>
-                      <p className="text-sm text-gray-700 dark:text-gray-300 min-h-[1.5rem] flex items-center justify-center mb-0">{phase.months}</p>
-                      {/* Spacer for alignment */}
-                      <div className="min-h-[2.5rem] flex items-end justify-center mb-0">
-                        <span className="invisible">spacer</span>
-                      </div>
-                      {/* Content: focus bullet and success */}
-                      <div className="flex-1 flex flex-col justify-start">
-                        {/* Focus bullet */}
-                        <div className="flex flex-col items-center justify-center min-h-[4.75rem]">
-                          {Array.isArray(phase.content[0].value) && (
-                            <ul className="list-disc pl-5 mb-2 text-black dark:text-white text-sm space-y-1 w-full text-left">
-                              <li className="min-h-[2.5rem] flex items-center">{phase.content[0].value[0]}</li>
-                            </ul>
-                          )}
-                        </div>
-                        {/* Success */}
-                        <div className="flex flex-col items-center justify-center min-h-[2.5rem] mt-auto">
-                          <span className="text-emerald-700 dark:text-emerald-400 font-semibold text-center w-full">{phase.content[1].value.split(', ')[0]}</span>
-                          <span className="text-emerald-700 dark:text-emerald-400 font-semibold text-center w-full">{phase.content[1].value.split(', ')[1]}</span>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                {/* Key Success Milestones Table */}
-                <div className="overflow-x-auto mb-10">
-                  <table className="min-w-full text-sm md:text-base text-left border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
-                    <thead className="bg-gray-100 dark:bg-gray-800">
-                      <tr>
-                        <th className="px-4 py-2 font-semibold">Timeline</th>
-                        <th className="px-4 py-2 font-semibold">Customer Goal</th>
-                        <th className="px-4 py-2 font-semibold">Deal Volume Goal</th>
-                        <th className="px-4 py-2 font-semibold">Key Milestone</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr className="border-t border-gray-200 dark:border-gray-700">
-                        <td className="px-4 py-2">Month 3</td>
-                        <td className="px-4 py-2">3 customers processing</td>
-                        <td className="px-4 py-2">$25M+ volume</td>
-                        <td className="px-4 py-2">Platform validation</td>
-                      </tr>
-                      <tr className="border-t border-gray-200 dark:border-gray-700">
-                        <td className="px-4 py-2">Month 6</td>
-                        <td className="px-4 py-2">15 active customers</td>
-                        <td className="px-4 py-2">$150M+ volume</td>
-                        <td className="px-4 py-2">Product-market fit</td>
-                      </tr>
-                      <tr className="border-t border-gray-200 dark:border-gray-700">
-                        <td className="px-4 py-2">Month 12</td>
-                        <td className="px-4 py-2">30+ active customers</td>
-                        <td className="px-4 py-2">$500M+ volume</td>
-                        <td className="px-4 py-2">Scalable business</td>
-                      </tr>
-                      <tr className="border-t border-gray-200 dark:border-gray-700">
-                        <td className="px-4 py-2">Month 18</td>
-                        <td className="px-4 py-2">50+ customers</td>
-                        <td className="px-4 py-2">$1B+ volume</td>
-                        <td className="px-4 py-2">Series A ready</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                {/* Risks & Mitigation */}
-                <div className="glass-card rounded-2xl p-6 bg-gradient-to-br from-red-50 to-yellow-50 dark:from-red-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 max-w-4xl mx-auto">
-                  <h4 className="text-xl font-semibold text-red-700 dark:text-red-300 mb-4">Critical Timeline Risks & Mitigation</h4>
-                  <ul className="list-disc pl-6 space-y-3 text-black dark:text-white">
-                    <li><b>High Risk: Platform development delays</b><br/>Mitigation: Hire experienced CRE fintech developers immediately<br/><span className="text-sm text-gray-700 dark:text-gray-300">Timeline Impact: Add 20% buffer to development milestones</span></li>
-                    <li><b>Medium Risk: Customer onboarding complexity</b><br/>Mitigation: Dedicated customer success team, start with simplest deals<br/><span className="text-sm text-gray-700 dark:text-gray-300">Timeline Impact: May slow customer expansion by 4-6 weeks</span></li>
-                    <li><b>Medium Risk: Regulatory compliance issues</b><br/>Mitigation: Legal counsel from day 1, early compliance investment<br/><span className="text-sm text-gray-700 dark:text-gray-300">Timeline Impact: Potential 2-3 month delays if not addressed early</span></li>
-                  </ul>
-                </div>
-              </div>
-            </FadeIn>
           </SectionCard>
         </div>
       </section>
