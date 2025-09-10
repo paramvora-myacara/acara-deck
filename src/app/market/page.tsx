@@ -7,7 +7,7 @@ const marketCards: Omit<CardData, 'slug'>[] = [
     {
       title: "Massive Market",
       content: [
-        "<b>Explosive CRE Debt Market and Refinancing Surge:</b> U.S. CRE debt stands at $4.8 trillion in mid-2025, with $957 billion urgently needing refinancing this year amid soaring rates and economic strain—unlocking massive disruption potential.",
+        "<b>Explosive CRE Debt Market and Refinancing Surge:</b> U.S. CRE debt stands at $4.8 trillion in mid-2025, with $957 billion urgently needing refinancing this year amid soaring rates and economic strain-unlocking massive disruption potential.",
         "<b>Fee-Based Revenue Opportunity:</b> Capturing just a fraction of the refinancing market at a 1% fee could generate up to $10 billion(TAM) in annual revenue for a scalable, tech-enabled solution.",
         "<b>Accelerating Growth (2025-2030):</b> From $4.8 trillion and $957 billion in refinancings in 2025, the market surges to $5.2 trillion by 2027 via digital adoption and access democratization; by 2028-2030, it hits $5.5-$6 trillion, empowering disruptors to seize share with AI efficiencies and rapid deals.",
       ],

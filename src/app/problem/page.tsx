@@ -6,7 +6,7 @@ const problemCards: Omit<CardData, 'slug'>[] = [
   {
     title: "Finding Lenders is <i>HARD</i>",
     content: [
-      "Borrowers miss deals because finding the right lenders is tough—up to 50% of opportunities lost to poor matching.",
+      "Borrowers miss deals because finding the right lenders is tough-up to 50% of opportunities lost to poor matching.",
       "Access is limited to brokers' personal networks, excluding broader options.",
       "Without insight into lender preferences, borrowers can't market effectively or present their strongest case."
     ],
@@ -19,7 +19,7 @@ const problemCards: Omit<CardData, 'slug'>[] = [
     title: "Deal docs take <i>FOREVER</i> - Death by 1000 papercuts",
     content: [
       "Deal info is scattered across platforms and formats like PDFs, spreadsheets, and images, slowing everything down.",
-      "Assembling a full deck demands weeks of analyst time—often 2-4 weeks per deal.",
+      "Assembling a full deck demands weeks of analyst time-often 2-4 weeks per deal.",
       "Updates force complete rewrites, with no version control causing confusion and wasted hours."
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
@@ -42,7 +42,7 @@ const problemCards: Omit<CardData, 'slug'>[] = [
   {
     title: "Advisors operate <i>ALONE</i> & Industry is <i>FRAGMENTED</i>",
     content: [
-      "Advisors build deal flow from scratch amid no centralized lead generation — with ~120,000 U.S. brokers unable to place debt efficiently, underscoring this core inefficiency.",
+      "Advisors build deal flow from scratch amid no centralized lead generation - with ~120,000 U.S. brokers unable to place debt efficiently, underscoring this core inefficiency.",
       "No shared platform or standards means silos and reinvented workflows for every client.",
       "One-on-one relationships demand high commission splits (often 60%+), creating an unscalable model."
     ],

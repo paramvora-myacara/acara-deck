@@ -76,7 +76,7 @@ const creEducationContent = {
       title: "Lenders",
       subtitle: "Banks, Funds & Agencies",
       descriptions: [
-        "<b>3,000+</b> lenders, each has different criteria, rates, and appetites—impossible to track manually.",
+        "<b>3,000+</b> lenders, each has different criteria, rates, and appetites-impossible to track manually.",
         "With no standardization, it's <b>impossible to efficiently compare deals</b> from different brokers."
       ]
     }
@@ -192,8 +192,8 @@ const optimizedMarketCards = [
   {
     title: "Revenue Streams That Compound",
     content: [
-      "<b>Transaction Fees (1% of loan amount):</b> Our primary revenue stream comes from a 1% fee (industry standard) on the total loan amount.<ul><li class='ml-4'><b>Unit Economics:</b> We project our revenue based on a conservative estimate: <br/>- 100 brokers join our platform. <br/>- Each broker manages a $50M loan book (conservative, as the industry average is $60M and median is $40M), for a total of $5B in volume. <br/>- A 1% commission on this volume generates $50M in fees. <br/>- We take a 60% share, resulting in <b>$30M in annual revenue</b>. (The remaining 40% is given to the broker as a referral fee).<br/><br/><b>Why this is conservative:</b> The CRE broker market follows a Pareto distribution (80/20 rule). With 120,000 brokers in the US, the top 20% consists of 24,000 brokers. Our target of 100 brokers is just <b>0.42%</b> of this high-performing group, making our projections highly achievable.</li></ul>",
-      "<b>Platform Subscription Fees:</b> We will offer a suite of subscription-based services, including:<ul><li class='ml-4'><b>AI Markets Advisor:</b> This subscription automates deal coordination, reducing client costs. It also enables us to manage deals internally, allowing us to capture 100% of the transaction fee—a significant increase from the 60% from brokered deals.</li><li class='ml-4'><b>White Glove Service:</b> A premium service for clients who want a hands-on, managed experience.</li><li class='ml-4'><b>Refi Radar & Bloomberg of CRE:</b> A data-driven service for lenders that identifies the optimal time to refinance.</li></ul>",
+      "<b>Transaction Fees (1% of loan amount):</b> Primary revenue stream across construction, bridge, perm and refi cycles. See <b>Financial Metrics</b> below for unit economics and payback.",
+      "<b>Platform Subscription Fees:</b> We will offer a suite of subscription-based services, including:<ul><li class='ml-4'><b>AI Markets Advisor:</b> This subscription automates deal coordination, reducing client costs. It also enables us to manage deals internally, allowing us to capture 100% of the transaction fee-a significant increase from the 60% from brokered deals.</li><li class='ml-4'><b>White Glove Service:</b> A premium service for clients who want a hands-on, managed experience.</li><li class='ml-4'><b>Refi Radar & Bloomberg of CRE:</b> A data-driven service for lenders that identifies the optimal time to refinance.</li></ul>",
       "<b>Direct Arbitrage:</b> By targeting real estate brokers directly, we eliminate referral fees, increasing our margins."
     ]
   },
@@ -219,33 +219,81 @@ const optimizedMarketCards = [
   }
 ];
 
+// Add: Financial Metrics content (CAC, Payback, LTV) and assumptions
+const financialMetrics = {
+  title: "Financial Metrics & Unit Economics",
+  subtitle: "CAC, Payback, and LTV assumptions grounded in CRE refinance cycles",
+  assumptions: [
+    "<b>Average deal size:</b> $50M CRE loan (debt placement, not equity).",
+    "<b>Fee model:</b> 1% transaction fee; platform retains 60% on broker-led deals, up to 100% on in-house/AI-managed deals.",
+    "<b>Refi cadence:</b> Construction (12–24 months) → Permanent; then balloon maturities typically every <b>5–10</b> years with refinance at/near maturity (sources: <a href='https://financelygroup.medium.com/how-long-are-most-commercial-real-estate-loans-typical-terms-and-durations-explained-c09273c7d3b6' target='_blank' rel='noopener noreferrer'>Financely</a>, <a href='https://financelobby.com/cre-insights/cre-loans-understanding-loan-term-vs-amortization/' target='_blank' rel='noopener noreferrer'>FinanceLobby</a>, <a href='https://www.commercialrealestate.loans/commercial-real-estate-glossary/what-are-balloon-loans-what-is-a-5-25/' target='_blank' rel='noopener noreferrer'>Janover</a>).",
+    "<b>Refi size vs initial:</b> Typically similar to slightly larger due to amortization + value growth/cash-out; we assume <b>1.0×–1.1×</b> of prior balance on average (conservative).",
+    "<b>LTV horizon:</b> 10 years (standard for SaaS-like LTV comparisons; aligns with one refinance cycle post-perm for many CRE assets)."
+  ],
+  cac: {
+    title: "Customer Acquisition Cost (CAC)",
+    bullets: [
+      "<b>Target customer:</b> Licensed CRE brokers/originators and direct borrowers.",
+      "<b>Go-to-market advantage:</b> Founding team has <b>deep CRE operator and brokerage networks</b> and experience <b>recruiting and managing 50+ loan brokers</b> (see Team: Todd Vitzthum, Greystone/Cushman & Wakefield/CBRE; Jeff Richmond's scale history at <b>eXp Realty</b>).",
+      "<b>Estimated CAC (broker):</b> $3k–$7k blended (events, outbound, referral incentives, onboarding).",
+      "<b>Estimated CAC (borrower direct):</b> $1k–$3k via performance marketing + partner channels.",
+      "<b>Payback measured on gross margin</b> from fee revenue and subscriptions."
+    ]
+  },
+  payback: {
+    title: "Payback Period (months)",
+    formula: "Payback = CAC / (ARPU × Gross Margin %)",
+    examples: [
+      "<b>Broker-led deal flow:</b> 6 deals/year per broker (user assumption). Annual volume ≈ <b>$300M</b>. 1% fee × 60% platform share → <b>$1.8M</b>/yr revenue per active broker; monthly ARPU ≈ <b>$150k</b>. With 70% gross margin → <b>$105k</b> monthly GM. CAC $5k ⇒ Payback ≈ <b>0.05 months</b> (~1–2 days).",
+      "<b>Direct borrower flow:</b> Assume $50M closing/year per borrower cohort at 1% fee × 100% share → <b>$500k</b>/yr; monthly ARPU ≈ <b>$41.7k</b>; 70% GM → <b>$29.2k</b> GM/month. CAC $2k ⇒ Payback ≈ <b>0.07 months</b>."
+    ],
+    note: "These are illustrative; actual cadence depends on ramp time to first close."
+  },
+  ltv: {
+    title: "Lifetime Value of a single deal (10-year horizon)",
+    bullets: [
+      "<b>Per deal relationship:</b> Expected financing touchpoints: Construction → Perm (Year ~1–2) → Refi at Year ~6–8. That is <b>~2–3 fee events</b> in 10 years.",
+      "<b>Deal size dynamics:</b> Assume initial $50M; refi at 1.05× = <b>$52.5M</b> (midpoint of 1.0×–1.1×).",
+      "<b>Fee capture:</b> 1% per event. Blend share 80% (midpoint of 60% broker and 100% managed).",
+      "<b>Gross margin:</b> 70%."
+    ],
+    calc: [
+      "Event 1 (Construction → Perm): $50M × 1% × 80% × 70% = <b>$280k GM</b>",
+      "Event 2 (Perm → Refi): $52.5M × 1% × 80% × 70% = <b>$294k GM</b>",
+      "Optional Event 3 (Additional Refi if triggered by Refi Radar): assume another $52.5M baseline → <b>$294k GM</b>",
+      "<b>LTV (2 events):</b> ≈ <b>$574k GM</b>; <b>LTV (3 events):</b> ≈ <b>$868k GM</b> over 10 years."
+    ],
+    rationale: "Our Refi Radar proactively prompts optimal refinance timing, increasing repeat monetization and compounding LTV."
+  }
+};
+
 // Team: optimized content
 const teamMembers = [
   {
     name: "Dr. Jeff Richmond",
     role: "Co-Founder & CEO",
     content: [
-      "<b>Built and scaled to $2B+ annual revenue</b> at eXp Realty - knows how to build massive, tech-enabled marketplaces in traditional industries.",
-      "<b>Deep CRE operator experience</b> through ACARA Management - understands borrower pain firsthand, having refinanced $500M+ in properties.",
-      "<b>Serial entrepreneur in PropTech</b> - co-founded OZ Listings (acquired) and built multiple AI-powered real estate platforms."
+      "Drove $2B+ in annual transaction volume through strategic business development and growth leadership at eXp Realty.",
+      "Co-founder of CapMatch and OZ Listings, delivering AI-powered capital markets solutions for multifamily and Opportunity Zone investments.",
+      "Chief Operating Partner at ACARA Management, a private equity firm focused on OZ development and capital structuring."
     ]
   },
   {
     name: "Todd Vitzthum",
     role: "Co-Founder & Executive Chairman",
     content: [
-      "<b>Closed $3B+ in CRE transactions</b> over 20+ years at Greystone, Cushman & Wakefield, and CBRE - has the relationships and credibility to onboard top lenders.",
-      "<b>Managed 50+ loan brokers</b> at peak - understands exactly why the current model is broken and how to fix it.",
-      "<b>Active LP in 15+ real estate funds</b> - brings instant credibility and connections with institutional capital partners."
+      "Executed over $3B in commercial real estate transactions across a 20+ year career, with senior leadership roles at Greystone, Cushman & Wakefield, and CBRE.",
+      "As Managing Partner at ACARA Management, he leads multifamily investment strategy and oversees Opportunity Zone deployment across the firm's portfolio.",
+      "Co-founder of CapMatch and OZ Listings, he drives the creation of tech-enabled capital platforms and national real estate marketplaces."
     ]
   },
   {
     name: "Michael Krueger",
     role: "Chief Legal Officer",
     content: [
-      "<b>Structured $1B+ in CRE funds</b> as Partner at Lucosky Brookman LLP - ensures compliance with complex lending regulations from day one.",
-      "<b>Nationally recognized Opportunity Zone expert</b> - literally wrote the playbook on new CRE financing structures, positioning us for emerging markets.",
-      "<b>Board advisor to 3 PropTech unicorns</b> - brings lessons learned from scaling in regulated financial markets."
+      "Corporate & Securities Partner at Lucosky Brookman LLP, advising family offices, private equity funds, and high-net-worth clients on real estate, finance, and corporate structuring.",
+      "Nationally recognized OZ expert and \"California Trailblazer,\" with deep experience in QOF/QOZB formation, SEC compliance, and complex capital stack negotiations.",
+      "As Chief Legal Officer at ACARA Management, he leads legal strategy for fund deployment, regulatory alignment, and Opportunity Zone execution."
     ]
   },
   {
@@ -360,6 +408,13 @@ export default function HomePage() {
     "Why We Win: Network Effects + AI Moat": true
   });
   const [expandedSolutions, setExpandedSolutions] = useState<Record<number, boolean>>({});
+  const [expandedFinancial, setExpandedFinancial] = useState<Record<string, boolean>>({
+    Assumptions: false,
+    CAC: false,
+    Payback: false,
+    LTV: false,
+    CACToLTV: false,
+  });
 
   const handleProblemSelect = (index: number) => {
     setSelectedProblem(index);
@@ -375,6 +430,10 @@ export default function HomePage() {
 
   const toggleSolutionCard = (idx: number) => {
     setExpandedSolutions(prev => ({ ...prev, [idx]: !prev[idx] }));
+  };
+
+  const toggleFinancialCard = (key: string) => {
+    setExpandedFinancial(prev => ({ ...prev, [key]: !prev[key] }));
   };
 
   return (
@@ -780,6 +839,7 @@ export default function HomePage() {
         </div>
       </section>
 
+
       {/* Market Section */}
       <section className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
         <div className="w-full max-w-7xl mx-auto text-center">
@@ -835,6 +895,189 @@ export default function HomePage() {
                 );
               })}
 
+              {/* Financial Metrics & Unit Economics nested in Market */}
+              <motion.div
+                className="glass-card rounded-3xl p-10 bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 max-w-6xl mx-auto"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                viewport={{ once: true }}
+              >
+                <FadeIn>
+                  <h3 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-8 text-center">
+                    {financialMetrics.title}
+                  </h3>
+                </FadeIn>
+                <FadeIn delay={0.05}>
+                  <p className="text-lg md:text-xl text-black/70 dark:text-white/70 text-center mb-8">
+                    {financialMetrics.subtitle}
+                  </p>
+                </FadeIn>
+
+                {/* Assumptions - Collapsible */}
+                <FadeIn delay={0.1}>
+                  <div className="glass-card rounded-2xl bg-white/70 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 mb-6 overflow-hidden text-left">
+                    <button
+                      type="button"
+                      onClick={() => toggleFinancialCard('Assumptions')}
+                      className="w-full flex items-center justify-between text-left px-6 py-5"
+                      aria-expanded={!!expandedFinancial.Assumptions}
+                    >
+                      <h4 className="text-xl md:text-2xl font-semibold text-black dark:text-white">Key Assumptions</h4>
+                      <ChevronDown className={`w-6 h-6 text-gray-600 dark:text-gray-300 transition-transform ${expandedFinancial.Assumptions ? 'rotate-180' : ''}`} />
+                    </button>
+                    {expandedFinancial.Assumptions && (
+                      <div className="px-6 pb-6">
+                        <ul className="list-disc list-outside pl-6 space-y-2 text-black dark:text-white">
+                          {financialMetrics.assumptions.map((a, i) => (
+                            <li key={i} dangerouslySetInnerHTML={{ __html: a }} />
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </FadeIn>
+
+                {/* CAC - Collapsible */}
+                <FadeIn delay={0.15}>
+                  <div className="glass-card rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-100 dark:from-emerald-900/20 dark:to-teal-900/20 border border-gray-200 dark:border-white/20 mb-6 overflow-hidden text-left">
+                    <button
+                      type="button"
+                      onClick={() => toggleFinancialCard('CAC')}
+                      className="w-full flex items-center justify-between text-left px-6 py-5"
+                      aria-expanded={!!expandedFinancial.CAC}
+                    >
+                      <h4 className="text-xl md:text-2xl font-semibold text-black dark:text-white">{financialMetrics.cac.title}</h4>
+                      <ChevronDown className={`w-6 h-6 text-gray-600 dark:text-gray-300 transition-transform ${expandedFinancial.CAC ? 'rotate-180' : ''}`} />
+                    </button>
+                    {expandedFinancial.CAC && (
+                      <div className="px-6 pb-6">
+                        <ul className="list-disc list-outside pl-6 space-y-2 text-black dark:text-white">
+                          {financialMetrics.cac.bullets.map((b, i) => (
+                            <li key={i} dangerouslySetInnerHTML={{ __html: b }} />
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </FadeIn>
+
+                {/* Payback - Collapsible */}
+                <FadeIn delay={0.2}>
+                  <div className="glass-card rounded-2xl bg-gradient-to-br from-indigo-50 to-blue-100 dark:from-indigo-900/20 dark:to-blue-900/20 border border-gray-200 dark:border-white/20 mb-6 overflow-hidden text-left">
+                    <button
+                      type="button"
+                      onClick={() => toggleFinancialCard('Payback')}
+                      className="w-full flex items-center justify-between text-left px-6 py-5"
+                      aria-expanded={!!expandedFinancial.Payback}
+                    >
+                      <h4 className="text-xl md:text-2xl font-semibold text-black dark:text-white">{financialMetrics.payback.title}</h4>
+                      <ChevronDown className={`w-6 h-6 text-gray-600 dark:text-gray-300 transition-transform ${expandedFinancial.Payback ? 'rotate-180' : ''}`} />
+                    </button>
+                    {expandedFinancial.Payback && (
+                      <div className="px-6 pb-6">
+                        <p className="text-black/80 dark:text-white/80 mb-3"><b>Formula: </b>{financialMetrics.payback.formula}</p>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                          <div className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 p-4">
+                            <p className="font-semibold mb-2" dangerouslySetInnerHTML={{ __html: financialMetrics.payback.examples[0].split(':')[0] + ':' }} />
+                            <ul className="list-decimal list-outside pl-6 space-y-1 text-black dark:text-white">
+                              <li>Annual volume ≈ $300M; 1% fee × 60% share → $1.8M/yr</li>
+                              <li>Monthly ARPU ≈ $150k; 70% GM → $105k GM/month</li>
+                              <li>CAC $5k ⇒ Payback ≈ 0.05 months (~1–2 days)</li>
+                            </ul>
+                          </div>
+                          <div className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 p-4">
+                            <p className="font-semibold mb-2" dangerouslySetInnerHTML={{ __html: financialMetrics.payback.examples[1].split(':')[0] + ':' }} />
+                            <ul className="list-decimal list-outside pl-6 space-y-1 text-black dark:text-white">
+                              <li>Annual volume ≈ $50M; 1% fee × 100% share → $500k/yr</li>
+                              <li>Monthly ARPU ≈ $41.7k; 70% GM → $29.2k GM/month</li>
+                              <li>CAC $2k ⇒ Payback ≈ 0.07 months</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <p className="text-sm text-gray-700 dark:text-gray-300 mt-3">{financialMetrics.payback.note}</p>
+                      </div>
+                    )}
+                  </div>
+                </FadeIn>
+
+                {/* LTV - Collapsible */}
+                <FadeIn delay={0.25}>
+                  <div className="glass-card rounded-2xl bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 overflow-hidden text-left">
+                    <button
+                      type="button"
+                      onClick={() => toggleFinancialCard('LTV')}
+                      className="w-full flex items-center justify-between text-left px-6 py-5"
+                      aria-expanded={!!expandedFinancial.LTV}
+                    >
+                      <h4 className="text-xl md:text-2xl font-semibold text-black dark:text-white">{financialMetrics.ltv.title}</h4>
+                      <ChevronDown className={`w-6 h-6 text-gray-600 dark:text-gray-300 transition-transform ${expandedFinancial.LTV ? 'rotate-180' : ''}`} />
+                    </button>
+                    {expandedFinancial.LTV && (
+                      <div className="px-6 pb-6">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                          <div>
+                            <ul className="list-disc list-outside pl-6 space-y-2 text-black dark:text-white">
+                              {financialMetrics.ltv.bullets.map((b, i) => (
+                                <li key={i} dangerouslySetInnerHTML={{ __html: b }} />
+                              ))}
+                            </ul>
+                          </div>
+                          <div>
+                            <ul className="list-decimal list-outside pl-6 space-y-2 text-black dark:text-white">
+                              <li>Event 1: $50M × 1% × 80% × 70% = <b>$280k GM</b></li>
+                              <li>Event 2: $52.5M × 1% × 80% × 70% = <b>$294k GM</b></li>
+                              <li>Optional Event 3: $52.5M baseline → <b>$294k GM</b></li>
+                              <li><b>LTV (2 events):</b> ≈ <b>$574k GM</b>; <b>LTV (3 events):</b> ≈ <b>$868k GM</b></li>
+                            </ul>
+                            <p className="text-black/80 dark:text-white/80 mt-3" dangerouslySetInnerHTML={{ __html: financialMetrics.ltv.rationale }} />
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </FadeIn>
+
+                {/* CAC to LTV Ratio - Collapsible */}
+                <FadeIn delay={0.3}>
+                  <div className="glass-card rounded-2xl bg-gradient-to-br from-fuchsia-50 to-purple-100 dark:from-fuchsia-900/20 dark:to-purple-900/20 border border-gray-200 dark:border-white/20 overflow-hidden mt-6 text-left">
+                    <button
+                      type="button"
+                      onClick={() => toggleFinancialCard('CACToLTV')}
+                      className="w-full flex items-center justify-between text-left px-6 py-5"
+                      aria-expanded={!!expandedFinancial.CACToLTV}
+                    >
+                      <h4 className="text-xl md:text-2xl font-semibold text-black dark:text-white">CAC to LTV Ratio</h4>
+                      <ChevronDown className={`w-6 h-6 text-gray-600 dark:text-gray-300 transition-transform ${expandedFinancial.CACToLTV ? 'rotate-180' : ''}`} />
+                    </button>
+                    {expandedFinancial.CACToLTV && (
+                      <div className="px-6 pb-6">
+                        <p className="text-black/80 dark:text-white/80 mb-3"><b>Formula:</b> CAC to LTV Ratio = LTV / CAC</p>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                          <div className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 p-4">
+                            <p className="font-semibold mb-2">Broker-led example</p>
+                            <ul className="list-decimal list-outside pl-6 space-y-1 text-black dark:text-white">
+                              <li>Assume CAC = $5k (blended)</li>
+                              <li>Use LTV (2 events) GM ≈ $574k</li>
+                              <li>Ratio = $574k / $5k ≈ <b>115:1</b></li>
+                            </ul>
+                          </div>
+                          <div className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 p-4">
+                            <p className="font-semibold mb-2">Direct borrower example</p>
+                            <ul className="list-decimal list-outside pl-6 space-y-1 text-black dark:text-white">
+                              <li>Assume CAC = $2k</li>
+                              <li>Use LTV (2 events) GM ≈ $574k</li>
+                              <li>Ratio = $574k / $2k ≈ <b>287:1</b></li>
+                            </ul>
+                          </div>
+                        </div>
+                        <p className="text-sm text-gray-700 dark:text-gray-300 mt-3">Illustrative; depends on actual close cadence and mix of broker vs managed deals.</p>
+                      </div>
+                    )}
+                  </div>
+                </FadeIn>
+              </motion.div>
+
               {/* 4th card with competitive analysis graph */}
               <motion.div
                 className="glass-card rounded-3xl p-10 bg-gradient-to-br from-purple-50 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 max-w-6xl mx-auto"
@@ -862,7 +1105,7 @@ export default function HomePage() {
           <SectionCard>
             <FadeIn>
               <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-8">
-                The Team to Execute
+                Leadership Team
               </h2>
             </FadeIn>
             <FadeIn delay={0.1}>
@@ -953,10 +1196,10 @@ export default function HomePage() {
             <FadeIn>
               <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 w-full max-w-7xl mx-auto">
                 <p className="text-lg text-indigo-700 dark:text-indigo-400 mb-4">
-                  <span className="font-semibold">Current Team Size:</span> 10
+                  Current Team size:  10
                 </p>
                 <p className="text-lg text-indigo-700 dark:text-indigo-400">
-                  <span className="font-semibold">Roles Filled:</span> Chief Market Advisor, Head of Growth, Head of Communications, VP Communications, VP Engineering, Head of Investor Relations
+                  Roles filled: Chief Market Advisor, Head of Growth, Head of Communications, VP Communications, VP Engineering, Head of Investor Relations
                 </p>
               </div>
             </FadeIn>
