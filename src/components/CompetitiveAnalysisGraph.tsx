@@ -5,6 +5,9 @@ const competitors = [
   // CapMatch (Top-Right) - Centered and enlarged
   { name: 'CapMatch', automation: 8, integration: 8, logoUrl: '/CapMatchLogo.png' },
 
+  // Agrippa (Top-Right)
+  { name: 'Agrippa', automation: 6.5, integration: 7.5, logoUrl: '/logos/AgrippaLogo.png' },
+
   // AI-Driven & Fragmented (Top-Left)
   { name: 'Henry AI', automation: 8.5, integration: 4, logoUrl: '/logos/HenryAILogo.png' },
   { name: 'Bryckel', automation: 8, integration: 1.5, logoUrl: '/logos/BryckelLogo.png' },
@@ -39,6 +42,7 @@ const CompetitiveAnalysisGraph = () => {
           const yPos = (c.automation - 5) / 5;
           const xPos = (c.integration - 5) / 5;
           const isCapMatch = c.name === 'CapMatch';
+          const isAgrippa = c.name === 'Agrippa';
 
           return (
             <div
@@ -50,13 +54,13 @@ const CompetitiveAnalysisGraph = () => {
                 transform: 'translate(-50%, -50%)',
               }}
             >
-              <div className={`relative ${isCapMatch ? 'w-32 h-16 md:w-48 md:h-24' : 'w-14 h-7 md:w-24 md:h-12'}`}>
+              <div className={`relative ${isCapMatch ? 'w-32 h-16 md:w-48 md:h-24' : isAgrippa ? 'w-20 h-10 md:w-32 md:h-16' : 'w-14 h-7 md:w-24 md:h-12'}`}>
                 {c.logoUrl ? (
                   <Image
                     src={c.logoUrl}
                     alt={`${c.name} Logo`}
                     fill
-                    sizes={isCapMatch ? "(max-width: 768px) 128px, 192px" : "(max-width: 768px) 56px, 96px"}
+                    sizes={isCapMatch ? "(max-width: 768px) 128px, 192px" : isAgrippa ? "(max-width: 768px) 80px, 128px" : "(max-width: 768px) 56px, 96px"}
                     style={{ objectFit: 'contain' }}
                     className={isCapMatch ? 'drop-shadow-lg' : ''}
                     unoptimized
