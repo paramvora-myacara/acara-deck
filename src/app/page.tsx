@@ -1232,6 +1232,46 @@ export default function HomePage() {
                         </div>
                       </div>
                     </FadeIn>
+                    <FadeIn>
+                      <div className="glass-card rounded-2xl p-6 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-700 h-full">
+                        <h3 className="text-2xl font-semibold text-indigo-800 dark:text-indigo-200 mb-4">Projected Burn & Runway</h3>
+                        <p className="text-sm text-gray-800 dark:text-gray-200 mb-4">
+                          Assumptions: 5 engineers at $150k/yr (payroll $62.5k/mo), benefits ~25%, SaaS/Cloud & ops as noted, 10% contingency, pre-revenue so net burn equals gross. Cash post-close assumed to be $3.5M.
+                        </p>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                          <div className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-indigo-200/60 dark:border-indigo-800/40 px-5 py-4 text-black dark:text-white">
+                            <div className="font-semibold mb-1">Lean</div>
+                            <ul className="text-sm space-y-1">
+                              <li>Headcount: 3 engineers</li>
+                              <li>Gross burn: ~$66k/mo</li>
+                              <li>Net burn: ~$66k/mo</li>
+                              <li>Runway (@$3.5M): ~53 months</li>
+                            </ul>
+                          </div>
+                          <div className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-indigo-200/60 dark:border-indigo-800/40 px-5 py-4 text-black dark:text-white">
+                            <div className="font-semibold mb-1">Base</div>
+                            <ul className="text-sm space-y-1">
+                              <li>Headcount: 5 engineers</li>
+                              <li>Gross burn: ~$105k/mo</li>
+                              <li>Net burn: ~$105k/mo</li>
+                              <li>Runway (@$3.5M): ~33 months</li>
+                            </ul>
+                          </div>
+                          <div className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-indigo-200/60 dark:border-indigo-800/40 px-5 py-4 text-black dark:text-white">
+                            <div className="font-semibold mb-1">Aggressive</div>
+                            <ul className="text-sm space-y-1">
+                              <li>Headcount: 5 engineers + GTM spend</li>
+                              <li>Gross burn: ~$135k/mo</li>
+                              <li>Net burn: ~$135k/mo</li>
+                              <li>Runway (@$3.5M): ~26 months</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <p className="text-xs text-gray-700 dark:text-gray-300 mt-3">
+                          Notes: Base assumes benefits at ~25%, SaaS/Cloud ~$10k, ops ~$7.5k, 10% contingency. Lean delays 2 hires and trims cloud/ops; Aggressive adds earlier GTM and higher cloud.
+                        </p>
+                      </div>
+                    </FadeIn>
                     {/* 18-Month Timeline Card */}
                     <FadeIn>
                       <div className="glass-card rounded-2xl p-6 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5">
