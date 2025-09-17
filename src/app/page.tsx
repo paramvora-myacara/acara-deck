@@ -48,7 +48,7 @@ function DriveVideo({ previewUrl }: { previewUrl: string }) {
 
 // New: CRE Education content (optimized copy)
 const creEducationContent = {
-  title: "The $4.8 Trillion Opportunity ",
+  title: "The CRE 'Uber' Opportunity ",
   subtitle: "Commercial Real Estate lending is massive, fragmented, and ripe for disruption",
   mainDescription: "This year, <span class=\"font-semibold\">$957 billion</span> in commercial real estate loans need refinancing. Yet the process hasn't changed since the 1980s. Here's how it works today:",
   keyPlayers: [
@@ -57,9 +57,11 @@ const creEducationContent = {
       title: "Borrowers",
       subtitle: "Property Owners & Developers",
       descriptions: [
-        "Own an estimated <b>5 million+</b> apartment buildings (5+ units) across the U.S.",
+        "Borrowers are the property owners and developers who need to refinance or purchase a property.",
+        "They own an estimated <b>5 million+</b> apartment buildings (5+ units) across the U.S.",
         "<b>96%</b> have active debt that needs constant refinancing.",
-        "Their <b>biggest challenge</b>: finding the right lender among <b>3,000+</b> options."
+        "Their <b>biggest challenge</b>: finding the right lender among <b>3,000+</b> options - 0.25% rate difference on a $50M loan costs $125,000/year.",
+       
       ]
     },
     {
@@ -67,8 +69,11 @@ const creEducationContent = {
       title: "Advisors",
       subtitle: "Loan Brokers & Originators",
       descriptions: [
-        "<b>120,000</b> licensed brokers who should be placing debt but lack the tools and connections.",
-        "The process is so inefficient that originators keep <b>60%+ of commissions</b>, and the industry misses <b>$4B in fees</b> annually."
+        "Advisors are licensed professionals who connect borrowers with lenders.",
+        "<b>120,000</b> CRE brokers already have the license and the relationships to qualify as advisors.",
+        "Most of these CRE brokers don't even know that they can be placing debt.",
+        "Even the ones that do, still lack the tools required to do so efficiently.",
+
       ]
     },
     {
@@ -76,6 +81,8 @@ const creEducationContent = {
       title: "Lenders",
       subtitle: "Banks, Funds & Agencies",
       descriptions: [
+        "Lenders are the institutions that provide the capital to borrowers. eg Wells Fargo, JPMorgan, etc.",
+        "They really want to deploy capital, but are limited by the deals that the advisors are bringing to them.",
         "<b>3,000+</b> lenders, each has different criteria, rates, and appetites-impossible to track manually.",
         "With no standardization, it's <b>impossible to efficiently compare deals</b> from different brokers."
       ]
@@ -86,12 +93,12 @@ const creEducationContent = {
       step: "1",
       title: "Borrower Needs $10M",
       time: "Week 1",
-      description: "Property owner needs to refinance or purchase. Time is critical - deals move fast.",
+      description: "A property owner needs to refinance or purchase, so they contact their trusted broker to find a lender.",
       problem: "No visibility into which of 3,000 lenders want their deal"
     },
     {
       step: "2",
-      title: "Advisor Scrambles",
+      title: "Relationship Bottleneck",
       time: "Weeks 1-2",
       description: "Broker manually calls their limited network - maybe 5-10 lenders they know personally.",
       problem: "Missing 2,990+ other lenders who might offer better terms"
@@ -114,10 +121,10 @@ const creEducationContent = {
   marketInsight: {
     title: "The Hidden Truth About CRE Lending",
     facts: [
-      "<b>There are no real CRE lending companies</b> - just marquees with independent contractors working in silos",
-      "<b>50% of borrowers go direct to lenders</b> - and miss better rates because they only know 1-2 banks",
-      "<b>New debt funds emerged post-COVID</b> - institutional investors created 1,000+ new lenders that borrowers don't even know exist",
-      "<b>$100B+ in fees annually</b> - yet delivered through phone calls, PDFs, and personal relationships"
+      "<b>There are no real CRE lending companies</b> - just marquees with independent contractors working in silos.",
+      "<b>50% of borrowers go direct to lenders</b> - and miss better rates because they only know 1-2 banks.",
+      "<b>New debt funds emerged post-COVID</b> - institutional investors created new lenders that borrowers don't even know exist.",
+      "<b>$100B+ in fees annually</b> - yet delivered through phone calls, PDFs, and personal relationships."
     ]
   }
 };
@@ -182,19 +189,29 @@ const problemCardsForProblemsSection = [
 // Market: optimized content
 const optimizedMarketCards = [
   {
-    title: "Massive TAM, Immediate Revenue",
+    title: "Massive TAM - Our Path to $10M Annual Revenue",
     content: [
       "<b>$957 billion needs refinancing in 2025 alone</b> - unprecedented volume as COVID-era loans mature and rates normalize. This creates a once-in-a-decade disruption opportunity.",
-      "<b>Our serviceable addressable market: $100 billion in loans</b> - capturing just 10% of annual refinancing volume at 1% fees generates $1 billion in revenue.",
-      "<b>Market expanding to $6 trillion by 2030</b> - as more investors discover CRE debt yields (8-12%), capital floods in. We're positioned to be the infrastructure layer for this growth."
-    ]
+      "<b>Market expanding to $6 trillion by 2030</b> - as more investors discover CRE debt yields (8-12%), capital floods in. We're positioned to be the infrastructure layer for this growth.",
+      "<b>Our Path to $10M Annual Revenue:</b> To reach $10M in annual revenue, we need to place <b>25 loans per year</b>, generating an average of <b>$400,000 in revenue per loan</b>. This represents just <b>1.91%</b> of the <b>1,307</b> commercial loans >$50M transacted in 2024 (Source: HMDA)."
+    ],
+    assumptions: {
+      title: "Calculation Breakdown",
+      points: [
+        "<b>Total annual transactions >$50M (2024):</b> 1,307 commercial loans (Source: HMDA, publicly available data).",
+        "<b>Standard origination fee:</b> 1% of loan amount.",
+        "<b>CapMatch take:</b> 80% of origination fee ($400,000 per transaction) - a blended rate assuming a mix of broker-led deals (60% take) and direct/AI-managed deals (100% take).",
+        "<b>Loans needed for $10M Annual Revenue:</b> 25 ($10M / $400k per loan).",
+        "<b>Required market share:</b> 1.91% (25 loans / 1,307 total loans >$50M from 2024)."
+      ]
+    }
   },
   {
     title: "Revenue Streams That Compound",
     content: [
       "<b>Transaction Fees (1% of loan amount):</b> Primary revenue stream across construction, bridge, perm and refi cycles. See <b>Financial Metrics</b> below for unit economics and payback.",
       "<b>Platform Subscription Fees:</b> We will offer a suite of subscription-based services, including:<ul><li class='ml-4'><b>AI Markets Advisor:</b> This subscription automates deal coordination, reducing client costs. It also enables us to manage deals internally, allowing us to capture 100% of the transaction fee-a significant increase from the 60% from brokered deals.</li><li class='ml-4'><b>White Glove Service:</b> A premium service for clients who want a hands-on, managed experience.</li><li class='ml-4'><b>Refi Radar & Bloomberg of CRE:</b> A data-driven service for lenders that identifies the optimal time to refinance.</li></ul>",
-      "<b>Direct Arbitrage:</b> By targeting real estate brokers directly, we eliminate referral fees, increasing our margins."
+      "<b>Direct Arbitrage:</b> By targeting real estate borrowers directly, we eliminate broker referral fees, increasing our margins."
     ]
   },
   {
@@ -309,7 +326,7 @@ const teamMembers = [
 
 // Investment Ask: optimized content
 const optimizedInvestmentAsk = {
-  headline: "The Operating System for $4.8T CRE Debt",
+  headline: "Operating System for $100B CRE Debt",
   askAmount: "$3.5M Pre-Seed Round",
   useOfFunds: [
     {
@@ -416,6 +433,7 @@ export default function HomePage() {
     CACToLTV: false,
     BurnRunway: false,
   });
+  const [assumptionsExpanded, setAssumptionsExpanded] = useState(false);
 
   const handleProblemSelect = (index: number) => {
     setSelectedProblem(index);
@@ -672,7 +690,7 @@ export default function HomePage() {
               <div className="w-full">
                 <FadeIn delay={0.25}>
                   <h3 className="text-3xl md:text-4xl font-bold text-black dark:text-white text-center mb-8">
-                    Complete Platform Solutions
+                    Operating System for the CRE Industry
                   </h3>
                 </FadeIn>
                 
@@ -889,6 +907,33 @@ export default function HomePage() {
                                   dangerouslySetInnerHTML={{ __html: item }} />
                             ))}
                           </ul>
+                          {/* @ts-ignore */}
+                          {card.assumptions && (
+                            <div className="mt-6">
+                              <button
+                                type="button"
+                                onClick={() => setAssumptionsExpanded(prev => !prev)}
+                                className="w-full flex items-center justify-between text-left rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 p-4"
+                                aria-expanded={assumptionsExpanded}
+                              >
+                                <h4 className="font-semibold text-lg text-black dark:text-white">
+                                  {/* @ts-ignore */}
+                                  {card.assumptions.title}
+                                </h4>
+                                <ChevronDown className={`w-5 h-5 text-gray-600 dark:text-gray-300 transition-transform ${assumptionsExpanded ? 'rotate-180' : ''}`} />
+                              </button>
+                              {assumptionsExpanded && (
+                                <div className="mt-2 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 p-4">
+                                  <div className="space-y-1 text-black dark:text-white">
+                                    {/* @ts-ignore */}
+                                    {card.assumptions.points.map((point, pointIdx) => (
+                                      <p key={pointIdx} dangerouslySetInnerHTML={{ __html: point }} />
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          )}
                         </div>
                       </div>
                     )}
@@ -1306,7 +1351,7 @@ export default function HomePage() {
                             {
                               number: '2',
                               title: 'Data Integration', // swapped title
-                              months: 'Months 2-6',
+                              months: 'Months 2-4',
                               content: [
                                 { type: 'bullets', value: ['Integrate proprietary data and customer acquisition'] },
                                 { type: 'success', value: '15 customers, $750M+ volume' }
@@ -1315,7 +1360,7 @@ export default function HomePage() {
                             {
                               number: '3',
                               title: 'Expansion', // swapped title
-                              months: 'Months 7-12',
+                              months: 'Months 5-12',
                               content: [
                                 { type: 'bullets', value: ['Scale to 30+ customers with marketing ramp-up '] },
                                 { type: 'success', value: '30+ customers, $1.5B+ volume' }
@@ -1386,7 +1431,7 @@ export default function HomePage() {
                                 <td className="px-4 py-2">$150M+ volume</td>
                               </tr>
                               <tr className="border-t border-gray-200 dark:border-gray-700">
-                                <td className="px-4 py-2">Month 6</td>
+                                <td className="px-4 py-2">Month 4</td>
                                 <td className="px-4 py-2">15 active customers</td>
                                 <td className="px-4 py-2">$750M+ volume</td>
                               </tr>
