@@ -668,47 +668,9 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Inserted: CRE Debt Problem (single block) before Hidden Reality */}
-            <div className="mt-8 mb-10">
-              <SectionCard>
-                <FadeIn>
-                  <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white text-center mb-10">CRE Debt Problem</h2>
-                </FadeIn>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-                  {problemCardsForProblemsSection.slice(0,3).map((card, idx) => (
-                    <FadeIn key={idx} delay={0.05 * idx}>
-                      <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-gray-700 h-full`}>
-                        <h3 className={`text-xl md:text-2xl font-semibold mb-4 ${card.textColor}`} dangerouslySetInnerHTML={{ __html: boldProblemTitle(card.title) }} />
-                        <div className="space-y-3 text-black dark:text-white">
-                          {card.content.map((c, i) => (
-                            <p key={i} dangerouslySetInnerHTML={{ __html: c }} />
-                          ))}
-                        </div>
-                      </div>
-                    </FadeIn>
-                  ))}
-                </div>
-              </SectionCard>
-            </div>
 
-            {/* Market Insight Section */}
-            <FadeIn delay={0.6}>
-              <div className="mb-8">
-                <h3 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-4">
-                  The Hidden Reality
-                </h3>
-                <p className="text-lg md:text-xl text-black/60 dark:text-white/60 mb-8 max-w-3xl mx-auto">
-                  What industry insiders know but won't admit publicly
-                </p>
-              </div>
-              <div className="glass-card rounded-2xl p-8 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-white/10 max-w-4xl mx-auto text-left">
-                <ul className="list-disc list-outside space-y-4 pl-6">
-                  {creEducationContent.marketInsight.facts.map((fact: string, i: number) => (
-                    <li key={i} className="text-base md:text-lg text-gray-800 dark:text-gray-200" dangerouslySetInnerHTML={{ __html: fact }} />
-                  ))}
-                </ul>
-              </div>
-            </FadeIn>
+
+
           </SectionCard>
         </div>
       </section>
