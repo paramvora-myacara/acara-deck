@@ -61,7 +61,7 @@ const creEducationContent = {
         "They own an estimated <b>5 million+</b> apartment buildings (5+ units) across the U.S.",
         "<b>96%</b> have active debt that needs constant refinancing.",
         "Their <b>biggest challenge</b>: finding the right lender among <b>3,000+</b> options - 0.25% rate difference on a $50M loan costs $125,000/year.",
-       
+        
       ]
     },
     {
@@ -123,7 +123,6 @@ const creEducationContent = {
     facts: [
       "<b>There are no real CRE lending companies</b> - just marquees with independent contractors working in silos.",
       "<b>50% of borrowers go direct to lenders</b> - and miss better rates because they only know 1-2 banks.",
-      "<b>New debt funds emerged post-COVID</b> - institutional investors created new lenders that borrowers don't even know exist.",
       "<b>$100B+ in fees annually</b> - yet delivered through phone calls, PDFs, and personal relationships."
     ]
   }
@@ -133,7 +132,7 @@ const creEducationContent = {
 const taglineOptions = [
   "The Operating System for $4.8 Trillion in CRE Debt",
   "Where AI Meets Commercial Real Estate Finance",
-  "Uber for Commercial Real Estate Lending",
+  "Uber for Commercial Real Estate (CRE) Lending",
   "The Bloomberg Terminal for CRE Debt Markets",
   "Making CRE Lending Work Like It Should"
 ];
@@ -141,33 +140,27 @@ const taglineOptions = [
 // Problems: optimized content
 const problemCardsForProblemsSection = [
   {
-    title: "Borrowers are invisible to 99% of lenders",
+    title: "6-month average timeline with 50% deal mortality rate",
     content: [
-      "<b>Only 5-10 lenders see each deal</b> - brokers show deals only to their personal contacts, missing 2,990+ other active lenders who might offer better terms.",
-      "<b>50% of deals fail from poor matching</b> - borrowers don't know what lenders want, so they waste time pitching to the wrong ones.",
-      "<b>Leaving millions on the table</b> - a 0.25% rate difference on a $50M loan costs $125,000/year. Borrowers never know what they missed."
+      "Most deals die not from lack of capital, but from process inefficiency"
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
     textColor: "text-red-600 dark:text-red-400",
     accentColor: "text-black dark:text-white"
   },
   {
-    title: "120,000 brokers can't place debt efficiently",
+    title: "Too many lenders, mismatched criteria",
     content: [
-      "<b>Zero infrastructure for loan brokers</b> - licensed professionals with no platform, no leads, no standardized process. Each rebuilds the wheel.",
-      "<b>60%+ commission to originator</b> - inefficiency means brokers keep most fees just to survive, making the model unscalable.",
-      "<b>$4B in missed commissions annually</b> - brokers who could place debt don't, because the process is too complex without proper tools."
+      "No efficient way to match borrowers with the right capital sources"
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
     textColor: "text-red-600 dark:text-red-400",
     accentColor: "text-black dark:text-white"
   },
   {
-    title: "Deal documents take 6-8 weeks to create",
+    title: "No standards, no efficient matching",
     content: [
-      "<b>Analyst teams burn 160 hours per deal</b> - manually assembling offering memorandums from scattered PDFs, emails, and spreadsheets.",
-      "<b>Every change triggers complete rewrites</b> - no version control means confusion, delays, and deals dying from stale information.",
-      "<b>Static PDFs in a dynamic market</b> - by the time the OM is done, market conditions changed. Lenders see outdated info."
+      "Manual processes that don't scale with market demand"
     ],
     gradient: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/20",
     textColor: "text-red-600 dark:text-red-400",
@@ -330,27 +323,27 @@ const optimizedInvestmentAsk = {
   askAmount: "$3.5M Pre-Seed Round",
   useOfFunds: [
     {
-      category: "Product & AI Development - 40%",
+      category: "Product & AI Development",
       details: "To support the technical team to build out very good existing proof of concept models into production grade products."
     },
     {
-      category: "Marketing & Communication - 20%",
+      category: "Marketing & Communication",
       details: "Setting up the marketing and communication infrastructure to onboard most of the customers onto the platform."
     },
     {
-      category: "Proprietary Data Purchase - 15%",
+      category: "Proprietary Data Purchase",
       details: "For information about every lender in the US, every borrower in the US, and every building in the US. This data will be used to build out our communication and customer targeting mechanisms."
     },
     {
-      category: "Sales & Customer Success - 10%",
+      category: "Sales & Customer Success",
       details: "Funds allocated to building a dedicated sales team and customer success function to ensure the success and expansion of initial customers. This investment enables scalable customer acquisition and retention."
     },
     {
-      category: "Compliance & Operations - 10%",
+      category: "Compliance & Operations",
       details: "Ensuring we operate in a compliance-friendly manner from the very beginning and minimizing OpEx costs for the business."
     },
     {
-      category: "Working Capital/Contingency - 5%",
+      category: "Working Capital/Contingency",
       details: "Reserved for unexpected needs, market opportunities, and to provide flexibility for rapid market changes."
     }
   ],
@@ -403,6 +396,19 @@ function emphasizeNotables(text: string): string {
   return result;
 }
 
+// Helper to bold market-size numbers (e.g., $4.8T, 6 trillion, 957B) and year numbers (e.g., 2025, 2030)
+function emphasizeNumbersYears(text: string): string {
+  return text
+    // $4.8T, $957B, $6M, etc. (unit must be adjacent; no trailing letter pickup)
+    .replace(/\$\s?\d{1,3}(?:[,\d]{0,3})*(?:\.\d+)?(?:T|B|M|K)?\b/gi, match => `<b>${match}</b>`)
+    // 4.8T, 957B, 6M, etc. (without $)
+    .replace(/\b\d+(?:\.\d+)?\s?(?:T|B|M|K)\b/gi, match => `<b>${match}</b>`)
+    // Numbers before the words trillion/billion (e.g., 6 trillion, 957 billion)
+    .replace(/\b(\d+(?:\.\d+)?)\s*(trillion|billion)\b/gi, (_m, num, word) => `<b>${num}</b> ${word}`)
+    // Years like 1990-2099
+    .replace(/\b(?:19|20)\d{2}\b/g, match => `<b>${match}</b>`);
+}
+
 // Helper to bold specific keywords in Problems section titles
 function boldProblemTitle(text: string): string {
   const keywords = [
@@ -415,6 +421,69 @@ function boldProblemTitle(text: string): string {
   }
   return result;
 }
+
+// Add: perfect storm catalysts copy
+const perfectStormCards = [
+  {
+    title: "$4.8T Market Size",
+    description:
+      "The size of the U.S. commercial real estate (CRE) debt market in 2025 is approximately $4.8 trillion in total outstanding debt, according to multiple major industry sources",
+  },
+  {
+    title: "$957B Refinancing",
+    description:
+      "$957 billion needs refinancing in 2025 alone - unprecedented volume as COVID-era loans mature and rates normalize. This creates a once-in-a-decade disruption opportunity.",
+  },
+  {
+    title: "Expanding to $6T",
+    description:
+      "Market expanding to $6 trillion by 2030. As more investors discover CRE debt yields (8-12%), capital floods in. We're positioned to be the infrastructure layer for this growth.",
+  },
+];
+
+// New: Why Now cards (moved out of Perfect Storm and split into three)
+const whyNowCards = [
+  {
+    title: "Interest Rate Environment",
+    description:
+      "Rising rates and shifting lending standards make selecting the right lender more critical than ever.",
+  },
+  {
+    title: "Digital Transformation",
+    description:
+      "Post‑pandemic acceleration of digital adoption is transforming traditionally analog financial services.",
+  },
+  {
+    title: "Refinancing Wave",
+    description:
+      "Massive volume of loans originated at low rates is coming due in a higher‑rate environment.",
+  },
+  {
+    title: "New Debt Funds",
+    description:
+      "New debt funds emerged post‑COVID - institutional investors created new lenders that borrowers don't even know exist.",
+  },
+];
+
+// New: Why CapMatch Wins cards (restored)
+const whyWinsCards: { title: string; body: string }[] = [
+  {
+    title: "Network Effects",
+    body: "More borrowers attract more lenders, creating a self‑reinforcing marketplace advantage",
+  },
+  {
+    title: "Data Advantage",
+    body: "Proprietary deal and lender data compounds in value; persistent records enable repeat transactions and high switching costs.",
+  },
+  {
+    title: "Industry Expertise",
+    body: "Deep CRE and lending experience combined with modern technology capabilities",
+  },
+  {
+    title: "Full Stack Approach",
+    body: "End‑to‑end platform vs point solutions – becoming the system of record for CRE lending",
+  },
+];
 
 export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -477,7 +546,7 @@ export default function HomePage() {
             </div>
           </div>
           <p className="mt-4 text-lg md:text-xl text-black/70 dark:text-white/70 font-light whitespace-pre-line mb-8">
-            {taglineOptions[0]}
+            {taglineOptions[2]}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             {/* Button moved below animation */}
@@ -510,7 +579,9 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* CRE Education Section */}
+
+
+      {/* CRE Education Section - Exact from acara-pitch with CRE Debt Problem inserted before Hidden Reality */}
       <section className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
         <div className="w-full max-w-7xl mx-auto text-center">
           <SectionCard>
@@ -576,25 +647,48 @@ export default function HomePage() {
                 </p>
               </FadeIn>
 
-                             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
-                 {creEducationContent.processTimeline.map((item, idx) => (
-                   <FadeIn key={idx} delay={0.4 + idx * 0.05}>
-                     <div className="text-center glass-card rounded-2xl p-6 bg-gray-50 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 flex flex-col">
-                                             <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                         <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">{item.step}</span>
-                       </div>
-                       <div className="flex-1 flex flex-col justify-between">
-                         <div className="flex-1 flex flex-col">
-                                                       <h3 className="font-semibold text-xl md:text-2xl text-black dark:text-white text-center min-h-[3.5rem] md:min-h-[4.5rem] flex items-center justify-center">{item.title}</h3>
-                            <p className="text-base md:text-lg text-gray-500 dark:text-gray-400 text-center mt-2 min-h-[1.75rem] md:min-h-[2rem] flex items-center justify-center">{item.time}</p>
-                           <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 mt-4 leading-relaxed text-center flex-1">{item.description}</p>
-                         </div>
-                         <p className="text-base md:text-lg text-red-600 dark:text-red-400 mt-5 font-semibold text-center">{item.problem}</p>
-                       </div>
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
+                {creEducationContent.processTimeline.map((item, idx) => (
+                  <FadeIn key={idx} delay={0.4 + idx * 0.05}>
+                    <div className="text-center glass-card rounded-2xl p-6 bg-gray-50 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 flex flex-col">
+                      <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">{item.step}</span>
+                      </div>
+                      <div className="flex-1 flex flex-col justify-between">
+                        <div className="flex-1 flex flex-col">
+                          <h3 className="font-semibold text-xl md:text-2xl text-black dark:text-white text-center min-h-[3.5rem] md:min-h-[4.5rem] flex items-center justify-center">{item.title}</h3>
+                          <p className="text-base md:text-lg text-gray-500 dark:text-gray-400 text-center mt-2 min-h-[1.75rem] md:min-h-[2rem] flex items-center justify-center">{item.time}</p>
+                          <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 mt-4 leading-relaxed text-center flex-1">{item.description}</p>
+                        </div>
+                        <p className="text-base md:text-lg text-red-600 dark:text-red-400 mt-5 font-semibold text-center">{item.problem}</p>
+                      </div>
                     </div>
                   </FadeIn>
                 ))}
               </div>
+            </div>
+
+            {/* Inserted: CRE Debt Problem (single block) before Hidden Reality */}
+            <div className="mt-8 mb-10">
+              <SectionCard>
+                <FadeIn>
+                  <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white text-center mb-10">CRE Debt Problem</h2>
+                </FadeIn>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                  {problemCardsForProblemsSection.slice(0,3).map((card, idx) => (
+                    <FadeIn key={idx} delay={0.05 * idx}>
+                      <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-gray-700 h-full`}>
+                        <h3 className={`text-xl md:text-2xl font-semibold mb-4 ${card.textColor}`} dangerouslySetInnerHTML={{ __html: boldProblemTitle(card.title) }} />
+                        <ul className="list-disc list-outside pl-6 space-y-3 text-black dark:text-white">
+                          {card.content.map((c, i) => (
+                            <li key={i} dangerouslySetInnerHTML={{ __html: c }} />
+                          ))}
+                        </ul>
+                      </div>
+                    </FadeIn>
+                  ))}
+                </div>
+              </SectionCard>
             </div>
 
             {/* Market Insight Section */}
@@ -619,531 +713,86 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Solutions Section */}
+      {/* Perfect Storm of Opportunity */}
+      <section className="flex flex-col items-center justify-center p-4 md:p-8">
+        <div className="w-full max-w-7xl mx-auto text-center">
+          <SectionCard>
+            <FadeIn>
+              <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-8">Perfect Storm of Opportunity</h2>
+            </FadeIn>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+              {perfectStormCards.slice(0,3).map((card, idx) => (
+                <FadeIn key={idx} delay={0.05 * idx}>
+                  <div className="glass-card rounded-2xl p-6 bg-gradient-to-br from-amber-50 to-stone-100 dark:from-amber-900/20 dark:to-stone-900/20 border border-gray-200 dark:border-white/20 h-full">
+                    <h3 className="text-xl md:text-2xl font-semibold text-amber-700 dark:text-amber-300 mb-2">{card.title}</h3>
+                    <p className="text-base md:text-lg text-black/80 dark:text-white/80" dangerouslySetInnerHTML={{ __html: emphasizeNumbersYears(card.description) }} />
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </SectionCard>
+        </div>
+      </section>
+
+      {/* Why Now - separate section with three nested cards */}
+      <section className="flex flex-col items-center justify-center p-4 pt-0 md:p-8 md:pt-2">
+        <div className="w-full max-w-7xl mx-auto text-center">
+          <SectionCard>
+            <FadeIn>
+              <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-8">Why Now</h2>
+            </FadeIn>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
+              {whyNowCards.map((card, idx) => (
+                <FadeIn key={idx} delay={0.05 * idx}>
+                  <div className="glass-card rounded-2xl p-6 bg-gradient-to-br from-amber-50 to-stone-100 dark:from-amber-900/20 dark:to-stone-900/20 border border-gray-200 dark:border-white/20 h-full">
+                    <h3 className="text-xl md:text-2xl font-semibold text-amber-700 dark:text-amber-300 mb-2">{card.title}</h3>
+                    <p className="text-base md:text-lg text-black/80 dark:text-white/80">{card.description}</p>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </SectionCard>
+        </div>
+      </section>
+
+      {/* Why CapMatch Wins */}
       <section className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
         <div className="w-full max-w-7xl mx-auto">
           <SectionCard>
             <FadeIn>
-              <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white text-center mb-8 md:mb-12">
-                CapMatch - The Complete Solution
-              </h2>
+              <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white text-center mb-10">Why CapMatch Wins</h2>
             </FadeIn>
-
-            {/* Split into two halves horizontally */}
-            <div className="space-y-6">
-              {/* Top Half - Lead Generation */}
-              <div className="w-full">
-                <FadeIn delay={0.1}>
-                  <h3 className="text-3xl md:text-4xl font-bold text-black dark:text-white text-center mb-8">
-                    Lead Generation
-                  </h3>
-                </FadeIn>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                  {/* Activate 120k Brokers Card */}
-                  <FadeIn delay={0.15}>
-                    <div className="glass-card rounded-3xl p-6 md:p-8 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full min-h-[300px] flex flex-col justify-center">
-                      <h4 className="text-2xl md:text-3xl font-semibold text-blue-600 dark:text-blue-400 mb-4 text-center">
-                        Activate 120k Brokers
-                      </h4>
-                      <div className="text-left">
-                        <ul className="list-disc list-outside pl-6 space-y-3">
-                          <li className="text-base md:text-lg text-black dark:text-white">
-                            <b>Instant lender network access</b> - Every licensed broker gets immediate access to our 3,000+ verified lenders
-                          </li>
-                          <li className="text-base md:text-lg text-black dark:text-white">
-                            <b>AI-powered deal matching</b> - Our platform automatically matches broker deals with the right lenders
-                          </li>
-                          <li className="text-base md:text-lg text-black dark:text-white">
-                            <b>Commission optimization</b> - Streamlined process allows brokers to focus on relationships, not paperwork
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </FadeIn>
-
-                  {/* Direct Borrower Connection Card */}
-                  <FadeIn delay={0.2}>
-                    <div className="glass-card rounded-3xl p-6 md:p-8 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-green-900/20 dark:to-emerald-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full min-h-[300px] flex flex-col justify-center">
-                      <h4 className="text-2xl md:text-3xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center">
-                        Direct Borrower Connection
-                      </h4>
-                      <div className="text-left">
-                        <ul className="list-disc list-outside pl-6 space-y-3">
-                          <li className="text-base md:text-lg text-black dark:text-white">
-                            <b>Skip the middleman</b> - Property owners connect directly with lenders when they need speed
-                          </li>
-                          <li className="text-base md:text-lg text-black dark:text-white">
-                            <b>Real-time rate discovery</b> - See live rates from multiple lenders instantly, not weeks later
-                          </li>
-                          <li className="text-base md:text-lg text-black dark:text-white">
-                            <b>Transparent process</b> - Track application status, requirements, and next steps in real-time
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </FadeIn>
-                </div>
-              </div>
-
-              {/* Bottom Half - 4 Column Solution Cards */}
-              <div className="w-full">
-                <FadeIn delay={0.25}>
-                  <h3 className="text-3xl md:text-4xl font-bold text-black dark:text-white text-center mb-8">
-                    Operating System for the CRE Industry
-                  </h3>
-                </FadeIn>
-                
-                <div className="relative">
-                  {/* Grid container for cards */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-                    {/* One platform from first call to wire transfer */}
-                    <FadeIn delay={0.3}>
-                      <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-purple-50 to-violet-100 dark:from-purple-900/20 dark:to-violet-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 self-start ${expandedSolutions[0] ? '' : 'min-h-[140px]'} flex flex-col`}>
-                        <h4 className="text-xl md:text-2xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center min-h-[5.5rem] md:min-h-[5.5rem] flex items-center justify-center">
-                          One platform from first call to wire transfer
-                        </h4>
-                        {expandedSolutions[0] && (
-                          <div className="flex-1 flex flex-col justify-center">
-                            <ul className="list-disc list-outside pl-6 text-black dark:text-white space-y-3">
-                              <li><b>Borrowers:</b> Build your profile once, use forever. <b>No redundant data entry</b> - just update deal specifics. Track all lender interest in real-time.</li>
-                              <li><b>Lenders:</b> <b>Standardized deal packages</b> for instant comparison. Chat with borrowers, request docs, and close deals all in one place.</li>
-                              <li><b>Advisors:</b> Manage <b>unlimited deals simultaneously</b> with our workflow automation. One dashboard for all borrowers, lenders, and documents.</li>
-                            </ul>
-                            {/* Video Section */}
-                            <div className="mt-6 flex-grow relative">
-                              <div className="w-full h-full flex items-center justify-center">
-                                <DriveVideo previewUrl={solutionVideos.unifiedPlatform} />
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                        <div className="mt-6 flex justify-center">
-                          <button
-                            type="button"
-                            onClick={() => toggleSolutionCard(0)}
-                            className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-transform"
-                            aria-expanded={!!expandedSolutions[0]}
-                            aria-label={expandedSolutions[0] ? 'Collapse' : 'Expand'}
-                          >
-                            <ChevronDown className={`w-5 h-5 transition-transform ${expandedSolutions[0] ? 'rotate-180' : ''}`} />
-                          </button>
-                        </div>
-                      </div>
-                    </FadeIn>
-
-                    {/* 30-second OMs with live updates */}
-                    <FadeIn delay={0.35}>
-                      <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-cyan-50 to-blue-100 dark:from-cyan-900/20 dark:to-blue-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 self-start ${expandedSolutions[1] ? '' : 'min-h-[140px]'} flex flex-col`}>
-                        <h4 className="text-xl md:text-2xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center min-h-[5.5rem] md:min-h-[5.5rem] flex items-center justify-center">
-                          30-second OMs with live updates
-                        </h4>
-                        {expandedSolutions[1] && (
-                          <div className="flex-1 flex flex-col justify-center">
-                            <ul className="list-disc list-outside pl-6 text-black dark:text-white space-y-3">
-                              <li><b>Borrowers:</b> Drag and drop any documents - our AI extracts, organizes, and creates your OM in <b>30 seconds, not 3 weeks</b>.</li>
-                              <li><b>Lenders:</b> See <b>live, dynamic OMs</b> that update in real-time. Ask our AI questions about any deal and get instant answers with sources.</li>
-                              <li><b>Advisors:</b> <b>Save 160 hours per deal</b>. No more manual package creation. Focus on relationships while AI handles documentation.</li>
-                            </ul>
-                            {/* Video Section */}
-                            <div className="mt-6 flex-grow relative">
-                              <div className="w-full h-full flex items-center justify-center">
-                                <DriveVideo previewUrl={solutionVideos.thirtySecondOMs} />
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                        <div className="mt-6 flex justify-center">
-                          <button
-                            type="button"
-                            onClick={() => toggleSolutionCard(1)}
-                            className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-transform"
-                            aria-expanded={!!expandedSolutions[1]}
-                            aria-label={expandedSolutions[1] ? 'Collapse' : 'Expand'}
-                          >
-                            <ChevronDown className={`w-5 h-5 transition-transform ${expandedSolutions[1] ? 'rotate-180' : ''}`} />
-                          </button>
-                        </div>
-                      </div>
-                    </FadeIn>
-
-                    {/* AI predicts perfect matches */}
-                    <FadeIn delay={0.4}>
-                      <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-orange-50 to-amber-100 dark:from-orange-900/20 dark:to-amber-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 self-start ${expandedSolutions[2] ? '' : 'min-h-[140px]'} flex flex-col`}>
-                        <h4 className="text-xl md:text-2xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center min-h-[5.5rem] md:min-h-[5.5rem] flex items-center justify-center">
-                          AI predicts perfect matches
-                        </h4>
-                        {expandedSolutions[2] && (
-                          <div className="flex-1 flex flex-col justify-center">
-                            <ul className="list-disc list-outside pl-6 text-black dark:text-white space-y-3">
-                              <li><b>Borrowers:</b> <b>75% higher success rate</b> - our AI knows exactly which lenders want your deal based on similar successful transactions.</li>
-                              <li><b>Lenders:</b> <b>10x more qualified deals</b> with our white-glove curation service. Only see deals that match your investment thesis.</li>
-                              <li><b>Advisors:</b> <b>Close deals 3x faster</b> with AI-powered matching. Higher success rates mean better reputation and more referrals.</li>
-                            </ul>
-                            {/* Video Section */}
-                            <div className="mt-6 flex-grow relative">
-                              <div className="w-full h-full flex items-center justify-center">
-                                <DriveVideo previewUrl={solutionVideos.aiMatchmaking} />
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                        <div className="mt-6 flex justify-center">
-                          <button
-                            type="button"
-                            onClick={() => toggleSolutionCard(2)}
-                            className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-transform"
-                            aria-expanded={!!expandedSolutions[2]}
-                            aria-label={expandedSolutions[2] ? 'Collapse' : 'Expand'}
-                          >
-                            <ChevronDown className={`w-5 h-5 transition-transform ${expandedSolutions[2] ? 'rotate-180' : ''}`} />
-                          </button>
-                        </div>
-                      </div>
-                    </FadeIn>
-
-                    {/* Customer Lifetime Value */}
-                    <FadeIn delay={0.45}>
-                      <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-rose-50 to-pink-100 dark:from-rose-900/20 dark:to-pink-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 self-start ${expandedSolutions[3] ? '' : 'min-h-[140px]'} flex flex-col`}>
-                        <h4 className="text-xl md:text-2xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center min-h-[5.5rem] md:min-h-[5.5rem] flex items-center justify-center">
-                          Customer Life Time Value
-                        </h4>
-                        {expandedSolutions[3] && (
-                          <div className="flex-1 flex flex-col justify-center">
-                            <ul className="list-disc list-outside pl-6 text-black dark:text-white space-y-3">
-                              <li><b>Customer lock-in:</b> Profiles, docs, and lender threads stay on-platform, compounding value over time.</li>
-                              <li><b>Takeout financing:</b> One-click move from bridge/construction to perm with reusable data and auto-packages.</li>
-                              <li><b>Refinancing - RefiRadar:</b> <b>Watches market conditions 24/7</b> to tell you the best time to refinance your loan for best terms - <b>perfect loan, at the perfect time, with the perfect lender</b>.</li>
-                              </ul>
-                            </div>
-                          )}
-                          <div className="mt-6 flex justify-center">
-                            <button
-                              type="button"
-                              onClick={() => toggleSolutionCard(3)}
-                              className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-transform"
-                              aria-expanded={!!expandedSolutions[3]}
-                              aria-label={expandedSolutions[3] ? 'Collapse' : 'Expand'}
-                            >
-                              <ChevronDown className={`w-5 h-5 transition-transform ${expandedSolutions[3] ? 'rotate-180' : ''}`} />
-                            </button>
-                          </div>
-                      </div>
-                    </FadeIn>
-                  </div>
-
-                  {/* Arrows between cards - only visible on xl screens and above */}
-                  <div className="hidden xl:block absolute inset-0 pointer-events-none">
-                    {/* Arrow 1: Card 1 to Card 2 */}
-                    <div className="absolute transform -translate-y-1/2" style={{ left: 'calc(25% - 1.1rem)', top: '70px' }}>
-                      <ArrowRight className="w-6 h-6 text-gray-400 dark:text-gray-500" />
-                    </div>
-                    
-                    {/* Arrow 2: Card 2 to Card 3 */}
-                    <div className="absolute transform -translate-y-1/2" style={{ left: 'calc(50% - 0.75rem)', top: '70px' }}>
-                      <ArrowRight className="w-6 h-6 text-gray-400 dark:text-gray-500" />
-                    </div>
-                    
-                    {/* Arrow 3: Card 3 to Card 4 */}
-                    <div className="absolute transform -translate-y-1/2" style={{ left: 'calc(75% - 0.45rem)', top: '70px' }}>
-                      <ArrowRight className="w-6 h-6 text-gray-400 dark:text-gray-500" />
-                    </div>
-                  </div>
-                </div>
-
-
+            {/* Full-width Cold Start card */}
+            <div className="mb-8">
+              <div className="glass-card rounded-2xl p-6 bg-gradient-to-br from-purple-50 to-indigo-100 dark:from-purple-900/20 dark:to-indigo-900/20 border border-gray-200 dark:border-white/20">
+                <h3 className="text-2xl md:text-3xl font-semibold text-black dark:text-white mb-3 text-center">No Cold Start Problem</h3>
+                <ul className="list-disc list-outside pl-6 space-y-2 text-base md:text-lg text-black/90 dark:text-white/90 max-w-5xl mx-auto">
+                  <li>Proprietary lender data is available for purchase, enabling immediate market coverage.</li>
+                  <li>The founding team's long-term, established relationships and deep history in recruiting allow us to onboard a critical mass of lenders and borrowers from day one, ensuring immediate platform activity.</li>
+                </ul>
               </div>
             </div>
-          </SectionCard>
-        </div>
-      </section>
-
-
-      {/* Market Section */}
-      <section className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
-        <div className="w-full max-w-7xl mx-auto text-center">
-          <SectionCard>
-            <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-8">
-              The $1 Trillion Market Opportunity
-            </h2>
-            <div className="space-y-8">
-              {/* First 3 cards stacked vertically */}
-              {optimizedMarketCards.slice(0, 3).map((card, idx) => {
-                const isExpandable = true;
-                const isExpanded = !!expandedMarketCards[card.title];
-                return (
-                  <motion.div
-                    key={idx}
-                    className="glass-card rounded-3xl p-0 bg-gradient-to-br from-purple-50 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 max-w-6xl mx-auto overflow-hidden"
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.2 }}
-                    viewport={{ once: true }}
-                  >
-                    <button
-                      type="button"
-                      className={`w-full flex items-center justify-between text-left px-10 py-8 ${isExpandable ? 'cursor-pointer' : 'cursor-default'}`}
-                      onClick={() => isExpandable && toggleMarketCard(card.title)}
-                      aria-expanded={isExpanded}
-                      aria-controls={`market-card-content-${idx}`}
-                    >
-                      <h3 className="text-3xl font-semibold text-black dark:text-white">
-                        {card.title}
-                      </h3>
-                      {isExpandable && (
-                        <ChevronDown
-                          className={`w-6 h-6 text-gray-600 dark:text-gray-300 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
-                        />
-                      )}
-                    </button>
-
-                    {/* Content */}
-                    {(!isExpandable || isExpanded) && (
-                      <div id={`market-card-content-${idx}`} className="px-10 pb-10">
-                        <div className="glass-card rounded-2xl p-6 bg-white/70 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 shadow-sm">
-                          <ul className="list-disc list-outside space-y-5 pl-8 text-left">
-                            {(card.content || []).map((item, itemIdx) => (
-                              <li key={itemIdx} className="text-xl text-black dark:text-white leading-relaxed" 
-                                  dangerouslySetInnerHTML={{ __html: item }} />
-                            ))}
-                          </ul>
-                          {/* @ts-ignore */}
-                          {card.assumptions && (
-                            <div className="mt-6">
-                              <button
-                                type="button"
-                                onClick={() => setAssumptionsExpanded(prev => !prev)}
-                                className="w-full flex items-center justify-between text-left rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 p-4"
-                                aria-expanded={assumptionsExpanded}
-                              >
-                                <h4 className="font-semibold text-lg text-black dark:text-white">
-                                  {/* @ts-ignore */}
-                                  {card.assumptions.title}
-                                </h4>
-                                <ChevronDown className={`w-5 h-5 text-gray-600 dark:text-gray-300 transition-transform ${assumptionsExpanded ? 'rotate-180' : ''}`} />
-                              </button>
-                              {assumptionsExpanded && (
-                                <div className="mt-2 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 p-4">
-                                  <div className="space-y-1 text-black dark:text-white">
-                                    {/* @ts-ignore */}
-                                    {card.assumptions.points.map((point, pointIdx) => (
-                                      <p key={pointIdx} dangerouslySetInnerHTML={{ __html: point }} />
-                                    ))}
-                                  </div>
-                                </div>
-                              )}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    )}
-                  </motion.div>
-                );
-              })}
-
-              {/* Financial Metrics & Unit Economics nested in Market */}
-              <motion.div
-                className="glass-card rounded-3xl p-10 bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 max-w-6xl mx-auto"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                viewport={{ once: true }}
-              >
-                <FadeIn>
-                  <h3 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-8 text-center">
-                    {financialMetrics.title}
-                  </h3>
-                </FadeIn>
-                <FadeIn delay={0.05}>
-                  <p className="text-lg md:text-xl text-black/70 dark:text-white/70 text-center mb-8">
-                    {financialMetrics.subtitle}
-                  </p>
-                </FadeIn>
-
-                {/* Assumptions - Collapsible */}
-                <FadeIn delay={0.1}>
-                  <div className="glass-card rounded-2xl bg-white/70 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 mb-6 overflow-hidden text-left">
-                    <button
-                      type="button"
-                      onClick={() => toggleFinancialCard('Assumptions')}
-                      className="w-full flex items-center justify-between text-left px-6 py-5"
-                      aria-expanded={!!expandedFinancial.Assumptions}
-                    >
-                      <h4 className="text-xl md:text-2xl font-semibold text-black dark:text-white">Key Assumptions</h4>
-                      <ChevronDown className={`w-6 h-6 text-gray-600 dark:text-gray-300 transition-transform ${expandedFinancial.Assumptions ? 'rotate-180' : ''}`} />
-                    </button>
-                    {expandedFinancial.Assumptions && (
-                      <div className="px-6 pb-6">
-                        <ul className="list-disc list-outside pl-6 space-y-2 text-black dark:text-white">
-                          {financialMetrics.assumptions.map((a, i) => (
-                            <li key={i} dangerouslySetInnerHTML={{ __html: a }} />
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+              {whyWinsCards.map((c, i) => (
+                <FadeIn key={i} delay={0.05 * i}>
+                  <div className="glass-card rounded-2xl p-6 bg-purple-50/60 dark:bg-purple-900/20 border border-gray-200 dark:border-gray-700 h-full">
+                    <h3 className="text-xl md:text-2xl font-semibold text-black dark:text-white mb-2">{c.title}</h3>
+                    <p className="text-base md:text-lg text-black/80 dark:text-white/80">{c.body}</p>
                   </div>
                 </FadeIn>
-
-                {/* CAC - Collapsible */}
-                <FadeIn delay={0.15}>
-                  <div className="glass-card rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-100 dark:from-emerald-900/20 dark:to-teal-900/20 border border-gray-200 dark:border-white/20 mb-6 overflow-hidden text-left">
-                    <button
-                      type="button"
-                      onClick={() => toggleFinancialCard('CAC')}
-                      className="w-full flex items-center justify-between text-left px-6 py-5"
-                      aria-expanded={!!expandedFinancial.CAC}
-                    >
-                      <h4 className="text-xl md:text-2xl font-semibold text-black dark:text-white">{financialMetrics.cac.title}</h4>
-                      <ChevronDown className={`w-6 h-6 text-gray-600 dark:text-gray-300 transition-transform ${expandedFinancial.CAC ? 'rotate-180' : ''}`} />
-                    </button>
-                    {expandedFinancial.CAC && (
-                      <div className="px-6 pb-6">
-                        <ul className="list-disc list-outside pl-6 space-y-2 text-black dark:text-white">
-                          {financialMetrics.cac.bullets.map((b, i) => (
-                            <li key={i} dangerouslySetInnerHTML={{ __html: b }} />
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                </FadeIn>
-
-                {/* Payback - Collapsible */}
-                <FadeIn delay={0.2}>
-                  <div className="glass-card rounded-2xl bg-gradient-to-br from-indigo-50 to-blue-100 dark:from-indigo-900/20 dark:to-blue-900/20 border border-gray-200 dark:border-white/20 mb-6 overflow-hidden text-left">
-                    <button
-                      type="button"
-                      onClick={() => toggleFinancialCard('Payback')}
-                      className="w-full flex items-center justify-between text-left px-6 py-5"
-                      aria-expanded={!!expandedFinancial.Payback}
-                    >
-                      <h4 className="text-xl md:text-2xl font-semibold text-black dark:text-white">{financialMetrics.payback.title}</h4>
-                      <ChevronDown className={`w-6 h-6 text-gray-600 dark:text-gray-300 transition-transform ${expandedFinancial.Payback ? 'rotate-180' : ''}`} />
-                    </button>
-                    {expandedFinancial.Payback && (
-                      <div className="px-6 pb-6">
-                        <p className="text-black/80 dark:text-white/80 mb-3"><b>Formula: </b>{financialMetrics.payback.formula}</p>
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                          <div className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 p-4">
-                            <p className="font-semibold mb-2" dangerouslySetInnerHTML={{ __html: financialMetrics.payback.examples[0].split(':')[0] + ':' }} />
-                            <ul className="list-decimal list-outside pl-6 space-y-1 text-black dark:text-white">
-                              <li>Annual volume ≈ $300M; 1% fee × 60% share → $1.8M/yr</li>
-                              <li>Monthly ARPU ≈ $150k; 70% GM → $105k GM/month</li>
-                              <li>CAC $5k ⇒ Payback ≈ 0.05 months (~1–2 days)</li>
-                            </ul>
-                          </div>
-                          <div className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 p-4">
-                            <p className="font-semibold mb-2" dangerouslySetInnerHTML={{ __html: financialMetrics.payback.examples[1].split(':')[0] + ':' }} />
-                            <ul className="list-decimal list-outside pl-6 space-y-1 text-black dark:text-white">
-                              <li>Annual volume ≈ $50M; 1% fee × 100% share → $500k/yr</li>
-                              <li>Monthly ARPU ≈ $41.7k; 70% GM → $29.2k GM/month</li>
-                              <li>CAC $2k ⇒ Payback ≈ 0.07 months</li>
-                            </ul>
-                          </div>
-                        </div>
-                        <p className="text-sm text-gray-700 dark:text-gray-300 mt-3">{financialMetrics.payback.note}</p>
-                      </div>
-                    )}
-                  </div>
-                </FadeIn>
-
-                {/* LTV - Collapsible */}
-                <FadeIn delay={0.25}>
-                  <div className="glass-card rounded-2xl bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 overflow-hidden text-left">
-                    <button
-                      type="button"
-                      onClick={() => toggleFinancialCard('LTV')}
-                      className="w-full flex items-center justify-between text-left px-6 py-5"
-                      aria-expanded={!!expandedFinancial.LTV}
-                    >
-                      <h4 className="text-xl md:text-2xl font-semibold text-black dark:text-white">{financialMetrics.ltv.title}</h4>
-                      <ChevronDown className={`w-6 h-6 text-gray-600 dark:text-gray-300 transition-transform ${expandedFinancial.LTV ? 'rotate-180' : ''}`} />
-                    </button>
-                    {expandedFinancial.LTV && (
-                      <div className="px-6 pb-6">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                          <div>
-                            <ul className="list-disc list-outside pl-6 space-y-2 text-black dark:text-white">
-                              {financialMetrics.ltv.bullets.map((b, i) => (
-                                <li key={i} dangerouslySetInnerHTML={{ __html: b }} />
-                              ))}
-                            </ul>
-                          </div>
-                          <div>
-                            <ul className="list-decimal list-outside pl-6 space-y-2 text-black dark:text-white">
-                              <li>Event 1: $50M × 1% × 80% × 70% = <b>$280k GM</b></li>
-                              <li>Event 2: $52.5M × 1% × 80% × 70% = <b>$294k GM</b></li>
-                              <li>Optional Event 3: $52.5M baseline → <b>$294k GM</b></li>
-                              <li><b>LTV (2 events):</b> ≈ <b>$574k GM</b>; <b>LTV (3 events):</b> ≈ <b>$868k GM</b></li>
-                            </ul>
-                            <p className="text-black/80 dark:text-white/80 mt-3" dangerouslySetInnerHTML={{ __html: financialMetrics.ltv.rationale }} />
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </FadeIn>
-
-                {/* CAC to LTV Ratio - Collapsible */}
-                <FadeIn delay={0.3}>
-                  <div className="glass-card rounded-2xl bg-gradient-to-br from-fuchsia-50 to-purple-100 dark:from-fuchsia-900/20 dark:to-purple-900/20 border border-gray-200 dark:border-white/20 overflow-hidden mt-6 text-left">
-                    <button
-                      type="button"
-                      onClick={() => toggleFinancialCard('CACToLTV')}
-                      className="w-full flex items-center justify-between text-left px-6 py-5"
-                      aria-expanded={!!expandedFinancial.CACToLTV}
-                    >
-                      <h4 className="text-xl md:text-2xl font-semibold text-black dark:text-white">CAC to LTV Ratio</h4>
-                      <ChevronDown className={`w-6 h-6 text-gray-600 dark:text-gray-300 transition-transform ${expandedFinancial.CACToLTV ? 'rotate-180' : ''}`} />
-                    </button>
-                    {expandedFinancial.CACToLTV && (
-                      <div className="px-6 pb-6">
-                        <p className="text-black/80 dark:text-white/80 mb-3"><b>Formula:</b> CAC to LTV Ratio = LTV / CAC</p>
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                          <div className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 p-4">
-                            <p className="font-semibold mb-2">Broker-led example</p>
-                            <ul className="list-decimal list-outside pl-6 space-y-1 text-black dark:text-white">
-                              <li>Assume CAC = $5k (blended)</li>
-                              <li>Use LTV (2 events) GM ≈ $574k</li>
-                              <li>Ratio = $574k / $5k ≈ <b>115:1</b></li>
-                            </ul>
-                          </div>
-                          <div className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 p-4">
-                            <p className="font-semibold mb-2">Direct borrower example</p>
-                            <ul className="list-decimal list-outside pl-6 space-y-1 text-black dark:text-white">
-                              <li>Assume CAC = $2k</li>
-                              <li>Use LTV (2 events) GM ≈ $574k</li>
-                              <li>Ratio = $574k / $2k ≈ <b>287:1</b></li>
-                            </ul>
-                          </div>
-                        </div>
-                        <p className="text-sm text-gray-700 dark:text-gray-300 mt-3">Illustrative; depends on actual close cadence and mix of broker vs managed deals.</p>
-                      </div>
-                    )}
-                  </div>
-                </FadeIn>
-              </motion.div>
-
-              {/* 4th card with competitive analysis graph */}
-              <motion.div
-                className="glass-card rounded-3xl p-10 bg-gradient-to-br from-purple-50 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 max-w-6xl mx-auto"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                viewport={{ once: true }}
-              >
-                <h3 className="text-3xl font-semibold text-black dark:text-white mb-8">
-                  {optimizedMarketCards[3].title}
-                </h3>
+              ))}
+            </div>
+            {/* Winner-Take-Most Dynamics full-width card */}
+            <div className="mt-8">
+              <div className="glass-card rounded-2xl p-6 bg-gradient-to-br from-purple-50 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20 border border-gray-200 dark:border-white/20">
+                <h3 className="text-2xl font-semibold text-black dark:text-white mb-6">Competitive Positioning</h3>
                 <CompetitiveAnalysisGraph />
-                {optimizedMarketCards[3].additionalContext && (
-                  <div className="mt-4" dangerouslySetInnerHTML={{ __html: optimizedMarketCards[3].additionalContext as string }} />
-                )}
-              </motion.div>
+              </div>
             </div>
           </SectionCard>
         </div>
       </section>
+
 
       {/* Team Section */}
       <section className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
@@ -1250,251 +899,53 @@ export default function HomePage() {
               </div>
             </FadeIn>
 
-            {/* Investment Ask Section */}
-            <section className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
-              <div className="w-full max-w-7xl mx-auto text-center">
-                <SectionCard>
-                  <FadeIn>
-                    <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-8">
-                      {optimizedInvestmentAsk.headline}
-                    </h2>
-                  </FadeIn>
-                  <FadeIn delay={0.1}>
-                    <p className="text-xl text-black/70 dark:text-white/70 mb-12 max-w-4xl mx-auto">
-                      {optimizedInvestmentAsk.askAmount}
-                    </p>
-                  </FadeIn>
-                  <div className="grid grid-cols-1 gap-6 md:gap-8 mb-10 text-left items-stretch">
-                    <FadeIn>
-                      <div className="glass-card rounded-2xl p-6 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 h-full">
-                        <h3 className="text-2xl font-semibold text-amber-700 dark:text-amber-300 mb-4">Use of Funds</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                          {optimizedInvestmentAsk.useOfFunds.map((u, i) => (
-                            <div key={i} className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-amber-200/60 dark:border-amber-800/40 px-5 py-4 md:px-6 md:py-6 min-h-28 md:min-h-32 flex flex-col items-center justify-center text-center text-black dark:text-white text-base md:text-lg leading-relaxed">
-                              <span className="font-semibold mb-2">{u.category}</span>
-                              <p className="text-sm text-gray-700 dark:text-gray-300">{u.details}</p>
-                            </div>
-                          ))}
-                        </div>
+          </SectionCard>
+        </div>
+      </section>
+
+      {/* Standalone Ask Section */}
+      <section className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
+        <div className="w-full max-w-7xl mx-auto text-center">
+          <SectionCard>
+            <FadeIn>
+              <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-8">
+                {optimizedInvestmentAsk.headline}
+              </h2>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <p className="text-xl text-black/70 dark:text-white/70 mb-12 max-w-4xl mx-auto">
+                {optimizedInvestmentAsk.askAmount}
+              </p>
+            </FadeIn>
+            <div className="grid grid-cols-1 gap-6 md:gap-8 mb-10 text-left items-stretch">
+              <FadeIn>
+                <div className="glass-card rounded-2xl p-6 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 h-full">
+                  <h3 className="text-2xl font-semibold text-amber-700 dark:text-amber-300 mb-4">Use of Funds</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                    {optimizedInvestmentAsk.useOfFunds.map((u, i) => (
+                      <div key={i} className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-amber-200/60 dark:border-amber-800/40 px-5 py-4 md:px-6 md:py-6 min-h-28 md:min-h-32 flex flex-col items-center justify-center text-center text-black dark:text-white text-base md:text-lg leading-relaxed">
+                        <span className="font-semibold mb-2">{u.category}</span>
+                        <p className="text-sm text-gray-700 dark:text-gray-300">{u.details}</p>
                       </div>
-                    </FadeIn>
-                    <FadeIn>
-                      <div className="glass-card rounded-2xl p-6 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-700 h-full">
-                        <button
-                          type="button"
-                          onClick={() => toggleFinancialCard('BurnRunway')}
-                          className="w-full flex items-center justify-between text-left"
-                          aria-expanded={!!expandedFinancial.BurnRunway}
-                        >
-                          <h3 className="text-2xl font-semibold text-indigo-800 dark:text-indigo-200 mb-4">Projected Burn & Runway</h3>
-                          <ChevronDown className={`w-6 h-6 text-gray-600 dark:text-gray-300 transition-transform ${expandedFinancial.BurnRunway ? 'rotate-180' : ''}`} />
-                        </button>
-                        {expandedFinancial.BurnRunway && (
-                          <>
-                            <p className="text-sm text-gray-800 dark:text-gray-200 mb-4">
-                              Assumptions: 5 engineers at $150k/yr (payroll $62.5k/mo), benefits ~25%, SaaS/Cloud & ops as noted, 10% contingency, pre-revenue so net burn equals gross. Cash post-close assumed to be $3.5M.
-                            </p>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                              <div className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-indigo-200/60 dark:border-indigo-800/40 px-5 py-4 text-black dark:text-white">
-                                <div className="font-semibold mb-1">Lean</div>
-                                <ul className="text-sm space-y-1">
-                                  <li>Headcount: 3 engineers</li>
-                                  <li>Gross burn: ~$66k/mo</li>
-                                  <li>Net burn: ~$66k/mo</li>
-                                  <li>Runway (@$3.5M): ~53 months</li>
-                                </ul>
-                              </div>
-                              <div className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-indigo-200/60 dark:border-indigo-800/40 px-5 py-4 text-black dark:text-white">
-                                <div className="font-semibold mb-1">Base</div>
-                                <ul className="text-sm space-y-1">
-                                  <li>Headcount: 5 engineers</li>
-                                  <li>Gross burn: ~$105k/mo</li>
-                                  <li>Net burn: ~$105k/mo</li>
-                                  <li>Runway (@$3.5M): ~33 months</li>
-                                </ul>
-                              </div>
-                              <div className="rounded-xl bg-white/70 dark:bg-gray-900/40 border border-indigo-200/60 dark:border-indigo-800/40 px-5 py-4 text-black dark:text-white">
-                                <div className="font-semibold mb-1">Aggressive</div>
-                                <ul className="text-sm space-y-1">
-                                  <li>Headcount: 5 engineers + GTM spend</li>
-                                  <li>Gross burn: ~$135k/mo</li>
-                                  <li>Net burn: ~$135k/mo</li>
-                                  <li>Runway (@$3.5M): ~26 months</li>
-                                </ul>
-                              </div>
-                            </div>
-                            <p className="text-xs text-gray-700 dark:text-gray-300 mt-3">
-                              Notes: Base assumes benefits at ~25%, SaaS/Cloud ~$10k, ops ~$7.5k, 10% contingency. Lean delays 2 hires and trims cloud/ops; Aggressive adds earlier GTM and higher cloud.
-                            </p>
-                          </>
-                        )}
-                      </div>
-                    </FadeIn>
-                    {/* 18-Month Timeline Card */}
-                    <FadeIn>
-                      <div className="glass-card rounded-2xl p-6 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5">
-                        <h3 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-6 text-center">
-                          18-Month Timeline <span className="text-lg font-medium">(Accelerated for Ready Customers)</span>
-                        </h3>
-                        {/* Timeline Phases with aligned sections */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-12">
-                          {[
-                            {
-                              number: '1',
-                              title: 'Platform Rush',
-                              months: 'Month 1',
-                              content: [
-                                { type: 'bullets', value: ['Platform MVP, first deals, refine from real data'] },
-                                { type: 'success', value: '3 customers, $150M+ volume' }
-                              ]
-                            },
-                            {
-                              number: '2',
-                              title: 'Data Integration', // swapped title
-                              months: 'Months 2-4',
-                              content: [
-                                { type: 'bullets', value: ['Integrate proprietary data and customer acquisition'] },
-                                { type: 'success', value: '15 customers, $750M+ volume' }
-                              ]
-                            },
-                            {
-                              number: '3',
-                              title: 'Expansion', // swapped title
-                              months: 'Months 5-12',
-                              content: [
-                                { type: 'bullets', value: ['Scale to 30+ customers with marketing ramp-up '] },
-                                { type: 'success', value: '30+ customers, $1.5B+ volume' }
-                              ]
-                            },
-                            {
-                              number: '4',
-                              title: 'Scaling',
-                              months: 'Months 13-18',
-                              content: [
-                                { type: 'bullets', value: ['50+ customers, market leadership'] },
-                                { type: 'success', value: '50+ customers, $2.5B+ volume' }
-                              ]
-                            }
-                          ].map((phase, idx) => (
-                            <div
-                              key={phase.number}
-                              className="glass-card rounded-2xl p-6 bg-gray-50 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 flex flex-col h-full text-center"
-                            >
-                              <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">{phase.number}</span>
-                              </div>
-                              <h4 className="text-xl font-semibold text-blue-700 dark:text-blue-300 min-h-[2.5rem] flex items-center justify-center mb-0">{phase.title}</h4>
-                              <p className="text-sm text-gray-700 dark:text-gray-300 min-h-[1.5rem] flex items-center justify-center mb-0">{phase.months}</p>
-                              {/* Spacer for alignment */}
-                              <div className="min-h-[2.5rem] flex items-end justify-center mb-0">
-                                <span className="invisible">spacer</span>
-                              </div>
-                              {/* Content: focus bullet and success */}
-                              <div className="flex-1 flex flex-col justify-start">
-                                {/* Focus bullet */}
-                                <div className="flex flex-col items-center justify-center min-h-[4.75rem]">
-                                  {Array.isArray(phase.content[0].value) && (
-                                    <ul className="list-disc pl-5 mb-2 text-black dark:text-white text-sm space-y-1 w-full text-left">
-                                      <li className="min-h-[2.5rem] flex items-center">{phase.content[0].value[0]}</li>
-                                    </ul>
-                                  )}
-                                </div>
-                                {/* Success */}
-                                <div className="flex flex-col items-center justify-center min-h-[2.5rem] mt-auto">
-                                  {(() => {
-                                    const val = Array.isArray(phase.content[1].value) ? phase.content[1].value.join(', ') : phase.content[1].value;
-                                    const [customer, volume] = val.split(', ');
-                                    return (<>
-                                      <span className="text-emerald-700 dark:text-emerald-400 font-semibold text-center w-full">{customer}</span>
-                                      <span className="text-emerald-700 dark:text-emerald-400 font-semibold text-center w-full">{volume}</span>
-                                    </>);
-                                  })()}
-                                </div>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                        {/* Key Success Milestones Table */}
-                        <div className="overflow-x-auto mb-10">
-                          <table className="min-w-full text-sm md:text-base text-left border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
-                            <thead className="bg-gray-100 dark:bg-gray-800">
-                              <tr>
-                                <th className="px-4 py-2 font-semibold">Timeline</th>
-                                <th className="px-4 py-2 font-semibold">Customer Goal</th>
-                                <th className="px-4 py-2 font-semibold">Deal Volume Goal</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr className="border-t border-gray-200 dark:border-gray-700">
-                                <td className="px-4 py-2">Month 1</td>
-                                <td className="px-4 py-2">3 customers processing</td>
-                                <td className="px-4 py-2">$150M+ volume</td>
-                              </tr>
-                              <tr className="border-t border-gray-200 dark:border-gray-700">
-                                <td className="px-4 py-2">Month 4</td>
-                                <td className="px-4 py-2">15 active customers</td>
-                                <td className="px-4 py-2">$750M+ volume</td>
-                              </tr>
-                              <tr className="border-t border-gray-200 dark:border-gray-700">
-                                <td className="px-4 py-2">Month 12</td>
-                                <td className="px-4 py-2">30+ active customers</td>
-                                <td className="px-4 py-2">$1.5B+ volume</td>
-                              </tr>
-                              <tr className="border-t border-gray-200 dark:border-gray-700">
-                                <td className="px-4 py-2">Month 18</td>
-                                <td className="px-4 py-2">50+ customers</td>
-                                <td className="px-4 py-2">$2.5B+ volume</td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        {/* Risks & Mitigation */}
-                        <div className="glass-card rounded-2xl p-6 bg-gradient-to-br from-red-50 to-yellow-50 dark:from-red-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 max-w-4xl mx-auto text-center">
-                          <h4 className="text-xl font-semibold text-red-700 dark:text-red-300 mb-4 text-center">Primary Funding Needs</h4>
-                          <div className="flex flex-col gap-6">
-                            {/* Platform Development Resources */}
-                            <div className="rounded-xl bg-white/80 dark:bg-gray-900/40 border border-red-200 dark:border-red-700 p-5 shadow-sm">
-                              <div className="text-lg font-bold text-red-700 dark:text-red-300 mb-1">Platform development resources</div>
-                              <div className="text-base text-black dark:text-white mb-1">
-                                Hire experienced CRE fintech developers immediately
-                              </div>
-                            </div>
-                            {/* Customer Onboarding Support */}
-                            <div className="rounded-xl bg-white/80 dark:bg-gray-900/40 border border-yellow-200 dark:border-yellow-700 p-5 shadow-sm">
-                              <div className="text-lg font-bold text-yellow-700 dark:text-yellow-300 mb-1">Customer onboarding support</div>
-                              <div className="text-base text-black dark:text-white mb-1">
-                                Dedicated customer success team, start with simplest deals
-                              </div>
-                            </div>
-                            {/* Regulatory & Compliance Investment */}
-                            <div className="rounded-xl bg-white/80 dark:bg-gray-900/40 border border-yellow-200 dark:border-yellow-700 p-5 shadow-sm">
-                              <div className="text-lg font-bold text-yellow-700 dark:text-yellow-300 mb-1">Regulatory & compliance investment</div>
-                              <div className="text-base text-black dark:text-white mb-1">
-                                Legal counsel from day 1, early compliance investment
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </FadeIn>
+                    ))}
                   </div>
-                  <FadeIn>
-                    <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 w-full max-w-7xl mx-auto">
-                      <p className="text-lg text-amber-600 dark:text-amber-300 mb-6">
-                        {optimizedInvestmentAsk.callToAction}
-                      </p>
-                      <button 
-                        onClick={() => setIsModalOpen(true)}
-                        className="px-8 py-3 bg-amber-600 hover:bg-amber-700 dark:bg-amber-500 dark:hover:bg-amber-600 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 mx-auto"
-                      >
-                        <MessageCircle className="w-5 h-5" />
-                        Contact Us
-                      </button>
-                    </div>
-                  </FadeIn>
-                </SectionCard>
+                </div>
+              </FadeIn>
+            </div>
+            <FadeIn>
+              <div className="glass-card rounded-3xl p-8 bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-900/20 dark:to-yellow-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 w-full max-w-7xl mx-auto">
+                <p className="text-lg text-amber-600 dark:text-amber-300 mb-6">
+                  {optimizedInvestmentAsk.callToAction}
+                </p>
+                <button 
+                  onClick={() => setIsModalOpen(true)}
+                  className="px-8 py-3 bg-amber-600 hover:bg-amber-700 dark:bg-amber-500 dark:hover:bg-amber-600 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 mx-auto"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  Contact Us
+                </button>
               </div>
-            </section>
+            </FadeIn>
           </SectionCard>
         </div>
       </section>
