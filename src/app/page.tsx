@@ -679,11 +679,11 @@ export default function HomePage() {
                     <FadeIn key={idx} delay={0.05 * idx}>
                       <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br ${card.gradient} border border-gray-200 dark:border-gray-700 h-full`}>
                         <h3 className={`text-xl md:text-2xl font-semibold mb-4 ${card.textColor}`} dangerouslySetInnerHTML={{ __html: boldProblemTitle(card.title) }} />
-                        <ul className="list-disc list-outside pl-6 space-y-3 text-black dark:text-white">
+                        <div className="space-y-3 text-black dark:text-white">
                           {card.content.map((c, i) => (
-                            <li key={i} dangerouslySetInnerHTML={{ __html: c }} />
+                            <p key={i} dangerouslySetInnerHTML={{ __html: c }} />
                           ))}
-                        </ul>
+                        </div>
                       </div>
                     </FadeIn>
                   ))}
@@ -709,6 +709,245 @@ export default function HomePage() {
                 </ul>
               </div>
             </FadeIn>
+          </SectionCard>
+        </div>
+      </section>
+
+      {/* Solutions Section */}
+      <section className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
+        <div className="w-full max-w-7xl mx-auto">
+          <SectionCard>
+            <FadeIn>
+              <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white text-center mb-8 md:mb-12">
+                CapMatch - The Complete Solution
+              </h2>
+            </FadeIn>
+
+            {/* Split into two halves horizontally */}
+            <div className="space-y-6">
+              {/* Top Half - Lead Generation */}
+              <div className="w-full">
+                <FadeIn delay={0.1}>
+                  <h3 className="text-3xl md:text-4xl font-bold text-black dark:text-white text-center mb-8">
+                    Lead Generation
+                  </h3>
+                </FadeIn>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                  {/* Activate 120k Brokers Card */}
+                  <FadeIn delay={0.15}>
+                    <div className="glass-card rounded-3xl p-6 md:p-8 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full min-h-[300px] flex flex-col justify-center">
+                      <h4 className="text-2xl md:text-3xl font-semibold text-blue-600 dark:text-blue-400 mb-4 text-center">
+                        Activate 120k Brokers
+                      </h4>
+                      <div className="text-left">
+                        <ul className="list-disc list-outside pl-6 space-y-3">
+                          <li className="text-base md:text-lg text-black dark:text-white">
+                            <b>Instant lender network access</b> - Every licensed broker gets immediate access to our 3,000+ verified lenders
+                          </li>
+                          <li className="text-base md:text-lg text-black dark:text-white">
+                            <b>AI-powered deal matching</b> - Our platform automatically matches broker deals with the right lenders
+                          </li>
+                          <li className="text-base md:text-lg text-black dark:text-white">
+                            <b>Commission optimization</b> - Streamlined process allows brokers to focus on relationships, not paperwork
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </FadeIn>
+
+                  {/* Direct Borrower Connection Card */}
+                  <FadeIn delay={0.2}>
+                    <div className="glass-card rounded-3xl p-6 md:p-8 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-green-900/20 dark:to-emerald-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 h-full min-h-[300px] flex flex-col justify-center">
+                      <h4 className="text-2xl md:text-3xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center">
+                        Direct Borrower Connection
+                      </h4>
+                      <div className="text-left">
+                        <ul className="list-disc list-outside pl-6 space-y-3">
+                          <li className="text-base md:text-lg text-black dark:text-white">
+                            <b>Skip the middleman</b> - Property owners connect directly with lenders when they need speed
+                          </li>
+                          <li className="text-base md:text-lg text-black dark:text-white">
+                            <b>Real-time rate discovery</b> - See live rates from multiple lenders instantly, not weeks later
+                          </li>
+                          <li className="text-base md:text-lg text-black dark:text-white">
+                            <b>Transparent process</b> - Track application status, requirements, and next steps in real-time
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </FadeIn>
+                </div>
+              </div>
+
+              {/* Bottom Half - 4 Column Solution Cards */}
+              <div className="w-full">
+                <FadeIn delay={0.25}>
+                  <h3 className="text-3xl md:text-4xl font-bold text-black dark:text-white text-center mb-8">
+                    Operating System for the CRE Industry
+                  </h3>
+                </FadeIn>
+                
+                <div className="relative">
+                  {/* Grid container for cards */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                    {/* One platform from first call to wire transfer */}
+                    <FadeIn delay={0.3}>
+                      <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-purple-50 to-violet-100 dark:from-purple-900/20 dark:to-violet-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 self-start ${expandedSolutions[0] ? '' : 'min-h-[140px]'} flex flex-col`}>
+                        <h4 className="text-xl md:text-2xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center min-h-[5.5rem] md:min-h-[5.5rem] flex items-center justify-center">
+                          One platform from first call to wire transfer
+                        </h4>
+                        {expandedSolutions[0] && (
+                          <div className="flex-1 flex flex-col justify-center">
+                            <ul className="list-disc list-outside pl-6 text-black dark:text-white space-y-3">
+                              <li><b>Borrowers:</b> Build your profile once, use forever. <b>No redundant data entry</b> - just update deal specifics. Track all lender interest in real-time.</li>
+                              <li><b>Lenders:</b> <b>Standardized deal packages</b> for instant comparison. Chat with borrowers, request docs, and close deals all in one place.</li>
+                              <li><b>Advisors:</b> Manage <b>unlimited deals simultaneously</b> with our workflow automation. One dashboard for all borrowers, lenders, and documents.</li>
+                            </ul>
+                            {/* Video Section */}
+                            <div className="mt-6 flex-grow relative">
+                              <div className="w-full h-full flex items-center justify-center">
+                                <DriveVideo previewUrl={solutionVideos.unifiedPlatform} />
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                        <div className="mt-6 flex justify-center">
+                          <button
+                            type="button"
+                            onClick={() => toggleSolutionCard(0)}
+                            className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-transform"
+                            aria-expanded={!!expandedSolutions[0]}
+                            aria-label={expandedSolutions[0] ? 'Collapse' : 'Expand'}
+                          >
+                            <ChevronDown className={`w-5 h-5 transition-transform ${expandedSolutions[0] ? 'rotate-180' : ''}`} />
+                          </button>
+                        </div>
+                      </div>
+                    </FadeIn>
+
+                    {/* 30-second OMs with live updates */}
+                    <FadeIn delay={0.35}>
+                      <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-cyan-50 to-blue-100 dark:from-cyan-900/20 dark:to-blue-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 self-start ${expandedSolutions[1] ? '' : 'min-h-[140px]'} flex flex-col`}>
+                        <h4 className="text-xl md:text-2xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center min-h-[5.5rem] md:min-h-[5.5rem] flex items-center justify-center">
+                          30-second OMs with live updates
+                        </h4>
+                        {expandedSolutions[1] && (
+                          <div className="flex-1 flex flex-col justify-center">
+                            <ul className="list-disc list-outside pl-6 text-black dark:text-white space-y-3">
+                              <li><b>Borrowers:</b> Drag and drop any documents - our AI extracts, organizes, and creates your OM in <b>30 seconds, not 3 weeks</b>.</li>
+                              <li><b>Lenders:</b> See <b>live, dynamic OMs</b> that update in real-time. Ask our AI questions about any deal and get instant answers with sources.</li>
+                              <li><b>Advisors:</b> <b>Save 160 hours per deal</b>. No more manual package creation. Focus on relationships while AI handles documentation.</li>
+                            </ul>
+                            {/* Video Section */}
+                            <div className="mt-6 flex-grow relative">
+                              <div className="w-full h-full flex items-center justify-center">
+                                <DriveVideo previewUrl={solutionVideos.thirtySecondOMs} />
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                        <div className="mt-6 flex justify-center">
+                          <button
+                            type="button"
+                            onClick={() => toggleSolutionCard(1)}
+                            className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-transform"
+                            aria-expanded={!!expandedSolutions[1]}
+                            aria-label={expandedSolutions[1] ? 'Collapse' : 'Expand'}
+                          >
+                            <ChevronDown className={`w-5 h-5 transition-transform ${expandedSolutions[1] ? 'rotate-180' : ''}`} />
+                          </button>
+                        </div>
+                      </div>
+                    </FadeIn>
+
+                    {/* AI predicts perfect matches */}
+                    <FadeIn delay={0.4}>
+                      <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-orange-50 to-amber-100 dark:from-orange-900/20 dark:to-amber-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 self-start ${expandedSolutions[2] ? '' : 'min-h-[140px]'} flex flex-col`}>
+                        <h4 className="text-xl md:text-2xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center min-h-[5.5rem] md:min-h-[5.5rem] flex items-center justify-center">
+                          AI predicts perfect matches
+                        </h4>
+                        {expandedSolutions[2] && (
+                          <div className="flex-1 flex flex-col justify-center">
+                            <ul className="list-disc list-outside pl-6 text-black dark:text-white space-y-3">
+                              <li><b>Borrowers:</b> <b>75% higher success rate</b> - our AI knows exactly which lenders want your deal based on similar successful transactions.</li>
+                              <li><b>Lenders:</b> <b>10x more qualified deals</b> with our white-glove curation service. Only see deals that match your investment thesis.</li>
+                              <li><b>Advisors:</b> <b>Close deals 3x faster</b> with AI-powered matching. Higher success rates mean better reputation and more referrals.</li>
+                            </ul>
+                            {/* Video Section */}
+                            <div className="mt-6 flex-grow relative">
+                              <div className="w-full h-full flex items-center justify-center">
+                                <DriveVideo previewUrl={solutionVideos.aiMatchmaking} />
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                        <div className="mt-6 flex justify-center">
+                          <button
+                            type="button"
+                            onClick={() => toggleSolutionCard(2)}
+                            className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-transform"
+                            aria-expanded={!!expandedSolutions[2]}
+                            aria-label={expandedSolutions[2] ? 'Collapse' : 'Expand'}
+                          >
+                            <ChevronDown className={`w-5 h-5 transition-transform ${expandedSolutions[2] ? 'rotate-180' : ''}`} />
+                          </button>
+                        </div>
+                      </div>
+                    </FadeIn>
+
+                    {/* Customer Lifetime Value */}
+                    <FadeIn delay={0.45}>
+                      <div className={`glass-card rounded-2xl p-6 bg-gradient-to-br from-rose-50 to-pink-100 dark:from-rose-900/20 dark:to-pink-900/20 border border-gray-200 dark:border-white/20 shadow-md dark:shadow-xl shadow-gray-200/50 dark:shadow-white/5 self-start ${expandedSolutions[3] ? '' : 'min-h-[140px]'} flex flex-col`}>
+                        <h4 className="text-xl md:text-2xl font-semibold text-green-600 dark:text-green-400 mb-4 text-center min-h-[5.5rem] md:min-h-[5.5rem] flex items-center justify-center">
+                          Customer Life Time Value
+                        </h4>
+                        {expandedSolutions[3] && (
+                          <div className="flex-1 flex flex-col justify-center">
+                            <ul className="list-disc list-outside pl-6 text-black dark:text-white space-y-3">
+                              <li><b>Customer lock-in:</b> Profiles, docs, and lender threads stay on-platform, compounding value over time.</li>
+                              <li><b>Takeout financing:</b> One-click move from bridge/construction to perm with reusable data and auto-packages.</li>
+                              <li><b>Refinancing - RefiRadar:</b> <b>Watches market conditions 24/7</b> to tell you the best time to refinance your loan for best terms - <b>perfect loan, at the perfect time, with the perfect lender</b>.</li>
+                              </ul>
+                            </div>
+                          )}
+                          <div className="mt-6 flex justify-center">
+                            <button
+                              type="button"
+                              onClick={() => toggleSolutionCard(3)}
+                              className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-transform"
+                              aria-expanded={!!expandedSolutions[3]}
+                              aria-label={expandedSolutions[3] ? 'Collapse' : 'Expand'}
+                            >
+                              <ChevronDown className={`w-5 h-5 transition-transform ${expandedSolutions[3] ? 'rotate-180' : ''}`} />
+                            </button>
+                          </div>
+                      </div>
+                    </FadeIn>
+                  </div>
+
+                  {/* Arrows between cards - only visible on xl screens and above */}
+                  <div className="hidden xl:block absolute inset-0 pointer-events-none">
+                    {/* Arrow 1: Card 1 to Card 2 */}
+                    <div className="absolute transform -translate-y-1/2" style={{ left: 'calc(25% - 1.1rem)', top: '70px' }}>
+                      <ArrowRight className="w-6 h-6 text-gray-400 dark:text-gray-500" />
+                    </div>
+                    
+                    {/* Arrow 2: Card 2 to Card 3 */}
+                    <div className="absolute transform -translate-y-1/2" style={{ left: 'calc(50% - 0.75rem)', top: '70px' }}>
+                      <ArrowRight className="w-6 h-6 text-gray-400 dark:text-gray-500" />
+                    </div>
+                    
+                    {/* Arrow 3: Card 3 to Card 4 */}
+                    <div className="absolute transform -translate-y-1/2" style={{ left: 'calc(75% - 0.45rem)', top: '70px' }}>
+                      <ArrowRight className="w-6 h-6 text-gray-400 dark:text-gray-500" />
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
           </SectionCard>
         </div>
       </section>
